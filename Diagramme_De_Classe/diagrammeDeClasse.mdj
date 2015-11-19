@@ -515,7 +515,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "-longueur: Float",
+											"text": "#longueur: Float",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -543,7 +543,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "-vitesseMoyenne: Float",
+											"text": "#vitesseMoyenne: Float",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -571,7 +571,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+nomDeRue: String",
+											"text": "#nomDeRue: String",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -885,7 +885,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+id: Integer",
+											"text": "#id: Integer",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -913,7 +913,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+x: Integer",
+											"text": "#x: Integer",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -941,7 +941,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+y: Integer",
+											"text": "#y: Integer",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -1285,7 +1285,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+duree: Float",
+											"text": "#duree: Float",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -1339,7 +1339,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+modifierTournee(livraison1: Livraison, livraison2: Livraison)",
+											"text": "#modifierTournee(livraison1: Livraison, livraison2: Livraison)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -1367,7 +1367,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+supprimeLivraison(livraison: Livraison)",
+											"text": "#supprimeLivraison(livraison: Livraison)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -1395,7 +1395,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+ajouteLivraison(livraisonAvant: Livraison, livraison: Livraison)",
+											"text": "#ajouteLivraison(livraisonAvant: Livraison, livraison: Livraison)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -1451,7 +1451,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+genererFeuilleDeRoute()",
+											"text": "#genererFeuilleDeRoute()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -1741,7 +1741,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+cout: Integer",
+											"text": "#cout: Integer",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -2055,7 +2055,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+id: Integer",
+											"text": "#id: Integer",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -2083,7 +2083,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+heureArrivee: Date",
+											"text": "#heureArrivee: Date",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -2111,7 +2111,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+estDansFenetre: Boolean",
+											"text": "#estDansFenetre: Boolean",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -2449,7 +2449,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+modifierTournee(livraison1: Livraison, livraison2: Livraison)",
+											"text": "#modifierTournee(livraison1: Livraison, livraison2: Livraison)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -2477,7 +2477,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+supprimeLivraison(livraison: Livraison)",
+											"text": "#supprimeLivraison(livraison: Livraison)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -2505,7 +2505,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+ajouteLivraison(livraisonAvant: Livraison, livraison: Livraison)",
+											"text": "#ajouteLivraison(livraisonAvant: Livraison, livraison: Livraison)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -2533,7 +2533,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+calculerTournee(plan: Plan)",
+											"text": "#calculerTournee(plan: Plan)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -2561,7 +2561,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+calculPlusCourtChemin(plan: Plan, depart: Livraison, arrivee: Livraison)",
+											"text": "#calculPlusCourtChemin(plan: Plan, depart: Livraison, arrivee: Livraison)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -2589,7 +2589,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+genereFeuilleDeRoute()()",
+											"text": "#genereFeuilleDeRoute()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -2879,7 +2879,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "-heureDebut: Date",
+											"text": "#heureDebut: Date",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -2907,7 +2907,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "-heureFin: Date",
+											"text": "#heureFin: Date",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -2961,7 +2961,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+supprimeLivraison(livraison: Livraison)",
+											"text": "#supprimeLivraison(livraison: Livraison)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -2989,7 +2989,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+ajouteLivraison(livraison: Livraison)",
+											"text": "#ajouteLivraison(livraison: Livraison)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -3325,9 +3325,9 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 110,
+									"left": 111,
 									"top": 354,
-									"width": 58,
+									"width": 57,
 									"height": 13,
 									"autoResize": false,
 									"alpha": -1.2827588466830397,
@@ -3337,7 +3337,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+tronçons",
+									"text": "#tronçons",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -3741,9 +3741,9 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 656,
+									"left": 657,
 									"top": 251,
-									"width": 82,
+									"width": 81,
 									"height": 13,
 									"autoResize": false,
 									"alpha": 5.16251596499475,
@@ -3753,7 +3753,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+intersections",
+									"text": "#intersections",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -4155,9 +4155,9 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 87,
+									"left": 88,
 									"top": 503,
-									"width": 44,
+									"width": 43,
 									"height": 13,
 									"autoResize": false,
 									"alpha": -5.588447071498122,
@@ -4167,7 +4167,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+depart",
+									"text": "#depart",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -4573,7 +4573,7 @@
 									"containerExtending": false,
 									"left": 327,
 									"top": 614,
-									"width": 61,
+									"width": 60,
 									"height": 13,
 									"autoResize": false,
 									"alpha": -0.13251266105663684,
@@ -4583,7 +4583,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+livraisons",
+									"text": "#livraisons",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -4985,9 +4985,9 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 1174,
+									"left": 1175,
 									"top": 615,
-									"width": 54,
+									"width": 53,
 									"height": 13,
 									"autoResize": false,
 									"alpha": -0.9413952185713517,
@@ -4997,7 +4997,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+fenetres",
+									"text": "#fenetres",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -5402,7 +5402,7 @@
 									"containerExtending": false,
 									"left": 200,
 									"top": 504,
-									"width": 45,
+									"width": 44,
 									"height": 13,
 									"autoResize": false,
 									"alpha": -0.6202495286979327,
@@ -5412,7 +5412,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+arrivee",
+									"text": "#arrivee",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -5717,7 +5717,7 @@
 									"containerExtending": false,
 									"left": 1177,
 									"top": 408,
-									"width": 51,
+									"width": 50,
 									"height": 13,
 									"autoResize": false,
 									"alpha": 1.087837807246299,
@@ -5727,7 +5727,7 @@
 									},
 									"edgePosition": 2,
 									"underline": false,
-									"text": "+tournee",
+									"text": "#tournee",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -5816,19 +5816,19 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 1176,
-									"top": 437,
-									"width": 127,
+									"left": 1191,
+									"top": 439,
+									"width": 126,
 									"height": 13,
 									"autoResize": false,
-									"alpha": 4.908656169083002,
-									"distance": 62.36184731067546,
+									"alpha": 4.819147721516343,
+									"distance": 76.90253571892151,
 									"hostEdge": {
 										"$ref": "AAAAAAFRFmkXaGXtUTc="
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+demandeDeLivraison",
+									"text": "#demandeDeLivraison",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -6131,9 +6131,9 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 223,
+									"left": 224,
 									"top": 248,
-									"width": 100,
+									"width": 99,
 									"height": 13,
 									"autoResize": false,
 									"alpha": 1.018384113561325,
@@ -6143,7 +6143,7 @@
 									},
 									"edgePosition": 2,
 									"underline": false,
-									"text": "+tronçonsSortant",
+									"text": "#tronçonsSortant",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -6232,9 +6232,9 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 387,
+									"left": 388,
 									"top": 264,
-									"width": 46,
+									"width": 45,
 									"height": 13,
 									"autoResize": false,
 									"alpha": -0.5150254814572022,
@@ -6244,7 +6244,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+origine",
+									"text": "#origine",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -6547,19 +6547,19 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 251,
-									"top": 347,
-									"width": 100,
+									"left": 256,
+									"top": 346,
+									"width": 99,
 									"height": 13,
 									"autoResize": false,
-									"alpha": -0.6658853274626743,
-									"distance": 60,
+									"alpha": -0.6159542168779427,
+									"distance": 62.48199740725323,
 									"hostEdge": {
 										"$ref": "AAAAAAFRFmk692c2tzk="
 									},
 									"edgePosition": 2,
 									"underline": false,
-									"text": "+tronçonsEntrant",
+									"text": "#tronçonsEntrant",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -6650,7 +6650,7 @@
 									"containerExtending": false,
 									"left": 376,
 									"top": 344,
-									"width": 71,
+									"width": 70,
 									"height": 13,
 									"autoResize": false,
 									"alpha": 0.62733349116459,
@@ -6660,7 +6660,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+destination",
+									"text": "#destination",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -7063,18 +7063,18 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 607,
-									"top": 93,
-									"width": 60,
+									"top": 91,
+									"width": 59,
 									"height": 13,
 									"autoResize": false,
-									"alpha": -0.3708911949789048,
-									"distance": 38.62641583165593,
+									"alpha": -0.32962422633992206,
+									"distance": 40.162171256046406,
 									"hostEdge": {
 										"$ref": "AAAAAAFRFml3gGnaGDw="
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+singleton",
+									"text": "#singleton",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -7478,7 +7478,7 @@
 									"containerExtending": false,
 									"left": 56,
 									"top": 573,
-									"width": 55,
+									"width": 54,
 									"height": 13,
 									"autoResize": false,
 									"alpha": -0.3851576004663819,
@@ -7488,7 +7488,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+entrepot",
+									"text": "#entrepot",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -7890,9 +7890,9 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 63,
+									"left": 64,
 									"top": 432,
-									"width": 64,
+									"width": 63,
 									"height": 13,
 									"autoResize": false,
 									"alpha": 0.5880027434077366,
@@ -7902,7 +7902,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+itineraires",
+									"text": "#itineraires",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -8283,7 +8283,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+addObserver(observer: Observer)",
+											"text": "#addObserver(observer: Observer)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -8311,7 +8311,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+notifyObservers(obj: Object)",
+											"text": "#notifyObservers(obj: Object)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -8339,7 +8339,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+deleteObserver(observer: Observer)",
+											"text": "#deleteObserver(observer: Observer)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -8367,7 +8367,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+deleteObservers()",
+											"text": "#deleteObservers()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -8395,7 +8395,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+notifyObservers()",
+											"text": "#notifyObservers()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -8423,7 +8423,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setChanged()",
+											"text": "#setChanged()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -8451,7 +8451,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+clearChanged()",
+											"text": "#clearChanged()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -8479,7 +8479,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+hasChanged(): Boolean",
+											"text": "#hasChanged(): Boolean",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -8507,7 +8507,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+countObservers(): Integer",
+											"text": "#countObservers(): Integer",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -8821,7 +8821,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+update(observable: Observable, objet: Object)",
+											"text": "#update(observable: Observable, objet: Object)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -9163,7 +9163,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+update(observable: Observable, objet: Object)",
+											"text": "#update(observable: Observable, objet: Object)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -10731,7 +10731,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+ajoute(commande: Commande)",
+											"text": "#ajoute(commande: Commande)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -10759,7 +10759,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+undo()",
+											"text": "#undo()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -10787,7 +10787,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+redo()",
+											"text": "#redo()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -11101,7 +11101,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+undo()",
+											"text": "#undo()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -11129,7 +11129,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+redo()",
+											"text": "#redo()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -11157,7 +11157,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+ouvrirPlan()",
+											"text": "#ouvrirPlan()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -11185,7 +11185,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+importerLivraison()",
+											"text": "#importerLivraison()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -11213,7 +11213,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+calculerTournee()",
+											"text": "#calculerTournee()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -11241,7 +11241,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+ajouterLivraison()",
+											"text": "#ajouterLivraison()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -11269,7 +11269,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+genererFeuilleRoute()",
+											"text": "#genererFeuilleRoute()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -11297,7 +11297,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+modifierLivraison()",
+											"text": "#modifierLivraison()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -11325,7 +11325,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+supprimeLivraison()",
+											"text": "#supprimeLivraison()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -11353,7 +11353,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+clicDroit()",
+											"text": "#clicDroit()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -11951,7 +11951,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+ouvrirPlan(fenetre: FenetreIHM)",
+											"text": "#ouvrirPlan(fenetre: FenetreIHM)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -12265,7 +12265,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+ouvrirPlan(fenetre: FenetreIHM)",
+											"text": "#ouvrirPlan(fenetre: FenetreIHM)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -12293,7 +12293,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+importerLivraison(fenetre: FenetreIHM)",
+											"text": "#importerLivraison(fenetre: FenetreIHM)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -12607,7 +12607,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+ouvrirPlan(fenetre: FenetreIHM)",
+											"text": "#ouvrirPlan(fenetre: FenetreIHM)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -12635,7 +12635,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+importerLivraison(fenetre: FenetreIHM)",
+											"text": "#importerLivraison(fenetre: FenetreIHM)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -12663,7 +12663,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+calculerTournee(plan: Plan, demandeDeLivraison: DemandeDeLivraison)",
+											"text": "#calculerTournee(plan: Plan, demandeDeLivraison: DemandeDeLivraison)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -12977,7 +12977,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+undo(listeDeCommande: ListeCommande)",
+											"text": "#undo(listeDeCommande: ListeCommande)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -13005,7 +13005,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+redo(listeDeCommande: ListeCommande)",
+											"text": "#redo(listeDeCommande: ListeCommande)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -13033,7 +13033,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+clicDroit(fenetre: FenetreIHM, listeDeCommande: ListeCommande)",
+											"text": "#clicDroit(fenetre: FenetreIHM, listeDeCommande: ListeCommande)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -13061,7 +13061,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+genererFeuilleRoute(demandeDeLivraison: DemandeDeLivraison)",
+											"text": "#genererFeuilleRoute(demandeDeLivraison: DemandeDeLivraison)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -13375,7 +13375,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+clicDroit(fenetre: FenetreIHM, listeDeCommande: ListeCommande)",
+											"text": "#clicDroit(fenetre: FenetreIHM, listeDeCommande: ListeCommande)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -13689,7 +13689,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+ajouterLivraison(fenetre: FenetreIHM)",
+											"text": "#ajouterLivraison(fenetre: FenetreIHM)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -14003,7 +14003,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+modifierLivraison(livraison1: Livraison, livraison2: Livraison)",
+											"text": "#modifierLivraison(livraison1: Livraison, livraison2: Livraison)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -14317,7 +14317,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+clicDroit(fenetre: FenetreIHM, listeDeCommande: ListeCommande)",
+											"text": "#clicDroit(fenetre: FenetreIHM, listeDeCommande: ListeCommande)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -14345,7 +14345,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+supprimerLivraison(livraison: Livraison)",
+											"text": "#supprimerLivraison(livraison: Livraison)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -14635,7 +14635,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+controleur: Controleur",
+											"text": "#controleur: Controleur",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -14663,7 +14663,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+vueGraphique: VueGraphique",
+											"text": "#vueGraphique: VueGraphique",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -14691,7 +14691,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+fenetreIHM: FenetreIHM",
+											"text": "#fenetreIHM: FenetreIHM",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -15035,7 +15035,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+controleur: Controleur",
+											"text": "#controleur: Controleur",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -16524,7 +16524,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+ouvrirPlan(fenetre: FenetreIHM)",
+											"text": "#ouvrirPlan(fenetre: FenetreIHM)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -16552,7 +16552,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+importerLivraison(fenetre: FenetreIHM)",
+											"text": "#importerLivraison(fenetre: FenetreIHM)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -16580,7 +16580,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+calculerTournee(plan: Plan, demandeDeLivraison: DemandeDeLivraison)",
+											"text": "#calculerTournee(plan: Plan, demandeDeLivraison: DemandeDeLivraison)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -16608,7 +16608,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+ajouterLivraison(fenetre: FenetreIHM)",
+											"text": "#ajouterLivraison(fenetre: FenetreIHM)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -16636,7 +16636,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+genererFeuilleRoute(demandeDeLivraison: DemandeDeLivraison)",
+											"text": "#genererFeuilleRoute(demandeDeLivraison: DemandeDeLivraison)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -16664,7 +16664,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+undo(listeCommande: ListeCommande)",
+											"text": "#undo(listeCommande: ListeCommande)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -16692,7 +16692,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+redo(listeCommande: ListeCommande)",
+											"text": "#redo(listeCommande: ListeCommande)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -16720,7 +16720,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+modifierLivraison(livraison1: Livraison, livraison2: Livraison)",
+											"text": "#modifierLivraison(livraison1: Livraison, livraison2: Livraison)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -16748,7 +16748,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+supprimeLivraison(livraison: Livraison)",
+											"text": "#supprimeLivraison(livraison: Livraison)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -16776,7 +16776,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+clicDroit(fenetre: FenetreIHM, listeDeCommande: ListeCommande)",
+											"text": "#clicDroit(fenetre: FenetreIHM, listeDeCommande: ListeCommande)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -17254,7 +17254,7 @@
 									"containerExtending": false,
 									"left": 1599,
 									"top": 911,
-									"width": 75,
+									"width": 74,
 									"height": 13,
 									"autoResize": false,
 									"alpha": 4.719245617620125,
@@ -17264,7 +17264,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+etatCourant",
+									"text": "#etatCourant",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -17645,7 +17645,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+update(observable: Observable, obj: Object)",
+											"text": "#update(observable: Observable, obj: Object)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -18164,7 +18164,7 @@
 									"containerExtending": false,
 									"left": 2299,
 									"top": 232,
-									"width": 29,
+									"width": 28,
 									"height": 13,
 									"autoResize": false,
 									"alpha": 0.6334258204790462,
@@ -18174,7 +18174,7 @@
 									},
 									"edgePosition": 2,
 									"underline": false,
-									"text": "+obs",
+									"text": "#obs",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -18815,9 +18815,9 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 2198,
+									"left": 2199,
 									"top": 975,
-									"width": 106,
+									"width": 105,
 									"height": 13,
 									"autoResize": false,
 									"alpha": -0.27063115919433006,
@@ -18827,7 +18827,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+ecouteurBoutons",
+									"text": "#ecouteurBoutons",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -19641,9 +19641,9 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 2309,
+									"left": 2310,
 									"top": 526,
-									"width": 86,
+									"width": 85,
 									"height": 13,
 									"autoResize": false,
 									"alpha": 0.9081973319776468,
@@ -19653,7 +19653,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+vueGraphique",
+									"text": "#vueGraphique",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -20059,7 +20059,7 @@
 									"containerExtending": false,
 									"left": 2665,
 									"top": 553,
-									"width": 79,
+									"width": 78,
 									"height": 13,
 									"autoResize": false,
 									"alpha": 1.1467414916751986,
@@ -20069,7 +20069,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+vueTextuelle",
+									"text": "#vueTextuelle",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -21274,7 +21274,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+doCommande()",
+											"text": "#doCommande()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -21302,7 +21302,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+undoCommande()",
+											"text": "#undoCommande()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -22058,9 +22058,9 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 1998,
+									"left": 1999,
 									"top": 200,
-									"width": 32,
+									"width": 31,
 									"height": 13,
 									"autoResize": false,
 									"alpha": 1.3156138589862603,
@@ -22070,7 +22070,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+liste",
+									"text": "#liste",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -22475,7 +22475,7 @@
 									"containerExtending": false,
 									"left": 1709,
 									"top": 614,
-									"width": 105,
+									"width": 104,
 									"height": 13,
 									"autoResize": false,
 									"alpha": -0.4160429829231673,
@@ -22485,7 +22485,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+listeCommandes",
+									"text": "#listeCommandes",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -22889,7 +22889,7 @@
 									"containerExtending": false,
 									"left": 1360,
 									"top": 359,
-									"width": 51,
+									"width": 50,
 									"height": 13,
 									"autoResize": false,
 									"alpha": -0.7263397552373051,
@@ -22899,7 +22899,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+tournee",
+									"text": "#tournee",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -23303,7 +23303,7 @@
 									"containerExtending": false,
 									"left": 1248,
 									"top": 224,
-									"width": 51,
+									"width": 50,
 									"height": 13,
 									"autoResize": false,
 									"alpha": 0.9900505172602783,
@@ -23313,7 +23313,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+tournee",
+									"text": "#tournee",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -23715,19 +23715,19 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 1384,
+									"left": 1374,
 									"top": 295,
-									"width": 51,
+									"width": 50,
 									"height": 13,
 									"autoResize": false,
-									"alpha": -0.4964775659248369,
-									"distance": 52.630789467763066,
+									"alpha": -0.5539363491677876,
+									"distance": 43.01162633521314,
 									"hostEdge": {
 										"$ref": "AAAAAAFRFrNo1U8Jil8="
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+tournee",
+									"text": "#tournee",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -23782,13 +23782,13 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 1398,
-									"top": 282,
+									"left": 1390,
+									"top": 279,
 									"width": 22,
 									"height": 13,
 									"autoResize": false,
-									"alpha": -0.24027202446149187,
-									"distance": 51.24451190127583,
+									"alpha": -0.17881424458541312,
+									"distance": 44.10215414239989,
 									"hostEdge": {
 										"$ref": "AAAAAAFRFrNo1U8Jil8="
 									},
@@ -24131,7 +24131,7 @@
 									"containerExtending": false,
 									"left": 316,
 									"top": 562,
-									"width": 55,
+									"width": 54,
 									"height": 13,
 									"autoResize": false,
 									"alpha": 0.27960568765200833,
@@ -24141,7 +24141,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+entrepot",
+									"text": "#entrepot",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -24445,18 +24445,18 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 1632,
-									"top": 807,
-									"width": 65,
+									"top": 799,
+									"width": 64,
 									"height": 13,
 									"autoResize": false,
-									"alpha": -0.1814881456295836,
-									"distance": 73.08214556237385,
+									"alpha": -0.07365369099339066,
+									"distance": 71.19691004531025,
 									"hostEdge": {
 										"$ref": "AAAAAAFRHIzwaoGBfxc="
 									},
 									"edgePosition": 2,
 									"underline": false,
-									"text": "+controleur",
+									"text": "#controleur",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -24547,7 +24547,7 @@
 									"containerExtending": false,
 									"left": 2303,
 									"top": 878,
-									"width": 47,
+									"width": 46,
 									"height": 13,
 									"autoResize": false,
 									"alpha": 0.16868368462355354,
@@ -24557,7 +24557,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+fenetre",
+									"text": "#fenetre",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -24959,9 +24959,9 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 974,
+									"left": 975,
 									"top": 215,
-									"width": 60,
+									"width": 59,
 									"height": 13,
 									"autoResize": false,
 									"alpha": -0.39762766153231777,
@@ -24971,7 +24971,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+singleton",
+									"text": "#singleton",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -25373,9 +25373,9 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 503,
+									"left": 504,
 									"top": 135,
-									"width": 32,
+									"width": 31,
 									"height": 13,
 									"autoResize": false,
 									"alpha": -0.6240232426501473,
@@ -25385,7 +25385,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+plan",
+									"text": "#plan",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -25789,7 +25789,7 @@
 									"containerExtending": false,
 									"left": 1440,
 									"top": 528,
-									"width": 127,
+									"width": 126,
 									"height": 13,
 									"autoResize": false,
 									"alpha": 0.11487659446799506,
@@ -25799,7 +25799,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+demandeDeLivraison",
+									"text": "#demandeDeLivraison",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -26201,19 +26201,19 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 871,
-									"top": 471,
-									"width": 60,
+									"left": 880,
+									"top": 470,
+									"width": 59,
 									"height": 13,
 									"autoResize": false,
-									"alpha": -0.13255154976392536,
-									"distance": 75.66372975210778,
+									"alpha": -0.16272739850155604,
+									"distance": 67.89698078707183,
 									"hostEdge": {
 										"$ref": "AAAAAAFRIYNW1kl37FE="
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+singleton",
+									"text": "#singleton",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -26268,13 +26268,13 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 935,
-									"top": 471,
+									"left": 943,
+									"top": 470,
 									"width": 22,
 									"height": 13,
 									"autoResize": false,
-									"alpha": -0.32175065439667216,
-									"distance": 31.622776601683793,
+									"alpha": -0.46364779081905416,
+									"distance": 24.596747752497688,
 									"hostEdge": {
 										"$ref": "AAAAAAFRIYNW1kl37FE="
 									},
@@ -26569,7 +26569,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+id: Integer",
+											"text": "#id: Integer",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -26929,9 +26929,9 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 479,
+									"left": 480,
 									"top": 408,
-									"width": 54,
+									"width": 53,
 									"height": 13,
 									"autoResize": false,
 									"alpha": -0.25371443335605015,
@@ -26941,7 +26941,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "+adresse",
+									"text": "#adresse",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5
 								},
@@ -27711,7 +27711,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+correspondance: Livraison[]",
+											"text": "-correspondance: Livraison[]",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -27919,7 +27919,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmRgy1htK5A="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "1..*",
@@ -27966,7 +27966,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmQ0kFgZGak="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "0..1",
@@ -28044,7 +28044,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmRKMlhD49U="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "0..*",
@@ -28064,7 +28064,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmRgy1htK5A="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "1",
@@ -28093,7 +28093,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmRKMlhD49U="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "0..*",
@@ -28113,7 +28113,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmRgy1htK5A="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "1",
@@ -28136,7 +28136,7 @@
 								"$ref": "AAAAAAFRFmRKMlhD49U="
 							},
 							"name": "longueur",
-							"visibility": "private",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "Float",
@@ -28154,7 +28154,7 @@
 								"$ref": "AAAAAAFRFmRKMlhD49U="
 							},
 							"name": "vitesseMoyenne",
-							"visibility": "private",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "Float",
@@ -28172,7 +28172,7 @@
 								"$ref": "AAAAAAFRFmRKMlhD49U="
 							},
 							"name": "nomDeRue",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "String",
@@ -28205,7 +28205,7 @@
 								"$ref": "AAAAAAFRFmRgy1htK5A="
 							},
 							"name": "id",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "Integer",
@@ -28223,7 +28223,7 @@
 								"$ref": "AAAAAAFRFmRgy1htK5A="
 							},
 							"name": "x",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "Integer",
@@ -28241,7 +28241,7 @@
 								"$ref": "AAAAAAFRFmRgy1htK5A="
 							},
 							"name": "y",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "Integer",
@@ -28364,7 +28364,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmR5WFiXD84="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "1",
@@ -28384,7 +28384,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmV6PFkWudA="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "1",
@@ -28431,7 +28431,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmVR3Vjr+3g="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "1",
@@ -28478,7 +28478,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmU3VFjB9Fo="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "1..*",
@@ -28539,7 +28539,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmR5WFiXD84="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "0..1",
@@ -28562,7 +28562,7 @@
 								"$ref": "AAAAAAFRFmR5WFiXD84="
 							},
 							"name": "duree",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "Float",
@@ -28582,7 +28582,7 @@
 								"$ref": "AAAAAAFRFmR5WFiXD84="
 							},
 							"name": "modifierTournee",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -28634,7 +28634,7 @@
 								"$ref": "AAAAAAFRFmR5WFiXD84="
 							},
 							"name": "supprimeLivraison",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -28668,7 +28668,7 @@
 								"$ref": "AAAAAAFRFmR5WFiXD84="
 							},
 							"name": "ajouteLivraison",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -28752,7 +28752,7 @@
 								"$ref": "AAAAAAFRFmR5WFiXD84="
 							},
 							"name": "genererFeuilleDeRoute",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -28807,7 +28807,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmRKMlhD49U="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "1..*",
@@ -28854,7 +28854,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmVR3Vjr+3g="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "1",
@@ -28901,7 +28901,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmVR3Vjr+3g="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "1",
@@ -28924,7 +28924,7 @@
 								"$ref": "AAAAAAFRFmU3VFjB9Fo="
 							},
 							"name": "cout",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "Integer",
@@ -28983,7 +28983,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmRgy1htK5A="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "composite",
 								"multiplicity": "1",
@@ -29053,7 +29053,7 @@
 								"$ref": "AAAAAAFRFmVR3Vjr+3g="
 							},
 							"name": "id",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "Integer",
@@ -29071,7 +29071,7 @@
 								"$ref": "AAAAAAFRFmVR3Vjr+3g="
 							},
 							"name": "heureArrivee",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "Date",
@@ -29089,7 +29089,7 @@
 								"$ref": "AAAAAAFRFmVR3Vjr+3g="
 							},
 							"name": "estDansFenetre",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "Boolean",
@@ -29148,7 +29148,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmWklVlA9kQ="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "1..*",
@@ -29195,7 +29195,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmVR3Vjr+3g="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "1",
@@ -29242,7 +29242,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmV6PFkWudA="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "0..1",
@@ -29265,7 +29265,7 @@
 								"$ref": "AAAAAAFRFmV6PFkWudA="
 							},
 							"name": "modifierTournee",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -29317,7 +29317,7 @@
 								"$ref": "AAAAAAFRFmV6PFkWudA="
 							},
 							"name": "supprimeLivraison",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -29351,7 +29351,7 @@
 								"$ref": "AAAAAAFRFmV6PFkWudA="
 							},
 							"name": "ajouteLivraison",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -29403,7 +29403,7 @@
 								"$ref": "AAAAAAFRFmV6PFkWudA="
 							},
 							"name": "calculerTournee",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -29437,7 +29437,7 @@
 								"$ref": "AAAAAAFRFmV6PFkWudA="
 							},
 							"name": "calculPlusCourtChemin",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -29506,8 +29506,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFRFmV6PFkWudA="
 							},
-							"name": "genereFeuilleDeRoute()",
-							"visibility": "public",
+							"name": "genereFeuilleDeRoute",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -29562,7 +29562,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmVR3Vjr+3g="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "0..*",
@@ -29585,7 +29585,7 @@
 								"$ref": "AAAAAAFRFmWklVlA9kQ="
 							},
 							"name": "heureDebut",
-							"visibility": "private",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "Date",
@@ -29603,7 +29603,7 @@
 								"$ref": "AAAAAAFRFmWklVlA9kQ="
 							},
 							"name": "heureFin",
-							"visibility": "private",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "Date",
@@ -29623,7 +29623,7 @@
 								"$ref": "AAAAAAFRFmWklVlA9kQ="
 							},
 							"name": "supprimeLivraison",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -29657,7 +29657,7 @@
 								"$ref": "AAAAAAFRFmWklVlA9kQ="
 							},
 							"name": "ajouteLivraison",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -29714,7 +29714,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFnNlOJQQ9S0="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": false,
 								"aggregation": "none",
 								"multiplicity": "0..*",
@@ -29755,7 +29755,7 @@
 								"$ref": "AAAAAAFRFnNlOJQQ9S0="
 							},
 							"name": "addObserver",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -29789,7 +29789,7 @@
 								"$ref": "AAAAAAFRFnNlOJQQ9S0="
 							},
 							"name": "notifyObservers",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -29821,7 +29821,7 @@
 								"$ref": "AAAAAAFRFnNlOJQQ9S0="
 							},
 							"name": "deleteObserver",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -29855,7 +29855,7 @@
 								"$ref": "AAAAAAFRFnNlOJQQ9S0="
 							},
 							"name": "deleteObservers",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -29869,7 +29869,7 @@
 								"$ref": "AAAAAAFRFnNlOJQQ9S0="
 							},
 							"name": "notifyObservers",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -29883,7 +29883,7 @@
 								"$ref": "AAAAAAFRFnNlOJQQ9S0="
 							},
 							"name": "setChanged",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -29897,7 +29897,7 @@
 								"$ref": "AAAAAAFRFnNlOJQQ9S0="
 							},
 							"name": "clearChanged",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -29911,7 +29911,7 @@
 								"$ref": "AAAAAAFRFnNlOJQQ9S0="
 							},
 							"name": "hasChanged",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -29943,7 +29943,7 @@
 								"$ref": "AAAAAAFRFnNlOJQQ9S0="
 							},
 							"name": "countObservers",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -30051,7 +30051,7 @@
 								"$ref": "AAAAAAFRFnTNWZipFVA="
 							},
 							"name": "update",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -30247,7 +30247,7 @@
 								"$ref": "AAAAAAFRFnY/+ptKOq8="
 							},
 							"name": "update",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -30390,7 +30390,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFoDxJPZ1wIk="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "0..1",
@@ -30482,7 +30482,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFnTNWZipFVA="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "0..1",
@@ -30529,7 +30529,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFnY/+ptKOq8="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "0..1",
@@ -30605,7 +30605,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmR5WFiXD84="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "0..1",
@@ -30753,7 +30753,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmR5WFiXD84="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "0..1",
@@ -30901,7 +30901,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmR5WFiXD84="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "0..1",
@@ -31017,7 +31017,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFqcmxgq7h/I="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "0..*",
@@ -31040,7 +31040,7 @@
 								"$ref": "AAAAAAFRFnnhkrAqoEE="
 							},
 							"name": "ajoute",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -31074,7 +31074,7 @@
 								"$ref": "AAAAAAFRFnnhkrAqoEE="
 							},
 							"name": "undo",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -31088,7 +31088,7 @@
 								"$ref": "AAAAAAFRFnnhkrAqoEE="
 							},
 							"name": "redo",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -31143,7 +31143,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFplZxqx7dos="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "0..1",
@@ -31190,7 +31190,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFnnhkrAqoEE="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "0..1",
@@ -31219,7 +31219,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFnoAl7HOE/I="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "0..1",
@@ -31239,7 +31239,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFnhzAZ68RsI="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "0..1",
@@ -31286,7 +31286,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmQ0kFgZGak="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "0..1",
@@ -31333,7 +31333,7 @@
 								"reference": {
 									"$ref": "AAAAAAFRFmV6PFkWudA="
 								},
-								"visibility": "public",
+								"visibility": "protected",
 								"navigable": true,
 								"aggregation": "none",
 								"multiplicity": "0..1",
@@ -31356,7 +31356,7 @@
 								"$ref": "AAAAAAFRFnoAl7HOE/I="
 							},
 							"name": "undo",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -31370,7 +31370,7 @@
 								"$ref": "AAAAAAFRFnoAl7HOE/I="
 							},
 							"name": "redo",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -31384,7 +31384,7 @@
 								"$ref": "AAAAAAFRFnoAl7HOE/I="
 							},
 							"name": "ouvrirPlan",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -31398,7 +31398,7 @@
 								"$ref": "AAAAAAFRFnoAl7HOE/I="
 							},
 							"name": "importerLivraison",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -31412,7 +31412,7 @@
 								"$ref": "AAAAAAFRFnoAl7HOE/I="
 							},
 							"name": "calculerTournee",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -31426,7 +31426,7 @@
 								"$ref": "AAAAAAFRFnoAl7HOE/I="
 							},
 							"name": "ajouterLivraison",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -31440,7 +31440,7 @@
 								"$ref": "AAAAAAFRFnoAl7HOE/I="
 							},
 							"name": "genererFeuilleRoute",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -31454,7 +31454,7 @@
 								"$ref": "AAAAAAFRFnoAl7HOE/I="
 							},
 							"name": "modifierLivraison",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -31468,7 +31468,7 @@
 								"$ref": "AAAAAAFRFnoAl7HOE/I="
 							},
 							"name": "supprimeLivraison",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -31482,7 +31482,7 @@
 								"$ref": "AAAAAAFRFnoAl7HOE/I="
 							},
 							"name": "clicDroit",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -31556,7 +31556,7 @@
 								"$ref": "AAAAAAFRFnqRnLsBNi4="
 							},
 							"name": "ouvrirPlan",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -31621,7 +31621,7 @@
 								"$ref": "AAAAAAFRFns7hr32CQw="
 							},
 							"name": "ouvrirPlan",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -31655,7 +31655,7 @@
 								"$ref": "AAAAAAFRFns7hr32CQw="
 							},
 							"name": "importerLivraison",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -31720,7 +31720,7 @@
 								"$ref": "AAAAAAFRFnthir+anD4="
 							},
 							"name": "ouvrirPlan",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -31754,7 +31754,7 @@
 								"$ref": "AAAAAAFRFnthir+anD4="
 							},
 							"name": "importerLivraison",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -31788,7 +31788,7 @@
 								"$ref": "AAAAAAFRFnthir+anD4="
 							},
 							"name": "calculerTournee",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -31871,7 +31871,7 @@
 								"$ref": "AAAAAAFRFnuC/sE+8+c="
 							},
 							"name": "undo",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -31905,7 +31905,7 @@
 								"$ref": "AAAAAAFRFnuC/sE+8+c="
 							},
 							"name": "redo",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -31939,7 +31939,7 @@
 								"$ref": "AAAAAAFRFnuC/sE+8+c="
 							},
 							"name": "clicDroit",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -31991,7 +31991,7 @@
 								"$ref": "AAAAAAFRFnuC/sE+8+c="
 							},
 							"name": "genererFeuilleRoute",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -32056,7 +32056,7 @@
 								"$ref": "AAAAAAFRFnua1sLiKF4="
 							},
 							"name": "clicDroit",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -32139,7 +32139,7 @@
 								"$ref": "AAAAAAFRFnvFlMXXy8A="
 							},
 							"name": "ajouterLivraison",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -32204,7 +32204,7 @@
 								"$ref": "AAAAAAFRFnv8fslL0XE="
 							},
 							"name": "modifierLivraison",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -32287,7 +32287,7 @@
 								"$ref": "AAAAAAFRFnwcrsqbjOo="
 							},
 							"name": "clicDroit",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -32339,7 +32339,7 @@
 								"$ref": "AAAAAAFRFnwcrsqbjOo="
 							},
 							"name": "supprimerLivraison",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -32435,7 +32435,7 @@
 								"$ref": "AAAAAAFRFoCH3/JbwGY="
 							},
 							"name": "controleur",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": {
@@ -32455,7 +32455,7 @@
 								"$ref": "AAAAAAFRFoCH3/JbwGY="
 							},
 							"name": "vueGraphique",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": {
@@ -32475,7 +32475,7 @@
 								"$ref": "AAAAAAFRFoCH3/JbwGY="
 							},
 							"name": "fenetreIHM",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": {
@@ -32629,7 +32629,7 @@
 								"$ref": "AAAAAAFRFoDxJPZ1wIk="
 							},
 							"name": "controleur",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": {
@@ -32700,7 +32700,7 @@
 								"$ref": "AAAAAAFRFplZxqx7dos="
 							},
 							"name": "ouvrirPlan",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -32734,7 +32734,7 @@
 								"$ref": "AAAAAAFRFplZxqx7dos="
 							},
 							"name": "importerLivraison",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -32768,7 +32768,7 @@
 								"$ref": "AAAAAAFRFplZxqx7dos="
 							},
 							"name": "calculerTournee",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -32820,7 +32820,7 @@
 								"$ref": "AAAAAAFRFplZxqx7dos="
 							},
 							"name": "ajouterLivraison",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -32854,7 +32854,7 @@
 								"$ref": "AAAAAAFRFplZxqx7dos="
 							},
 							"name": "genererFeuilleRoute",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -32888,7 +32888,7 @@
 								"$ref": "AAAAAAFRFplZxqx7dos="
 							},
 							"name": "undo",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -32922,7 +32922,7 @@
 								"$ref": "AAAAAAFRFplZxqx7dos="
 							},
 							"name": "redo",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -32956,7 +32956,7 @@
 								"$ref": "AAAAAAFRFplZxqx7dos="
 							},
 							"name": "modifierLivraison",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -33008,7 +33008,7 @@
 								"$ref": "AAAAAAFRFplZxqx7dos="
 							},
 							"name": "supprimeLivraison",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -33042,7 +33042,7 @@
 								"$ref": "AAAAAAFRFplZxqx7dos="
 							},
 							"name": "clicDroit",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -33108,7 +33108,7 @@
 								"$ref": "AAAAAAFRFp0ydLnD7U8="
 							},
 							"name": "update",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
@@ -33172,7 +33172,7 @@
 								"$ref": "AAAAAAFRFqcmxgq7h/I="
 							},
 							"name": "doCommande",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -33186,7 +33186,7 @@
 								"$ref": "AAAAAAFRFqcmxgq7h/I="
 							},
 							"name": "undoCommande",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"concurrency": "sequential",
@@ -33214,7 +33214,7 @@
 								"$ref": "AAAAAAFRIZv82QarnhQ="
 							},
 							"name": "id",
-							"visibility": "public",
+							"visibility": "protected",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "Integer",
@@ -33247,7 +33247,7 @@
 								"$ref": "AAAAAAFRIepggB+RRAU="
 							},
 							"name": "correspondance",
-							"visibility": "public",
+							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "Livraison[]",

@@ -22,6 +22,7 @@ Observer
 CONTROLEUR :
 Controleur
 ListeCommande
+Commande
 CommandeModifie
 CommandeSupprime
 CommandeAjout

@@ -1,0 +1,37 @@
+
+MODELE :
+Plan
+Intersection
+Tronçon
+Itinéraire
+Livraison
+Client
+Tournée
+DemandeDeLivraison
+FenetreTemporelle
+Observable
+
+VUE :
+FenetreIHM
+EcouteurSouris
+EcouteurBoutons
+VueGraphique
+VueTextuelle
+Observer
+
+CONTROLEUR :
+Controleur
+ListeCommande
+CommandeModifie
+CommandeSupprime
+CommandeAjout
+Etat
+EtatDefaut
+EtatLivraisonPrecedenteSelectionnee
+EtatInit
+EtatPlanCharge
+EtatLivraisonCharge
+EtatTourneeCalculee
+EtatIntersectionSelectionnee
+EtatDeuxLivraisonsSelectionnees
+EtatLivraisonSelectionnee

@@ -1,5 +1,8 @@
+package controleur;
 
 import java.util.*;
+
+import vue.FenetreIHM;
 
 /**
  * 
@@ -15,7 +18,7 @@ public class EtatInit extends EtatDefaut {
     /**
      * @param fenetre
      */
-    protected void ouvrirPlan(FenetreIHM fenetre) {
+    public void ouvrirPlan(FenetreIHM fenetre) {
         // TODO implement here
     }
 

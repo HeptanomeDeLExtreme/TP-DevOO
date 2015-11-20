@@ -1,5 +1,10 @@
+package controleur;
 
 import java.util.*;
+
+import modele.Livraison;
+
+import vue.FenetreIHM;
 
 /**
  * 
@@ -16,14 +21,14 @@ public class EtatLivraisonsSelectionnees extends EtatDefaut {
      * @param fenetre 
      * @param listeDeCommande
      */
-    protected void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
+    public void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
         // TODO implement here
     }
 
     /**
      * @param livraison
      */
-    protected void supprimerLivraison(Livraison livraison) {
+    public void supprimerLivraison(Livraison livraison) {
         // TODO implement here
     }
 

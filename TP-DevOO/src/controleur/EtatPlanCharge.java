@@ -1,5 +1,8 @@
+package controleur;
 
 import java.util.*;
+
+import vue.FenetreIHM;
 
 /**
  * 
@@ -15,14 +18,14 @@ public class EtatPlanCharge extends EtatDefaut {
     /**
      * @param fenetre
      */
-    protected void ouvrirPlan(FenetreIHM fenetre) {
+    public void ouvrirPlan(FenetreIHM fenetre) {
         // TODO implement here
     }
 
     /**
      * @param fenetre
      */
-    protected void importerLivraison(FenetreIHM fenetre) {
+    public void importerLivraison(FenetreIHM fenetre) {
         // TODO implement here
     }
 

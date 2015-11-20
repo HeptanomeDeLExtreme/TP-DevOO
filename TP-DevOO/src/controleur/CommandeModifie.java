@@ -1,5 +1,9 @@
+package controleur;
 
 import java.util.*;
+
+import modele.Livraison;
+import modele.Tournee;
 
 /**
  * 
@@ -29,14 +33,14 @@ public class CommandeModifie implements Commande {
     /**
      * 
      */
-    protected void doCommande() {
+    public void doCommande() {
         // TODO implement here
     }
 
     /**
      * 
      */
-    protected void undoCommande() {
+    public void undoCommande() {
         // TODO implement here
     }
 

@@ -1,6 +1,7 @@
+package vue;
 
 import java.util.*;
-
+import controleur.Controleur;
 /**
  * 
  */
@@ -31,6 +32,11 @@ public class FenetreIHM {
     /**
      * 
      */
-    protected Controleur controleur;
+//    protected Controleur controleur;
 
+    public static void main(String[] args){
+    	new FenetreIHM();
+    }
 }
+
+

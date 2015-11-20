@@ -1,5 +1,11 @@
+package controleur;
 
 import java.util.*;
+
+import modele.DemandeDeLivraison;
+import modele.Plan;
+
+import vue.FenetreIHM;
 
 /**
  * 
@@ -15,14 +21,14 @@ public class EtatLivraisonCharge extends EtatDefaut {
     /**
      * @param fenetre
      */
-    protected void ouvrirPlan(FenetreIHM fenetre) {
+    public void ouvrirPlan(FenetreIHM fenetre) {
         // TODO implement here
     }
 
     /**
      * @param fenetre
      */
-    protected void importerLivraison(FenetreIHM fenetre) {
+    public void importerLivraison(FenetreIHM fenetre) {
         // TODO implement here
     }
 
@@ -30,7 +36,7 @@ public class EtatLivraisonCharge extends EtatDefaut {
      * @param plan 
      * @param demandeDeLivraison
      */
-    protected void calculerTournee(Plan plan, DemandeDeLivraison demandeDeLivraison) {
+    public void calculerTournee(Plan plan, DemandeDeLivraison demandeDeLivraison) {
         // TODO implement here
     }
 

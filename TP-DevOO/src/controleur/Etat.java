@@ -1,5 +1,12 @@
+package controleur;
 
 import java.util.*;
+
+import modele.DemandeDeLivraison;
+import modele.Livraison;
+import modele.Plan;
+
+import vue.FenetreIHM;
 
 /**
  * 
@@ -9,54 +16,54 @@ public interface Etat {
     /**
      * @param fenetre
      */
-    protected void ouvrirPlan(FenetreIHM fenetre);
+    public void ouvrirPlan(FenetreIHM fenetre);
 
     /**
      * @param fenetre
      */
-    protected void importerLivraison(FenetreIHM fenetre);
+    public void importerLivraison(FenetreIHM fenetre);
 
     /**
      * @param plan 
      * @param demandeDeLivraison
      */
-    protected void calculerTournee(Plan plan, DemandeDeLivraison demandeDeLivraison);
+    public void calculerTournee(Plan plan, DemandeDeLivraison demandeDeLivraison);
 
     /**
      * @param fenetre
      */
-    protected void ajouterLivraison(FenetreIHM fenetre);
+    public void ajouterLivraison(FenetreIHM fenetre);
 
     /**
      * @param demandeDeLivraison
      */
-    protected void genererFeuilleRoute(DemandeDeLivraison demandeDeLivraison);
+    public void genererFeuilleRoute(DemandeDeLivraison demandeDeLivraison);
 
     /**
      * @param listeCommande
      */
-    protected void undo(ListeCommande listeCommande);
+    public void undo(ListeCommande listeCommande);
 
     /**
      * @param listeCommande
      */
-    protected void redo(ListeCommande listeCommande);
+    public void redo(ListeCommande listeCommande);
 
     /**
      * @param livraison1 
      * @param livraison2
      */
-    protected void modifierLivraison(Livraison livraison1, Livraison livraison2);
+    public void modifierLivraison(Livraison livraison1, Livraison livraison2);
 
     /**
      * @param livraison
      */
-    protected void supprimeLivraison(Livraison livraison);
+    public void supprimeLivraison(Livraison livraison);
 
     /**
      * @param fenetre 
      * @param listeDeCommande
      */
-    protected void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande);
+    public void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande);
 
 }

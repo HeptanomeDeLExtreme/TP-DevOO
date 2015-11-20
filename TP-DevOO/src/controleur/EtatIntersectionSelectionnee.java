@@ -1,5 +1,8 @@
+package controleur;
 
 import java.util.*;
+
+import vue.FenetreIHM;
 
 /**
  * 
@@ -16,7 +19,7 @@ public class EtatIntersectionSelectionnee extends EtatDefaut {
      * @param fenetre 
      * @param listeDeCommande
      */
-    protected void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
+    public void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
         // TODO implement here
     }
 

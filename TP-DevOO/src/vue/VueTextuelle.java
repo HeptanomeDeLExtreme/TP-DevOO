@@ -1,5 +1,8 @@
+package vue;
 
 import java.util.*;
+
+import modele.Tournee;
 
 /**
  * 
@@ -17,7 +20,7 @@ public class VueTextuelle implements Observer {
      * @param observable 
      * @param objet
      */
-    protected void update(Observable observable, Object objet) {
+    public void update(Observable observable, Object objet) {
         // TODO implement here
     }
 
@@ -29,12 +32,6 @@ public class VueTextuelle implements Observer {
         // TODO implement here
     }
 
-    /**
-     * @param observable 
-     * @param obj
-     */
-    protected void update(Observable observable, Object obj) {
-        // TODO implement here
-    }
+
 
 }

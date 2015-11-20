@@ -15,6 +15,6 @@ public interface Commande {
     /**
      * 
      */
-    protected void undoCommande();
+    public void undoCommande();
 
 }

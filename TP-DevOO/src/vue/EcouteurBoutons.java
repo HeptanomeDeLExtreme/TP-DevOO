@@ -1,5 +1,8 @@
+package vue;
 
 import java.util.*;
+
+import controleur.Controleur;
 
 /**
  * 

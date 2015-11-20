@@ -1,5 +1,8 @@
+package controleur;
 
 import java.util.*;
+
+import vue.FenetreIHM;
 
 /**
  * 
@@ -15,7 +18,7 @@ public class EtatLivraisonPrecedenteSelectionnee extends EtatDefaut {
     /**
      * @param fenetre
      */
-    protected void ajouterLivraison(FenetreIHM fenetre) {
+    public void ajouterLivraison(FenetreIHM fenetre) {
         // TODO implement here
     }
 

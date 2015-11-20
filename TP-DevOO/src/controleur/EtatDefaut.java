@@ -1,5 +1,12 @@
+package controleur;
 
 import java.util.*;
+
+import modele.DemandeDeLivraison;
+import modele.Livraison;
+import modele.Plan;
+
+import vue.FenetreIHM;
 
 /**
  * 
@@ -15,14 +22,14 @@ public class EtatDefaut implements Etat {
     /**
      * @param fenetre
      */
-    protected void ouvrirPlan(FenetreIHM fenetre) {
+    public void ouvrirPlan(FenetreIHM fenetre) {
         // TODO implement here
     }
 
     /**
      * @param fenetre
      */
-    protected void importerLivraison(FenetreIHM fenetre) {
+    public void importerLivraison(FenetreIHM fenetre) {
         // TODO implement here
     }
 
@@ -30,35 +37,35 @@ public class EtatDefaut implements Etat {
      * @param plan 
      * @param demandeDeLivraison
      */
-    protected void calculerTournee(Plan plan, DemandeDeLivraison demandeDeLivraison) {
+    public void calculerTournee(Plan plan, DemandeDeLivraison demandeDeLivraison) {
         // TODO implement here
     }
 
     /**
      * @param fenetre
      */
-    protected void ajouterLivraison(FenetreIHM fenetre) {
+    public void ajouterLivraison(FenetreIHM fenetre) {
         // TODO implement here
     }
 
     /**
      * @param demandeDeLivraison
      */
-    protected void genererFeuilleRoute(DemandeDeLivraison demandeDeLivraison) {
+    public void genererFeuilleRoute(DemandeDeLivraison demandeDeLivraison) {
         // TODO implement here
     }
 
     /**
      * @param listeCommande
      */
-    protected void undo(ListeCommande listeCommande) {
+    public void undo(ListeCommande listeCommande) {
         // TODO implement here
     }
 
     /**
      * @param listeCommande
      */
-    protected void redo(ListeCommande listeCommande) {
+    public void redo(ListeCommande listeCommande) {
         // TODO implement here
     }
 
@@ -66,14 +73,14 @@ public class EtatDefaut implements Etat {
      * @param livraison1 
      * @param livraison2
      */
-    protected void modifierLivraison(Livraison livraison1, Livraison livraison2) {
+    public void modifierLivraison(Livraison livraison1, Livraison livraison2) {
         // TODO implement here
     }
 
     /**
      * @param livraison
      */
-    protected void supprimeLivraison(Livraison livraison) {
+    public void supprimeLivraison(Livraison livraison) {
         // TODO implement here
     }
 
@@ -81,7 +88,7 @@ public class EtatDefaut implements Etat {
      * @param fenetre 
      * @param listeDeCommande
      */
-    protected void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
+    public void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
         // TODO implement here
     }
 

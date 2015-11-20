@@ -1,3 +1,4 @@
+package modele;
 
 import java.util.*;
 
@@ -63,7 +64,7 @@ public class Tournee extends Observable {
     /**
      * @param preTournee
      */
-    public void Tournee(map<FenetreTemporelle,List<Itineraire>> preTournee) {
+    public void Tournee(Map<FenetreTemporelle,List<Itineraire>> preTournee) {
         // TODO implement here
     }
 

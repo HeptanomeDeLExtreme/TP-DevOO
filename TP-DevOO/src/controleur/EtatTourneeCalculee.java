@@ -1,5 +1,10 @@
+package controleur;
 
 import java.util.*;
+
+import modele.DemandeDeLivraison;
+
+import vue.FenetreIHM;
 
 /**
  * 
@@ -15,14 +20,14 @@ public class EtatTourneeCalculee extends EtatDefaut {
     /**
      * @param listeDeCommande
      */
-    protected void undo(ListeCommande listeDeCommande) {
+    public void undo(ListeCommande listeDeCommande) {
         // TODO implement here
     }
 
     /**
      * @param listeDeCommande
      */
-    protected void redo(ListeCommande listeDeCommande) {
+    public void redo(ListeCommande listeDeCommande) {
         // TODO implement here
     }
 
@@ -30,14 +35,14 @@ public class EtatTourneeCalculee extends EtatDefaut {
      * @param fenetre 
      * @param listeDeCommande
      */
-    protected void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
+    public void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
         // TODO implement here
     }
 
     /**
      * @param demandeDeLivraison
      */
-    protected void genererFeuilleRoute(DemandeDeLivraison demandeDeLivraison) {
+    public void genererFeuilleRoute(DemandeDeLivraison demandeDeLivraison) {
         // TODO implement here
     }
 

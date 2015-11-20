@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="controleur.Controleur"/>
+<fullyQualifiedTypeName name="modele.Tournee"/>
+<fullyQualifiedTypeName name="modele.Plan"/>
+<fullyQualifiedTypeName name="modele.Livraison"/>
+<fullyQualifiedTypeName name="vue.FenetreIHM"/>
+<fullyQualifiedTypeName name="modele.DemandeDeLivraison"/>
+</qualifiedTypeNameHistroy>

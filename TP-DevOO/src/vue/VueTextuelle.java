@@ -2,19 +2,37 @@ package vue;
 
 import java.util.*;
 
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+
+import modele.Plan;
 import modele.Tournee;
 
 /**
  * 
  */
-public class VueTextuelle implements Observer {
+public class VueTextuelle extends JLabel implements Observer {
+
+	private String text;
+	private Tournee tournee;
+	private FenetreIHM fenetre;
+	private Plan plan;
+	
 
     /**
-     * Default constructor
+     * @param tournee 
+     * @param fenetreIHM
      */
-    public VueTextuelle() {
+    public VueTextuelle(FenetreIHM fenetreIHM) {
+    	super();
+    	this.fenetre = fenetreIHM;
+    	
+		setBorder(BorderFactory.createTitledBorder("Tournée :"));
+		this.setVerticalTextPosition(TOP);
+		this.setVerticalAlignment(TOP);
+		fenetre.getContentPane().add(this);
+//		plan.addObserver(this); // this observe plan
     }
-
 
     /**
      * @param observable 
@@ -24,13 +42,6 @@ public class VueTextuelle implements Observer {
         // TODO implement here
     }
 
-    /**
-     * @param tournee 
-     * @param fenetreIHM
-     */
-    public void VueTextuelle(Tournee tournee, FenetreIHM fenetreIHM) {
-        // TODO implement here
-    }
 
 
 

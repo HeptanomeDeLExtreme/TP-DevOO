@@ -1,5 +1,7 @@
 package vue;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.*;
 
 import controleur.Controleur;
@@ -7,7 +9,7 @@ import controleur.Controleur;
 /**
  * 
  */
-public class EcouteurSouris {
+public class EcouteurSouris extends MouseAdapter{
 
     /**
      * Default constructor
@@ -15,6 +17,15 @@ public class EcouteurSouris {
     public EcouteurSouris() {
     }
 
+    /**
+     * @param controleur 
+     * @param vueGraphique 
+     * @param fenetreIHM
+     */
+    public void EcouteurSouris(Controleur controleur, VueGraphique vueGraphique, FenetreIHM fenetreIHM) {
+        // TODO implement here
+    }
+    
     /**
      * 
      */
@@ -30,14 +41,18 @@ public class EcouteurSouris {
      */
     protected FenetreIHM fenetreIHM;
 
-
-    /**
-     * @param controleur 
-     * @param vueGraphique 
-     * @param fenetreIHM
-     */
-    public void EcouteurSouris(Controleur controleur, VueGraphique vueGraphique, FenetreIHM fenetreIHM) {
-        // TODO implement here
-    }
+    
+    @Override
+	public void mouseClicked(MouseEvent evt) {
+		switch (evt.getButton()){
+		case MouseEvent.BUTTON1: 
+			System.out.println("Clic gauche");
+			break;
+		case MouseEvent.BUTTON3: 
+			System.out.println("Clic droit");
+			break;
+		default:
+		}
+	}
 
 }

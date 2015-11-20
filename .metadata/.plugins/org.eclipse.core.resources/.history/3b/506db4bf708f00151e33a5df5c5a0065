@@ -1,0 +1,56 @@
+package vue;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.util.*;
+
+import javax.swing.JPanel;
+
+import modele.Plan;
+import modele.Tournee;
+
+/**
+ * 
+ */
+public class VueGraphique extends JPanel implements Observer {
+
+	private int echelle;
+	private int hauteurVue;
+	private int largeurVue;
+	private Graphics g;
+	private Plan plan;
+	private Tournee tournee;
+	private FenetreIHM fenetre;
+	
+    /**
+     * @param plan 
+     * @param tournee 
+     * @param fenetreIHM
+     */
+    public VueGraphique(Plan plan, int echelle, Tournee tournee, FenetreIHM fenetreIHM) {
+    	super();
+//		plan.addObserver(this); // this observe plan
+		this.echelle = echelle;
+//		hauteurVue = plan.getHauteur()*e;
+//		largeurVue = plan.getLargeur()*e;
+		hauteurVue = 40;
+		largeurVue = 40;
+		setLayout(null);
+		setBackground(Color.white);
+		setSize(largeurVue, hauteurVue);
+		fenetreIHM.getContentPane().add(this);
+		this.plan = plan;
+    }
+
+    /**
+     * @param observable 
+     * @param objet
+     */
+    public void update(Observable observable, Object obj) {
+        // TODO implement here
+    }
+
+
+
+
+}

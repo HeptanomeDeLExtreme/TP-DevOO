@@ -10,10 +10,31 @@ public class Intersection {
     /**
      * Default constructor
      */
-    public Intersection() {
+    public Intersection(int id, int x, int y) {
+    	this.id = id;
+    	this.x = x;
+    	this.y = y;
     }
+   
+    
+    
+    public Integer getId() {
+		return id;
+	}
 
-    /**
+
+	public Integer getX() {
+		return x;
+	}
+
+
+	public Integer getY() {
+		return y;
+	}
+
+
+
+	/**
      * 
      */
     protected Integer id;

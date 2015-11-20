@@ -1,0 +1,62 @@
+package vue;
+
+import java.util.*;
+
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+
+import controleur.Controleur;
+/**
+ * 
+ */
+public class FenetreIHM extends JFrame{
+
+	
+	private JMenu menuFichier;
+	private JMenuItem chargerPlan;
+	private JMenuItem chargerLivraison;
+	
+    /**
+     * Default constructor
+     */
+    public FenetreIHM() {
+    	
+    	// build the File menu
+    	menuFichier = new JMenu("Fichier");
+    	chargerPlan = new JMenuItem("ChargerPlan");
+    	chargerLivraison = new JMenuItem("ChargerLivraison");
+    	menuFichier.add(chargerPlan);
+    	menuFichier.add(chargerLivraison);
+        
+    	this.setSize(500,500);
+    	this.setVisible(true);
+    }
+
+    /**
+     * 
+     */
+    protected EcouteurBoutons ecouteurBoutons;
+
+
+    /**
+     * 
+     */
+    protected VueGraphique vueGraphique;
+
+    /**
+     * 
+     */
+    protected VueTextuelle vueTextuelle;
+
+    /**
+     * 
+     */
+//    protected Controleur controleur;
+
+    public static void main(String[] args){
+    	new FenetreIHM();
+    }
+}
+
+

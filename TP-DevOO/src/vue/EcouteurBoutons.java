@@ -1,5 +1,7 @@
 package vue;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
 
 import controleur.Controleur;
@@ -7,8 +9,13 @@ import controleur.Controleur;
 /**
  * 
  */
-public class EcouteurBoutons {
+public class EcouteurBoutons implements ActionListener {
 
+    /**
+     * 
+     */
+    protected Controleur controleur;
+    
     /**
      * Default constructor
      */
@@ -16,16 +23,16 @@ public class EcouteurBoutons {
     }
 
     /**
-     * 
-     */
-    protected Controleur controleur;
-
-
-    /**
      * @param controleur
      */
     public void EcouteurBoutons(Controleur controleur) {
-        // TODO implement here
+        this.controleur = controleur;
     }
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		System.out.println(e.getActionCommand());		
+	}
 
 }

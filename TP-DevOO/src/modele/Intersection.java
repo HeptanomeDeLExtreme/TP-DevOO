@@ -31,12 +31,12 @@ public class Intersection {
     /**
      * 
      */
-    protected Set<Troncon> tronçonsSortant;
+    protected Set<Troncon> tronconsSortant;
 
     /**
      * 
      */
-    protected Set<Troncon> tronçonsEntrant;
+    protected Set<Troncon> tronconsEntrant;
 
 
     /**
@@ -45,8 +45,12 @@ public class Intersection {
      * @param y 
      * @param tronconSortant
      */
-    public void Intersection(Integer id, Integer x, Integer y, List<Troncon> tronconSortant) {
+    public Intersection(Integer id, Integer x, Integer y, List<Troncon> tronconSortant) {
         // TODO implement here
+    }
+    
+    public Integer getId() {
+    	return id;
     }
 
 }

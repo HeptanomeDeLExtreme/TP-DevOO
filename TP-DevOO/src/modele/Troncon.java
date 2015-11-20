@@ -37,5 +37,16 @@ public class Troncon {
      * 
      */
     protected Intersection destination;
+    
+    // TODO vrai constructeur
+    // problème : dans le XML, on donne l'id de la destination, qui peut ne pas encore exister lors de la lecture du XML.
+    
+    public void setOrigine(Intersection intersection) {
+    	origine = intersection;
+    }
+    
+    public void setDestination(Intersection intersection) {
+    	destination = intersection;
+    }
 
 }

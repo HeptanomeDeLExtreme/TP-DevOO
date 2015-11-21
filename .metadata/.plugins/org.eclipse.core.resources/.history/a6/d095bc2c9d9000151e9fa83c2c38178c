@@ -25,15 +25,13 @@ public class DemandeDeLivraison {
 		this.entrepot = entrepot;
 		this.singleton = singleton;
 		
-		int nbLivraisons = 0;
-		
 		for (int i = 0; i < fenetres.size(); i++){
 			FenetreTemporelle fenetreActuelle = fenetres.get(i);
 			Set<Livraison> livraisonsFActuelle = fenetreActuelle.getLivraisons();
+			
 			nbLivraisons += livraisonsFActuelle.size();
+			
 		}
-		
-		this.nbLivraisons = nbLivraisons;
 	}
 
 

@@ -26,7 +26,11 @@ public class Plan {
     public Plan() {
     }
 
-    /**
+    public Plan(Set<Intersection> listeInter) {
+		this.intersections = listeInter;
+	}
+
+	/**
      * 
      */
     protected Set<Intersection> intersections;
@@ -53,6 +57,29 @@ public class Plan {
     }
     
     /**
+     * Permet de récuperer une intersection avec son id
+     * @param int id
+     * @return Intersection noeud
+     */
+    public Intersection recupererIntersectionParId(int id){
+    	Iterator<Intersection> iterateur = intersections.iterator();
+    	Intersection noeud = iterateur.next();
+    	
+    	while (iterateur.hasNext() && noeud.id != id) {
+    		noeud = iterateur.next();
+    	}
+    	
+    	if (noeud.id == id){
+    		return noeud;
+    	}
+    	
+    	else
+    	{
+    		return null;
+    	}
+    		
+    }
+    /**
      * Ajoute une intersection au plan
      * @param intersection Intersection à ajouter
      */
@@ -64,6 +91,6 @@ public class Plan {
 		// TODO Auto-generated method stub
 		return null;
 	}
-    
+
 
 }

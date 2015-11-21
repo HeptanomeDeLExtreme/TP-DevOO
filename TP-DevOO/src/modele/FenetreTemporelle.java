@@ -14,14 +14,23 @@ public class FenetreTemporelle {
     }
 
     /**
+     * Constructeur de base de fentre temporelle
+     */
+    public FenetreTemporelle(GregorianCalendar dateDeb,
+			GregorianCalendar dateFin) {
+		this.heureDebut = dateDeb;
+		this.heureFin = dateFin;
+	}
+
+	/**
      * 
      */
-    protected Date heureDebut;
+    protected GregorianCalendar heureDebut;
 
     /**
      * 
      */
-    protected Date heureFin;
+    protected GregorianCalendar heureFin;
 
     /**
      * 
@@ -38,8 +47,8 @@ public class FenetreTemporelle {
     /**
      * @param livraison
      */
-    protected void ajouteLivraison(Livraison livraison) {
-        // TODO implement here
+    public void ajouteLivraison(Livraison livraison) {
+        this.livraisons.add(livraison);
     }
 
 }

@@ -112,9 +112,9 @@ public class DemandeDeLivraison {
      * @param map
      * @return tableauArcs
      */
-    protected int[][] genererTableauArcs(Map<Integer,Livraison> map){
+    protected float[][] genererTableauArcs(Map<Integer,Livraison> map){
     	
-    	int tableauArcs[][]= new int[nbLivraisons][nbLivraisons];
+    	float tableauArcs[][]= new float[nbLivraisons][nbLivraisons];
     	
     	for(int i = 0; i<fenetres.size()-1; i++){
     		FenetreTemporelle fenetreActuelle = fenetres.get(i);

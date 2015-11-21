@@ -24,7 +24,7 @@ public class GrapheLivraisons implements tsp.Graphe{
      * @param nbSommets
      * @param couts
      */
-    public GrapheLivraisons(int nbSommets, int[][] couts) {
+    public GrapheLivraisons(int nbSommets, float[][] couts) {
 		super();
 		this.nbSommets = nbSommets;
 		this.couts = couts;
@@ -38,7 +38,7 @@ public class GrapheLivraisons implements tsp.Graphe{
     /**
      * 
      */
-    protected int couts[][];
+    protected float couts[][];
     
     /**
      * 
@@ -58,27 +58,14 @@ public class GrapheLivraisons implements tsp.Graphe{
 
 	@Override
 	public int getCout(int i, int j) {
-		
-		 Integer int_i = new Integer(i);
-		 Integer int_j = new Integer(j);
-		 
-		return couts[int_i][int_j] ;
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public boolean estArc(int i, int j) {
-		
-		Integer int_i = new Integer(i);
-		Integer int_j = new Integer(j);
-		
-		if (couts[int_i][int_j]!=0){
-			return true;
-		}
-			
-		else{
-			return false;
-		}
-			
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	

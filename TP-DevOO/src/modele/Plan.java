@@ -41,8 +41,8 @@ public class Plan {
      */
     public Plan(final String fichier) {
     	try {
-			System.out.println("Ca marche");			
-			DeserialiseurPlanXML.charger(this);
+    		intersections = new HashSet<Intersection>();
+    		DeserialiseurPlanXML.charger(this);
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
 			// TODO Auto-generated catch block

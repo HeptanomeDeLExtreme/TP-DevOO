@@ -1,6 +1,7 @@
 package xml;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -14,6 +15,7 @@ import modele.Troncon;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 /**
@@ -31,11 +33,16 @@ public class DeserialiseurPlanXML {
 	 * @throws ExceptionXML
 	 */
 	public static void charger(Plan plan) throws ParserConfigurationException, SAXException, IOException, ExceptionXML {
-		System.out.print("Je suis dans Deserialiseur.charger");
+		
 		File xml = OuvreurDeFichierXML.getInstance().ouvre(true);
+
 		DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+		
 		Document document = docBuilder.parse(xml);
+		document.getDocumentElement().normalize();
+		
 		Element racine = document.getDocumentElement();
+		
 		if (racine.getNodeName().equals("Reseau")) {
 			construireAPartirDeDOMXML(racine, plan);
 		} else
@@ -52,11 +59,14 @@ public class DeserialiseurPlanXML {
 	 */
 	private static void construireAPartirDeDOMXML(Element noeudDOMRacine, Plan plan)
 			throws ExceptionXML, NumberFormatException {
+		System.out.println("Je suis dans Deserialiseur.construireAvecDOM");
 		NodeList listeIntersections = noeudDOMRacine.getElementsByTagName("Noeud");
 		// 1er passage d'initialisation des intersections
 		for (int i = 0; i < listeIntersections.getLength(); i++) {
 			plan.ajoute(creerIntersection((Element) listeIntersections.item(i)));
+			
 		}
+		System.out.println(listeIntersections.item(2));
 		// 2e passage : creation des tronçons - les intersections doivent déjà avoir été créées
 		for (int i = 0; i < listeIntersections.getLength(); i++) {
 			creerTroncons((Element) listeIntersections.item(i), plan);
@@ -86,6 +96,8 @@ public class DeserialiseurPlanXML {
 	 * @throws ExceptionXML
 	 */
 	private static void creerTroncons(Element noeud, Plan plan) throws ExceptionXML {
+		//TODO test a enlever
+		System.out.println("" + ((Element)noeud.getParentNode()).getAttribute("id"));
 		Integer idTronconEntrant = Integer.parseInt(((Element)noeud.getParentNode()).getAttribute("id"));
 		Intersection origine = plan.getIntersection(idTronconEntrant);
 		NodeList listeTronconsXML = noeud.getElementsByTagName("LeTronconSortant");

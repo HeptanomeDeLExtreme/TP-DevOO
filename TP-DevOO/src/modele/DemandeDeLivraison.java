@@ -89,7 +89,7 @@ public class DemandeDeLivraison {
      * 
      * @return
      */
-    protected Map<Integer,Livraison> correspondanceLivraisons (){
+    private Map<Integer,Livraison> correspondanceLivraisons (){
     	
     	Map<Integer,Livraison> mapLivraisons = new HashMap<Integer,Livraison>();
     	Integer livraisonInteger = 0;
@@ -114,7 +114,7 @@ public class DemandeDeLivraison {
      * @param map
      * @return tableauArcs
      */
-    protected float[][] genererTableauArcs(Map<Integer,Livraison> map){
+    private float[][] genererTableauArcs(Map<Integer,Livraison> map){
     	
     	float tableauArcs[][]= new float[nbLivraisons][nbLivraisons];
     	
@@ -170,18 +170,29 @@ public class DemandeDeLivraison {
         // TODO implement here
 
     	// Creation des correspondances entre un sommet (Integer) et une livraison
-		Map<Integer,Livraison> mapLivraisons= correspondanceLivraisons();
-    	// Generation des arcs du graphe de livraisons
+		Map<Integer,Livraison> mapLivraisons = correspondanceLivraisons();
+		
+    	// Generation des arcs (contenant les couts) du graphe de livraisons
     	float tableauArcs[][] = genererTableauArcs(mapLivraisons);
     	
     	// Generation du graphe de livraisons
     	GrapheLivraisons graphe = new GrapheLivraisons(nbLivraisons, tableauArcs);
     	
     	// Recherche de la solution avec TSP
-    	tsp.chercherSolution(0, graphe);
+    	tsp.chercheSolution(0, graphe);
+    	
+    	List<Livraison> livraisonsEnOrdre = new LinkedList<Livraison>();
+    	livraisonsEnOrdre = recupererLivraisonsEnOrdre(graphe);
     }
 
-    /**
+    private List<Livraison> recupererLivraisonsEnOrdre(GrapheLivraisons graphe) {
+		// TODO Auto-generated method stub
+    	
+    	
+		return null;
+	}
+
+	/**
      * @param plan 
      * @param depart 
      * @param arrivee

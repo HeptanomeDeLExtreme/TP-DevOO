@@ -2,8 +2,6 @@ package xml;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -18,6 +16,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+/**
+ * @author H4203
+ * 
+ */
 public class DeserialiseurPlanXML {
 	/**
 	 * Ouvre un fichier xml et cree plan a partir du contenu du fichier
@@ -39,20 +41,35 @@ public class DeserialiseurPlanXML {
 			throw new ExceptionXML("Document non conforme");
 	}
 
+	/**
+	 * Construit les intersections et les tronçons a partir du XML
+	 * 
+	 * @param noeudDOMRacine
+	 * @param plan
+	 * @throws ExceptionXML
+	 * @throws NumberFormatException
+	 */
 	private static void construireAPartirDeDOMXML(Element noeudDOMRacine, Plan plan)
 			throws ExceptionXML, NumberFormatException {
 		NodeList listeIntersections = noeudDOMRacine.getElementsByTagName("Noeud");
 		// 1er passage d'initialisation des intersections
 		for (int i = 0; i < listeIntersections.getLength(); i++) {
-			plan.ajoute(creeIntersection((Element) listeIntersections.item(i)));
+			plan.ajoute(creerIntersection((Element) listeIntersections.item(i)));
 		}
 		// 2e passage : creation des tronçons - les intersections doivent déjà avoir été créées
 		for (int i = 0; i < listeIntersections.getLength(); i++) {
-			creeTroncons((Element) listeIntersections.item(i), plan);
+			creerTroncons((Element) listeIntersections.item(i), plan);
 		}
 	}
 
-	private static Intersection creeIntersection(Element elt) throws ExceptionXML {
+	/**
+	 * Cree une Intersection à partir d'un Element, correspondant a un noeud DOM
+	 * 
+	 * @param elt
+	 * @return
+	 * @throws ExceptionXML
+	 */
+	private static Intersection creerIntersection(Element elt) throws ExceptionXML {
 	    Integer id = Integer.parseInt(elt.getAttribute("id"));
 		Integer x = Integer.parseInt(elt.getAttribute("x"));
 		Integer y = Integer.parseInt(elt.getAttribute("y"));
@@ -60,16 +77,32 @@ public class DeserialiseurPlanXML {
 		return new Intersection(id, x, y);
 	}
 	
-	private static void creeTroncons(Element noeud, Plan plan) throws ExceptionXML {
+	/**
+	 * Cree les Troncons à partir des Elements noeuds et du Plan
+	 * 
+	 * @param noeud
+	 * @param plan
+	 * @throws ExceptionXML
+	 */
+	private static void creerTroncons(Element noeud, Plan plan) throws ExceptionXML {
 		Integer idTronconEntrant = Integer.parseInt(((Element)noeud.getParentNode()).getAttribute("id"));
 		Intersection origine = plan.getIntersection(idTronconEntrant);
 		NodeList listeTronconsXML = noeud.getElementsByTagName("LeTronconSortant");
 		for (int i = 0; i < listeTronconsXML.getLength(); i++) {
-			creeTroncon((Element)listeTronconsXML.item(i), plan, origine);
+			creerTroncon((Element)listeTronconsXML.item(i), plan, origine);
 		}
 	}
 
-	private static Troncon creeTroncon(Element tronconXML, Plan plan, Intersection origine) throws ExceptionXML {
+	/**
+	 * Cree un troncon
+	 * 
+	 * @param tronconXML
+	 * @param plan
+	 * @param origine
+	 * @return troncon
+	 * @throws ExceptionXML
+	 */
+	private static Troncon creerTroncon(Element tronconXML, Plan plan, Intersection origine) throws ExceptionXML {
 		String nomRue = tronconXML.getAttribute("nomRue"); 
 		Float vitesse = Float.parseFloat(tronconXML.getAttribute("vitesse"));
 		Float longueur = Float.parseFloat(tronconXML.getAttribute("longueur"));

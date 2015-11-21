@@ -25,14 +25,15 @@ public class EcouteurBoutons implements ActionListener {
     /**
      * @param controleur
      */
-    public void EcouteurBoutons(Controleur controleur) {
+    public EcouteurBoutons(Controleur controleur) {
         this.controleur = controleur;
     }
 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println(e.getActionCommand());		
+		System.out.println(e.getActionCommand());	
+		controleur.newFakeTournee();
 	}
 
 }

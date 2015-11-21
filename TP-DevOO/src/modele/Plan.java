@@ -39,11 +39,12 @@ public class Plan {
     	return max;
     }
     
-    public Intersection cherche(Point p){
+    public Intersection cherche(Point p, int echelleX, int echelleY){
     	Iterator<Intersection> it = intersections.iterator();
 		while (it.hasNext()){
 			Intersection inter = it.next();
-			if (inter.contient(p)) return inter;
+			System.out.println(inter);
+			if (inter.contient(p,echelleX,echelleY)) return inter;
 		}
 		return null;
     }

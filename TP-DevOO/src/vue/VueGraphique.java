@@ -7,6 +7,7 @@ import java.util.*;
 import javax.swing.JPanel;
 
 import modele.Intersection;
+import modele.Itineraire;
 import modele.Plan;
 import modele.Tournee;
 import modele.Troncon;
@@ -70,6 +71,33 @@ public class VueGraphique extends JPanel implements Observer {
 				g.drawLine(x1,y1,x2,y2);
 			}
 		}
+		
+		List<Itineraire> listeItineraire = this.tournee.getItineraires();
+        Set<Troncon> listeTroncon = new HashSet<Troncon>();
+        for(Itineraire itineraire : listeItineraire){
+        	listeTroncon.addAll(itineraire.getTronçons());
+        }
+        
+        for(Troncon troncon : listeTroncon){
+        	Intersection origine = troncon.getOrigine();
+        	Intersection destination = troncon.getDestination();
+        	
+        	g.setColor(Color.GREEN);
+        	
+        	// Origine
+        	int x1 = origine.getX()*echelleX;
+        	int y1 = origine.getY()*echelleY;
+        	g.fillOval(x1, y1, 10, 10);
+        	
+        	// Destination
+        	int x2 = destination.getX()*echelleX;
+        	int y2 = destination.getY()*echelleY;
+        	g.fillOval(x2, y2, 10, 10);
+        	
+        	// Lien entre les deux
+        	g.drawLine(x1+5,y1+5,x2+5,y2+5);
+        }
+        
 		this.g = g;
 	}
 	

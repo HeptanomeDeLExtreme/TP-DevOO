@@ -33,4 +33,14 @@ public class Itineraire {
      */
     protected Livraison arrivee;
 
+	public List<Troncon> getTronçons() {
+		return tronçons;
+	}
+
+	public void setTronçons(List<Troncon> tronçons) {
+		this.tronçons = tronçons;
+	}
+    
+    
+
 }

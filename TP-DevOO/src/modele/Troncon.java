@@ -10,7 +10,8 @@ public class Troncon {
     /**
      * Default constructor
      */
-    public Troncon() {
+    public Troncon(String nomDeRue) {
+    	this.nomDeRue = nomDeRue;
     }
 
     
@@ -32,6 +33,20 @@ public class Troncon {
 	public void setDestination(Intersection destination) {
 		this.destination = destination;
 	}
+
+	public String getNomDeRue() {
+		return nomDeRue;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Troncon [longueur=" + longueur + ", vitesseMoyenne="
+				+ vitesseMoyenne + ", nomDeRue=" + nomDeRue + ", origine="
+				+ origine + ", destination=" + destination + "]";
+	}
+
 
 
 

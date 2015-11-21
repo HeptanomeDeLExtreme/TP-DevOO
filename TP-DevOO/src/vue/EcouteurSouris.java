@@ -68,10 +68,10 @@ public class EcouteurSouris extends MouseAdapter{
 
 	private Point coordonnees(MouseEvent evt) {
 		MouseEvent e = SwingUtilities.convertMouseEvent(fenetreIHM, evt, vueGraphique);
-		int x = Math.round((float)e.getX()/(float)vueGraphique.getEchelleX());
-		int y = Math.round((float)e.getY()/(float)vueGraphique.getEchelleY());
+		int x = Math.round((float)e.getY()/(float)vueGraphique.getEchelleY());
+		int y = Math.round((float)e.getX()/(float)vueGraphique.getEchelleX());
 		System.out.println("Coordonnées reelles : "+x+" "+y);
-		return new Point(x, y);
+		return new Point(y,x);
 	}
 
 }

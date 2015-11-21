@@ -5,8 +5,11 @@ import java.util.*;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 
+import modele.Intersection;
+import modele.Itineraire;
 import modele.Plan;
 import modele.Tournee;
+import modele.Troncon;
 
 /**
  * 
@@ -41,7 +44,20 @@ public class VueTextuelle extends JLabel implements Observer{
      * @param objet
      */
     public void update(Observable observable, Object objet) {
-        // TODO implement here
+        List<Itineraire> listeItineraire = this.tournee.getItineraires();
+        List<Troncon> listeTroncon = new ArrayList<Troncon>();
+        for(Itineraire itineraire : listeItineraire){
+        	System.out.println("1");
+        	listeTroncon.addAll(itineraire.getTronçons());
+        }
+        
+
+        this.setText("<html>");
+        for(Troncon troncon : listeTroncon){
+        	this.setText(this.getText()+"\n"+"Prenez :\n"+troncon.getNomDeRue()+"<br>");
+        }
+        this.setText(this.getText()+"</html>");
+        
     }
 
 

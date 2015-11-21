@@ -91,10 +91,12 @@ public class EtatDefaut implements Etat {
      * @param listeDeCommande
      */
     public void clicGauche(FenetreIHM fenetre, Plan plan, Point p) {
-        Intersection inter = plan.cherche(p);
+        Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
         if(inter != null){
-	        System.out.println("DEBUg : "+inter);
 	        fenetre.afficheMessage(inter.toString());
+        }
+        else{
+        	fenetre.afficheMessage("Pas d'intersection ici !");
         }
     }
 

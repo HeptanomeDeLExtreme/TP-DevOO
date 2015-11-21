@@ -45,6 +45,9 @@ public class FenetreIHM extends JFrame{
 	private final int hauteurCadreMessages = 100;
 	private final int largeurVueTextuelle = 400;
 	
+	private int echelleX;
+	private int echelleY;
+	
     /**
      * Default constructor
      */
@@ -56,12 +59,12 @@ public class FenetreIHM extends JFrame{
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int largeurEcran = (int)screenSize.getWidth();
 		int largeurPlan = controleur.getPlanLargeur();
-		int echelleX = (int) ((largeurEcran - largeurVueTextuelle) / largeurPlan);
+		this.echelleX = (int) ((largeurEcran - largeurVueTextuelle) / largeurPlan);
 		
 		// Calcul de l'echelle en y
 		int hauteurEcran = (int)screenSize.getHeight()-100;
 		int hauteurPlan = controleur.getPlanHauteur();
-		int echelleY = (int) ((hauteurEcran - hauteurCadreMessages) / hauteurPlan );
+		this.echelleY = (int) ((hauteurEcran - hauteurCadreMessages) / hauteurPlan );
 		
     	setLayout(null);
 		creerMenu();
@@ -77,9 +80,23 @@ public class FenetreIHM extends JFrame{
 		
     }
 
-    private void creerMenu(){
+    
+    
+    public int getEchelleX() {
+		return echelleX;
+	}
+
+
+
+	public int getEchelleY() {
+		return echelleY;
+	}
+
+
+
+	private void creerMenu(){
     	// Crée l'écouteur de bouton
-    	ecouteurBoutons =  new EcouteurBoutons();
+    	ecouteurBoutons =  new EcouteurBoutons(this.controleur);
     	
     	// Construit la barre de menus
     	barreMenu = new JMenuBar();

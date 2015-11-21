@@ -13,7 +13,11 @@ public class Troncon {
     public Troncon() {
     }
 
-    /**
+    public Troncon(String nomRue, Float vitesse, Float longueur, Intersection origine, Intersection destination) {
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
      * 
      */
     protected Float longueur;
@@ -37,6 +41,9 @@ public class Troncon {
      * 
      */
     protected Intersection destination;
+    
+    // TODO vrai constructeur
+    // problème : dans le XML, on donne l'id de la destination, qui peut ne pas encore exister lors de la lecture du XML.
 
 	public void setOrigine(Intersection i1) {
 		this.origine = i1;

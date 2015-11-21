@@ -7,7 +7,15 @@ import java.util.*;
  */
 public class Intersection {
 
-    /**
+    @Override
+	public String toString() {
+		return "Intersection [id=" + id + ", x=" + x + ", y=" + y
+				+ ", tronconsSortant=" + tronconsSortant + ", tronconsEntrant="
+				+ tronconsEntrant + "]\n";
+	}
+
+
+	/**
      * Default constructor
      */
     public Intersection() {
@@ -37,12 +45,12 @@ public class Intersection {
     /**
      * 
      */
-    protected Set<Troncon> tronçonsSortant;
+    protected Set<Troncon> tronconsSortant;
 
     /**
      * 
      */
-    protected Set<Troncon> tronçonsEntrant;
+    protected Set<Troncon> tronconsEntrant;
 
 
     /**
@@ -51,19 +59,39 @@ public class Intersection {
      * @param y 
      * @param tronconsSortant
      */
-    public void Intersection(Integer id, Integer x, Integer y, List<Troncon> tronconsSortant) {
+    public void Intersection(Integer id, Integer x, Integer y, Set<Troncon> tronconsSortant) {
         this.id = id;
         this.x=x;
         this.y=y;
-        this.tronçonsSortant = tronçonsSortant;
+        this.tronconsSortant = tronconsSortant;
     }
 
 	public void setTronçonsEntrant(Set<Troncon> tronconE1) {
-		this.tronçonsEntrant = tronconE1;
+		this.tronconsEntrant = tronconE1;
 	}
 
 	public void setTronçonsSortant(Set<Troncon> tronconS1) {
-		this.tronçonsSortant = tronconS1;
+		this.tronconsSortant = tronconS1;
+	}
+	
+	/**
+	 * @param id 
+	 * @param x 
+     * @param y
+     */
+    public Intersection(Integer id, Integer x, Integer y) {
+        // TODO implement here
+    }
+
+
+	public void ajouteTronconEntrant(Troncon troncon) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void ajouteTronconSortant(Troncon troncon) {
+		// TODO Auto-generated method stub
 		
 	}
 

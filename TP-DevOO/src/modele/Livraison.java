@@ -60,4 +60,44 @@ public class Livraison {
      */
     public Client client;
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Date getHeureArrivee() {
+		return heureArrivee;
+	}
+
+	public void setHeureArrivee(Date heureArrivee) {
+		this.heureArrivee = heureArrivee;
+	}
+
+	public Boolean getEstDansFenetre() {
+		return estDansFenetre;
+	}
+
+	public void setEstDansFenetre(Boolean estDansFenetre) {
+		this.estDansFenetre = estDansFenetre;
+	}
+
+	public Intersection getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Intersection adresse) {
+		this.adresse = adresse;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
 }

@@ -62,7 +62,7 @@ public class GrapheLivraisons implements tsp.Graphe{
 		 Integer int_i = new Integer(i);
 		 Integer int_j = new Integer(j);
 		 
-		return couts[int_i][int_j] ;
+		return ;
 	}
 
 	@Override
@@ -71,14 +71,7 @@ public class GrapheLivraisons implements tsp.Graphe{
 		Integer int_i = new Integer(i);
 		Integer int_j = new Integer(j);
 		
-		if (couts[int_i][int_j]!=0){
-			return true;
-		}
-			
-		else{
-			return false;
-		}
-			
+		return false;
 	}
 
 	

@@ -50,7 +50,7 @@ public class Livraison {
 	 * @param livraisonDest
 	 * @return
 	 */
-	public int rechercherCout(Livraison livraisonDest)
+	public float rechercherCout(Livraison livraisonDest)
 	{
 		return 1;
 	}

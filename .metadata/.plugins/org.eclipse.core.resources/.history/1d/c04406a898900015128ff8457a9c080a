@@ -3,8 +3,6 @@ package modele;
 import java.util.*;
 import java.util.Map.Entry;
 
-import tsp.TSP1;
-
 /**
  * 
  */
@@ -89,7 +87,7 @@ public class DemandeDeLivraison {
      * 
      * @return
      */
-    private Map<Integer,Livraison> correspondanceLivraisons (){
+    protected Map<Integer,Livraison> correspondanceLivraisons (){
     	
     	Map<Integer,Livraison> mapLivraisons = new HashMap<Integer,Livraison>();
     	Integer livraisonInteger = 0;
@@ -114,10 +112,9 @@ public class DemandeDeLivraison {
      * @param map
      * @return tableauArcs
      */
-
     protected int[][] genererTableauArcs(Map<Integer,Livraison> map){
     	
-    	int tableauArcs[][]= new int[nbLivraisons][nbLivraisons];
+    	int tableauArcs[][]= new float[nbLivraisons][nbLivraisons];
     	
     	for(int i = 0; i<fenetres.size()-1; i++){
     		FenetreTemporelle fenetreActuelle = fenetres.get(i);
@@ -167,7 +164,7 @@ public class DemandeDeLivraison {
     /**
      * @param plan
      */
-    protected void calculerTournee(Plan plan, TSP1 tsp) {
+    protected void calculerTournee(Plan plan) {
         // TODO implement here
 
     	// Creation des correspondances entre un sommet (Integer) et une livraison
@@ -180,20 +177,10 @@ public class DemandeDeLivraison {
     	GrapheLivraisons graphe = new GrapheLivraisons(nbLivraisons, tableauArcs);
     	
     	// Recherche de la solution avec TSP
-    	tsp.chercheSolution(0, graphe);
-    	
-    	List<Livraison> livraisonsEnOrdre = new LinkedList<Livraison>();
-    	livraisonsEnOrdre = recupererLivraisonsEnOrdre(graphe);
+    	tsp.chercherSolution(0, graphe);
     }
 
-    private List<Livraison> recupererLivraisonsEnOrdre(GrapheLivraisons graphe) {
-		// TODO Auto-generated method stub
-    	
-    	
-		return null;
-	}
-
-	/**
+    /**
      * @param plan 
      * @param depart 
      * @param arrivee

@@ -6,6 +6,7 @@ import modele.DemandeDeLivraison;
 import modele.Livraison;
 import modele.Plan;
 
+import tsp.TSP1;
 import vue.FenetreIHM;
 
 /**
@@ -27,7 +28,7 @@ public interface Etat {
      * @param plan 
      * @param demandeDeLivraison
      */
-    public void calculerTournee(Plan plan, DemandeDeLivraison demandeDeLivraison);
+    public void calculerTournee(Plan plan, DemandeDeLivraison demandeDeLivraison, TSP1 tsp);
 
     /**
      * @param fenetre

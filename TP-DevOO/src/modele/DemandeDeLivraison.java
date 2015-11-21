@@ -171,7 +171,7 @@ public class DemandeDeLivraison {
         // TODO implement here
 
     	// Creation des correspondances entre un sommet (Integer) et une livraison
-		Map<Integer,Livraison> mapLivraisons= correspondanceLivraisons();
+		Map<Integer,Livraison> mapLivraisons = correspondanceLivraisons();
 		
     	// Generation des arcs du graphe de livraisons
     	int tableauArcs[][] = genererTableauArcs(mapLivraisons);
@@ -182,13 +182,24 @@ public class DemandeDeLivraison {
     	// Recherche de la solution avec TSP
     	tsp.chercheSolution(0, graphe);
     	
+    	// Recuperer l'ordre des livraisons a effectuer grace a TSP
     	List<Livraison> livraisonsEnOrdre = new LinkedList<Livraison>();
-    	livraisonsEnOrdre = recupererLivraisonsEnOrdre(graphe);
+    	livraisonsEnOrdre = recupererLivraisonsEnOrdre(graphe, tsp, mapLivraisons);
     }
 
-    private List<Livraison> recupererLivraisonsEnOrdre(GrapheLivraisons graphe) {
+    private List<Livraison> recupererLivraisonsEnOrdre(GrapheLivraisons graphe, TSP1 tsp, Map<Integer, Livraison> mapLivraisons) {
 		// TODO Auto-generated method stub
     	
+    	List<Livraison> livraisonsEnOrdre = new LinkedList<Livraison>();
+    	Integer nombreSommet = graphe.getNbSommets();
+    	
+    	for (int i = 0; i < nombreSommet; i++) {
+    		Integer numeroSommet = tsp.getSolution(i);
+    	}
+    	
+    	Livraison livraison = mapLivraisons.get(nombreSommet);
+    	
+    	livraisonsEnOrdre.add(livraison);
     	
 		return null;
 	}

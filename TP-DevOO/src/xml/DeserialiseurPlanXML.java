@@ -59,14 +59,12 @@ public class DeserialiseurPlanXML {
 	 */
 	private static void construireAPartirDeDOMXML(Element noeudDOMRacine, Plan plan)
 			throws ExceptionXML, NumberFormatException {
-		System.out.println("Je suis dans Deserialiseur.construireAvecDOM");
 		NodeList listeIntersections = noeudDOMRacine.getElementsByTagName("Noeud");
 		// 1er passage d'initialisation des intersections
 		for (int i = 0; i < listeIntersections.getLength(); i++) {
 			plan.ajoute(creerIntersection((Element) listeIntersections.item(i)));
 			
 		}
-		System.out.println(listeIntersections.item(2));
 		// 2e passage : creation des tronçons - les intersections doivent déjà avoir été créées
 		for (int i = 0; i < listeIntersections.getLength(); i++) {
 			creerTroncons((Element) listeIntersections.item(i), plan);
@@ -96,10 +94,8 @@ public class DeserialiseurPlanXML {
 	 * @throws ExceptionXML
 	 */
 	private static void creerTroncons(Element noeud, Plan plan) throws ExceptionXML {
-		//TODO test a enlever
-		System.out.println("" + ((Element)noeud.getParentNode()).getAttribute("id"));
-		Integer idTronconEntrant = Integer.parseInt(((Element)noeud.getParentNode()).getAttribute("id"));
-		Intersection origine = plan.getIntersection(idTronconEntrant);
+		Integer idTronconEntrant = Integer.parseInt(noeud.getAttribute("id"));
+		Intersection origine = plan.recupererIntersectionParId(idTronconEntrant);
 		NodeList listeTronconsXML = noeud.getElementsByTagName("LeTronconSortant");
 		for (int i = 0; i < listeTronconsXML.getLength(); i++) {
 			creerTroncon((Element)listeTronconsXML.item(i), plan, origine);
@@ -117,10 +113,10 @@ public class DeserialiseurPlanXML {
 	 */
 	private static Troncon creerTroncon(Element tronconXML, Plan plan, Intersection origine) throws ExceptionXML {
 		String nomRue = tronconXML.getAttribute("nomRue"); 
-		Float vitesse = Float.parseFloat(tronconXML.getAttribute("vitesse"));
-		Float longueur = Float.parseFloat(tronconXML.getAttribute("longueur"));
-		Integer idDestination = Integer.parseInt(tronconXML.getAttribute("id"));
-		Intersection destination = plan.getIntersection(idDestination);
+		Float vitesse = Float.parseFloat(tronconXML.getAttribute("vitesse").replace(",", "."));
+		Float longueur = Float.parseFloat(tronconXML.getAttribute("longueur").replace(",", "."));
+		Integer idDestination = Integer.parseInt(tronconXML.getAttribute("idNoeudDestination"));
+		Intersection destination = plan.recupererIntersectionParId(idDestination);
 		Troncon troncon = new Troncon(nomRue, vitesse, longueur, origine, destination);
 		origine.ajouteTronconSortant(troncon);
 		destination.ajouteTronconEntrant(troncon);

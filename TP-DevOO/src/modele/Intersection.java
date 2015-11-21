@@ -20,13 +20,16 @@ public class Intersection {
      */
     public Intersection() {
     }
-
-    public Intersection(int i, int j, int k) {
-		this.id=i;
-		this.x=j;
-		this.y=k;
+    
+	public Intersection(Integer id, Integer x, Integer y) {
+		this.id = id;
+		this.x = x;
+		this.y = y;
+		this.tronconsEntrant = new HashSet<Troncon>();
+		this.tronconsSortant = new HashSet<Troncon>();
+		
 	}
-
+	
 	/**
      * 
      */
@@ -52,47 +55,27 @@ public class Intersection {
      */
     protected Set<Troncon> tronconsEntrant;
 
-
-    /**
-     * @param id 
-     * @param x 
-     * @param y 
-     * @param tronconsSortant
-     */
-    public void Intersection(Integer id, Integer x, Integer y, Set<Troncon> tronconsSortant) {
-        this.id = id;
-        this.x=x;
-        this.y=y;
-        this.tronconsSortant = tronconsSortant;
-    }
-
-	public void setTronçonsEntrant(Set<Troncon> tronconE1) {
-		this.tronconsEntrant = tronconE1;
+	public void setTronçonsEntrant(Set<Troncon> troncons) {
+		this.tronconsEntrant = troncons;
 	}
 
-	public void setTronçonsSortant(Set<Troncon> tronconS1) {
-		this.tronconsSortant = tronconS1;
+	public void setTronçonsSortant(Set<Troncon> troncons) {
+		this.tronconsSortant = troncons;
 	}
-	
-	/**
-	 * @param id 
-	 * @param x 
-     * @param y
-     */
-    public Intersection(Integer id, Integer x, Integer y) {
-        // TODO implement here
-    }
 
 
 	public void ajouteTronconEntrant(Troncon troncon) {
-		// TODO Auto-generated method stub
-		
+		tronconsEntrant.add(troncon);
+	}
+
+
+	public Integer getId() {
+		return id;
 	}
 
 
 	public void ajouteTronconSortant(Troncon troncon) {
-		// TODO Auto-generated method stub
-		
+		tronconsSortant.add(troncon);
 	}
 
 }

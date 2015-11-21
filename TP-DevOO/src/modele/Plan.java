@@ -65,7 +65,7 @@ public class Plan {
     	Iterator<Intersection> iterateur = intersections.iterator();
     	Intersection noeud = iterateur.next();
     	
-    	while (iterateur.hasNext() && noeud.id != id) {
+    	while (iterateur.hasNext() && noeud.getId() != id) {
     		noeud = iterateur.next();
     	}
     	
@@ -84,13 +84,10 @@ public class Plan {
      * @param intersection Intersection à ajouter
      */
     public void ajoute(Intersection intersection) {
-    	intersections.add(intersection);
+    	if(intersection != null)
+    		intersections.add(intersection);
+    	else
+    		System.out.println("Erreur : intersection inexistante");
     }
-
-	public Intersection getIntersection(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 }

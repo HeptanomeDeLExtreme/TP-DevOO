@@ -58,18 +58,6 @@ public class GrapheLivraisons implements tsp.Graphe{
 		return couts[i][j];
 	}
 
-	@Override
-	public int getCout(int i, int j) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean estArc(int i, int j) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	
 
 }

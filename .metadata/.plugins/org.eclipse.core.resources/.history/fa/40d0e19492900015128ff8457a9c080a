@@ -87,15 +87,17 @@ public class DemandeDeLivraison {
      * 
      * @return
      */
-    protected Map<Integer,Livraison> correspondanceLivraisons (){
+    protected Map<Integer,Livraison> mappingLivraisons (){
     	
     	Map<Integer,Livraison> mapLivraisons = new HashMap<Integer,Livraison>();
+        
     	Integer livraisonInteger = 0;
     	
     	for(int i = 0; i<fenetres.size(); i++){
     		
     		FenetreTemporelle fenetreActuelle = fenetres.get(i);
     		Set<Livraison> livraisonsFenetre = fenetreActuelle.getLivraisons();
+    		
     		
     		for(Livraison livraisonActuelle : livraisonsFenetre){
     			mapLivraisons.put(livraisonInteger, livraisonActuelle);
@@ -167,7 +169,7 @@ public class DemandeDeLivraison {
     protected void calculerTournee(Plan plan) {
         // TODO implement here
     	
-    	Map<Integer,Livraison> mapLivraisons= correspondanceLivraisons();
+    	Map<Integer,Livraison> mapLivraisons= mappingLivraisons();
     	float tableauArcs[][] = genererTableauArcs(mapLivraisons);
     	GrapheLivraisons graphe = new GrapheLivraisons(nbLivraisons, tableauArcs);
     }

@@ -13,7 +13,11 @@ public class Troncon {
     public Troncon() {
     }
 
-    /**
+    public Troncon(String nomRue, Float vitesse, Float longueur, Intersection origine, Intersection destination) {
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
      * 
      */
     protected Float longueur;

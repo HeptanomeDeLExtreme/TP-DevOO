@@ -42,15 +42,22 @@ public class Intersection {
     /**
      * @param id 
      * @param x 
-     * @param y 
-     * @param tronconSortant
+     * @param y
      */
-    public Intersection(Integer id, Integer x, Integer y, List<Troncon> tronconSortant) {
+    public Intersection(Integer id, Integer x, Integer y) {
         // TODO implement here
     }
-    
-    public Integer getId() {
-    	return id;
-    }
+
+
+	public void ajouteTronconEntrant(Troncon troncon) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void ajouteTronconSortant(Troncon troncon) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

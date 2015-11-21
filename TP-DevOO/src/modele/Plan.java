@@ -37,13 +37,11 @@ public class Plan {
     public void ajoute(Intersection intersection) {
     	intersections.add(intersection);
     }
+
+	public Intersection getIntersection(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
-    public boolean contient(Integer idIntersection) {
-    	for (Intersection intersection : intersections) {
-    		if (intersection.getId() == idIntersection)
-    			return true;
-    	}
-    	return false;
-    }
 
 }

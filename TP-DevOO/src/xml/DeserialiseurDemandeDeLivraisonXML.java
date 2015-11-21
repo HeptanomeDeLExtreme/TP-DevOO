@@ -22,7 +22,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 
-public class DeserialiseurXmlDemandeDeLivraison {
+public class DeserialiseurDemandeDeLivraisonXML {
 	/**
 	 * Ouvre un fichier xml et cree une demande de livraison a partir du contenu du fichier
 	 * @param DemandeDeLivraison demandeDeLivraison

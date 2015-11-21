@@ -1,4 +1,4 @@
-package xml;
+package tests;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
@@ -6,6 +6,9 @@ import java.util.Set;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
+
+import xml.DeserialiseurDemandeDeLivraisonXML;
+import xml.ExceptionXML;
 
 import modele.Client;
 import modele.DemandeDeLivraison;
@@ -83,7 +86,7 @@ public class TestXml {
 			e.printStackTrace();
 		}
     	
-    	System.out.println("Demande de livraison : " + demandeDeLivraison.toString());
+    	System.out.println(demandeDeLivraison.toString());
 	}
 	
 	public void testConstructeurLivraisonSansClient(){

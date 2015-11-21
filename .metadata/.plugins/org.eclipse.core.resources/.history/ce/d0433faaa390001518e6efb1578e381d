@@ -227,7 +227,7 @@ public class DemandeDeLivraison {
      * @param mapLivraisons
      * @return
      */
-    private List<Itineraire> recupererItinerairesEnOrdre(List<Livraison> listeLivraisons, Map<Integer, Livraison> mapLivraisons, int[][] couts){
+    private List<Itineraire> recupererItinerairesEnOrdre(List<Livraison> listeLivraisons, Map<Integer, Livraison> mapLivraisons, int[][]Couts){
  
     	List<Itineraire> ItinerairesEnOrdre = new LinkedList<Itineraire>();
     	for(int i = 0; i < listeLivraisons.size() -1; i++)
@@ -237,7 +237,7 @@ public class DemandeDeLivraison {
     		 
     		int depart = getKeyByValue(mapLivraisons, livraisonActuelle);
     		int arrivee = getKeyByValue(mapLivraisons, livraisonSuivante);
-    		coutItineraire = couts[depart][arrivee]
+    		coutItineraire
     		
     		
     		

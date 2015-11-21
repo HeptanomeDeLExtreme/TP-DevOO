@@ -3,6 +3,8 @@ package modele;
 import java.util.*;
 import java.util.Map.Entry;
 
+import tsp.TSP1;
+
 /**
  * 
  */
@@ -164,7 +166,7 @@ public class DemandeDeLivraison {
     /**
      * @param plan
      */
-    protected void calculerTournee(Plan plan) {
+    protected void calculerTournee(Plan plan, TSP1 tsp) {
         // TODO implement here
 
     	// Creation des correspondances entre un sommet (Integer) et une livraison

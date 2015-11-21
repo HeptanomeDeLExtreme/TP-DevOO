@@ -6,7 +6,6 @@ import java.util.*;
 import modele.DemandeDeLivraison;
 import modele.Intersection;
 import modele.Plan;
-import modele.Tournee;
 import modele.Troncon;
 
 import vue.FenetreIHM;

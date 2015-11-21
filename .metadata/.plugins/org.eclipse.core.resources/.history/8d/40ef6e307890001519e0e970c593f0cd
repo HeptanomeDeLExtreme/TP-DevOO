@@ -21,24 +21,23 @@ public class VueGraphique extends JPanel implements Observer {
 	private int hauteurVue;
 	private int largeurVue;
 	private Graphics g;
+	private Plan plan;
 	private Tournee tournee;
 	private FenetreIHM fenetre;
-	private Plan plan;
 	
     /**
      * @param plan 
      * @param tournee 
      * @param fenetreIHM
      */
-    public VueGraphique(Tournee tournee, Plan p, int echelleX, int echelleY, FenetreIHM fenetreIHM) {
+    public VueGraphique(Plan p, int echelleX, int echelleY, FenetreIHM fenetreIHM) {
     	super();
-    	this.plan = p;
-    	this.tournee = tournee;
-    	this.tournee.addObserver(this);
+		this.plan = p;
+//		plan.addObserver(this); // this observe plan
 		this.echelleX = echelleX;
 		this.echelleY = echelleY;
-		hauteurVue = p.getHauteur()*echelleY+100;
-		largeurVue = p.getLargeur()*echelleX+100;
+		hauteurVue = plan.getHauteur()*echelleY+100;
+		largeurVue = plan.getLargeur()*echelleX+100;
 		setLayout(null);
 		setBackground(Color.DARK_GRAY);
 		setSize(largeurVue, hauteurVue);
@@ -86,7 +85,7 @@ public class VueGraphique extends JPanel implements Observer {
      * @param objet
      */
     public void update(Observable observable, Object obj) {
-        repaint();
+        // TODO implement here
     }
 
     public int getHauteur(){

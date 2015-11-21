@@ -2,8 +2,6 @@ package modele;
 
 import java.util.*;
 
-
-
 /**
  * 
  */
@@ -75,11 +73,6 @@ public class Tournee extends Observable {
      */
     protected void genererFeuilleDeRoute() {
         // TODO implement here
-    }
-    
-    public void changementEffectue(){
-        setChanged(); 
-        notifyObservers();
     }
 
 }

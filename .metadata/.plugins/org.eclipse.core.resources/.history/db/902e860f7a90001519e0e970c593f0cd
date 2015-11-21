@@ -86,7 +86,7 @@ public class VueGraphique extends JPanel implements Observer {
      * @param objet
      */
     public void update(Observable observable, Object obj) {
-        repaint();
+        // TODO implement here
     }
 
     public int getHauteur(){

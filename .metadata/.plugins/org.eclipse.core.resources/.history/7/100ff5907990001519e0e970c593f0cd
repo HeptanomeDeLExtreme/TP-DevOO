@@ -6,7 +6,6 @@ import java.util.*;
 import modele.DemandeDeLivraison;
 import modele.Intersection;
 import modele.Plan;
-import modele.Tournee;
 import modele.Troncon;
 
 import vue.FenetreIHM;
@@ -85,9 +84,7 @@ public class Controleur {
     	listeInter.add(i2);
     	listeInter.add(i3);
     	this.plan = new Plan(listeInter);
-    	
-    	Tournee tournee = new Tournee();
-    	fenetre = new FenetreIHM(tournee, this, plan);
+    	fenetre = new FenetreIHM(this, plan);
     	this.etatCourant = new EtatDefaut();
     }
     

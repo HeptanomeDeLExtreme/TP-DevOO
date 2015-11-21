@@ -30,11 +30,10 @@ public class VueGraphique extends JPanel implements Observer {
      * @param tournee 
      * @param fenetreIHM
      */
-    public VueGraphique(Tournee tournee, Plan p, int echelleX, int echelleY, FenetreIHM fenetreIHM) {
+    public VueGraphique(Plan p, int echelleX, int echelleY, FenetreIHM fenetreIHM) {
     	super();
     	this.plan = p;
-    	this.tournee = tournee;
-    	this.tournee.addObserver(this);
+//		plan.addObserver(this); // this observe plan
 		this.echelleX = echelleX;
 		this.echelleY = echelleY;
 		hauteurVue = p.getHauteur()*echelleY+100;
@@ -86,7 +85,7 @@ public class VueGraphique extends JPanel implements Observer {
      * @param objet
      */
     public void update(Observable observable, Object obj) {
-        repaint();
+        // TODO implement here
     }
 
     public int getHauteur(){

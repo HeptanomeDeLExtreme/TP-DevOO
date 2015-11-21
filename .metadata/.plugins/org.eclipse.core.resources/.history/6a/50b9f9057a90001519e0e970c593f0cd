@@ -40,9 +40,9 @@ public class VueTextuelle extends JLabel implements Observer{
      * @param observable 
      * @param objet
      */
-    public void update(Observable observable, Object objet) {
-        // TODO implement here
-    }
+//    public void update(Observable observable, Object objet) {
+//        // TODO implement here
+//    }
 
 
 

@@ -48,7 +48,7 @@ public class FenetreIHM extends JFrame{
     /**
      * Default constructor
      */
-    public FenetreIHM(Tournee tournee, Controleur controleur, Plan plan) {
+    public FenetreIHM(Controleur controleur, Plan plan) {
     	
 		this.controleur = controleur;
 		
@@ -68,8 +68,8 @@ public class FenetreIHM extends JFrame{
 		cadreMessages = new JLabel();
 		cadreMessages.setBorder(BorderFactory.createTitledBorder("Messages..."));
 		getContentPane().add(cadreMessages);
-		vueGraphique = new VueGraphique(tournee,plan,echelleX,echelleY,this);
-		vueTextuelle = new VueTextuelle(tournee,this);
+		vueGraphique = new VueGraphique(plan,echelleX,echelleY,this);
+		vueTextuelle = new VueTextuelle(this);
 		ecouteurSouris = new EcouteurSouris(controleur,vueGraphique,this);
 		addMouseListener(ecouteurSouris);
 		setTailleFenetre();

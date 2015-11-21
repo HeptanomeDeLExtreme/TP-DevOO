@@ -187,6 +187,9 @@ public class DemandeDeLivraison {
      */
     protected void calculerTournee(Plan plan, TSP1 tsp) {
         // TODO implement here
+    	
+    	// Calcul des plus courts chemins a partir d'un livraison sur tout le plan
+    	calculDesPlusCourtsChemins();
 
     	// Creation des correspondances entre un sommet (Integer) et une livraison
 		Map<Integer,Livraison> mapLivraisons = correspondanceLivraisons();
@@ -205,7 +208,23 @@ public class DemandeDeLivraison {
     	livraisonsEnOrdre = recupererLivraisonsEnOrdre(graphe, tsp, mapLivraisons);
     }
 
-    private List<Livraison> recupererLivraisonsEnOrdre(GrapheLivraisons graphe, TSP1 tsp, Map<Integer, Livraison> mapLivraisons) {
+    private void calculDesPlusCourtsChemins(Plan plan) {
+		// TODO Auto-generated method stub
+
+    	Set<Livraison> livraisons;
+    	
+    	for (FenetreTemporelle fenetre : fenetres) {
+    		
+    		livraisons = fenetre.getLivraisons();
+    		
+    		for (Livraison livraisonDepart : livraisons) {
+    			livraisonDepart.calculerPlusCourtsChemins(plan, livraisons);
+    		}
+    	}
+	}
+
+
+	private List<Livraison> recupererLivraisonsEnOrdre(GrapheLivraisons graphe, TSP1 tsp, Map<Integer, Livraison> mapLivraisons) {
 		// TODO Auto-generated method stub
     	
     	List<Livraison> livraisonsEnOrdre = new LinkedList<Livraison>();

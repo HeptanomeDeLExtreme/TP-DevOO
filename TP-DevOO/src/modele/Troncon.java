@@ -38,4 +38,14 @@ public class Troncon {
      */
     protected Intersection destination;
 
+	public void setOrigine(Intersection i1) {
+		this.origine = i1;
+		
+	}
+
+	public void setDestination(Intersection i2) {
+		this.destination = i2;
+		
+	}
+
 }

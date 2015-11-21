@@ -10,8 +10,7 @@ public class Intersection {
     @Override
 	public String toString() {
 		return "Intersection [id=" + id + ", x=" + x + ", y=" + y
-				+ ", tronconsSortant=" + tronconsSortant + ", tronconsEntrant="
-				+ tronconsEntrant + "]\n";
+				+ "]\n";
 	}
 
 
@@ -80,7 +79,9 @@ public class Intersection {
      * @param y
      */
     public Intersection(Integer id, Integer x, Integer y) {
-        // TODO implement here
+        this.id = id;
+        this.x=x;
+        this.y=y;
     }
 
 

@@ -11,13 +11,15 @@ public class FenetreTemporelle {
      * Default constructor
      */
     public FenetreTemporelle() {
+    	this.livraisons = new HashSet<Livraison>();
     }
 
     /**
-     * Constructeur de base de fentre temporelle
+     * Constructeur de base de fenêtre temporelle
      */
-    public FenetreTemporelle(GregorianCalendar dateDeb,
-			GregorianCalendar dateFin) {
+    public FenetreTemporelle(Horaire dateDeb,
+			Horaire dateFin) {
+    	this.livraisons = new HashSet<Livraison>();
 		this.heureDebut = dateDeb;
 		this.heureFin = dateFin;
 	}
@@ -25,17 +27,17 @@ public class FenetreTemporelle {
 	/**
      * 
      */
-    protected GregorianCalendar heureDebut;
+    protected Horaire heureDebut;
 
     /**
      * 
      */
-    protected GregorianCalendar heureFin;
+    protected Horaire heureFin;
 
     /**
      * 
      */
-    protected Set<Livraison> livraisons;
+    protected HashSet<Livraison> livraisons;
 
     /**
      * @param livraison
@@ -49,6 +51,15 @@ public class FenetreTemporelle {
      */
     public void ajouteLivraison(Livraison livraison) {
         this.livraisons.add(livraison);
+    }
+    
+    @Override
+    public String toString(){
+    	String s = " heureDeb = "+this.heureDebut.toString()+" heureFin = "+this.heureFin.toString();
+    	for (Livraison l : livraisons){
+    		s+=l.toString();
+    	}
+    	return s;
     }
 
 }

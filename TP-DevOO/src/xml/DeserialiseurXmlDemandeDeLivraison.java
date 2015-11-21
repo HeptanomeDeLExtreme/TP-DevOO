@@ -11,6 +11,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import modele.Client;
 import modele.DemandeDeLivraison;
 import modele.FenetreTemporelle;
+import modele.Horaire;
 import modele.Intersection;
 import modele.Livraison;
 import modele.Plan;
@@ -52,7 +53,6 @@ public class DeserialiseurXmlDemandeDeLivraison {
 	 * @throws NumberFormatException
 	 */
     private static void construireAPartirDeDOMXML(Element noeudDOMRacine, DemandeDeLivraison demandeDeLivraison, Plan plan) throws ExceptionXML, NumberFormatException{
-    	
     	//Création de l'entrepot
     	Element entrepot  = (Element) noeudDOMRacine.getElementsByTagName("Entrepot").item(0);
     	demandeDeLivraison.ajouteEntrepot(creeEntrepot(entrepot, plan)); 
@@ -66,12 +66,14 @@ public class DeserialiseurXmlDemandeDeLivraison {
     		Element fenetreTemporelle = (Element) listePlagesHoraire.item(i);
     		FenetreTemporelle fenetre = creeFenetreTemporelle(fenetreTemporelle);
     		demandeDeLivraison.ajouteFenetreTemporelle(fenetre);
+    		System.out.println("fenetre " + i + " ajoute");
     		
     		//Création pour chaque fenêtre de sa liste de livraisons
-    		Element Livraisons  = (Element) noeudDOMRacine.getElementsByTagName("Livraisons").item(0);
+    		Element Livraisons  = (Element) fenetreTemporelle.getElementsByTagName("Livraisons").item(0);
     		NodeList listeLivraisons = Livraisons.getElementsByTagName("Livraison");
     		for (int j = 0; j < listeLivraisons.getLength(); j++) {
     			fenetre.ajouteLivraison(creeLivraison((Element) listeLivraisons.item(j), plan));
+    			System.out.println("livraison " + j + " de la fenetre " + i+ " ajoute");
     		}
        	}
     }
@@ -84,8 +86,8 @@ public class DeserialiseurXmlDemandeDeLivraison {
 	private static FenetreTemporelle creeFenetreTemporelle(Element fenetre) {
 		String[] dateDebXml = fenetre.getAttribute("heureDebut").split(":");
 		String[] dateFinXml = fenetre.getAttribute("heureFin").split(":");
-		GregorianCalendar dateDeb = new GregorianCalendar(1970, 0, 1, Integer.parseInt(dateDebXml[0]), Integer.parseInt(dateDebXml[1]), Integer.parseInt(dateDebXml[2]));
-		GregorianCalendar dateFin = new GregorianCalendar(1970, 0, 1, Integer.parseInt(dateFinXml[0]), Integer.parseInt(dateFinXml[1]), Integer.parseInt(dateFinXml[2]));
+		Horaire dateDeb = new Horaire(Integer.parseInt(dateDebXml[0]), Integer.parseInt(dateDebXml[1]), Integer.parseInt(dateDebXml[2]));
+		Horaire dateFin = new Horaire(Integer.parseInt(dateFinXml[0]), Integer.parseInt(dateFinXml[1]), Integer.parseInt(dateFinXml[2]));
 		return new FenetreTemporelle(dateDeb, dateFin);
 	}
 	
@@ -97,6 +99,7 @@ public class DeserialiseurXmlDemandeDeLivraison {
 	private static Livraison creeLivraison(Element livraisonXml, Plan plan) {
     	int idadresse = Integer.parseInt(livraisonXml.getAttribute("adresse"));
     	Intersection adresse = plan.recupererIntersectionParId(idadresse);
+    	System.out.println(adresse.toString());
     	int idClient = Integer.parseInt(livraisonXml.getAttribute("client"));
     	Client client = new Client (idClient);
     	int id = Integer.parseInt(livraisonXml.getAttribute("id"));

@@ -11,6 +11,7 @@ public class DemandeDeLivraison {
      * Default constructor
      */
     public DemandeDeLivraison() {
+    	this.fenetres = new ArrayList <FenetreTemporelle>();
     }
 
     /**
@@ -21,7 +22,7 @@ public class DemandeDeLivraison {
     /**
      * 
      */
-    protected List<FenetreTemporelle> fenetres;
+    protected ArrayList<FenetreTemporelle> fenetres;
 
     /**
      * 
@@ -93,6 +94,17 @@ public class DemandeDeLivraison {
      */
 	public void ajouteFenetreTemporelle(FenetreTemporelle fenetreTemporelle) {
 		this.fenetres.add(fenetreTemporelle);
+	}
+	
+    /**
+     * 
+     */
+	public String toString() {
+		String s = this.entrepot.toString() + "/n";
+		for (FenetreTemporelle f : this.fenetres) {
+			s += f.toString() +"/n";	 // TODO FenetreTemporelle.toString()
+		}
+		return s;
 	}
 
 }

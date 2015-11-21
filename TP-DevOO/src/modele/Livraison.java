@@ -43,7 +43,7 @@ public class Livraison {
     /**
      * 
      */
-    protected Date heureArrivee;
+    protected Horaire heureArrivee;
 
     /**
      * 
@@ -59,6 +59,13 @@ public class Livraison {
      * 
      */
     public Client client;
+    
+    @Override
+    public String toString(){
+    	String s = "id = " + this.id.toString() + " adresse = " + this.adresse.toString();
+    	return s;
+    	
+    }
 
 	public Integer getId() {
 		return id;
@@ -68,11 +75,11 @@ public class Livraison {
 		this.id = id;
 	}
 
-	public Date getHeureArrivee() {
+	public Horaire getHeureArrivee() {
 		return heureArrivee;
 	}
 
-	public void setHeureArrivee(Date heureArrivee) {
+	public void setHeureArrivee(Horaire heureArrivee) {
 		this.heureArrivee = heureArrivee;
 	}
 

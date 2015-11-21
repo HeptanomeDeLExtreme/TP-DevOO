@@ -9,8 +9,7 @@ public class Intersection {
 
     @Override
 	public String toString() {
-		return "Intersection [id=" + id + ", x=" + x + ", y=" + y
-				+ "]\n";
+		return "Intersection [id=" + id +"]\n";
 	}
 
 

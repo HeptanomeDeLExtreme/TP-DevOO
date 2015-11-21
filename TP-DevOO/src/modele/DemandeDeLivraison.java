@@ -96,9 +96,7 @@ public class DemandeDeLivraison {
 		this.fenetres.add(fenetreTemporelle);
 	}
 	
-    /**
-     * 
-     */
+	@Override
 	public String toString() {
 		String s = this.entrepot.toString() + "/n";
 		for (FenetreTemporelle f : this.fenetres) {

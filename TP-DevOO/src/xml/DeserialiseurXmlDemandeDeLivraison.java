@@ -66,14 +66,12 @@ public class DeserialiseurXmlDemandeDeLivraison {
     		Element fenetreTemporelle = (Element) listePlagesHoraire.item(i);
     		FenetreTemporelle fenetre = creeFenetreTemporelle(fenetreTemporelle);
     		demandeDeLivraison.ajouteFenetreTemporelle(fenetre);
-    		System.out.println("fenetre " + i + " ajoute");
     		
     		//Création pour chaque fenêtre de sa liste de livraisons
     		Element Livraisons  = (Element) fenetreTemporelle.getElementsByTagName("Livraisons").item(0);
     		NodeList listeLivraisons = Livraisons.getElementsByTagName("Livraison");
     		for (int j = 0; j < listeLivraisons.getLength(); j++) {
     			fenetre.ajouteLivraison(creeLivraison((Element) listeLivraisons.item(j), plan));
-    			System.out.println("livraison " + j + " de la fenetre " + i+ " ajoute");
     		}
        	}
     }
@@ -99,7 +97,6 @@ public class DeserialiseurXmlDemandeDeLivraison {
 	private static Livraison creeLivraison(Element livraisonXml, Plan plan) {
     	int idadresse = Integer.parseInt(livraisonXml.getAttribute("adresse"));
     	Intersection adresse = plan.recupererIntersectionParId(idadresse);
-    	System.out.println(adresse.toString());
     	int idClient = Integer.parseInt(livraisonXml.getAttribute("client"));
     	Client client = new Client (idClient);
     	int id = Integer.parseInt(livraisonXml.getAttribute("id"));

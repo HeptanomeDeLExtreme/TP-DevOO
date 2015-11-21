@@ -25,7 +25,7 @@ public class TestXml {
     	Intersection i6 = new Intersection(87,55,80);
     	Intersection i7 = new Intersection(42, 19, 10);
     	Intersection i8 = new Intersection(72,33,20);
-    	Intersection i9 = new Intersection(35,50,87);
+    	Intersection i9 = new Intersection(14,50,87);
     	Troncon t1 = new Troncon();
     	Troncon t2 = new Troncon();
     	Troncon t3 = new Troncon();
@@ -83,7 +83,7 @@ public class TestXml {
 			e.printStackTrace();
 		}
     	
-    	System.out.println(demandeDeLivraison.toString());
+    	System.out.println("Demande de livraison : " + demandeDeLivraison.toString());
 	}
 	
 	public void testConstructeurLivraisonSansClient(){

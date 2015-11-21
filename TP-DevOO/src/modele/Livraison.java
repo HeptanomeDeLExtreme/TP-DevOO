@@ -64,7 +64,6 @@ public class Livraison {
     public String toString(){
     	String s = "id = " + this.id.toString() + " adresse = " + this.adresse.toString();
     	return s;
-    	
     }
 
 	public Integer getId() {

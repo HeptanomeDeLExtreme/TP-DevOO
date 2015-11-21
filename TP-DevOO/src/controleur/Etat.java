@@ -1,5 +1,6 @@
 package controleur;
 
+import java.awt.Point;
 import java.util.*;
 
 import modele.DemandeDeLivraison;
@@ -15,7 +16,7 @@ public interface Etat {
 
     /**
      * @param fenetre
-     */
+     */ 
     public void ouvrirPlan(FenetreIHM fenetre);
 
     /**
@@ -65,5 +66,7 @@ public interface Etat {
      * @param listeDeCommande
      */
     public void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande);
+
+	public void clicGauche(FenetreIHM fenetre, Plan plan, Point p);
 
 }

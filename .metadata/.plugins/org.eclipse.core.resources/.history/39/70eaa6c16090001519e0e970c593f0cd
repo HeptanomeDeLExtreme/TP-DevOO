@@ -1,0 +1,146 @@
+package controleur;
+
+import java.util.*;
+
+import modele.DemandeDeLivraison;
+import modele.Intersection;
+import modele.Plan;
+import modele.Troncon;
+
+import vue.FenetreIHM;
+
+/**
+ * 
+ */
+public class Controleur {
+
+    /**
+     * 
+     */
+    protected Etat etatCourant;
+
+    /**
+     * 
+     */
+    protected ListeCommande listeCommandes;
+
+    /**
+     * 
+     */
+    protected FenetreIHM fenetre;
+
+    /**
+     * 
+     */
+    protected Plan plan;
+
+    /**
+     * 
+     */
+    protected DemandeDeLivraison demandeDeLivraison;
+
+    /**
+     * 
+     */
+    
+    /**
+     * Default constructor
+     */
+    public Controleur() {
+    	Intersection i1 = new Intersection(1, 10, 10);
+    	Intersection i2 = new Intersection(2,30,20);
+    	Intersection i3 = new Intersection(3,50,80);
+    	Troncon t1 = new Troncon();
+    	Troncon t2 = new Troncon();
+    	t1.setOrigine(i1);
+    	t1.setDestination(i2);
+    	t2.setOrigine(i2);
+    	t2.setDestination(i3);
+    	Set<Troncon> tronconE1 = new HashSet<Troncon>();
+    	Set<Troncon> tronconS1 = new HashSet<Troncon>();
+    	tronconS1.add(t1);
+    	Set<Troncon> tronconE2 = new HashSet<Troncon>();
+    	tronconE2.add(t1);
+    	Set<Troncon> tronconS2 = new HashSet<Troncon>();
+    	i1.setTronçonsEntrant(tronconE1);
+    	i1.setTronçonsSortant(tronconS1);
+    	i2.setTronçonsEntrant(tronconE2);
+    	i2.setTronçonsSortant(tronconS2);
+    	i3.setTronçonsEntrant(tronconE3);
+    	i3.setTronçonsSortant(tronconS3);
+    	
+    	Set<Intersection> listeInter = new HashSet<Intersection>();
+    	listeInter.add(i1);
+    	listeInter.add(i2);
+    	Plan p = new Plan(listeInter);
+    	fenetre = new FenetreIHM(p);
+    }
+    
+    protected void undo() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    protected void redo() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    protected void ouvrirPlan() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    protected void importerLivraison() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    protected void calculerTournee() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    protected void ajouterLivraison() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    protected void genererFeuilleRoute() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    protected void modifierLivraison() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    protected void supprimeLivraison() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    protected void clicDroit() {
+        // TODO implement here
+    }
+
+}

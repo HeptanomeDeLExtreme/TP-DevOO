@@ -13,7 +13,30 @@ public class Troncon {
     public Troncon() {
     }
 
-    /**
+    
+    
+    public Intersection getOrigine() {
+		return origine;
+	}
+
+	public Intersection getDestination() {
+		return destination;
+	}
+
+	public void setOrigine(Intersection origine) {
+		this.origine = origine;
+	}
+
+
+
+	public void setDestination(Intersection destination) {
+		this.destination = destination;
+	}
+
+
+
+
+	/**
      * 
      */
     protected Float longueur;

@@ -1,8 +1,10 @@
 package controleur;
 
+import java.awt.Point;
 import java.util.*;
 
 import modele.DemandeDeLivraison;
+import modele.Intersection;
 import modele.Livraison;
 import modele.Plan;
 
@@ -88,8 +90,18 @@ public class EtatDefaut implements Etat {
      * @param fenetre 
      * @param listeDeCommande
      */
-    public void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
-        // TODO implement here
+    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p) {
+        Intersection inter = plan.cherche(p);
+        if(inter != null){
+	        System.out.println("DEBUg : "+inter);
+	        fenetre.afficheMessage(inter.toString());
+        }
     }
+
+	@Override
+	public void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

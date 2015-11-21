@@ -33,6 +33,10 @@ public class VueTextuelle extends JLabel implements Observer {
 		fenetre.getContentPane().add(this);
 //		plan.addObserver(this); // this observe plan
     }
+    
+    protected void changeText(String s){
+    	this.setText(s);
+    }
 
     /**
      * @param observable 

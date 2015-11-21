@@ -1,5 +1,7 @@
 package vue;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.*;
 
 import javax.swing.BorderFactory;
@@ -19,10 +21,6 @@ import controleur.Controleur;
  */
 public class FenetreIHM extends JFrame{
 
-	// A ENLEVER JUSTE POUR LE DEBUG
-	protected Plan p;
-	// FIN A ENLEVER
-	
     protected EcouteurBoutons ecouteurBoutons;
     protected EcouteurSouris ecouteurSouris;
     protected VueGraphique vueGraphique;
@@ -44,24 +42,35 @@ public class FenetreIHM extends JFrame{
 	
 	private JLabel cadreMessages;
 	
-	private final int hauteurCadreMessages = 80;
+	private final int hauteurCadreMessages = 100;
 	private final int largeurVueTextuelle = 400;
 	
     /**
      * Default constructor
      */
-    public FenetreIHM(Plan p, int echelle) {
+    public FenetreIHM(Controleur controleur, Plan plan) {
     	
-		this.p = p;
+		this.controleur = controleur;
+		
+		// Calcul de l'echelle en x
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int largeurEcran = (int)screenSize.getWidth();
+		int largeurPlan = controleur.getPlanLargeur();
+		int echelleX = (int) ((largeurEcran - largeurVueTextuelle) / largeurPlan);
+		
+		// Calcul de l'echelle en y
+		int hauteurEcran = (int)screenSize.getHeight()-100;
+		int hauteurPlan = controleur.getPlanHauteur();
+		int echelleY = (int) ((hauteurEcran - hauteurCadreMessages) / hauteurPlan );
 		
     	setLayout(null);
 		creerMenu();
 		cadreMessages = new JLabel();
 		cadreMessages.setBorder(BorderFactory.createTitledBorder("Messages..."));
 		getContentPane().add(cadreMessages);
-		vueGraphique = new VueGraphique(p,echelle, this);
+		vueGraphique = new VueGraphique(plan,echelleX,echelleY,this);
 		vueTextuelle = new VueTextuelle(this);
-		ecouteurSouris = new EcouteurSouris();
+		ecouteurSouris = new EcouteurSouris(controleur,vueGraphique,this);
 		addMouseListener(ecouteurSouris);
 		setTailleFenetre();
 		setVisible(true);
@@ -121,7 +130,9 @@ public class FenetreIHM extends JFrame{
     
     private void setTailleFenetre() {
 		int hauteurBoutons = 0;
-		int hauteurFenetre = Math.max(vueGraphique.getHauteur(),hauteurBoutons)+hauteurCadreMessages;
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+//		int hauteurFenetre = Math.max(vueGraphique.getHauteur(),hauteurBoutons)+hauteurCadreMessages;
+		int hauteurFenetre = (int) screenSize.getHeight()-20;
 		int largeurFenetre = vueGraphique.getLargeur()+0+largeurVueTextuelle+10;
 		setSize(largeurFenetre, hauteurFenetre);
 		cadreMessages.setSize(largeurFenetre,60);
@@ -131,24 +142,14 @@ public class FenetreIHM extends JFrame{
 		vueTextuelle.setLocation(10+vueGraphique.getLargeur()+0,0);
 	}
 
-    public static void main(String[] args){
-    	Intersection i1 = new Intersection(1, 10, 10);
-    	Intersection i2 = new Intersection(2,30,20);
-    	Set<Intersection> listeInter = new HashSet<Intersection>();
-    	listeInter.add(i1);
-    	listeInter.add(i2);
-    	Plan p = new Plan(listeInter);
-    	Set<Intersection> retInter = p.getIntersections();
-    	for(Intersection inter : retInter){
-    		int id = inter.getId();
-    		int x = inter.getX();
-    		int y = inter.getY();
-    		System.out.println("id : "+id+" x : "+x+" y : "+y);
-    	}
-    	System.out.println(p.getHauteur());
-    	System.out.println(p.getLargeur());
-    	new FenetreIHM(p,10);
+    public void afficheVueTextuelle(String s){
+    	this.vueTextuelle.changeText(s);
     }
+    
+    public void afficheMessage(String s){
+    	this.cadreMessages.setText(s);
+    }
+
 }
 
 

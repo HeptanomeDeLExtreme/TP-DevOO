@@ -1,5 +1,6 @@
 package modele;
 
+import java.awt.Point;
 import java.util.*;
 
 /**
@@ -16,9 +17,31 @@ public class Intersection {
     	this.y = y;
     }
    
-    
-    
-    public Integer getId() {
+    public Set<Troncon> getTronçonsSortant() {
+		return tronçonsSortant;
+	}
+
+
+
+	public void setTronçonsSortant(Set<Troncon> tronçonsSortant) {
+		this.tronçonsSortant = tronçonsSortant;
+	}
+
+
+
+	public Set<Troncon> getTronçonsEntrant() {
+		return tronçonsEntrant;
+	}
+
+
+
+	public void setTronçonsEntrant(Set<Troncon> tronçonsEntrant) {
+		this.tronçonsEntrant = tronçonsEntrant;
+	}
+
+
+
+	public Integer getId() {
 		return id;
 	}
 
@@ -32,7 +55,11 @@ public class Intersection {
 		return y;
 	}
 
-
+	public boolean contient(Point p) {
+		int ecartX = (int) Math.abs(p.getX()-this.x);
+		int ecartY = (int) Math.abs(p.getY()-this.y);
+		return (ecartX < 10 && ecartY < 10);
+	}
 
 	/**
      * 
@@ -66,8 +93,15 @@ public class Intersection {
      * @param y 
      * @param tronconSortant
      */
-    public void Intersection(Integer id, Integer x, Integer y, List<Troncon> tronconSortant) {
+    public Intersection(Integer id, Integer x, Integer y, List<Troncon> tronconSortant) {
         // TODO implement here
     }
+
+	@Override
+	public String toString() {
+		return "Intersection [id=" + id + ", x=" + x + ", y=" + y + "]";
+	}
+    
+    
 
 }

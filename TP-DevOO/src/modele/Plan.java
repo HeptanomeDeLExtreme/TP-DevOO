@@ -1,5 +1,6 @@
 package modele;
 
+import java.awt.Point;
 import java.util.*;
 
 /**
@@ -36,6 +37,15 @@ public class Plan {
     		}
     	}
     	return max;
+    }
+    
+    public Intersection cherche(Point p){
+    	Iterator<Intersection> it = intersections.iterator();
+		while (it.hasNext()){
+			Intersection inter = it.next();
+			if (inter.contient(p)) return inter;
+		}
+		return null;
     }
     
     /**

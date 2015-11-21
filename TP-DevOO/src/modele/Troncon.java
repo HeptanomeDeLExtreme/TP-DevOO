@@ -6,6 +6,11 @@ import java.util.*;
  * 
  */
 public class Troncon {
+	
+	@Override
+	public String toString() {
+		return "Troncon " + nomDeRue + " : " + vitesseMoyenne;
+	}
 
     /**
      * Default constructor
@@ -14,7 +19,11 @@ public class Troncon {
     }
 
     public Troncon(String nomRue, Float vitesse, Float longueur, Intersection origine, Intersection destination) {
-		// TODO Auto-generated constructor stub
+		this.nomDeRue = nomRue;
+		this.vitesseMoyenne = vitesse;
+		this.longueur = longueur;
+		this.origine = origine;
+		this.destination = destination;
 	}
 
 	/**
@@ -42,16 +51,13 @@ public class Troncon {
      */
     protected Intersection destination;
     
-    // TODO vrai constructeur
-    // problème : dans le XML, on donne l'id de la destination, qui peut ne pas encore exister lors de la lecture du XML.
-
-	public void setOrigine(Intersection i1) {
-		this.origine = i1;
+	public void setOrigine(Intersection inter) {
+		this.origine = inter;
 		
 	}
 
-	public void setDestination(Intersection i2) {
-		this.destination = i2;
+	public void setDestination(Intersection dest) {
+		this.destination = dest;
 		
 	}
 

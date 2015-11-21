@@ -168,9 +168,17 @@ public class DemandeDeLivraison {
     protected void calculerTournee(Plan plan) {
         // TODO implement here
     	
+    	// Creation des correspondances entre un sommet (Integer) et une livraison
     	Map<Integer,Livraison> mapLivraisons= mappingLivraisons();
+    	
+    	// Generation des arcs du graphe de livraisons
     	float tableauArcs[][] = genererTableauArcs(mapLivraisons);
+    	
+    	// Generation du graphe de livraisons
     	GrapheLivraisons graphe = new GrapheLivraisons(nbLivraisons, tableauArcs);
+    	
+    	// Recherche de la solution avec TSP
+    	tsp.chercherSolution(0, graphe);
     }
 
     /**

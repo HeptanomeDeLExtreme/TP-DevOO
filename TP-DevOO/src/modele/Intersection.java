@@ -7,7 +7,15 @@ import java.util.*;
  */
 public class Intersection {
 
-    /**
+    @Override
+	public String toString() {
+		return "Intersection [id=" + id + ", x=" + x + ", y=" + y
+				+ ", tronconsSortant=" + tronconsSortant + ", tronconsEntrant="
+				+ tronconsEntrant + "]\n";
+	}
+
+
+	/**
      * Default constructor
      */
     public Intersection() {

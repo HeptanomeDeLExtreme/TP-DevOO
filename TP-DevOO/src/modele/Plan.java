@@ -1,13 +1,26 @@
 package modele;
 
+import java.io.IOException;
 import java.util.*;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
+import xml.DeserialiseurPlanXML;
+import xml.ExceptionXML;
 
 /**
  * 
  */
 public class Plan {
 
-    /**
+    @Override
+	public String toString() {
+		return "Plan [intersections=" + intersections + "]";
+	}
+
+	/**
      * Default constructor
      */
     public Plan() {
@@ -26,8 +39,17 @@ public class Plan {
     /**
      * @param fichier
      */
-    public void Plan(String fichier) {
-        // TODO implement here
+    public Plan(final String fichier) {
+    	try {
+			System.out.println("Ca marche");			
+			DeserialiseurPlanXML.charger(this);
+		} catch (ParserConfigurationException | SAXException | IOException
+				| ExceptionXML e) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception constructeur plan");			
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
     }
     
     /**

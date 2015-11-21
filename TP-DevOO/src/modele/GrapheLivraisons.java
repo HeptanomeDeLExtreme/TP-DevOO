@@ -15,16 +15,45 @@ public class GrapheLivraisons {
 
     /**
      * 
+     * @param nbSommets
+     * @param couts
      */
-    private Livraison[] correspondance;
+    
+    
+    public GrapheLivraisons(int nbSommets, float[][] couts) {
+		super();
+		this.nbSommets = nbSommets;
+		this.couts = couts;
+	}
 
+	/**
+     * 
+     */
+    protected int nbSommets;
+    
     /**
-     * @param sommetSolution 
+     * 
+     */
+    protected float couts[][];
+    
+    /**
+     * 
      * @return
      */
-    public Livraison rechercherCorrespondance(Integer sommetSolution) {
-        // TODO implement here
-        return null;
-    }
+    public int getNbSommets() {
+		return nbSommets;
+	}
+
+    /**
+     * 
+     * @param i
+     * @param j
+     * @return
+     */
+	public float getCout(Integer i,Integer j) {
+		return couts[i][j];
+	}
+
+	
 
 }

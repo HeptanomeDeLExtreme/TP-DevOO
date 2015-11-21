@@ -1,0 +1,57 @@
+package modele;
+
+import java.util.*;
+
+/**
+ * 
+ */
+public class GrapheLivraisons {
+
+    /**
+     * Default constructor
+     */
+    public GrapheLivraisons() {
+    }
+
+    /**
+     * 
+     */
+    protected int nbSommets;
+    
+    /**
+     * 
+     */
+    protected float couts[][];
+    
+    /**
+     * 
+     * @return
+     */
+    public int getNbSommets() {
+		return nbSommets;
+	}
+
+    /**
+     * 
+     * @param i
+     * @param j
+     * @return
+     */
+	public float getCout(Integer i,Integer j) {
+		return couts[i][j];
+	}
+
+
+
+
+
+	/**
+     * @param sommetSolution 
+     * @return
+     */
+    public Livraison rechercherCorrespondance(Integer sommetSolution) {
+        // TODO implement here
+        return null;
+    }
+
+}

@@ -1,0 +1,123 @@
+package modele;
+
+import java.util.*;
+
+/**
+ * 
+ */
+public class DemandeDeLivraison {
+
+    /**
+     * Default constructor
+     */
+    public DemandeDeLivraison() {
+    }
+
+    /**
+     * 
+     */
+    protected Tournee tournee;
+
+    /**
+     * 
+     */
+    protected List<FenetreTemporelle> fenetres;
+
+    /**
+     * 
+     */
+    protected Livraison entrepot;
+
+    /**
+     * 
+     */
+    protected DemandeDeLivraison singleton;
+
+    /**
+     * @param livraison1 
+     * @param livraison2
+     */
+    protected void modifierTournee(Livraison livraison1, Livraison livraison2) {
+        // TODO implement here
+    }
+
+    /**
+     * @param livraison
+     */
+    protected void supprimeLivraison(Livraison livraison) {
+        // TODO implement here
+    }
+
+    /**
+     * @param livraisonAvant 
+     * @param livraison
+     */
+    protected void ajouteLivraison(Livraison livraisonAvant, Livraison livraison) {
+        // TODO implement here
+    }
+
+    /**
+     * @param plan
+     */
+    protected void calculerTournee(Plan plan) {
+        // TODO implement here
+    	int livraisonInteger = 0;
+    	
+    	for(int i = 0; i<fenetres.size(); i++){
+    		
+    		FenetreTemporelle fenetreActuelle = fenetres.get(i);
+    		Set<Livraison> livraisonsFenetre = fenetreActuelle.getLivraisons();
+    		
+    		for(Livraison livraisonActuelle : livraisonsFenetre){
+    			
+    			
+    		}
+    		
+    	}
+    	
+    	for(int i = 0; i<fenetres.size()-1; i++){
+    		
+    		FenetreTemporelle fenetreActuelle = fenetres.get(i);
+    		FenetreTemporelle fenetreSuivante = fenetres.get(i+1);
+    		
+    		Set<Livraison> livraisonsFActuelle = fenetreActuelle.getLivraisons();
+    		Set<Livraison> livraisonsFSuivante = fenetreSuivante.getLivraisons();
+    		
+    		for(Livraison livraisonSourceActuelle : livraisonsFActuelle){
+    			
+    			for(Livraison livraisonDestActuelle : livraisonsFActuelle){
+    			
+    				if(livraisonDestActuelle.getId() != livraisonSourceActuelle.getId()){
+    					
+    				}
+    			}
+    			
+    			for(Livraison livraisonDestSuivante : livraisonsFSuivante){
+    				
+    			}
+    			
+    		}
+    		
+    		
+    		
+    	}
+    	
+    }
+
+    /**
+     * @param plan 
+     * @param depart 
+     * @param arrivee
+     */
+    protected void calculPlusCourtChemin(Plan plan, Livraison depart, Livraison arrivee) {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    protected void genereFeuilleDeRoute() {
+        // TODO implement here
+    }
+
+}

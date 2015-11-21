@@ -1,0 +1,32 @@
+package modele;
+
+import java.util.*;
+
+/**
+ * 
+ */
+public class GrapheLivraisons {
+
+    /**
+     * Default constructor
+     */
+    public GrapheLivraisons() {
+    }
+
+    
+    protected int nbLivraisons;
+    
+    protected float cout[][];
+    
+    
+
+    /**
+     * @param sommetSolution 
+     * @return
+     */
+    public Livraison rechercherCorrespondance(Integer sommetSolution) {
+        // TODO implement here
+        return null;
+    }
+
+}

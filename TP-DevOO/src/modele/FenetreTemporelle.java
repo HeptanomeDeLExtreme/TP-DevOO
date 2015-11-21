@@ -29,6 +29,27 @@ public class FenetreTemporelle {
     protected Set<Livraison> livraisons;
 
     /**
+     * 
+     */
+    public Date getHeureDebut() {
+		return heureDebut;
+	}
+    
+    /**
+     * 
+     */
+	public Date getHeureFin() {
+		return heureFin;
+	}
+	
+	/**
+     * 
+     */
+	public Set<Livraison> getLivraisons() {
+		return livraisons;
+	}
+
+	/**
      * @param livraison
      */
     protected void supprimeLivraison(Livraison livraison) {

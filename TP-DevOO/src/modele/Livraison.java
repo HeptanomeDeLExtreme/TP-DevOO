@@ -38,4 +38,21 @@ public class Livraison {
      */
     public Client client;
 
+    /**
+     * 
+     */
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 * 
+	 * @param livraisonDest
+	 * @return
+	 */
+	public float rechercherCout(Livraison livraisonDest)
+	{
+		return 1;
+	}
+	
 }

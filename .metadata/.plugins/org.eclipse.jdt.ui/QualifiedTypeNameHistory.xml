@@ -6,4 +6,6 @@
 <fullyQualifiedTypeName name="modele.Livraison"/>
 <fullyQualifiedTypeName name="vue.FenetreIHM"/>
 <fullyQualifiedTypeName name="modele.DemandeDeLivraison"/>
+<fullyQualifiedTypeName name="java.security.KeyStore.Entry"/>
+<fullyQualifiedTypeName name="java.util.Map.Entry"/>
 </qualifiedTypeNameHistroy>

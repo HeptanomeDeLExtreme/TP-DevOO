@@ -1,3 +1,7 @@
+// TODO : Rajouter l'entrepot dans toutes les méthodes ! Pour l'instant,
+// l'entrepot n'est pas pris en compte dans le calcul des plus courts chemins,
+// la map de correspondance, la création d'itinéraires...etc...
+
 package modele;
 
 import java.util.*;
@@ -9,58 +13,58 @@ import tsp.TSP1;
  * 
  */
 public class DemandeDeLivraison {
+	
+	/**
+     * La tournee qui correspond a la demande de livraisons. Vide lors de la 
+     * creation de l'objet DemandeDeLivraison, elle est calculee par la methode
+     * calculTournee.
+     * 
+     * @see calculerTournee
+     */
+    protected Tournee tournee;
 
     /**
-     * Default constructor
+     * Les fenetres listees dans le fichier XML de demande de livraisons.
      */
-    public DemandeDeLivraison() {
-    }
-    
+    protected List<FenetreTemporelle> fenetres;
 
-    public DemandeDeLivraison(Tournee tournee, List<FenetreTemporelle> fenetres, Livraison entrepot,
-			DemandeDeLivraison singleton) {
+    /**
+     * La livraison de depart et d'arrivee de la tournee.
+     */
+    protected Livraison entrepot;
+    
+    /**
+     * Le nombre de livraisons totale du fichier XML de demande de livraisons.
+     */
+    protected int nbLivraisons;
+
+	
+    /**
+     * Cree un objet DemandeDeLivraison a partir d'un fichier XML.
+     * 
+     * @param fenetres
+     * 	Fenetres temporelles decrites dans le XML.
+     * 
+     * @param entrepot
+     * 	Entrepot defini dans le XML.
+     */
+    public DemandeDeLivraison(List<FenetreTemporelle> fenetres, Livraison entrepot) {
 		super();
-		this.tournee = tournee;
+		
+		this.tournee = new Tournee();
 		this.fenetres = fenetres;
 		this.entrepot = entrepot;
-		this.singleton = singleton;
 		
+		// Compte le nombre de livraisons du fichier XML
 		int nbLivraisons = 0;
 		
-		for (int i = 0; i < fenetres.size(); i++){
-			FenetreTemporelle fenetreActuelle = fenetres.get(i);
-			Set<Livraison> livraisonsFActuelle = fenetreActuelle.getLivraisons();
+		for (FenetreTemporelle fenetre : fenetres) {
+			Set<Livraison> livraisonsFActuelle = fenetre.getLivraisons();
 			nbLivraisons += livraisonsFActuelle.size();
 		}
 		
 		this.nbLivraisons = nbLivraisons;
 	}
-
-
-	/**
-     * 
-     */
-    protected Tournee tournee;
-
-    /**
-     * 
-     */
-    protected List<FenetreTemporelle> fenetres;
-
-    /**
-     * 
-     */
-    protected Livraison entrepot;
-
-    /**
-     * 
-     */
-    protected DemandeDeLivraison singleton;
-    
-    /**
-     * 
-     */
-    protected int nbLivraisons;
 
     /**
      * 

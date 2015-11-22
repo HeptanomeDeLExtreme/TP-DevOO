@@ -193,16 +193,16 @@ public class DemandeDeLivraison {
         // TODO implement here
     	
     	// Calcul des plus courts chemins a partir d'un livraison sur tout le plan
-    	calculDesPlusCourtsChemins(plan);
+    	calculDesPlusCourtsChemins();
 
     	// Creation des correspondances entre un sommet (Integer) et une livraison
 		Map<Integer,Livraison> mapLivraisons = correspondanceLivraisons();
 		
     	// Generation des arcs du graphe de livraisons
-    	int couts[][] = genererTableauArcs(mapLivraisons);
+    	int tableauArcs[][] = genererTableauArcs(mapLivraisons);
     	
     	// Generation du graphe de livraisons
-    	GrapheLivraisons graphe = new GrapheLivraisons(nbLivraisons, couts);
+    	GrapheLivraisons graphe = new GrapheLivraisons(nbLivraisons, tableauArcs);
     	
     	// Recherche de la solution avec TSP
     	tsp.chercheSolution(0, graphe);
@@ -210,22 +210,11 @@ public class DemandeDeLivraison {
     	// Recuperer l'ordre des livraisons a effectuer grace a TSP
     	List<Livraison> livraisonsEnOrdre = new LinkedList<Livraison>();
     	livraisonsEnOrdre = recupererLivraisonsEnOrdre(graphe, tsp, mapLivraisons);
-    	
-    	// Récupérer l'ordre des itinéraires entre les livraisons.
-    	List<Itineraire> itinerairesEnOrdre = new LinkedList<Itineraire>();
-    	itinerairesEnOrdre = recupererItinerairesEnOrdre(livraisonsEnOrdre, mapLivraisons,couts);
-    	
     }
 
     private void calculDesPlusCourtsChemins(Plan plan) {
 		// TODO Auto-generated method stub
-    	
-    	// Recherche des plus courts chemins pour l'entrepôt mentionné dans le
-    	// fichier XML
-    	entrepot.calculerPlusCourtsChemins(plan);  	
-    	
-    	// Recherche des plus courts chemins pour toutes les livraisons du fichier
-    	// XML
+
     	Set<Livraison> livraisons;
     	
     	for (FenetreTemporelle fenetre : fenetres) {
@@ -233,7 +222,7 @@ public class DemandeDeLivraison {
     		livraisons = fenetre.getLivraisons();
     		
     		for (Livraison livraisonDepart : livraisons) {
-    			livraisonDepart.calculerPlusCourtsChemins(plan);
+    			livraisonDepart.calculerPlusCourtsChemins(plan, livraisons);
     		}
     	}
 	}
@@ -263,7 +252,7 @@ public class DemandeDeLivraison {
      */
     private List<Itineraire> recupererItinerairesEnOrdre(List<Livraison> listeLivraisons, Map<Integer, Livraison> mapLivraisons, int[][] couts){
  
-    	List<Itineraire> itinerairesEnOrdre = new LinkedList<Itineraire>();
+    	List<Itineraire> ItinerairesEnOrdre = new LinkedList<Itineraire>();
     	for(int i = 0; i < listeLivraisons.size() -1; i++)
     	{
     		Livraison livraisonActuelle = listeLivraisons.get(i);
@@ -274,12 +263,12 @@ public class DemandeDeLivraison {
     		int coutItineraire = couts[depart][arrivee];
     		List <Troncon> troncons = livraisonSuivante.rechercherTroncons();
     		
-    		Itineraire itineraire = new Itineraire(coutItineraire, troncons, livraisonActuelle, livraisonSuivante);
+    		Itineraire itineraire = Itineraire(coutItineraire, troncons, livraisonActuelle, livraisonSuivante);
     		
-    		itinerairesEnOrdre.add(itineraire);
+    		
     		
     	}
-    	return itinerairesEnOrdre;
+    	return null;
     }
 
 	/**

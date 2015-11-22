@@ -54,14 +54,8 @@ public class Livraison {
 	{
 		return 1;
 	}
-	
-	public List<Troncon> rechercherTroncons()
-	{
-		//TODO implémenter la recherche des tronçons.
-		return null;
-	}
 
-	public void calculerPlusCourtsChemins(Plan plan) {
+	public void calculerPlusCourtsChemins(Plan plan, Set<Livraison> livraisons) {
 		// TODO Auto-generated method stub
 	}
 	

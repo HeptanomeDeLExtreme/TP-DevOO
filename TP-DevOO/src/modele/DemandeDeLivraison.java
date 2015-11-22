@@ -136,6 +136,9 @@ public class DemandeDeLivraison {
     	List<Itineraire> itinerairesEnOrdre = new LinkedList<Itineraire>();
     	itinerairesEnOrdre = recupererItinerairesEnOrdre(livraisonsEnOrdre, mapLivraisons,couts);
     	
+    	// Créer la tournée
+    	int coutTotalSolution = tsp.getCoutSolution();
+    	Tournee tournee = new Tournee(this, entrepot, coutTotalSolution, itinerairesEnOrdre);
     }
 
     /**

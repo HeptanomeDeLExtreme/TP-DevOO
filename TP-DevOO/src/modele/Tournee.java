@@ -9,14 +9,17 @@ public class Tournee extends Observable {
 
     /**
      * Default constructor
+     *
+     * @param coutTotal
+     * @param livraisonsEnOrdre
      */
-    public Tournee() {
+    public Tournee(DemandeDeLivraison ddl, Livraison entrepot, int coutTotal, List<Itineraire> itinerairesEnOrdre) {
     }
 
     /**
      * 
      */
-    protected Float duree;
+    protected int duree;
 
     /**
      * 
@@ -32,11 +35,6 @@ public class Tournee extends Observable {
      * 
      */
     protected List<Itineraire> itineraires;
-
-    /**
-     * 
-     */
-    protected Tournee singleton;
 
     /**
      * @param livraison1 

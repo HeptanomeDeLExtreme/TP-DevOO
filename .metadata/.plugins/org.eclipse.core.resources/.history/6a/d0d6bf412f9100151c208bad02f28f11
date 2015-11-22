@@ -179,7 +179,7 @@ public class FenetreIHM extends JFrame{
 		vueTextuelle.setSize(largeurVueTextuelle,hauteurVueG);
 		vueTextuelle.setLocation(largeurVueG,0);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		this.setResizable(false);
+		this.setResizable(true);
     }
 
     public void afficheVueTextuelle(String s){

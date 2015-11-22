@@ -66,9 +66,7 @@ public class VueGraphique extends JPanel implements Observer {
 			this.fenetre.setEchelleX(echelleX);
 			
 			// Calcul de l'echelle en y
-			int hauteurEcran = screen.height-25;
-			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			hauteurEcran = (int) screenSize.getHeight();
+			int hauteurEcran = screen.height;
 			int hauteurPlan = this.plan.getHauteur();
 			this.echelleY = (float)(hauteurEcran - fenetre.getHauteurCadreMessages()) / (float)hauteurPlan ;
 			this.fenetre.setEchelleY(echelleY);

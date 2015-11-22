@@ -41,8 +41,8 @@ public class VueGraphique extends JPanel implements Observer {
     	this.fenetre = fenetreIHM;
     	this.tournee = tournee;
     	this.tournee.addObserver(this);
-		this.echelleX = (float) 1.0;
-		this.echelleY = (float) 1.0;
+		this.echelleX = 1.0;
+		this.echelleY = 1.0;
 		setLayout(null);
 		setBackground(Color.DARK_GRAY);
 		setSize(largeurVue, hauteurVue);
@@ -63,15 +63,11 @@ public class VueGraphique extends JPanel implements Observer {
 			int largeurEcran = screen.width;
 			int largeurPlan = this.plan.getLargeur();
 			this.echelleX = (float)(largeurEcran - fenetre.getLargeurVueTextuelle()) / (float)largeurPlan;
-			this.fenetre.setEchelleX(echelleX);
 			
 			// Calcul de l'echelle en y
-			int hauteurEcran = screen.height-25;
-			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			hauteurEcran = (int) screenSize.getHeight();
+			int hauteurEcran = screen.height;
 			int hauteurPlan = this.plan.getHauteur();
 			this.echelleY = (float)(hauteurEcran - fenetre.getHauteurCadreMessages()) / (float)hauteurPlan ;
-			this.fenetre.setEchelleY(echelleY);
 			
 			for(Intersection inter : listInter){
 				// Dessine les intersections		

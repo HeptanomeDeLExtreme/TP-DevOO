@@ -3,8 +3,6 @@ package vue;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.util.*;
 
@@ -35,14 +33,14 @@ public class VueGraphique extends JPanel implements Observer {
      * @param tournee 
      * @param fenetreIHM
      */
-    public VueGraphique(Tournee tournee, Plan p, FenetreIHM fenetreIHM) {
+    public VueGraphique(Tournee tournee, Plan p, float echelleX, float echelleY, FenetreIHM fenetreIHM) {
     	super();
     	this.plan = p;
     	this.fenetre = fenetreIHM;
     	this.tournee = tournee;
     	this.tournee.addObserver(this);
-		this.echelleX = (float) 1.0;
-		this.echelleY = (float) 1.0;
+		this.echelleX = echelleX;
+		this.echelleY = echelleY;
 		setLayout(null);
 		setBackground(Color.DARK_GRAY);
 		setSize(largeurVue, hauteurVue);
@@ -59,19 +57,15 @@ public class VueGraphique extends JPanel implements Observer {
 		if(listInter != null && listInter.size()>0){
 			
 			// Calcul de l'echelle en x
-			Rectangle screen = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
-			int largeurEcran = screen.width;
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			int largeurEcran = (int)screenSize.getWidth();
 			int largeurPlan = this.plan.getLargeur();
 			this.echelleX = (float)(largeurEcran - fenetre.getLargeurVueTextuelle()) / (float)largeurPlan;
-			this.fenetre.setEchelleX(echelleX);
 			
 			// Calcul de l'echelle en y
-			int hauteurEcran = screen.height-25;
-			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			hauteurEcran = (int) screenSize.getHeight();
+			int hauteurEcran = (int)screenSize.getHeight()-100;
 			int hauteurPlan = this.plan.getHauteur();
 			this.echelleY = (float)(hauteurEcran - fenetre.getHauteurCadreMessages()) / (float)hauteurPlan ;
-			this.fenetre.setEchelleY(echelleY);
 			
 			for(Intersection inter : listInter){
 				// Dessine les intersections		

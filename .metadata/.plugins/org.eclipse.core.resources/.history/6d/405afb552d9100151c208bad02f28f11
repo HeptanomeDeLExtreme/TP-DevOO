@@ -63,15 +63,12 @@ public class VueGraphique extends JPanel implements Observer {
 			int largeurEcran = screen.width;
 			int largeurPlan = this.plan.getLargeur();
 			this.echelleX = (float)(largeurEcran - fenetre.getLargeurVueTextuelle()) / (float)largeurPlan;
-			this.fenetre.setEchelleX(echelleX);
+			this.fenetre.
 			
 			// Calcul de l'echelle en y
-			int hauteurEcran = screen.height-25;
-			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			hauteurEcran = (int) screenSize.getHeight();
+			int hauteurEcran = screen.height;
 			int hauteurPlan = this.plan.getHauteur();
 			this.echelleY = (float)(hauteurEcran - fenetre.getHauteurCadreMessages()) / (float)hauteurPlan ;
-			this.fenetre.setEchelleY(echelleY);
 			
 			for(Intersection inter : listInter){
 				// Dessine les intersections		

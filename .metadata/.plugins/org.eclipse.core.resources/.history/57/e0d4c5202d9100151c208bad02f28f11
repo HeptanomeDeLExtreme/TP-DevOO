@@ -47,8 +47,6 @@ public class FenetreIHM extends JFrame{
 	private final int hauteurCadreMessages = 100;
 	private final int largeurVueTextuelle = 400;
 	
-	private float echelleX;
-	private float echelleY;
 	
     /**
      * Default constructor
@@ -73,19 +71,8 @@ public class FenetreIHM extends JFrame{
     }
 
     
-    public void setEchelleX(float echelleX) {
-		this.echelleX = echelleX;
-	}
-
-
-
-	public void setEchelleY(float echelleY) {
-		this.echelleY = echelleY;
-	}
-
-
-
-	public int getHauteurCadreMessages() {
+    
+    public int getHauteurCadreMessages() {
 		return hauteurCadreMessages;
 	}
 
@@ -94,19 +81,6 @@ public class FenetreIHM extends JFrame{
 	public int getLargeurVueTextuelle() {
 		return largeurVueTextuelle;
 	}
-
-
-
-	public float getEchelleX() {
-		return echelleX;
-	}
-
-
-
-	public float getEchelleY() {
-		return echelleY;
-	}
-
 
 
 	private void creerMenu(){
@@ -169,18 +143,16 @@ public class FenetreIHM extends JFrame{
 		int largeurFenetre = screen.width;
 		
 		int hauteurVueG = hauteurFenetre-hauteurCadreMessages-20;
-		int largeurVueG = largeurFenetre-largeurVueTextuelle;
+		int largeurVueG = largeurFenetre-largeurVueTextuelle+20;
 		
-		setSize(largeurFenetre, hauteurFenetre); // DEBUG
+		setSize(largeurFenetre, hauteurFenetre);
 		cadreMessages.setSize(largeurFenetre,60);
 		cadreMessages.setLocation(0,hauteurVueG);
 		vueGraphique.setLocation(0, 0);
 		vueGraphique.setSize(largeurVueG,hauteurVueG);
 		vueTextuelle.setSize(largeurVueTextuelle,hauteurVueG);
-		vueTextuelle.setLocation(largeurVueG,0);
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		this.setResizable(false);
-    }
+		vueTextuelle.setLocation(10+largeurVueG,0);
+	}
 
     public void afficheVueTextuelle(String s){
     	this.vueTextuelle.changeText(s);

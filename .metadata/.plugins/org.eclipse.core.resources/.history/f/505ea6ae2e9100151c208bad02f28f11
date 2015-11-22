@@ -171,16 +171,14 @@ public class FenetreIHM extends JFrame{
 		int hauteurVueG = hauteurFenetre-hauteurCadreMessages-20;
 		int largeurVueG = largeurFenetre-largeurVueTextuelle;
 		
-		setSize(largeurFenetre, hauteurFenetre); // DEBUG
+		setSize(largeurFenetre+500, hauteurFenetre); // DEBUG
 		cadreMessages.setSize(largeurFenetre,60);
 		cadreMessages.setLocation(0,hauteurVueG);
 		vueGraphique.setLocation(0, 0);
 		vueGraphique.setSize(largeurVueG,hauteurVueG);
 		vueTextuelle.setSize(largeurVueTextuelle,hauteurVueG);
 		vueTextuelle.setLocation(largeurVueG,0);
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		this.setResizable(false);
-    }
+	}
 
     public void afficheVueTextuelle(String s){
     	this.vueTextuelle.changeText(s);

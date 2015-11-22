@@ -10,8 +10,8 @@ public class GraphePondere {
 	 }
 	 
 	 /**
-	  * Génère un Graphe à partir d'un plan passé en paramètre.
-	  * @param plan 
+	  * 
+	  * @param n
 	  */
 	 public GraphePondere(Plan plan) {
 	
@@ -22,36 +22,15 @@ public class GraphePondere {
 		 
 		 Integer numeroIntersection = 0;
 		 
-		 // Attribution d'un numéro à toutes les intersections
 		 Map<Intersection, Integer> mapIntersections = new HashMap<Intersection, Integer>();
-		 for(Intersection intersection : setIntersections){
-			 mapIntersections.put(intersection,numeroIntersection);
+		 for(Intersection intersectionActuelle : setIntersections){
+			 mapIntersections.put(intersectionActuelle,numeroIntersection);
 			 numeroIntersection++;
 		 }
 		 
-		 //Récupération des intersections voisines de chaque intersection et du cout associé
-		 for (Intersection intersection : setIntersections){
-			 
-			 Integer origin_Integer = mapIntersections.get(intersection);
-			 int origin = origin_Integer.intValue();
-			 
-			 Map<Intersection,Integer> intersectionsVoisines = intersection.getIntersectionsVoisines();
-			
-			 //Récupération du numéro de chaque voisin et du cout associé au trajet
-			 for (Map.Entry<Intersection,Integer> entry : intersectionsVoisines.entrySet()) {
-				    Intersection voisin = entry.getKey();
-				    Integer cout_Integer = entry.getValue();
-				    Integer dest_Integer= mapIntersections.get(voisin);
-				    
-				    int dest = dest_Integer.intValue();
-				    int cout = cout_Integer.intValue();
-				    
-				    couts[origin][dest]=cout;
-				}
-		
-		 }
 		 
-		 this.couts = couts;
+		 
+		 
 	 } 
 	 
 	 /**

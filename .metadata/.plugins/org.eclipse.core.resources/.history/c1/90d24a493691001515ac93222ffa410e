@@ -11,7 +11,7 @@ public class GraphePondere {
 	 
 	 /**
 	  * Génère un Graphe à partir d'un plan passé en paramètre.
-	  * @param plan 
+	  * @param n
 	  */
 	 public GraphePondere(Plan plan) {
 	
@@ -48,10 +48,13 @@ public class GraphePondere {
 				    
 				    couts[origin][dest]=cout;
 				}
-		
+
 		 }
 		 
-		 this.couts = couts;
+		 
+		 
+		 
+		 
 	 } 
 	 
 	 /**

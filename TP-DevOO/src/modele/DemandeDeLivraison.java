@@ -17,26 +17,6 @@ import xml.ExceptionXML;
 public class DemandeDeLivraison {
 
     /**
-     * Default constructor
-     */
-    public DemandeDeLivraison() {
-    	
-    }
-    
-    public void chargerLivraison(Plan plan){
-    	try {
-    		fenetres = new ArrayList<FenetreTemporelle>();
-    		DeserialiseurDemandeDeLivraisonXML.charger(this,plan);
-		} catch (ParserConfigurationException | SAXException | IOException
-				| ExceptionXML e) {
-			// TODO Auto-generated catch block
-			System.out.println("Exception constructeur livraisons");			
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		}
-    }
-
-    /**
      * 
      */
     protected Tournee tournee;
@@ -55,6 +35,25 @@ public class DemandeDeLivraison {
      * 
      */
     protected DemandeDeLivraison singleton;
+    
+    /**
+     * Default constructor
+     */
+    public DemandeDeLivraison() {
+    }
+    
+    public void chargerLivraison(Plan plan){
+    	try {
+    		fenetres = new ArrayList<FenetreTemporelle>();
+    		DeserialiseurDemandeDeLivraisonXML.charger(this,plan);
+		} catch (ParserConfigurationException | SAXException | IOException
+				| ExceptionXML e) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception constructeur livraisons");			
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+    }
 
     /**
      * @param livraison1 
@@ -125,6 +124,38 @@ public class DemandeDeLivraison {
 			s += f.toString() +"/n";	 // TODO FenetreTemporelle.toString()
 		}
 		return s;
+	}
+
+	public Tournee getTournee() {
+		return tournee;
+	}
+
+	public void setTournee(Tournee tournee) {
+		this.tournee = tournee;
+	}
+
+	public List<FenetreTemporelle> getFenetres() {
+		return fenetres;
+	}
+
+	public void setFenetres(List<FenetreTemporelle> fenetres) {
+		this.fenetres = fenetres;
+	}
+
+	public Livraison getEntrepot() {
+		return entrepot;
+	}
+
+	public void setEntrepot(Livraison entrepot) {
+		this.entrepot = entrepot;
+	}
+
+	public DemandeDeLivraison getSingleton() {
+		return singleton;
+	}
+
+	public void setSingleton(DemandeDeLivraison singleton) {
+		this.singleton = singleton;
 	}
 
 }

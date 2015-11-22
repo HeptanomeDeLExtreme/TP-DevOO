@@ -7,6 +7,22 @@ import java.util.*;
  */
 public class FenetreTemporelle {
 
+	/**
+     * 
+     */
+    protected Horaire heureDebut;
+
+    /**
+     * 
+     */
+    protected Horaire heureFin;
+
+    /**
+     * 
+     */
+    protected Set<Livraison> livraisons;
+
+    
     /**
      * Default constructor
      */
@@ -23,22 +39,8 @@ public class FenetreTemporelle {
 		this.heureDebut = dateDeb;
 		this.heureFin = dateFin;
 	}
-
-	/**
-     * 
-     */
-    protected Horaire heureDebut;
-
-    /**
-     * 
-     */
-    protected Horaire heureFin;
-
-    /**
-     * 
-     */
-    protected Set<Livraison> livraisons;
-
+    
+    
     /**
      * @param livraison
      */
@@ -61,5 +63,29 @@ public class FenetreTemporelle {
     	}
     	return s;
     }
+
+	public Horaire getHeureDebut() {
+		return heureDebut;
+	}
+
+	public void setHeureDebut(Horaire heureDebut) {
+		this.heureDebut = heureDebut;
+	}
+
+	public Horaire getHeureFin() {
+		return heureFin;
+	}
+
+	public void setHeureFin(Horaire heureFin) {
+		this.heureFin = heureFin;
+	}
+
+	public Set<Livraison> getLivraisons() {
+		return livraisons;
+	}
+
+	public void setLivraisons(Set<Livraison> livraisons) {
+		this.livraisons = livraisons;
+	}
 
 }

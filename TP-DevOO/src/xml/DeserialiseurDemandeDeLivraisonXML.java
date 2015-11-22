@@ -22,6 +22,10 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 
+/**
+ * @author H4203
+ *
+ */
 public class DeserialiseurDemandeDeLivraisonXML {
 	/**
 	 * Ouvre un fichier xml et cree une demande de livraison a partir du contenu du fichier
@@ -92,6 +96,7 @@ public class DeserialiseurDemandeDeLivraisonXML {
 	/**
 	 * Cree une livraison
 	 * @param Element item
+	 * @param Plan plan
 	 * @return Livraison livraison
 	 */
 	private static Livraison creeLivraison(Element livraisonXml, Plan plan) {
@@ -106,6 +111,7 @@ public class DeserialiseurDemandeDeLivraisonXML {
 	/**
 	 * Cree un entrepot
 	 * @param Element item
+	 * @param Plan plan
 	 * @return Livraison entrepot
 	 */
 	private static Livraison creeEntrepot(Element entrepot, Plan plan) {

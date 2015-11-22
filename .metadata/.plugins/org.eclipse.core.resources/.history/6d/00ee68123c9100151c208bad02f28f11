@@ -120,11 +120,6 @@ public class Plan extends Observable{
 		return null;
     }
     
-    public void changementEffectue(){
-        setChanged(); 
-        notifyObservers();
-    }
-    
     /**
      * 
      */

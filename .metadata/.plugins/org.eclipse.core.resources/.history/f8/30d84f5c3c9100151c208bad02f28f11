@@ -62,7 +62,7 @@ public class FenetreIHM extends JFrame{
 		cadreMessages = new JLabel();
 		cadreMessages.setBorder(BorderFactory.createTitledBorder("Messages..."));
 		getContentPane().add(cadreMessages);
-		vueTextuelle = new VueTextuelle(plan,tournee,this);
+		vueTextuelle = new VueTextuelle(tournee,this);
 		vueGraphique = new VueGraphique(tournee,plan,this);
 		ecouteurSouris = new EcouteurSouris(controleur,vueGraphique,this);
 		addMouseListener(ecouteurSouris);

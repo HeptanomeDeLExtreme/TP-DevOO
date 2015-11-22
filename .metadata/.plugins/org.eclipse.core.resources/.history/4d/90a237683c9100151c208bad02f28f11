@@ -40,7 +40,6 @@ public class VueGraphique extends JPanel implements Observer {
     public VueGraphique(Tournee tournee, Plan p, FenetreIHM fenetreIHM) {
     	super();
     	this.plan = p;
-    	this.plan.addObserver(this);
     	this.fenetre = fenetreIHM;
     	this.tournee = tournee;
     	this.tournee.addObserver(this);

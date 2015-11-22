@@ -21,7 +21,7 @@ public class Itineraire {
     /**
      * 
      */
-    protected List<Troncon> tronçons;
+    protected List<Troncon> troncons;
 
     /**
      * 
@@ -32,5 +32,15 @@ public class Itineraire {
      * 
      */
     protected Livraison arrivee;
+
+	public List<Troncon> getTroncons() {
+		return troncons;
+	}
+
+	public void setTroncons(List<Troncon> troncons) {
+		this.troncons = troncons;
+	}
+    
+    
 
 }

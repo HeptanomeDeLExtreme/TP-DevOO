@@ -8,10 +8,12 @@ import java.util.*;
 public class Client {
 
     /**
-     * Default constructor
+     * Constructeur de base
+     * @param int idClient
      */
-    public Client() {
-    }
+    public Client(int idClient) {
+		this.id = idClient;
+	}
 
     /**
      * 

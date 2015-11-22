@@ -1,13 +1,20 @@
 package vue;
 
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.*;
+
+import javax.swing.SwingUtilities;
+
+import modele.Plan;
 
 import controleur.Controleur;
 
 /**
  * 
  */
-public class EcouteurSouris {
+public class EcouteurSouris extends MouseAdapter{
 
     /**
      * Default constructor
@@ -15,6 +22,17 @@ public class EcouteurSouris {
     public EcouteurSouris() {
     }
 
+    /**
+     * @param controleur 
+     * @param vueGraphique 
+     * @param fenetreIHM
+     */
+    public EcouteurSouris(Controleur controleur, VueGraphique vueGraphique, FenetreIHM fenetreIHM) {
+        this.controleur = controleur;
+        this.vueGraphique = vueGraphique;
+        this.fenetreIHM = fenetreIHM;
+    }
+    
     /**
      * 
      */
@@ -30,14 +48,27 @@ public class EcouteurSouris {
      */
     protected FenetreIHM fenetreIHM;
 
+    
+    @Override
+	public void mouseClicked(MouseEvent evt) {
+		Point p = coordonnees(evt);
+		switch (evt.getButton()){
+		case MouseEvent.BUTTON1: 
+			if (p != null){
+				controleur.clicGauche(p);
+			}
+			break;
+		case MouseEvent.BUTTON3: 
+			break;
+		default:
+		}
+	}
 
-    /**
-     * @param controleur 
-     * @param vueGraphique 
-     * @param fenetreIHM
-     */
-    public void EcouteurSouris(Controleur controleur, VueGraphique vueGraphique, FenetreIHM fenetreIHM) {
-        // TODO implement here
-    }
+	private Point coordonnees(MouseEvent evt) {
+		MouseEvent e = SwingUtilities.convertMouseEvent(fenetreIHM, evt, vueGraphique);
+		int x = Math.round((float)e.getY()/(float)vueGraphique.getEchelleY());
+		int y = Math.round((float)e.getX()/(float)vueGraphique.getEchelleX());
+		return new Point(y,x);
+	}
 
 }

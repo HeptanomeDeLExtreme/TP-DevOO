@@ -11,17 +11,28 @@ public class FenetreTemporelle {
      * Default constructor
      */
     public FenetreTemporelle() {
+    	this.livraisons = new HashSet<Livraison>();
     }
 
     /**
+     * Constructeur de base de fenêtre temporelle
+     */
+    public FenetreTemporelle(Horaire dateDeb,
+			Horaire dateFin) {
+    	this.livraisons = new HashSet<Livraison>();
+		this.heureDebut = dateDeb;
+		this.heureFin = dateFin;
+	}
+
+	/**
      * 
      */
-    protected Date heureDebut;
+    protected Horaire heureDebut;
 
     /**
      * 
      */
-    protected Date heureFin;
+    protected Horaire heureFin;
 
     /**
      * 
@@ -38,8 +49,17 @@ public class FenetreTemporelle {
     /**
      * @param livraison
      */
-    protected void ajouteLivraison(Livraison livraison) {
-        // TODO implement here
+    public void ajouteLivraison(Livraison livraison) {
+        this.livraisons.add(livraison);
+    }
+    
+    @Override
+    public String toString(){
+    	String s = " heureDeb = "+this.heureDebut.toString()+" heureFin = "+this.heureFin.toString();
+    	for (Livraison l : livraisons){
+    		s+=l.toString();
+    	}
+    	return s;
     }
 
 }

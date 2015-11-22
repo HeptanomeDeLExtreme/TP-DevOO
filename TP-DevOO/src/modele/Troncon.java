@@ -13,7 +13,52 @@ public class Troncon {
     public Troncon() {
     }
 
-    /**
+    public Troncon(String nomRue, Float vitesse, Float longueur, Intersection origine, Intersection destination) {
+		this.nomDeRue = nomRue;
+		this.vitesseMoyenne = vitesse;
+		this.longueur = longueur;
+		this.origine = origine;
+		this.destination = destination;
+	}
+
+    
+    
+    public Intersection getOrigine() {
+		return origine;
+	}
+
+	public Intersection getDestination() {
+		return destination;
+	}
+
+	public void setOrigine(Intersection origine) {
+		this.origine = origine;
+	}
+
+
+
+	public void setDestination(Intersection destination) {
+		this.destination = destination;
+	}
+
+	public String getNomDeRue() {
+		return nomDeRue;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Troncon [longueur=" + longueur + ", vitesseMoyenne="
+				+ vitesseMoyenne + ", nomDeRue=" + nomDeRue + ", origine="
+				+ origine + ", destination=" + destination + "]";
+	}
+
+
+
+
+
+	/**
      * 
      */
     protected Float longueur;

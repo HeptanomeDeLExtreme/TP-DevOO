@@ -2,6 +2,8 @@ package modele;
 
 import java.util.*;
 
+
+
 /**
  * 
  */
@@ -53,7 +55,13 @@ public class Tournee extends Observable {
         // TODO implement here
     }
 
-    /**
+    
+    
+    public List<Itineraire> getItineraires() {
+		return itineraires;
+	}
+
+	/**
      * @param livraisonAvant 
      * @param livraison
      */
@@ -64,7 +72,7 @@ public class Tournee extends Observable {
     /**
      * @param preTournee
      */
-    public void Tournee(Map<FenetreTemporelle,List<Itineraire>> preTournee) {
+    public Tournee(Map<FenetreTemporelle,List<Itineraire>> preTournee) {
         // TODO implement here
     }
 
@@ -74,5 +82,15 @@ public class Tournee extends Observable {
     protected void genererFeuilleDeRoute() {
         // TODO implement here
     }
+    
+    public void changementEffectue(){
+        setChanged(); 
+        notifyObservers();
+    }
 
+	public void setItineraires(List<Itineraire> itineraires) {
+		this.itineraires = itineraires;
+	}
+
+    
 }

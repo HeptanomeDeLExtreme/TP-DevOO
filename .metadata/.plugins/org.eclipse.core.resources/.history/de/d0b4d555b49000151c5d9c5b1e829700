@@ -45,21 +45,18 @@ public class VueTextuelle extends JLabel implements Observer{
      */
     public void update(Observable observable, Object objet) {
         List<Itineraire> listeItineraire = this.tournee.getItineraires();
-        if(listeItineraire != null){
-	        List<Troncon> listeTroncon = new ArrayList<Troncon>();
-	        for(Itineraire itineraire : listeItineraire){
-	        	System.out.println("1");
-	        	listeTroncon.addAll(itineraire.getTroncons());
-	        }
-	        
-	
-	        this.setText("<html>");
-	        for(Troncon troncon : listeTroncon){
-	        	this.setText(this.getText()+"\n"+"Prenez :\n"+troncon.getNomDeRue()+"<br>");
-	        }
-	        this.setText(this.getText()+"</html>");
-	        
-    	}
+        List<Troncon> listeTroncon = new ArrayList<Troncon>();
+        for(Itineraire itineraire : listeItineraire){
+        	System.out.println("1");
+        	listeTroncon.addAll(itineraire.getTroncons());
+        }
+        
+
+        this.setText("<html>");
+        for(Troncon troncon : listeTroncon){
+        	this.setText(this.getText()+"\n"+"Prenez :\n"+troncon.getNomDeRue()+"<br>");
+        }
+        this.setText(this.getText()+"</html>");
         
     }
 

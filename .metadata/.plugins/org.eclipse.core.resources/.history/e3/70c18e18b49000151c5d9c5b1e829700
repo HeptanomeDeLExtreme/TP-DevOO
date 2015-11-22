@@ -73,34 +73,32 @@ public class VueGraphique extends JPanel implements Observer {
 		}
 		
 		List<Itineraire> listeItineraire = this.tournee.getItineraires();
-		if(listeItineraire != null){
-	        List<Troncon> listeTroncon = new ArrayList<Troncon>();
-	        for(int i = 0; i<listeItineraire.size();i++){
-	        	Itineraire itineraire = listeItineraire.get(i);
-	        	listeTroncon.addAll(itineraire.getTroncons());
-	        }
-	        
-	        for(int i = 0; i<listeTroncon.size();i++){
-	        	Troncon troncon = listeTroncon.get(i);
-	        	Intersection origine = troncon.getOrigine();
-	        	Intersection destination = troncon.getDestination();
-	        	
-	        	g.setColor(Color.GREEN);
-	        	
-	        	// Origine
-	        	int x1 = (int) (origine.getX()*echelleX);
-	        	int y1 = (int) (origine.getY()*echelleY);
-	        	g.fillOval(x1, y1, 10, 10);
-	        	
-	        	// Destination
-	        	int x2 = (int) (destination.getX()*echelleX);
-	        	int y2 = (int) (destination.getY()*echelleY);
-	        	g.fillOval(x2, y2, 10, 10);
-	        	
-	        	// Lien entre les deux
-	        	g.drawLine(x1+5,y1+5,x2+5,y2+5);
-	        }
-		}
+        List<Troncon> listeTroncon = new ArrayList<Troncon>();
+        for(int i = 0; i<listeItineraire.size();i++){
+        	Itineraire itineraire = listeItineraire.get(i);
+        	listeTroncon.addAll(itineraire.getTroncons());
+        }
+        
+        for(int i = 0; i<listeTroncon.size();i++){
+        	Troncon troncon = listeTroncon.get(i);
+        	Intersection origine = troncon.getOrigine();
+        	Intersection destination = troncon.getDestination();
+        	
+        	g.setColor(Color.GREEN);
+        	
+        	// Origine
+        	int x1 = (int) (origine.getX()*echelleX);
+        	int y1 = (int) (origine.getY()*echelleY);
+        	g.fillOval(x1, y1, 10, 10);
+        	
+        	// Destination
+        	int x2 = (int) (destination.getX()*echelleX);
+        	int y2 = (int) (destination.getY()*echelleY);
+        	g.fillOval(x2, y2, 10, 10);
+        	
+        	// Lien entre les deux
+        	g.drawLine(x1+5,y1+5,x2+5,y2+5);
+        }
         
 		this.g = g;
 	}

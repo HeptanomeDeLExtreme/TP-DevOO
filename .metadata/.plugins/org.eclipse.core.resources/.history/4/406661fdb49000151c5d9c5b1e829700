@@ -43,7 +43,7 @@ public class FenetreIHM extends JFrame{
 	private JLabel cadreMessages;
 	
 	private final int hauteurCadreMessages = 100;
-	private final int largeurVueTextuelle = 400;
+	private final int largeurVueTextuelle = 500;
 	
 	private float echelleX;
 	private float echelleY;

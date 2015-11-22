@@ -159,7 +159,7 @@ public class FenetreIHM extends JFrame{
 		int largeurFenetre = vueGraphique.getLargeur()+0+largeurVueTextuelle+10;
 		setSize(largeurFenetre, hauteurFenetre);
 		cadreMessages.setSize(largeurFenetre,60);
-		cadreMessages.setLocation(0,vueGraphique.getHauteur());
+		cadreMessages.setLocation(0,hauteurFenetre-hauteurCadreMessages);
 		vueGraphique.setLocation(0, 0);
 		vueTextuelle.setSize(largeurVueTextuelle,vueGraphique.getHauteur());
 		vueTextuelle.setLocation(10+vueGraphique.getLargeur()+0,0);

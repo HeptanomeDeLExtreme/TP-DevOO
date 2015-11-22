@@ -13,7 +13,6 @@ public class Tournee extends Observable {
      * Default constructor
      */
     public Tournee() {
-    	this.changementEffectue();
     }
 
     /**

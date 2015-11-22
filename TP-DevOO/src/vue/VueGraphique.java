@@ -17,8 +17,8 @@ import modele.Troncon;
  */
 public class VueGraphique extends JPanel implements Observer {
 
-	private int echelleX;
-	private int echelleY;
+	private float echelleX;
+	private float echelleY;
 	private int hauteurVue;
 	private int largeurVue;
 	private Graphics g;
@@ -31,15 +31,15 @@ public class VueGraphique extends JPanel implements Observer {
      * @param tournee 
      * @param fenetreIHM
      */
-    public VueGraphique(Tournee tournee, Plan p, int echelleX, int echelleY, FenetreIHM fenetreIHM) {
+    public VueGraphique(Tournee tournee, Plan p, float echelleX, float echelleY, FenetreIHM fenetreIHM) {
     	super();
     	this.plan = p;
     	this.tournee = tournee;
     	this.tournee.addObserver(this);
 		this.echelleX = echelleX;
 		this.echelleY = echelleY;
-		hauteurVue = p.getHauteur()*echelleY+100;
-		largeurVue = p.getLargeur()*echelleX+100;
+		hauteurVue = (int) (p.getHauteur()*echelleY+50);
+		largeurVue = (int) (p.getLargeur()*echelleX+50);
 		setLayout(null);
 		setBackground(Color.DARK_GRAY);
 		setSize(largeurVue, hauteurVue);
@@ -55,57 +55,57 @@ public class VueGraphique extends JPanel implements Observer {
 		for(Intersection inter : listInter){
 			// Dessine les intersections		
 			String id = inter.getId()+"";
-			int x = inter.getX()*echelleX;
-			int y = inter.getY()*echelleY;
+			int x = (int) (inter.getX()*echelleX);
+			int y = (int) (inter.getY()*echelleY);
 			g.drawString(id, x-5, y-5);
 			g.fillOval(x, y, 10, 10);
 			
-			// Dessine les tronçons
-			Set<Troncon> tronconSortant = inter.getTronçonsSortant();
+			// Dessine les troncons
+			Set<Troncon> tronconSortant = inter.getTronconsSortant();
 			for(Troncon tronc : tronconSortant){
 				Intersection dest = tronc.getDestination();
-				int x1 = inter.getX()*echelleX+5;
-				int y1 = inter.getY()*echelleY+5;
-				int x2 = dest.getX()*echelleX+5;
-				int y2 = dest.getY()*echelleY+5;
+				int x1 = (int) (inter.getX()*echelleX+5);
+				int y1 = (int) (inter.getY()*echelleY+5);
+				int x2 = (int) (dest.getX()*echelleX+5);
+				int y2 = (int) (dest.getY()*echelleY+5);
 				g.drawLine(x1,y1,x2,y2);
 			}
 		}
 		
-		List<Itineraire> listeItineraire = this.tournee.getItineraires();
-        Set<Troncon> listeTroncon = new HashSet<Troncon>();
-        for(Itineraire itineraire : listeItineraire){
-        	listeTroncon.addAll(itineraire.getTronçons());
-        }
-        
-        for(Troncon troncon : listeTroncon){
-        	Intersection origine = troncon.getOrigine();
-        	Intersection destination = troncon.getDestination();
-        	
-        	g.setColor(Color.GREEN);
-        	
-        	// Origine
-        	int x1 = origine.getX()*echelleX;
-        	int y1 = origine.getY()*echelleY;
-        	g.fillOval(x1, y1, 10, 10);
-        	
-        	// Destination
-        	int x2 = destination.getX()*echelleX;
-        	int y2 = destination.getY()*echelleY;
-        	g.fillOval(x2, y2, 10, 10);
-        	
-        	// Lien entre les deux
-        	g.drawLine(x1+5,y1+5,x2+5,y2+5);
-        }
+//		List<Itineraire> listeItineraire = this.tournee.getItineraires();
+//        Set<Troncon> listeTroncon = new HashSet<Troncon>();
+//        for(Itineraire itineraire : listeItineraire){
+//        	listeTroncon.addAll(itineraire.getTroncons());
+//        }
+//        
+//        for(Troncon troncon : listeTroncon){
+//        	Intersection origine = troncon.getOrigine();
+//        	Intersection destination = troncon.getDestination();
+//        	
+//        	g.setColor(Color.GREEN);
+//        	
+//        	// Origine
+//        	int x1 = origine.getX()*echelleX;
+//        	int y1 = origine.getY()*echelleY;
+//        	g.fillOval(x1, y1, 10, 10);
+//        	
+//        	// Destination
+//        	int x2 = destination.getX()*echelleX;
+//        	int y2 = destination.getY()*echelleY;
+//        	g.fillOval(x2, y2, 10, 10);
+//        	
+//        	// Lien entre les deux
+//        	g.drawLine(x1+5,y1+5,x2+5,y2+5);
+//        }
         
 		this.g = g;
 	}
 	
-	public int getEchelleX() {
+	public float getEchelleX() {
 		return echelleX;
 	}
 
-	public int getEchelleY() {
+	public float getEchelleY() {
 		return echelleY;
 	}
 

@@ -1,18 +1,87 @@
 package modele;
 
 import java.awt.Point;
+import java.io.IOException;
 import java.util.*;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
+import xml.DeserialiseurPlanXML;
+import xml.ExceptionXML;
 
 /**
  * 
  */
 public class Plan {
 
+
+//    public Plan(Set<Intersection> listeInter) {
+//		this.intersections = listeInter;
+//	}
+    
+    public Plan(){
+    	// TODO
+    	chargerPlan();
+    }
+    
     /**
-     * Default constructor
+     * @param fichier
      */
-    public Plan(Set<Intersection> listeInter) {
-    	this.intersections = listeInter;
+    public void chargerPlan() {
+    	try {
+    		intersections = new HashSet<Intersection>();
+    		DeserialiseurPlanXML.charger(this);
+		} catch (ParserConfigurationException | SAXException | IOException
+				| ExceptionXML e) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception constructeur plan");			
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+    }
+    
+    
+    @Override
+	public String toString() {
+		return "Plan [intersections=" + intersections + "]";
+	}
+    
+    
+    /**
+     * Permet de récuperer une intersection avec son id
+     * @param int id
+     * @return Intersection noeud
+     */
+    public Intersection recupererIntersectionParId(int id){
+    	Iterator<Intersection> iterateur = intersections.iterator();
+    	Intersection noeud = iterateur.next();
+    	
+    	while (iterateur.hasNext() && noeud.getId() != id) {
+    		noeud = iterateur.next();
+    	}
+    	
+    	if (noeud.id == id){
+    		return noeud;
+    	}
+    	
+    	else
+    	{
+    		return null;
+    	}
+    		
+    }
+    
+    /**
+     * Ajoute une intersection au plan
+     * @param intersection Intersection à ajouter
+     */
+    public void ajoute(Intersection intersection) {
+    	if(intersection != null)
+    		intersections.add(intersection);
+    	else
+    		System.out.println("Erreur : intersection inexistante");
     }
     
     public Set<Intersection> getIntersections(){
@@ -39,7 +108,7 @@ public class Plan {
     	return max;
     }
     
-    public Intersection cherche(Point p, int echelleX, int echelleY){
+    public Intersection cherche(Point p, float echelleX, float echelleY){
     	Iterator<Intersection> it = intersections.iterator();
 		while (it.hasNext()){
 			Intersection inter = it.next();

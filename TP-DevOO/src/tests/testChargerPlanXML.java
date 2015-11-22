@@ -12,7 +12,7 @@ import modele.Plan;
 public class testChargerPlanXML {
 
 	public static void main (String [] args){
-		Plan plan = new Plan("fichier");
+		Plan plan = new Plan();
 		System.out.println(plan);
 	}
 	

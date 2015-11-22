@@ -8,35 +8,47 @@ import java.util.*;
  */
 public class Intersection {
 
-    /**
+	/**
      * Default constructor
      */
-    public Intersection(int id, int x, int y) {
-    	this.id = id;
-    	this.x = x;
-    	this.y = y;
+    public Intersection() {
     }
+    
+	public Intersection(Integer id, Integer x, Integer y) {
+		this.id = id;
+		this.x = x;
+		this.y = y;
+		this.tronconsEntrant = new HashSet<Troncon>();
+		this.tronconsSortant = new HashSet<Troncon>();
+		
+	}
    
-    public Set<Troncon> getTronçonsSortant() {
-		return tronçonsSortant;
+    public Set<Troncon> getTronconsSortant() {
+		return tronconsSortant;
 	}
 
 
 
-	public void setTronçonsSortant(Set<Troncon> tronçonsSortant) {
-		this.tronçonsSortant = tronçonsSortant;
+	public void setTronconsSortant(Set<Troncon> tronconsSortant) {
+		this.tronconsSortant = tronconsSortant;
 	}
 
 
 
-	public Set<Troncon> getTronçonsEntrant() {
-		return tronçonsEntrant;
+	public Set<Troncon> getTronconsEntrant() {
+		return tronconsEntrant;
 	}
 
+	public void ajouteTronconEntrant(Troncon troncon) {
+		tronconsEntrant.add(troncon);
+	}
+	
+	public void ajouteTronconSortant(Troncon troncon) {
+		tronconsSortant.add(troncon);
+	}
 
-
-	public void setTronçonsEntrant(Set<Troncon> tronçonsEntrant) {
-		this.tronçonsEntrant = tronçonsEntrant;
+	public void setTronconsEntrant(Set<Troncon> tronconsEntrant) {
+		this.tronconsEntrant = tronconsEntrant;
 	}
 
 
@@ -55,7 +67,7 @@ public class Intersection {
 		return y;
 	}
 
-	public boolean contient(Point p, int echelleX, int echelleY) {
+	public boolean contient(Point p, float echelleX, float echelleY) {
 		int ecartX = (int) Math.abs(p.getX()*echelleX-this.x*echelleX);
 		int ecartY = (int) Math.abs(p.getY()*echelleY-this.y*echelleY);
 		System.out.println((int)p.getX()+" "+this.x+" "+ecartX);
@@ -81,12 +93,12 @@ public class Intersection {
     /**
      * 
      */
-    protected Set<Troncon> tronçonsSortant;
+    protected Set<Troncon> tronconsSortant;
 
     /**
      * 
      */
-    protected Set<Troncon> tronçonsEntrant;
+    protected Set<Troncon> tronconsEntrant;
 
 
     /**

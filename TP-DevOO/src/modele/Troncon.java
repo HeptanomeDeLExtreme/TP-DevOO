@@ -10,9 +10,16 @@ public class Troncon {
     /**
      * Default constructor
      */
-    public Troncon(String nomDeRue) {
-    	this.nomDeRue = nomDeRue;
+    public Troncon() {
     }
+
+    public Troncon(String nomRue, Float vitesse, Float longueur, Intersection origine, Intersection destination) {
+		this.nomDeRue = nomRue;
+		this.vitesseMoyenne = vitesse;
+		this.longueur = longueur;
+		this.origine = origine;
+		this.destination = destination;
+	}
 
     
     

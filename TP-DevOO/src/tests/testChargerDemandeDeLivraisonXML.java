@@ -50,12 +50,12 @@ public class testChargerDemandeDeLivraisonXML {
     	tronconE3.add(t2);
     	tronconE3.add(t3);
     	Set<Troncon> tronconS3 = new HashSet<Troncon>();
-    	i1.setTronçonsEntrant(tronconE1);
-    	i1.setTronçonsSortant(tronconS1);
-    	i2.setTronçonsEntrant(tronconE2);
-    	i2.setTronçonsSortant(tronconS2);
-    	i3.setTronçonsEntrant(tronconE3);
-    	i3.setTronçonsSortant(tronconS3);
+    	i1.setTronconsEntrant(tronconE1);
+    	i1.setTronconsSortant(tronconS1);
+    	i2.setTronconsEntrant(tronconE2);
+    	i2.setTronconsSortant(tronconS2);
+    	i3.setTronconsEntrant(tronconE3);
+    	i3.setTronconsSortant(tronconS3);
     	
     	Set<Intersection> listeInter = new HashSet<Intersection>();
     	listeInter.add(i1);
@@ -67,7 +67,8 @@ public class testChargerDemandeDeLivraisonXML {
     	listeInter.add(i7);
     	listeInter.add(i8);
     	listeInter.add(i9);
-    	Plan plan = new Plan(listeInter);
+//    	Plan plan = new Plan(listeInter);
+    	Plan plan = new Plan();
     	
     	DemandeDeLivraison demandeDeLivraison = new DemandeDeLivraison();
     	try {

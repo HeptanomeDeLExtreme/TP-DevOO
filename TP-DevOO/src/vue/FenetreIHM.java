@@ -45,8 +45,8 @@ public class FenetreIHM extends JFrame{
 	private final int hauteurCadreMessages = 100;
 	private final int largeurVueTextuelle = 400;
 	
-	private int echelleX;
-	private int echelleY;
+	private float echelleX;
+	private float echelleY;
 	
     /**
      * Default constructor
@@ -59,12 +59,14 @@ public class FenetreIHM extends JFrame{
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int largeurEcran = (int)screenSize.getWidth();
 		int largeurPlan = controleur.getPlanLargeur();
-		this.echelleX = (int) ((largeurEcran - largeurVueTextuelle) / largeurPlan);
+		this.echelleX = (float)(largeurEcran - largeurVueTextuelle) / (float)largeurPlan;
 		
 		// Calcul de l'echelle en y
 		int hauteurEcran = (int)screenSize.getHeight()-100;
 		int hauteurPlan = controleur.getPlanHauteur();
-		this.echelleY = (int) ((hauteurEcran - hauteurCadreMessages) / hauteurPlan );
+		this.echelleY = (float)(hauteurEcran - hauteurCadreMessages) / (float)hauteurPlan ;
+		
+		System.out.println("ECHELLE : "+echelleX+" "+echelleY);
 		
     	setLayout(null);
 		creerMenu();
@@ -78,17 +80,21 @@ public class FenetreIHM extends JFrame{
 		setTailleFenetre();
 		setVisible(true);
 		
+		
+		System.out.println("Largeur Ecran : "+largeurEcran+" Hauteur Ecran : "+hauteurEcran);
+		System.out.println("Largeur :"+(largeurVueTextuelle+largeurPlan*echelleX+100)+" Hauteur : "+(hauteurCadreMessages+hauteurPlan*echelleY+100));
+		
     }
 
     
     
-    public int getEchelleX() {
+    public float getEchelleX() {
 		return echelleX;
 	}
 
 
 
-	public int getEchelleY() {
+	public float getEchelleY() {
 		return echelleY;
 	}
 

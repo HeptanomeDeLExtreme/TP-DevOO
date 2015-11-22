@@ -48,7 +48,7 @@ public class VueTextuelle extends JLabel implements Observer{
         List<Troncon> listeTroncon = new ArrayList<Troncon>();
         for(Itineraire itineraire : listeItineraire){
         	System.out.println("1");
-        	listeTroncon.addAll(itineraire.getTronçons());
+        	listeTroncon.addAll(itineraire.getTroncons());
         }
         
 

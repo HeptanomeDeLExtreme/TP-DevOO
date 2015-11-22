@@ -137,6 +137,7 @@ public class Controleur {
      */
     public void importerLivraison() {
         this.etatCourant.importerLivraison(fenetre,demandeDeLivraison,plan);
+        this.etatCourant = this.etatLivraisonChargee;
     }
 
     /**

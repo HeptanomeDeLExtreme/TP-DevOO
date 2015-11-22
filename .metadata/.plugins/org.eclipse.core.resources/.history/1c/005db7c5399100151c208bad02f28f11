@@ -28,7 +28,8 @@ public class Plan {
     /**
      * @param fichier
      */
-    public void chargerPlan() {
+    public Boolean chargerPlan() {
+    	Boolean ret = true;
     	try {
     		intersections = new HashSet<Intersection>();
     		DeserialiseurPlanXML.charger(this);
@@ -38,7 +39,9 @@ public class Plan {
 			System.out.println("Exception constructeur plan");			
 			System.out.println(e.getMessage());
 			e.printStackTrace();
+			ret = false;
 		}
+    	return ret;
     }
     
     

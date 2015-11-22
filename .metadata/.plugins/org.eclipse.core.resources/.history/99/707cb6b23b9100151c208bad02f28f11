@@ -12,12 +12,12 @@ import vue.FenetreIHM;
 /**
  * 
  */
-public class EtatPlanCharge extends EtatDefaut {
+public class EtatLivraisonChargee extends EtatDefaut {
 
     /**
      * Default constructor
      */
-    public EtatPlanCharge() {
+    public EtatLivraisonChargee() {
     }
 
     /**
@@ -31,9 +31,16 @@ public class EtatPlanCharge extends EtatDefaut {
     /**
      * @param fenetre
      */
-    public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan) {
-        demandeDeLivraison.chargerLivraison(plan);
-        Controleur.setEtatCourant(Controleur.etatLivraisonChargee);
+    public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan){
+    	demandeDeLivraison.chargerLivraison(plan);
+    }
+
+    /**
+     * @param plan 
+     * @param demandeDeLivraison
+     */
+    public void calculerTournee(Plan plan, DemandeDeLivraison demandeDeLivraison) {
+        // TODO implement here
     }
     
     public void clicGauche(FenetreIHM fenetre, Plan plan, Point p){

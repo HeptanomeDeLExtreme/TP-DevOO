@@ -25,7 +25,6 @@ public class EtatPlanCharge extends EtatDefaut {
      */
     public void ouvrirPlan(Plan plan) {
         plan.chargerPlan();
-        Controleur.setEtatCourant(Controleur.etatPlanCharge);
     }
 
     /**

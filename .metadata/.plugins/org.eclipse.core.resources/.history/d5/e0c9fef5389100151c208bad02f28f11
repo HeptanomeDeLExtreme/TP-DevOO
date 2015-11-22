@@ -94,10 +94,9 @@ public class EtatDefaut implements Etat {
 
     }
 
-
 	@Override
-	public void clicDroit(FenetreIHM fenetre, Point p) {
-		fenetre.afficheMessage("Clic droit, c'est bien mais ça ne sert à rien :) ");
+	public void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
+		fenetre.afficheMessage("Clic droit, c'est bien mais ça ne sert à rien :) ");		
 	}
 
 }

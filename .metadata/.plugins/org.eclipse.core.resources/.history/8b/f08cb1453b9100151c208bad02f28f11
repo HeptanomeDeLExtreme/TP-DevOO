@@ -31,7 +31,12 @@ public class EtatInit extends EtatDefaut {
      */
     public void ouvrirPlan(Plan plan) {
         plan.chargerPlan();
-        Controleur.setEtatCourant(Controleur.etatPlanCharge);
+//    	try {
+//			DeserialiseurPlanXML.charger(plan);
+//		} catch (ParserConfigurationException 
+//				| SAXException | IOException 
+//				| ExceptionXML | NumberFormatException e) {
+//		}
     }
     
     public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan) {

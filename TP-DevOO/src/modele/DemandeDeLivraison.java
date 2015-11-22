@@ -1,6 +1,15 @@
 package modele;
 
+import java.io.IOException;
 import java.util.*;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
+import xml.DeserialiseurDemandeDeLivraisonXML;
+import xml.DeserialiseurPlanXML;
+import xml.ExceptionXML;
 
 /**
  * 
@@ -11,7 +20,20 @@ public class DemandeDeLivraison {
      * Default constructor
      */
     public DemandeDeLivraison() {
-    	this.fenetres = new ArrayList <FenetreTemporelle>();
+    	
+    }
+    
+    public void chargerLivraison(Plan plan){
+    	try {
+    		fenetres = new ArrayList<FenetreTemporelle>();
+    		DeserialiseurDemandeDeLivraisonXML.charger(this,plan);
+		} catch (ParserConfigurationException | SAXException | IOException
+				| ExceptionXML e) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception constructeur livraisons");			
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
     }
 
     /**

@@ -23,7 +23,6 @@ public class Plan {
     
     public Plan(){
     	// TODO
-    	chargerPlan();
     }
     
     /**
@@ -109,12 +108,15 @@ public class Plan {
     }
     
     public Intersection cherche(Point p, float echelleX, float echelleY){
+    	if(intersections != null){
     	Iterator<Intersection> it = intersections.iterator();
-		while (it.hasNext()){
-			Intersection inter = it.next();
-			System.out.println(inter);
-			if (inter.contient(p,echelleX,echelleY)) return inter;
-		}
+			while (it.hasNext()){
+				Intersection inter = it.next();
+				if (inter.contient(p,echelleX,echelleY)){
+					return inter;
+				}
+			}
+    	}
 		return null;
     }
     

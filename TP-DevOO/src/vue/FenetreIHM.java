@@ -55,40 +55,39 @@ public class FenetreIHM extends JFrame{
     	
 		this.controleur = controleur;
 		
-		// Calcul de l'echelle en x
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int largeurEcran = (int)screenSize.getWidth();
-		int largeurPlan = controleur.getPlanLargeur();
-		this.echelleX = (float)(largeurEcran - largeurVueTextuelle) / (float)largeurPlan;
-		
-		// Calcul de l'echelle en y
-		int hauteurEcran = (int)screenSize.getHeight()-100;
-		int hauteurPlan = controleur.getPlanHauteur();
-		this.echelleY = (float)(hauteurEcran - hauteurCadreMessages) / (float)hauteurPlan ;
-		
-		System.out.println("ECHELLE : "+echelleX+" "+echelleY);
-		
+		this.echelleX = (float) 1.0;
+		this.echelleY = (float) 1.0;
+				
     	setLayout(null);
 		creerMenu();
 		cadreMessages = new JLabel();
 		cadreMessages.setBorder(BorderFactory.createTitledBorder("Messages..."));
 		getContentPane().add(cadreMessages);
-		vueGraphique = new VueGraphique(tournee,plan,echelleX,echelleY,this);
 		vueTextuelle = new VueTextuelle(tournee,this);
+		vueGraphique = new VueGraphique(tournee,plan,echelleX,echelleY,this);
 		ecouteurSouris = new EcouteurSouris(controleur,vueGraphique,this);
 		addMouseListener(ecouteurSouris);
 		setTailleFenetre();
 		setVisible(true);
 		
 		
-		System.out.println("Largeur Ecran : "+largeurEcran+" Hauteur Ecran : "+hauteurEcran);
-		System.out.println("Largeur :"+(largeurVueTextuelle+largeurPlan*echelleX+100)+" Hauteur : "+(hauteurCadreMessages+hauteurPlan*echelleY+100));
-		
     }
 
     
     
-    public float getEchelleX() {
+    public int getHauteurCadreMessages() {
+		return hauteurCadreMessages;
+	}
+
+
+
+	public int getLargeurVueTextuelle() {
+		return largeurVueTextuelle;
+	}
+
+
+
+	public float getEchelleX() {
 		return echelleX;
 	}
 
@@ -154,15 +153,19 @@ public class FenetreIHM extends JFrame{
     private void setTailleFenetre() {
 		int hauteurBoutons = 0;
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-//		int hauteurFenetre = Math.max(vueGraphique.getHauteur(),hauteurBoutons)+hauteurCadreMessages;
-		int hauteurFenetre = (int) screenSize.getHeight()-20;
-		int largeurFenetre = vueGraphique.getLargeur()+0+largeurVueTextuelle+10;
+		int hauteurFenetre = (int) screenSize.getHeight();
+		int largeurFenetre = (int) screenSize.getWidth();
+		
+		int hauteurVueG = hauteurFenetre-hauteurCadreMessages-20;
+		int largeurVueG = largeurFenetre-largeurVueTextuelle+20;
+		
 		setSize(largeurFenetre, hauteurFenetre);
 		cadreMessages.setSize(largeurFenetre,60);
-		cadreMessages.setLocation(0,vueGraphique.getHauteur());
+		cadreMessages.setLocation(0,hauteurVueG);
 		vueGraphique.setLocation(0, 0);
-		vueTextuelle.setSize(largeurVueTextuelle,vueGraphique.getHauteur());
-		vueTextuelle.setLocation(10+vueGraphique.getLargeur()+0,0);
+		vueGraphique.setSize(largeurVueG,hauteurVueG);
+		vueTextuelle.setSize(largeurVueTextuelle,hauteurVueG);
+		vueTextuelle.setLocation(10+largeurVueG,0);
 	}
 
     public void afficheVueTextuelle(String s){

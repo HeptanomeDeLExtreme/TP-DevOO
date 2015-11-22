@@ -17,10 +17,22 @@ import vue.FenetreIHM;
  */
 public class Controleur {
 
+	public static final EtatInit etatInit = new EtatInit();
+	public static final EtatPlanCharge etatPlanCharge = new EtatPlanCharge();
+	public static final EtatLivraisonChargee etatLivraisonChargee = new EtatLivraisonChargee();
+	
+	/**
+	 * Change l'etat courant du controleur
+	 * @param etat le nouvel etat courant
+	 */
+	protected static void setEtatCourant(Etat etat){
+		etatCourant = etat;
+	}
+	
     /**
      * 
      */
-    protected Etat etatCourant;
+    protected static Etat etatCourant;
 
     /**
      * 
@@ -99,9 +111,11 @@ public class Controleur {
 //    	lit.add(it1);
 //    	tournee.setItineraires(lit);
     	
-    	fenetre = new FenetreIHM(tournee, this, plan);
+    	this.demandeDeLivraison = new DemandeDeLivraison();
     	
-    	this.etatCourant = new EtatDefaut();
+    	etatCourant = etatInit;
+    	
+    	fenetre = new FenetreIHM(tournee, this, plan);
     }
     
 
@@ -117,18 +131,13 @@ public class Controleur {
         // TODO implement here
     }
 
-    /**
-     * 
-     */
-    protected void ouvrirPlan() {
-        // TODO implement here
-    }
 
     /**
      * 
      */
-    protected void importerLivraison() {
-        // TODO implement here
+    public void importerLivraison() {
+        this.etatCourant.importerLivraison(fenetre,demandeDeLivraison,plan);
+        this.etatCourant = this.etatLivraisonChargee;
     }
 
     /**
@@ -185,6 +194,14 @@ public class Controleur {
 
 	public void newFakeTournee() {
 	    this.tournee.changementEffectue();
+	}
+
+
+
+	public void ouvrirPlan() {
+		this.etatCourant.ouvrirPlan(this.plan);	
+		this.tournee.changementEffectue();
+		this.etatCourant = this.etatPlanCharge;
 	}
 
 }

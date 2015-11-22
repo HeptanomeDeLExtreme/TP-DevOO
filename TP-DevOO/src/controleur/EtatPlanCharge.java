@@ -2,6 +2,9 @@ package controleur;
 
 import java.util.*;
 
+import modele.DemandeDeLivraison;
+import modele.Plan;
+
 import vue.FenetreIHM;
 
 /**
@@ -25,8 +28,8 @@ public class EtatPlanCharge extends EtatDefaut {
     /**
      * @param fenetre
      */
-    public void importerLivraison(FenetreIHM fenetre) {
-        // TODO implement here
+    public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan) {
+        demandeDeLivraison.chargerLivraison(plan);
     }
 
 }

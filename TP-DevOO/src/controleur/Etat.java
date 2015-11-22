@@ -15,14 +15,16 @@ import vue.FenetreIHM;
 public interface Etat {
 
     /**
-     * @param fenetre
+     * @param plan
      */ 
-    public void ouvrirPlan(FenetreIHM fenetre);
+    public void ouvrirPlan(Plan plan);
 
     /**
      * @param fenetre
+     * @param plan 
+     * @param demandeDeLivraison 
      */
-    public void importerLivraison(FenetreIHM fenetre);
+    public void importerLivraison(FenetreIHM fenetre, DemandeDeLivraison demandeDeLivraison, Plan plan);
 
     /**
      * @param plan 

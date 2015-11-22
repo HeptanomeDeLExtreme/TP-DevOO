@@ -14,4 +14,12 @@
 <fullyQualifiedTypeName name="javax.swing.JLabel"/>
 <fullyQualifiedTypeName name="javax.swing.BorderFactory"/>
 <fullyQualifiedTypeName name="java.awt.event.MouseAdapter"/>
+<fullyQualifiedTypeName name="modele.Troncon"/>
+<fullyQualifiedTypeName name="modele.Intersection"/>
+<fullyQualifiedTypeName name="modele.Itineraire"/>
+<fullyQualifiedTypeName name="xml.DeserialiseurPlanXML"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="org.xml.sax.SAXException"/>
+<fullyQualifiedTypeName name="javax.xml.parsers.ParserConfigurationException"/>
+<fullyQualifiedTypeName name="xml.ExceptionXML"/>
 </qualifiedTypeNameHistroy>

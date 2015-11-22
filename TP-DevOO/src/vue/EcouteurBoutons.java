@@ -33,7 +33,10 @@ public class EcouteurBoutons implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println(e.getActionCommand());	
-		controleur.newFakeTournee();
+		switch (e.getActionCommand()){
+		case "ChargerPlan": controleur.ouvrirPlan(); break;
+		case "ChargerLivraison" : controleur.importerLivraison();
+		}
 	}
 
 }

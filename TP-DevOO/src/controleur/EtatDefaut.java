@@ -24,14 +24,14 @@ public class EtatDefaut implements Etat {
     /**
      * @param fenetre
      */
-    public void ouvrirPlan(FenetreIHM fenetre) {
+    public void ouvrirPlan(Plan plan) {
         // TODO implement here
     }
 
     /**
      * @param fenetre
      */
-    public void importerLivraison(FenetreIHM fenetre) {
+    public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan) {
         // TODO implement here
     }
 

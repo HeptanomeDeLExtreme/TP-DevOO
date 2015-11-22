@@ -70,8 +70,6 @@ public class Intersection {
 	public boolean contient(Point p, float echelleX, float echelleY) {
 		int ecartX = (int) Math.abs(p.getX()*echelleX-this.x*echelleX);
 		int ecartY = (int) Math.abs(p.getY()*echelleY-this.y*echelleY);
-		System.out.println((int)p.getX()+" "+this.x+" "+ecartX);
-		System.out.println((int)p.getY()+" "+this.y+" "+ecartY);
 		return (ecartX < 10 && ecartY < 10);
 	}
 

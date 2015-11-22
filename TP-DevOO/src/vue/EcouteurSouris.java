@@ -55,12 +55,10 @@ public class EcouteurSouris extends MouseAdapter{
 		switch (evt.getButton()){
 		case MouseEvent.BUTTON1: 
 			if (p != null){
-				System.out.println("Clic gauche : "+p);
 				controleur.clicGauche(p);
 			}
 			break;
 		case MouseEvent.BUTTON3: 
-			System.out.println("Clic droite : "+p);
 			break;
 		default:
 		}
@@ -70,7 +68,6 @@ public class EcouteurSouris extends MouseAdapter{
 		MouseEvent e = SwingUtilities.convertMouseEvent(fenetreIHM, evt, vueGraphique);
 		int x = Math.round((float)e.getY()/(float)vueGraphique.getEchelleY());
 		int y = Math.round((float)e.getX()/(float)vueGraphique.getEchelleX());
-		System.out.println("Coordonnées reelles : "+x+" "+y);
 		return new Point(y,x);
 	}
 

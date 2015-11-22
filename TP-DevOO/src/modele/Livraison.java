@@ -55,7 +55,7 @@ public class Livraison {
 		return 1;
 	}
 	
-	public List<Troncon> rechercherTroncons()
+	public List<Troncon> rechercherTroncons(Livraison livraisonDest)
 	{
 		//TODO implémenter la recherche des tronçons.
 		return null;

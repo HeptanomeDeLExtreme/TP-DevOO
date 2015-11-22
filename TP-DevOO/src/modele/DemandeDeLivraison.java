@@ -1,7 +1,3 @@
-// TODO : Rajouter l'entrepot dans toutes les méthodes ! Pour l'instant,
-// l'entrepot n'est pas pris en compte dans le calcul des plus courts chemins,
-// la map de correspondance, la création d'itinéraires...etc...
-
 package modele;
 
 import java.util.*;
@@ -34,7 +30,8 @@ public class DemandeDeLivraison {
     protected Livraison entrepot;
     
     /**
-     * Le nombre de livraisons totale du fichier XML de demande de livraisons.
+     * Le nombre de livraisons totale du fichier XML de demande de livraisons +
+     * la livraison representant l'entrepot
      */
     protected int nbLivraisons;
 
@@ -62,6 +59,9 @@ public class DemandeDeLivraison {
 			Set<Livraison> livraisonsFActuelle = fenetre.getLivraisons();
 			nbLivraisons += livraisonsFActuelle.size();
 		}
+		
+		// Ajout de l'entrepot
+		nbLivraisons++;
 		
 		this.nbLivraisons = nbLivraisons;
 	}
@@ -108,85 +108,6 @@ public class DemandeDeLivraison {
     }
     
     /**
-     * 
-     * @return
-     */
-    private Map<Integer,Livraison> correspondanceLivraisons (){
-    	
-    	Map<Integer,Livraison> mapLivraisons = new HashMap<Integer,Livraison>();
-    	Integer livraisonInteger = 0;
-    	
-    	for(int i = 0; i<fenetres.size(); i++){
-    		
-    		FenetreTemporelle fenetreActuelle = fenetres.get(i);
-    		Set<Livraison> livraisonsFenetre = fenetreActuelle.getLivraisons();
-    		
-    		for(Livraison livraisonActuelle : livraisonsFenetre){
-    			mapLivraisons.put(livraisonInteger, livraisonActuelle);
-    			livraisonInteger++;
-    		}	
-    	}
-    	
-    	return mapLivraisons;
-    	
-    }
-
-    /**
-     * 
-     * @param map
-     * @return tableauArcs
-     */
-
-    protected int[][] genererTableauArcs(Map<Integer,Livraison> map){
-    	
-    	int tableauArcs[][]= new int[nbLivraisons][nbLivraisons];
-    	
-    	for(int i = 0; i<fenetres.size()-1; i++){
-    		FenetreTemporelle fenetreActuelle = fenetres.get(i);
-    		FenetreTemporelle fenetreSuivante = fenetres.get(i+1);
-    		
-    		Set<Livraison> livraisonsFActuelle = fenetreActuelle.getLivraisons();
-    		Set<Livraison> livraisonsFSuivante = fenetreSuivante.getLivraisons();
-    		
-    		for(Livraison livraisonSourceActuelle : livraisonsFActuelle){
-    			
-    			for(Livraison livraisonDestActuelle : livraisonsFActuelle){
-    				if(livraisonDestActuelle.getId() != livraisonSourceActuelle.getId()){
-    					Integer integerSource = getKeyByValue(map,livraisonSourceActuelle);
-    					Integer integerDest = getKeyByValue(map, livraisonDestActuelle);
-    					tableauArcs[integerSource][integerDest] = livraisonSourceActuelle.rechercherCout(livraisonDestActuelle);					
-    				}
-    			}
-    			
-    			for(Livraison livraisonDestSuivante : livraisonsFSuivante){
-    				Integer integerSource = getKeyByValue(map,livraisonSourceActuelle);
-    				Integer integerDest = getKeyByValue(map, livraisonDestSuivante);
-    				tableauArcs[integerSource][integerDest] = livraisonSourceActuelle.rechercherCout(livraisonDestSuivante);
-    			}
-    		}
-    	}
-    	
-    	/*Traitement de la dernière Fenetre */ 
-    	
-    	FenetreTemporelle fenetreActuelle = fenetres.get(fenetres.size()-1);
-    	Set<Livraison> livraisonsFActuelle = fenetreActuelle.getLivraisons();
-    	
-    	for(Livraison livraisonSourceActuelle : livraisonsFActuelle){
-			
-			for(Livraison livraisonDestActuelle : livraisonsFActuelle){
-			
-				if(livraisonDestActuelle.getId() != livraisonSourceActuelle.getId()){
-					Integer integerSource = getKeyByValue(map,livraisonSourceActuelle);
-					Integer integerDest = getKeyByValue(map, livraisonDestActuelle);
-					tableauArcs[integerSource][integerDest] = livraisonSourceActuelle.rechercherCout(livraisonDestActuelle);					
-				}
-			}
-    	}
-    	
-    	return tableauArcs;
-    }
-    
-    /**
      * @param plan
      */
     protected void calculerTournee(Plan plan, TSP1 tsp) {
@@ -208,7 +129,7 @@ public class DemandeDeLivraison {
     	tsp.chercheSolution(0, graphe);
     	
     	// Recuperer l'ordre des livraisons a effectuer grace a TSP
-    	List<Livraison> livraisonsEnOrdre = new LinkedList<Livraison>();
+    	LinkedList<Livraison> livraisonsEnOrdre = new LinkedList<Livraison>();
     	livraisonsEnOrdre = recupererLivraisonsEnOrdre(graphe, tsp, mapLivraisons);
     	
     	// Récupérer l'ordre des itinéraires entre les livraisons.
@@ -217,9 +138,19 @@ public class DemandeDeLivraison {
     	
     }
 
+    /**
+     * Permet de lancer le calcul des plus courts chemins entre des livraisons
+     * (l'entrepot et le reste des livraisons dans le fichier de demande de
+     * livraisons) et un plan.
+     * Le resultat du calcul (tableau pi et d) est stocke directement dans 
+     * l'objet livraison.
+     * 
+     * @param plan
+     * 	Plan charge dans l'application.
+     * 
+     * @see Livraison
+     */
     private void calculDesPlusCourtsChemins(Plan plan) {
-		// TODO Auto-generated method stub
-    	
     	// Recherche des plus courts chemins pour l'entrepôt mentionné dans le
     	// fichier XML
     	entrepot.calculerPlusCourtsChemins(plan);  	
@@ -237,12 +168,145 @@ public class DemandeDeLivraison {
     		}
     	}
 	}
-
-
-	private List<Livraison> recupererLivraisonsEnOrdre(GrapheLivraisons graphe, TSP1 tsp, Map<Integer, Livraison> mapLivraisons) {
-		// TODO Auto-generated method stub
+    
+    /**
+     * Cree un tableau de correspondance entre une livraison et un numero
+     * de sommet (Integer).
+     * Cette correspondance permet de connaitre la relation entre les sommets
+     * du GrapheLivraisons et les livraisons.
+     * 
+     * @return map qui contient les correspondances entre un sommet et une
+     * livraison.
+     */
+    private Map<Integer,Livraison> correspondanceLivraisons (){
     	
-    	List<Livraison> livraisonsEnOrdre = new LinkedList<Livraison>();
+    	Map<Integer,Livraison> mapLivraisons = new HashMap<Integer,Livraison>();
+    	
+    	// Ajout de l'entrepot dans la mapLivraison
+    	Integer livraisonInteger = 0;
+    	mapLivraisons.put(livraisonInteger, entrepot);
+    	livraisonInteger++;
+    	
+    	// Ajout du reste des livraisons dans la mapLivraison
+    	for(int i = 0; i < fenetres.size(); i++){
+    		
+    		FenetreTemporelle fenetreActuelle = fenetres.get(i);
+    		Set<Livraison> livraisonsFenetre = fenetreActuelle.getLivraisons();
+    		
+    		for(Livraison livraisonActuelle : livraisonsFenetre){
+    			mapLivraisons.put(livraisonInteger, livraisonActuelle);
+    			livraisonInteger++;
+    		}	
+    	}
+    	
+    	return mapLivraisons;
+    	
+    }
+    
+    /**
+     * Permet de generer un double tableau de couts representant les couts
+     * pour chaque arc du GrapheLivraison.
+     * Le double tableau est base sur des Integer representant des livraisons :
+     * cout[livraisonDepart][livraisonArrivee].
+     * 
+     * @param map
+     * 	map de correspondance entre un sommet et une livraison.
+     * 
+     * @return tableauArcs
+     * 	Double tableau de couts (int) qui represente un cout entre une
+     * livraison de depart et une livraison d'arrivee.
+     * 
+     * @see correspondanceLivraisons
+     */
+    protected int[][] genererTableauArcs(Map<Integer,Livraison> map){
+    	
+    	int tableauArcs[][]= new int[nbLivraisons][nbLivraisons];
+    	
+    	// Creation d'un arc entre l'entrepot et les livraisons de 
+    	// la premiere fenetre de livraisons
+    	FenetreTemporelle fenetre = fenetres.get(0);
+    	Set<Livraison> livraisonsFenetre = fenetre.getLivraisons();
+    	Integer numSommetEntrepot = getKeyByValue(map, entrepot);
+    	
+    	for(Livraison livraisonArrivee : livraisonsFenetre) {
+    		Integer numSommetArrive = getKeyByValue(map, livraisonArrivee);
+    		tableauArcs[numSommetEntrepot][numSommetArrive] = 
+    				entrepot.rechercherCout(livraisonArrivee);
+    	}
+    	
+    	// Pour chaque fenetre, recuperation des livraisons de la fenetre
+    	// actuelle et de la fenetre suivante.
+    	// Pour chaque fenetre, creation d'un arc entre la livraison courante
+    	// et le reste des livraisons de la fenetre ainsi que les livraisons
+    	// de la fenetre suivante.
+    	for(int i = 0; i < fenetres.size()-1; i++){
+    		FenetreTemporelle fenetreActuelle = fenetres.get(i);
+    		FenetreTemporelle fenetreSuivante = fenetres.get(i+1);
+    		
+    		Set<Livraison> livraisonsFActuelle = fenetreActuelle.getLivraisons();
+    		Set<Livraison> livraisonsFSuivante = fenetreSuivante.getLivraisons();
+   		
+    		for(Livraison livraisonSourceActuelle : livraisonsFActuelle){
+    			
+    			// Creation des arcs entre la livraison courante et le reste
+    			// des livraisons de la fenetre actuelle
+    			for(Livraison livraisonDestActuelle : livraisonsFActuelle){
+    				if(livraisonDestActuelle.getId() != livraisonSourceActuelle.getId()){
+    					Integer integerSource = getKeyByValue(map,livraisonSourceActuelle);
+    					Integer integerDest = getKeyByValue(map, livraisonDestActuelle);
+    					tableauArcs[integerSource][integerDest] = livraisonSourceActuelle.rechercherCout(livraisonDestActuelle);					
+    				}
+    			}
+    			
+    			// Creation des arcs entre la livraison courante et le reste
+    			// des livraisons de la fenetre suivante
+    			for(Livraison livraisonDestSuivante : livraisonsFSuivante){
+    				Integer integerSource = getKeyByValue(map,livraisonSourceActuelle);
+    				Integer integerDest = getKeyByValue(map, livraisonDestSuivante);
+    				tableauArcs[integerSource][integerDest] = livraisonSourceActuelle.rechercherCout(livraisonDestSuivante);
+    			}
+    		}
+    	}
+    	
+    	// Traitement de la derniere fenetre, pour chaque livraison de la fenetre
+    	// creer un arc entre toutes les autres livraisons de la fenetre
+    	FenetreTemporelle fenetreActuelle = fenetres.get(fenetres.size()-1);
+    	Set<Livraison> livraisonsFActuelle = fenetreActuelle.getLivraisons();
+    	
+    	for(Livraison livraisonSourceActuelle : livraisonsFActuelle){
+			
+			for(Livraison livraisonDestActuelle : livraisonsFActuelle){
+			
+				if(livraisonDestActuelle.getId() != livraisonSourceActuelle.getId()){
+					Integer integerSource = getKeyByValue(map,livraisonSourceActuelle);
+					Integer integerDest = getKeyByValue(map, livraisonDestActuelle);
+					tableauArcs[integerSource][integerDest] = livraisonSourceActuelle.rechercherCout(livraisonDestActuelle);					
+				}
+			}
+    	}
+    	
+    	return tableauArcs;
+    }
+
+	/**
+	 * Permet de recuperer les livraisons dans l'ordre specifie par TSP.
+	 * 
+	 * @param graphe
+	 * 	GrapheLivraison sur lequel a ete lance TSP.
+	 * 
+	 * @param tsp
+	 * 	Instance de TSP1 sur laquelle a ete effectue le calcul.
+	 * 
+	 * @param mapLivraisons
+	 * 	Map de correspondance permettant de retrouver les livraisons a partir
+	 * du numero de sommet.
+	 * 
+	 * @return
+	 * 	Liste de livraisons selon l'ordre trouve par TSP.
+	 */
+	private LinkedList<Livraison> recupererLivraisonsEnOrdre(GrapheLivraisons graphe, 
+			TSP1 tsp, Map<Integer, Livraison> mapLivraisons) {
+    	LinkedList<Livraison> livraisonsEnOrdre = new LinkedList<Livraison>();
     	Integer nombreSommet = graphe.getNbSommets();
     	
     	for (int i = 0; i < nombreSommet; i++) {
@@ -251,48 +315,59 @@ public class DemandeDeLivraison {
         	livraisonsEnOrdre.add(livraison);
     	}
     	
-    	
-    	
 		return livraisonsEnOrdre;
 	}
     
     /**
+     * Permet de recuperer les itineraires entre chaque livraison.
+     * 
      * @param listeLivraisons
+     * 	La liste des livraisons ordonnes apres l'appel a TSP.
+     * 
      * @param mapLivraisons
+     * 	La map de correspondance permettant de connaitre une livraison a
+     * partir d'un sommet.
+     * 
      * @return
+     * 	Liste d'itinéraires en fonction de la liste de livraisons.
      */
-    private List<Itineraire> recupererItinerairesEnOrdre(List<Livraison> listeLivraisons, Map<Integer, Livraison> mapLivraisons, int[][] couts){
+    private List<Itineraire> recupererItinerairesEnOrdre(LinkedList<Livraison> listeLivraisons, 
+    		Map<Integer, Livraison> mapLivraisons, int[][] couts){
  
     	List<Itineraire> itinerairesEnOrdre = new LinkedList<Itineraire>();
-    	for(int i = 0; i < listeLivraisons.size() -1; i++)
-    	{
+    	
+    	// Traitement de la tournee, depuis l'entrepot jusqu'a la derniere
+    	// livraisons
+    	for(int i = 0; i < listeLivraisons.size()-1; i++) {
     		Livraison livraisonActuelle = listeLivraisons.get(i);
     		Livraison livraisonSuivante = listeLivraisons.get(i+1);
     		 
     		int depart = getKeyByValue(mapLivraisons, livraisonActuelle);
     		int arrivee = getKeyByValue(mapLivraisons, livraisonSuivante);
     		int coutItineraire = couts[depart][arrivee];
-    		List <Troncon> troncons = livraisonSuivante.rechercherTroncons();
+    		List <Troncon> troncons = livraisonActuelle.rechercherTroncons(livraisonSuivante);
     		
     		Itineraire itineraire = new Itineraire(coutItineraire, troncons, livraisonActuelle, livraisonSuivante);
     		
     		itinerairesEnOrdre.add(itineraire);
-    		
     	}
+    	
+    	// Traitement de la fin de la tournee, depuis la derniere livraison
+    	// jusqu'a l'entrepot de depart
+    	Livraison derniereLivraison = listeLivraisons.getLast();
+    	Livraison premiereLivraison = listeLivraisons.getFirst();
+    	
+    	int depart = getKeyByValue(mapLivraisons, derniereLivraison);
+    	int arrivee = getKeyByValue(mapLivraisons, premiereLivraison);
+    	int coutItineraire = couts[depart][arrivee];
+    	List<Troncon> troncons = derniereLivraison.rechercherTroncons(premiereLivraison);
+    	
     	return itinerairesEnOrdre;
     }
 
-	/**
-     * @param plan 
-     * @param depart 
-     * @param arrivee
-     */
-    protected void calculPlusCourtChemin(Plan plan, Livraison depart, Livraison arrivee) {
-        // TODO implement here
-    }
-
     /**
-     * 
+     * Permet de generer la feuille de route que l'utilisateur pourra suivre
+     * pour effectuer ses livraisons.
      */
     protected void genereFeuilleDeRoute() {
         // TODO implement here

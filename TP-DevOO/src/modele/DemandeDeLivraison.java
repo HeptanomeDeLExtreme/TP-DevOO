@@ -193,7 +193,7 @@ public class DemandeDeLivraison {
         // TODO implement here
     	
     	// Calcul des plus courts chemins a partir d'un livraison sur tout le plan
-    	calculDesPlusCourtsChemins();
+    	calculDesPlusCourtsChemins(plan);
 
     	// Creation des correspondances entre un sommet (Integer) et une livraison
 		Map<Integer,Livraison> mapLivraisons = correspondanceLivraisons();
@@ -214,7 +214,13 @@ public class DemandeDeLivraison {
 
     private void calculDesPlusCourtsChemins(Plan plan) {
 		// TODO Auto-generated method stub
-
+    	
+    	// Recherche des plus courts chemins pour l'entrepôt mentionné dans le
+    	// fichier XML
+    	entrepot.calculerPlusCourtsChemins(plan);  	
+    	
+    	// Recherche des plus courts chemins pour toutes les livraisons du fichier
+    	// XML
     	Set<Livraison> livraisons;
     	
     	for (FenetreTemporelle fenetre : fenetres) {
@@ -222,7 +228,7 @@ public class DemandeDeLivraison {
     		livraisons = fenetre.getLivraisons();
     		
     		for (Livraison livraisonDepart : livraisons) {
-    			livraisonDepart.calculerPlusCourtsChemins(plan, livraisons);
+    			livraisonDepart.calculerPlusCourtsChemins(plan);
     		}
     	}
 	}

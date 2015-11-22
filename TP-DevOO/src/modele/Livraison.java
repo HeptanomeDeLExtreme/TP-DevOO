@@ -55,7 +55,7 @@ public class Livraison {
 		return 1;
 	}
 
-	public void calculerPlusCourtsChemins(Plan plan, Set<Livraison> livraisons) {
+	public void calculerPlusCourtsChemins(Plan plan) {
 		// TODO Auto-generated method stub
 	}
 	

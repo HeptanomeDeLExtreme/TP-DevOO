@@ -199,10 +199,10 @@ public class DemandeDeLivraison {
 		Map<Integer,Livraison> mapLivraisons = correspondanceLivraisons();
 		
     	// Generation des arcs du graphe de livraisons
-    	int couts[][] = genererTableauArcs(mapLivraisons);
+    	int tableauArcs[][] = genererTableauArcs(mapLivraisons);
     	
     	// Generation du graphe de livraisons
-    	GrapheLivraisons graphe = new GrapheLivraisons(nbLivraisons, couts);
+    	GrapheLivraisons graphe = new GrapheLivraisons(nbLivraisons, tableauArcs);
     	
     	// Recherche de la solution avec TSP
     	tsp.chercheSolution(0, graphe);
@@ -210,11 +210,6 @@ public class DemandeDeLivraison {
     	// Recuperer l'ordre des livraisons a effectuer grace a TSP
     	List<Livraison> livraisonsEnOrdre = new LinkedList<Livraison>();
     	livraisonsEnOrdre = recupererLivraisonsEnOrdre(graphe, tsp, mapLivraisons);
-    	
-    	// Récupérer l'ordre des itinéraires entre les livraisons.
-    	List<Itineraire> itinerairesEnOrdre = new LinkedList<Itineraire>();
-    	itinerairesEnOrdre = recupererItinerairesEnOrdre(livraisonsEnOrdre, mapLivraisons,couts);
-    	
     }
 
     private void calculDesPlusCourtsChemins(Plan plan) {
@@ -257,7 +252,7 @@ public class DemandeDeLivraison {
      */
     private List<Itineraire> recupererItinerairesEnOrdre(List<Livraison> listeLivraisons, Map<Integer, Livraison> mapLivraisons, int[][] couts){
  
-    	List<Itineraire> itinerairesEnOrdre = new LinkedList<Itineraire>();
+    	List<Itineraire> ItinerairesEnOrdre = new LinkedList<Itineraire>();
     	for(int i = 0; i < listeLivraisons.size() -1; i++)
     	{
     		Livraison livraisonActuelle = listeLivraisons.get(i);
@@ -265,15 +260,12 @@ public class DemandeDeLivraison {
     		 
     		int depart = getKeyByValue(mapLivraisons, livraisonActuelle);
     		int arrivee = getKeyByValue(mapLivraisons, livraisonSuivante);
-    		int coutItineraire = couts[depart][arrivee];
-    		List <Troncon> troncons = livraisonSuivante.rechercherTroncons();
+    		Itineraire coutItineraire = couts[depart][arrivee];
     		
-    		Itineraire itineraire = new Itineraire(coutItineraire, troncons, livraisonActuelle, livraisonSuivante);
     		
-    		itinerairesEnOrdre.add(itineraire);
     		
     	}
-    	return itinerairesEnOrdre;
+    	return null;
     }
 
 	/**

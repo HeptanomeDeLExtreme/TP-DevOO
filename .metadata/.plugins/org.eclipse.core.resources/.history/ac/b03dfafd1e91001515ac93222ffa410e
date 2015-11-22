@@ -214,7 +214,6 @@ public class DemandeDeLivraison {
     	// Récupérer l'ordre des itinéraires entre les livraisons.
     	List<Itineraire> itinerairesEnOrdre = new LinkedList<Itineraire>();
     	itinerairesEnOrdre = recupererItinerairesEnOrdre(livraisonsEnOrdre, mapLivraisons,couts);
-    	
     }
 
     private void calculDesPlusCourtsChemins(Plan plan) {

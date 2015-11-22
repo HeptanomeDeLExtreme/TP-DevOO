@@ -17,15 +17,8 @@ public class Plan {
      * 
      */
     protected Set<Intersection> intersections;
-    
-    
 
-    public Set<Intersection> getIntersections() {
-		return intersections;
-	}
-
-
-	/**
+    /**
      * 
      */
     protected Plan singleton;

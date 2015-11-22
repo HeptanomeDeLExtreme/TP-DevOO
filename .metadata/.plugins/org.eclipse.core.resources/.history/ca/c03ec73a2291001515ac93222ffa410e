@@ -216,10 +216,7 @@ public class DemandeDeLivraison {
     	itinerairesEnOrdre = recupererItinerairesEnOrdre(livraisonsEnOrdre, mapLivraisons,couts);
     	
     }
-    /**
-     * 
-     * @param plan
-     */
+
     private void calculDesPlusCourtsChemins(Plan plan) {
 		// TODO Auto-generated method stub
 

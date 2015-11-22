@@ -50,17 +50,13 @@ public class Intersection {
     }
 
 
-/**
- * 
- * @return Map contenant toutes les intersections atteignables depuis cette intersection, et le cout associé du trajet.
- */
-	public Map<Intersection,Integer> getIntersectionsVoisines(){
+
+	public Set<Intersection> getIntersectionsVoisines(){
 		
-		Map<Intersection,Integer> intersectionsVoisines=new HashMap<Intersection,Integer>();
+		Set<Intersection> intersectionsVoisines=new HashSet<Intersection>();
 		
-		for (Troncon tronçon : tronçonsSortant){
-			Integer coutInteger = new Integer(tronçon.getCout());
-			intersectionsVoisines.put(tronçon.getDestination(), coutInteger);
+		for (Troncon tronçonActuel : tronçonsSortant){
+			
 		}
 		
 		return intersectionsVoisines;

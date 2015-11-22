@@ -256,7 +256,7 @@ public class DemandeDeLivraison {
     		 
     		int depart = getKeyByValue(mapLivraisons, livraisonActuelle);
     		int arrivee = getKeyByValue(mapLivraisons, livraisonSuivante);
-    		Itineraire coutItineraire = couts[depart][arrivee];
+    		coutItineraire = couts[depart][arrivee]
     		
     		
     		

@@ -163,14 +163,14 @@ public class FenetreIHM extends JFrame{
     private void setTailleFenetre() {
 		Rectangle screen = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 
-		int hauteurFenetre = screen.height;
+		int hauteurFenetre = screen.height-barreMenu.getHeight();
 		int largeurFenetre = screen.width;
 		
-		int hauteurVueG = hauteurFenetre-hauteurCadreMessages-barreMenu.getHeight();
+		int hauteurVueG = hauteurFenetre-hauteurCadreMessages;
 		int largeurVueG = largeurFenetre-largeurVueTextuelle;
 		
 		setSize(largeurFenetre, hauteurFenetre); // DEBUG
-		cadreMessages.setSize(largeurFenetre,hauteurCadreMessages-50);
+		cadreMessages.setSize(largeurFenetre,hauteurCadreMessages);
 		cadreMessages.setLocation(0,hauteurVueG);
 		vueGraphique.setLocation(0, 0);
 		vueGraphique.setSize(largeurVueG,hauteurVueG);

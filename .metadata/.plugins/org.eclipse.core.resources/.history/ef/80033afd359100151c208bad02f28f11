@@ -44,7 +44,7 @@ public class FenetreIHM extends JFrame{
 	
 	private JLabel cadreMessages;
 	
-	private final int hauteurCadreMessages = 100;
+	private final int hauteurCadreMessages = 50;
 	private final int largeurVueTextuelle = 400;
 	
 	private float echelleX;
@@ -170,7 +170,7 @@ public class FenetreIHM extends JFrame{
 		int largeurVueG = largeurFenetre-largeurVueTextuelle;
 		
 		setSize(largeurFenetre, hauteurFenetre); // DEBUG
-		cadreMessages.setSize(largeurFenetre,hauteurCadreMessages-50);
+		cadreMessages.setSize(largeurFenetre,hauteurCadreMessages);
 		cadreMessages.setLocation(0,hauteurVueG);
 		vueGraphique.setLocation(0, 0);
 		vueGraphique.setSize(largeurVueG,hauteurVueG);

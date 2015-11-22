@@ -30,8 +30,6 @@ public class VueGraphique extends JPanel implements Observer {
 	private FenetreIHM fenetre;
 	private Plan plan;
 	
-	public static final float correcteurEchelle = (float) 0.07;
-	
     /**
      * @param plan 
      * @param tournee 
@@ -64,18 +62,17 @@ public class VueGraphique extends JPanel implements Observer {
 			Rectangle screen = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 			int largeurEcran = screen.width;
 			int largeurPlan = this.plan.getLargeur();
-			int largeurVG = largeurEcran - fenetre.getLargeurVueTextuelle();
-			this.echelleX = (float)(largeurVG) / (float)largeurPlan;
-			this.echelleX -= correcteurEchelle;
+			this.echelleX = (float)(largeurEcran - fenetre.getLargeurVueTextuelle()) / (float)largeurPlan;
 			this.fenetre.setEchelleX(echelleX);
 			
 			// Calcul de l'echelle en y
 			int hauteurEcran = screen.height;
 			int hauteurPlan = this.plan.getHauteur();
-			int hauteurVG = hauteurEcran - fenetre.getHauteurCadreMessages();
-			this.echelleY = (float)(hauteurVG) / (float)hauteurPlan ;
-			this.echelleY -= correcteurEchelle;
+			this.echelleY = (float)(hauteurEcran - fenetre.getHauteurCadreMessages()) / (float)hauteurPlan ;
 			this.fenetre.setEchelleY(echelleY);
+			
+			System.out.println("Ecran Hauteur : "+hauteurEcran + " Largeur : "+largeurEcran);
+			System.out.println("Echelle X : "+echelleX+" Y : "+echelleY);
 			
 			for(Intersection inter : listInter){
 				// Dessine les intersections		

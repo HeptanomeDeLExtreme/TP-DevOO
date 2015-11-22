@@ -288,6 +288,44 @@ public class DemandeDeLivraison {
     	return tableauArcs;
     }
 
+    
+    /**
+     * @param plan
+     */
+    protected void calculerTournee(Plan plan, TSP1 tsp) {
+        // TODO implement here
+    	
+    	// Calcul des plus courts chemins a partir d'un livraison sur tout le plan
+    	calculDesPlusCourtsChemins();
+
+    	// Creation des correspondances entre un sommet (Integer) et une livraison
+		Map<Integer,Livraison> mapLivraisons = correspondanceLivraisons();
+		
+    	// Generation des arcs du graphe de livraisons
+    	int couts[][] = genererTableauArcs(mapLivraisons);
+    	
+    	// Generation du graphe de livraisons
+    	GrapheLivraisons graphe = new GrapheLivraisons(nbLivraisons, couts);
+    	
+    	// Recherche de la solution avec TSP
+    	tsp.chercheSolution(0, graphe);
+    	
+    	// Recuperer l'ordre des livraisons a effectuer grace a TSP
+    	List<Livraison> livraisonsEnOrdre = new LinkedList<Livraison>();
+    	livraisonsEnOrdre = recupererLivraisonsEnOrdre(graphe, tsp, mapLivraisons);
+    	
+    	// Récupérer l'ordre des itinéraires entre les livraisons.
+    	List<Itineraire> itinerairesEnOrdre = new LinkedList<Itineraire>();
+    	itinerairesEnOrdre = recupererItinerairesEnOrdre(livraisonsEnOrdre, mapLivraisons,couts);
+    	
+    }
+    /**
+     * 
+     * @param plan
+     */
+    private void calculDesPlusCourtsChemins(Plan plan) {
+		// TODO Auto-generated method stub
+    }
 
 	/**
 	 * Permet de recuperer les livraisons dans l'ordre specifie par TSP.

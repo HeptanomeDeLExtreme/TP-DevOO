@@ -29,13 +29,13 @@ public class EtatInit extends EtatDefaut {
      * @param fenetre
      */
     public void ouvrirPlan(Plan plan) {
-        plan.chargerPlan();
-//    	try {
-//			DeserialiseurPlanXML.charger(plan);
-//		} catch (ParserConfigurationException 
-//				| SAXException | IOException 
-//				| ExceptionXML | NumberFormatException e) {
-//		}
+//        plan.chargerPlan();
+    	try {
+			DeserialiseurPlanXML.charger(plan);
+		} catch (ParserConfigurationException 
+				| SAXException | IOException 
+				| ExceptionXML | NumberFormatException e) {
+		}
     }
     
     public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan) {

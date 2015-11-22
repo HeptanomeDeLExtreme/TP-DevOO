@@ -17,9 +17,9 @@ import xml.ExceptionXML;
 public class Plan {
 
 
-//    public Plan(Set<Intersection> listeInter) {
-//		this.intersections = listeInter;
-//	}
+    public Plan(Set<Intersection> listeInter) {
+		this.intersections = listeInter;
+	}
     
     public Plan(){
     	// TODO

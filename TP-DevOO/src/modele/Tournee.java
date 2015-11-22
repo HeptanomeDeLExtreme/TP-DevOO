@@ -7,9 +7,14 @@ import java.util.*;
  */
 public class Tournee extends Observable {
 
+	/**
+	 * 
+	 */
+	public Tournee() {
+		
+	}
+	
     /**
-     * Default constructor
-     *
      * @param coutTotal
      * @param livraisonsEnOrdre
      */

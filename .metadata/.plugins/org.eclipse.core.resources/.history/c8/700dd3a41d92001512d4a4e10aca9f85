@@ -30,7 +30,7 @@ public interface Etat {
      * @param plan 
      * @param demandeDeLivraison
      */
-    public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison);
+    public void calculerTournee(Plan plan, DemandeDeLivraison demandeDeLivraison);
 
     /**
      * @param fenetre

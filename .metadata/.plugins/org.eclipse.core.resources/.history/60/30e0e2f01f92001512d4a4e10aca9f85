@@ -28,7 +28,6 @@ public class Controleur {
 	 */
 	protected static void setEtatCourant(Etat etat){
 		etatCourant = etat;
-		System.out.println("Etat changé pour : "+etat);
 	}
 	
     /**

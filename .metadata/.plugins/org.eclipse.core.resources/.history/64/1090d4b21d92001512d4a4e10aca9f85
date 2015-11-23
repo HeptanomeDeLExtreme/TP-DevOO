@@ -28,7 +28,6 @@ public class Controleur {
 	 */
 	protected static void setEtatCourant(Etat etat){
 		etatCourant = etat;
-		System.out.println("Etat changé pour : "+etat);
 	}
 	
     /**
@@ -103,7 +102,7 @@ public class Controleur {
      * 
      */
     public void calculerTournee() {
-        this.etatCourant.calculerTournee(fenetre, plan, demandeDeLivraison);
+        this.etatCourant.calculerTournee(plan, demandeDeLivraison);
     }
 
     /**

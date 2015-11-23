@@ -148,7 +148,7 @@ public class FenetreIHM extends JFrame{
     	chargerPlan.addActionListener(ecouteurBoutons);
     	chargerLivraison.addActionListener(ecouteurBoutons);
     	genererFeuilleRoute.addActionListener(ecouteurBoutons);
-    	calculTournee.addActionListener(ecouteurBoutons);
+    	chargerTournee.addActionListener(ecouteurBoutons);
     	ajouterLivraison.addActionListener(ecouteurBoutons);
     	modifierLivraison.addActionListener(ecouteurBoutons);
     	supprimerLivraison.addActionListener(ecouteurBoutons);

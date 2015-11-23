@@ -26,10 +26,6 @@ public class EtatInit extends EtatDefaut {
     public EtatInit() {
     }
 
-    public String toString(){
-    	return "Etat Init";
-    }
-    
     /**
      * @param fenetre
      */

@@ -20,10 +20,6 @@ public class EtatLivraisonChargee extends EtatDefaut {
     public EtatLivraisonChargee() {
     }
 
-    public String toString(){
-    	return "Etat Livraison Chargée";
-    }
-    
     /**
      * @param fenetre
      */
@@ -44,10 +40,9 @@ public class EtatLivraisonChargee extends EtatDefaut {
      * @param plan 
      * @param demandeDeLivraison
      */
-    public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison) {
-//        demandeDeLivraison.calculerTournee(plan);
-        Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
-    	fenetre.afficheMessage("Calcul tournée ! oho");
+    public void calculerTournee(Plan plan, DemandeDeLivraison demandeDeLivraison) {
+        demandeDeLivraison.calculerTournee(plan);
+        Controleur.setEtatCourant(Controleur.);
     }
     
     public void clicGauche(FenetreIHM fenetre, Plan plan, Point p){

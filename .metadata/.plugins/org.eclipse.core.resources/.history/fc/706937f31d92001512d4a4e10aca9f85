@@ -12,18 +12,14 @@ import vue.FenetreIHM;
 /**
  * 
  */
-public class EtatLivraisonChargee extends EtatDefaut {
+public class EtatPlanCharge extends EtatDefaut {
 
     /**
      * Default constructor
      */
-    public EtatLivraisonChargee() {
+    public EtatPlanCharge() {
     }
 
-    public String toString(){
-    	return "Etat Livraison Chargée";
-    }
-    
     /**
      * @param fenetre
      */
@@ -35,19 +31,14 @@ public class EtatLivraisonChargee extends EtatDefaut {
     /**
      * @param fenetre
      */
-    public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan){
-    	demandeDeLivraison.chargerLivraison(plan);
-    	Controleur.setEtatCourant(Controleur.etatLivraisonChargee);
+    public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan) {
+        demandeDeLivraison.chargerLivraison(plan);
+        Controleur.setEtatCourant(Controleur.etatLivraisonChargee);
     }
-
-    /**
-     * @param plan 
-     * @param demandeDeLivraison
-     */
+    
     public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison) {
-//        demandeDeLivraison.calculerTournee(plan);
+        demandeDeLivraison.calculerTournee(plan);
         Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
-    	fenetre.afficheMessage("Calcul tournée ! oho");
     }
     
     public void clicGauche(FenetreIHM fenetre, Plan plan, Point p){

@@ -20,7 +20,6 @@ public class Controleur {
 	public static final EtatInit etatInit = new EtatInit();
 	public static final EtatPlanCharge etatPlanCharge = new EtatPlanCharge();
 	public static final EtatLivraisonChargee etatLivraisonChargee = new EtatLivraisonChargee();
-	public static final EtatTourneeCalculee etatTourneeCalculee = new EtatTourneeCalculee();
 	
 	/**
 	 * Change l'etat courant du controleur
@@ -28,7 +27,6 @@ public class Controleur {
 	 */
 	protected static void setEtatCourant(Etat etat){
 		etatCourant = etat;
-		System.out.println("Etat changé pour : "+etat);
 	}
 	
     /**
@@ -103,7 +101,7 @@ public class Controleur {
      * 
      */
     public void calculerTournee() {
-        this.etatCourant.calculerTournee(fenetre, plan, demandeDeLivraison);
+        this.etatCourant.calculerTournee(plan, demandeDeLivraison);
     }
 
     /**

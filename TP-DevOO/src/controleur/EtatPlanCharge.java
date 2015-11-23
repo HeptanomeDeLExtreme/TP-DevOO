@@ -20,6 +20,10 @@ public class EtatPlanCharge extends EtatDefaut {
     public EtatPlanCharge() {
     }
 
+    public String toString(){
+    	return "Etat Plan Chargé";
+    }
+    
     /**
      * @param fenetre
      */
@@ -34,6 +38,10 @@ public class EtatPlanCharge extends EtatDefaut {
     public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan) {
         demandeDeLivraison.chargerLivraison(plan);
         Controleur.setEtatCourant(Controleur.etatLivraisonChargee);
+    }
+    
+    public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison) {
+        fenetre.afficheMessage("Veuillez charger une livraison !");
     }
     
     public void clicGauche(FenetreIHM fenetre, Plan plan, Point p){

@@ -266,7 +266,6 @@ public class DemandeDeLivraison {
     	
     	for(Livraison livraisonArrivee : livraisonsFenetre) {
     		Integer numSommetArrive = getKeyByValue(map, livraisonArrivee);
-    		System.out.println(numSommetArrive+" "+numSommetEntrepot);
     		tableauArcs[numSommetEntrepot][numSommetArrive] = 
     				entrepot.rechercherCout(livraisonArrivee);
     	}

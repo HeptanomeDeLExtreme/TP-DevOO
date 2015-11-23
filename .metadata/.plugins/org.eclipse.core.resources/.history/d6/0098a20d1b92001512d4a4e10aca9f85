@@ -122,7 +122,7 @@ public class FenetreIHM extends JFrame{
     	chargerPlan = new JMenuItem("ChargerPlan");
     	chargerLivraison = new JMenuItem("ChargerLivraison");
     	genererFeuilleRoute = new JMenuItem("Generer Feuille de Route");
-    	calculTournee = new JMenuItem("CalculTournee");
+    	calculTournee = new JMenuItem("CalculTournée");
     	menuFichier.add(chargerPlan);
     	menuFichier.add(chargerLivraison);
     	menuFichier.add(genererFeuilleRoute);

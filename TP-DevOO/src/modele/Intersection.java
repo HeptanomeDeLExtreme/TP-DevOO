@@ -114,6 +114,20 @@ public class Intersection {
 		return "Intersection [id=" + id + ", x=" + x + ", y=" + y + "]";
 	}
     
-    
+	/**
+	 * 
+	 * @return Map contenant toutes les intersections atteignables depuis cette intersection, et le cout associé du trajet.
+	 */
+		public Map<Intersection,Integer> getIntersectionsVoisines(){
+			
+			Map<Intersection,Integer> intersectionsVoisines=new HashMap<Intersection,Integer>();
+			
+			for (Troncon tronçon : tronconsSortant){
+				Integer coutInteger = new Integer(tronçon.getCout());
+				intersectionsVoisines.put(tronçon.getDestination(), coutInteger);
+			}
+			
+			return intersectionsVoisines;
+		}
 
 }

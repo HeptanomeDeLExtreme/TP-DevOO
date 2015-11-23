@@ -36,6 +36,7 @@ public class FenetreIHM extends JFrame{
 	private JMenuItem chargerPlan;
 	private JMenuItem chargerLivraison;
 	private JMenuItem genererFeuilleRoute;
+	private JMenuItem calculTournee;
 	private JMenuItem ajouterLivraison;
 	private JMenuItem supprimerLivraison;
 	private JMenuItem modifierLivraison;
@@ -121,9 +122,11 @@ public class FenetreIHM extends JFrame{
     	chargerPlan = new JMenuItem("ChargerPlan");
     	chargerLivraison = new JMenuItem("ChargerLivraison");
     	genererFeuilleRoute = new JMenuItem("Generer Feuille de Route");
+    	calculTournee = new JMenuItem("Calcul Tournée");
     	menuFichier.add(chargerPlan);
     	menuFichier.add(chargerLivraison);
     	menuFichier.add(genererFeuilleRoute);
+    	menuFichier.add(calculTournee);
     	
     	// Construit le menu modifier
     	menuModifier = new JMenu("Modifier");

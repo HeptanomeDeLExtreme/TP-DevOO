@@ -83,4 +83,14 @@ public class Troncon {
      */
     protected Intersection destination;
 
+    /**
+     * 
+     * @return
+     */
+    public int getCout(){
+    	float floatCout = longueur*vitesseMoyenne*10;
+    	int intCout = (int)floatCout;
+    	return intCout;
+    }
+    
 }

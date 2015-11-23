@@ -15,6 +15,21 @@ public class Itineraire {
 
     /**
      * 
+     * @param cout
+     * @param tronçons
+     * @param depart
+     * @param arrivee
+     */
+    public Itineraire(int cout, List<Troncon> troncons, Livraison depart, Livraison arrivee) {
+		super();
+		this.cout = cout;
+		this.troncons = troncons;
+		this.depart = depart;
+		this.arrivee = arrivee;
+	}
+
+    /**
+     * 
      */
     protected Integer cout;
 

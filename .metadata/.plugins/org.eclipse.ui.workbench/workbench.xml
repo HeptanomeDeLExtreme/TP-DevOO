@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="12" version="2.0">
+<workbench progressCount="17" version="2.0">
 <workbenchAdvisor/>
 <window height="743" maximized="true" width="1024" x="98" y="0">
 <fastViewData fastViewLocation="1024"/>
@@ -29,23 +29,13 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.internal.presentations.classic.WorkbenchPresentationFactoryClassic">
 <part id="0"/>
-<part id="1"/>
-<part id="2"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FenetreIHM.java" partName="FenetreIHM.java" path="/home/nico/Documents/INSA/4IF/TP-DevOO/TP-DevOO/src/vue/FenetreIHM.java" title="FenetreIHM.java" tooltip="TP-DevOO/src/vue/FenetreIHM.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP-DevOO/src/vue/FenetreIHM.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2038" selectionTopPixel="863"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="VueTextuelle.java" partName="VueTextuelle.java" path="/home/nico/Documents/INSA/TP-DevOO/TP-DevOO/src/vue/VueTextuelle.java" title="VueTextuelle.java" tooltip="TP-DevOO/src/vue/VueTextuelle.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP-DevOO/src/vue/VueTextuelle.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="VueGraphique.java" partName="VueGraphique.java" path="/home/nico/Documents/INSA/TP-DevOO/TP-DevOO/src/vue/VueGraphique.java" title="VueGraphique.java" tooltip="TP-DevOO/src/vue/VueGraphique.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP-DevOO/src/vue/VueGraphique.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DemandeDeLivraison.java" partName="DemandeDeLivraison.java" path="/home/nico/Documents/INSA/4IF/TP-DevOO/TP-DevOO/src/modele/DemandeDeLivraison.java" title="DemandeDeLivraison.java" tooltip="TP-DevOO/src/modele/DemandeDeLivraison.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP-DevOO/src/modele/DemandeDeLivraison.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3831" selectionTopPixel="2112"/>
 </editor>
 </editors>
 <views>
@@ -76,7 +66,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.ui.console.ConsoleView" activePerspective="org.eclipse.ui.resourcePerspective">
+<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.ui.resourcePerspective">
 <perspective editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.ui.internal.ide.application.ResourcePerspective" id="org.eclipse.ui.resourcePerspective" label="Resource"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -135,7 +125,7 @@
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.1510384" ratioLeft="240" ratioRight="1349" relationship="2" relative="topLeft"/>
 <info folder="true" part="bottomRight" ratio="0.7233468" ratioLeft="536" ratioRight="205" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="0">
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.search.ui.views.SearchView" label="Search"/>
@@ -172,46 +162,10 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DevOO/src/vue/VueTextuelle.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DevOO/src/vue/EcouteurBoutons.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DevOO/src/vue/FenetreIHM.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DevOO/src/vue/VueTextuelle.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DevOO/src/modele/Client.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DevOO/src/modele/DemandeDeLivraison.java"/>
 </editors>
-<item historyLabel="FenetreIHM.java" index="2">
-<position info="not_deleted" x="1647" y="0"/>
-</item>
-<item historyLabel="VueGraphique.java" index="0">
-<position info="not_deleted" x="645" y="0"/>
-</item>
-<item historyLabel="FenetreIHM.java" index="2">
-<position info="not_deleted" x="1647" y="0"/>
-</item>
-<item historyLabel="FenetreIHM.java" index="2">
-<position info="not_deleted" x="2657" y="0"/>
-</item>
-<item historyLabel="VueGraphique.java" index="0">
-<position info="not_deleted" x="645" y="0"/>
-</item>
-<item historyLabel="VueGraphique.java" index="0">
-<position info="not_deleted" x="953" y="0"/>
-</item>
-<item historyLabel="VueGraphique.java" index="0">
-<position info="not_deleted" x="954" y="0"/>
-</item>
-<item historyLabel="VueGraphique.java" index="0">
-<position info="not_deleted" x="1370" y="29"/>
-</item>
-<item historyLabel="VueGraphique.java" index="0">
-<position info="not_deleted" x="1696" y="31"/>
-</item>
-<item historyLabel="VueGraphique.java" index="0">
-<position info="not_deleted" x="3028" y="0"/>
-</item>
-<item historyLabel="EtatDefaut.java" index="3">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Plan.java" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="EtatDefaut.java" index="3">
-<position info="not_deleted" x="0" y="0"/>
-</item>
 <item historyLabel="Plan.java" index="4">
 <position info="not_deleted" x="2353" y="0"/>
 </item>
@@ -320,8 +274,47 @@
 <item historyLabel="VueGraphique.java" index="0">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item active="true" historyLabel="FenetreIHM.java" index="8">
+<item historyLabel="FenetreIHM.java" index="8">
 <position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="FenetreIHM.java" index="8">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="VueTextuelle.java" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="VueTextuelle.java" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="FenetreIHM.java" index="8">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="FenetreIHM.java" index="8">
+<position info="not_deleted" x="434" y="0"/>
+</item>
+<item historyLabel="Client.java" index="10">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Client.java" index="10">
+<position info="not_deleted" x="143" y="0"/>
+</item>
+<item historyLabel="DemandeDeLivraison.java" index="11">
+<position info="not_deleted" x="5365" y="0"/>
+</item>
+<item historyLabel="DemandeDeLivraison.java" index="11">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="DemandeDeLivraison.java" index="11">
+<position info="not_deleted" x="1636" y="0"/>
+</item>
+<item historyLabel="DemandeDeLivraison.java" index="11">
+<position info="not_deleted" x="1783" y="14"/>
+</item>
+<item historyLabel="DemandeDeLivraison.java" index="11">
+<position info="not_deleted" x="1945" y="0"/>
+</item>
+<item active="true" historyLabel="DemandeDeLivraison.java" index="11">
+<position info="not_deleted" x="1783" y="14"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -340,6 +333,12 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DemandeDeLivraison.java" tooltip="TP-DevOO/src/modele/DemandeDeLivraison.java">
+<persistable path="/TP-DevOO/src/modele/DemandeDeLivraison.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Client.java" tooltip="TP-DevOO/src/modele/Client.java">
+<persistable path="/TP-DevOO/src/modele/Client.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="VueGraphique.java" tooltip="TP-DevOO/src/vue/VueGraphique.java">
 <persistable path="/TP-DevOO/src/vue/VueGraphique.java"/>
 </file>
@@ -378,12 +377,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Itineraire.java" tooltip="TP-DevOO/src/modele/Itineraire.java">
 <persistable path="/TP-DevOO/src/modele/Itineraire.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="testChargerPlanXML.java" tooltip="TP-DevOO/src/tests/testChargerPlanXML.java">
-<persistable path="/TP-DevOO/src/tests/testChargerPlanXML.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestXml.java" tooltip="TP-DevOO/src/xml/TestXml.java">
-<persistable path="/TP-DevOO/src/xml/TestXml.java"/>
 </file>
 </mruList>
 </workbench>

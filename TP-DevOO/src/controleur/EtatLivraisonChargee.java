@@ -41,7 +41,7 @@ public class EtatLivraisonChargee extends EtatDefaut {
      * @param demandeDeLivraison
      */
     public void calculerTournee(Plan plan, DemandeDeLivraison demandeDeLivraison) {
-        // TODO implement here
+        demandeDeLivraison.calculerTournee(plan);
     }
     
     public void clicGauche(FenetreIHM fenetre, Plan plan, Point p){

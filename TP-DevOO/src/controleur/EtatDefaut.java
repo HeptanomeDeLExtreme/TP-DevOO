@@ -6,6 +6,7 @@ import modele.DemandeDeLivraison;
 import modele.Livraison;
 import modele.Plan;
 
+import tsp.TSP1;
 import vue.FenetreIHM;
 
 /**
@@ -37,7 +38,7 @@ public class EtatDefaut implements Etat {
      * @param plan 
      * @param demandeDeLivraison
      */
-    public void calculerTournee(Plan plan, DemandeDeLivraison demandeDeLivraison) {
+    public void calculerTournee(Plan plan, DemandeDeLivraison demandeDeLivraison, TSP1 tsp) {
         // TODO implement here
     }
 

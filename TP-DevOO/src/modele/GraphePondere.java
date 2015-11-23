@@ -10,7 +10,8 @@ public class GraphePondere {
 	 }
 	 
 	 /**
-	  * Génère un Graphe à partir d'un plan passé en paramètre.
+	  * Genere un Graphe a partir d'un plan passe en parametre.
+	  * 
 	  * @param plan 
 	  */
 	 public GraphePondere(Plan plan) {

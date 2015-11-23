@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="16" version="2.0">
+<workbench progressCount="12" version="2.0">
 <workbenchAdvisor/>
 <window height="743" maximized="true" width="1024" x="98" y="0">
 <fastViewData fastViewLocation="1024"/>
@@ -35,9 +35,9 @@
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FenetreIHM.java" partName="FenetreIHM.java" path="/home/nico/Documents/INSA/TP-DevOO/TP-DevOO/src/vue/FenetreIHM.java" title="FenetreIHM.java" tooltip="TP-DevOO/src/vue/FenetreIHM.java" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FenetreIHM.java" partName="FenetreIHM.java" path="/home/nico/Documents/INSA/4IF/TP-DevOO/TP-DevOO/src/vue/FenetreIHM.java" title="FenetreIHM.java" tooltip="TP-DevOO/src/vue/FenetreIHM.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP-DevOO/src/vue/FenetreIHM.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1203" selectionTopPixel="863"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2038" selectionTopPixel="863"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="VueTextuelle.java" partName="VueTextuelle.java" path="/home/nico/Documents/INSA/TP-DevOO/TP-DevOO/src/vue/VueTextuelle.java" title="VueTextuelle.java" tooltip="TP-DevOO/src/vue/VueTextuelle.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP-DevOO/src/vue/VueTextuelle.java"/>
@@ -76,7 +76,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.ui.resourcePerspective">
+<perspectives activePart="org.eclipse.ui.console.ConsoleView" activePerspective="org.eclipse.ui.resourcePerspective">
 <perspective editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.ui.internal.ide.application.ResourcePerspective" id="org.eclipse.ui.resourcePerspective" label="Resource"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>

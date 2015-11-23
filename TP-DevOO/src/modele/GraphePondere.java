@@ -12,7 +12,7 @@ public class GraphePondere {
 	 /**
 	  * Genere un Graphe a partir d'un plan passe en parametre.
 	  * 
-	  * @param plan 
+	  * @param plan
 	  */
 	 public GraphePondere(Plan plan) {
 	
@@ -29,6 +29,7 @@ public class GraphePondere {
 			 mapIntersections.put(intersection,numeroIntersection);
 			 numeroIntersection++;
 		 }
+		 this.mapCorrespondance = mapIntersections;
 		 
 		 //Récupération des intersections voisines de chaque intersection et du cout associé
 		 for (Intersection intersection : setIntersections){
@@ -55,7 +56,31 @@ public class GraphePondere {
 		 this.couts = couts;
 	 } 
 	 
-	 /**
+	 public Map<Intersection, Integer> getMapCorrespondance() {
+		return mapCorrespondance;
+	}
+
+	public void setMapCorrespondance(Map<Intersection, Integer> mapCorrespondance) {
+		this.mapCorrespondance = mapCorrespondance;
+	}
+
+	public int[][] getCouts() {
+		return couts;
+	}
+
+	public void setCouts(int[][] couts) {
+		this.couts = couts;
+	}
+
+	public int getNbNoeuds() {
+		return nbNoeuds;
+	}
+
+	public void setNbNoeuds(int nbNoeuds) {
+		this.nbNoeuds = nbNoeuds;
+	}
+
+	/**
 	  * 
 	  */
 	 protected int [][]  couts;
@@ -64,6 +89,11 @@ public class GraphePondere {
 	  * 
 	  */
 	 protected int nbNoeuds;
+	 
+	 /**
+	 * 
+	 */
+	protected Map<Intersection, Integer> mapCorrespondance;
 	 
 	 /**
 	  * 

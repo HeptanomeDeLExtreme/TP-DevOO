@@ -1,0 +1,193 @@
+package vue;
+
+import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
+import java.util.*;
+
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+import modele.Intersection;
+import modele.Plan;
+import modele.Tournee;
+
+import controleur.Controleur;
+/**
+ * 
+ */
+public class FenetreIHM extends JFrame{
+
+    protected EcouteurBoutons ecouteurBoutons;
+    protected EcouteurSouris ecouteurSouris;
+    protected VueGraphique vueGraphique;
+    protected VueTextuelle vueTextuelle;
+    protected Controleur controleur;
+    
+	private JMenuBar barreMenu;
+	private JMenu menuFichier;
+	private JMenu menuModifier;
+	private JMenu menuHistorique;
+	private JMenuItem chargerPlan;
+	private JMenuItem chargerLivraison;
+	private JMenuItem genererFeuilleRoute;
+	private JMenuItem ajouterLivraison;
+	private JMenuItem supprimerLivraison;
+	private JMenuItem modifierLivraison;
+	private JMenuItem undo;
+	private JMenuItem redo;
+	
+	private JLabel cadreMessages;
+	
+	private final int hauteurCadreMessages = 100;
+	private final int largeurVueTextuelle = 400;
+	
+	private float echelleX;
+	private float echelleY;
+	
+    /**
+     * Default constructor
+     */
+    public FenetreIHM(Tournee tournee, Controleur controleur, Plan plan) {
+    	
+		this.controleur = controleur;
+		
+    	setLayout(null);
+		creerMenu();
+		cadreMessages = new JLabel();
+		cadreMessages.setBorder(BorderFactory.createTitledBorder("Messages..."));
+		getContentPane().add(cadreMessages);
+		vueTextuelle = new VueTextuelle(tournee,this);
+		vueGraphique = new VueGraphique(tournee,plan,this);
+		ecouteurSouris = new EcouteurSouris(controleur,vueGraphique,this);
+		addMouseListener(ecouteurSouris);
+		setTailleFenetre();
+		setVisible(true);
+		
+		
+    }
+
+    
+    public void setEchelleX(float echelleX) {
+		this.echelleX = echelleX;
+	}
+
+
+
+	public void setEchelleY(float echelleY) {
+		this.echelleY = echelleY;
+	}
+
+
+
+	public int getHauteurCadreMessages() {
+		return hauteurCadreMessages;
+	}
+
+
+
+	public int getLargeurVueTextuelle() {
+		return largeurVueTextuelle;
+	}
+
+
+
+	public float getEchelleX() {
+		return echelleX;
+	}
+
+
+
+	public float getEchelleY() {
+		return echelleY;
+	}
+
+
+
+	private void creerMenu(){
+    	// Crée l'écouteur de bouton
+    	ecouteurBoutons =  new EcouteurBoutons(this.controleur);
+    	
+    	// Construit la barre de menus
+    	barreMenu = new JMenuBar();
+    	
+    	// Construit le menu fichier
+    	menuFichier = new JMenu("Fichier");
+    	chargerPlan = new JMenuItem("ChargerPlan");
+    	chargerLivraison = new JMenuItem("ChargerLivraison");
+    	genererFeuilleRoute = new JMenuItem("Generer Feuille de Route");
+    	menuFichier.add(chargerPlan);
+    	menuFichier.add(chargerLivraison);
+    	menuFichier.add(genererFeuilleRoute);
+    	
+    	// Construit le menu modifier
+    	menuModifier = new JMenu("Modifier");
+    	ajouterLivraison = new JMenuItem("Ajouter Livraison");
+    	modifierLivraison = new JMenuItem("Modifier Livraison");
+    	supprimerLivraison = new JMenuItem("Supprimer Livraison");
+    	menuModifier.add(ajouterLivraison);
+    	menuModifier.add(modifierLivraison);
+    	menuModifier.add(supprimerLivraison);
+    	
+    	// Construit le menu historique
+    	menuHistorique = new JMenu("Historique");
+    	undo = new JMenuItem("Undo");
+    	redo = new JMenuItem("Redo");
+    	menuHistorique.add(undo);
+    	menuHistorique.add(redo);
+    	
+    	// Ajoute les ecouteurs de boutons
+    	chargerPlan.addActionListener(ecouteurBoutons);
+    	chargerLivraison.addActionListener(ecouteurBoutons);
+    	genererFeuilleRoute.addActionListener(ecouteurBoutons);
+    	ajouterLivraison.addActionListener(ecouteurBoutons);
+    	modifierLivraison.addActionListener(ecouteurBoutons);
+    	supprimerLivraison.addActionListener(ecouteurBoutons);
+    	undo.addActionListener(ecouteurBoutons);
+    	redo.addActionListener(ecouteurBoutons);
+
+    	// Ajoute les menus à la barre de menu
+    	barreMenu.add(menuFichier);
+    	barreMenu.add(menuModifier);
+    	barreMenu.add(menuHistorique);
+    	
+    	// Ajoute la barre de menu a la fenetre
+    	this.setJMenuBar(barreMenu);
+    }
+    
+    private void setTailleFenetre() {
+		int hauteurBoutons = 0;
+	
+		Rectangle screen = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+
+		int hauteurFenetre = screen.height;
+		int largeurFenetre = screen.width;
+		
+		int hauteurVueG = hauteurFenetre-hauteurCadreMessages-20;
+		int largeurVueG = largeurFenetre-largeurVueTextuelle;
+		
+		setSize(largeurFenetre, hauteurFenetre); // DEBUG
+		cadreMessages.setSize(largeurFenetre,60);
+		cadreMessages.setLocation(0,hauteurVueG);
+		vueGraphique.setLocation(0, 0);
+		vueGraphique.setSize(largeurVueG,hauteurVueG);
+		vueTextuelle.setSize(largeurVueTextuelle,hauteurVueG);
+		vueTextuelle.setLocation(largeurVueG,0);
+	}
+
+    public void afficheVueTextuelle(String s){
+    	this.vueTextuelle.changeText(s);
+    }
+    
+    public void afficheMessage(String s){
+    	this.cadreMessages.setText(s);
+    }
+
+}
+
+

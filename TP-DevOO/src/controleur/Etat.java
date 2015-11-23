@@ -65,9 +65,9 @@ public interface Etat {
 
     /**
      * @param fenetre 
-     * @param listeDeCommande
+     * @param p
      */
-    public void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande);
+    public void clicDroit(FenetreIHM fenetre, Point p);
 
 	public void clicGauche(FenetreIHM fenetre, Plan plan, Point p);
 

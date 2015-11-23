@@ -1,6 +1,8 @@
 package vue;
 
 import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.util.*;
 
@@ -55,16 +57,13 @@ public class FenetreIHM extends JFrame{
     	
 		this.controleur = controleur;
 		
-		this.echelleX = (float) 1.0;
-		this.echelleY = (float) 1.0;
-				
     	setLayout(null);
 		creerMenu();
 		cadreMessages = new JLabel();
 		cadreMessages.setBorder(BorderFactory.createTitledBorder("Messages..."));
 		getContentPane().add(cadreMessages);
-		vueTextuelle = new VueTextuelle(tournee,this);
-		vueGraphique = new VueGraphique(tournee,plan,echelleX,echelleY,this);
+		vueTextuelle = new VueTextuelle(plan,tournee,this);
+		vueGraphique = new VueGraphique(tournee,plan,this);
 		ecouteurSouris = new EcouteurSouris(controleur,vueGraphique,this);
 		addMouseListener(ecouteurSouris);
 		setTailleFenetre();
@@ -74,8 +73,19 @@ public class FenetreIHM extends JFrame{
     }
 
     
-    
-    public int getHauteurCadreMessages() {
+    public void setEchelleX(float echelleX) {
+		this.echelleX = echelleX;
+	}
+
+
+
+	public void setEchelleY(float echelleY) {
+		this.echelleY = echelleY;
+	}
+
+
+
+	public int getHauteurCadreMessages() {
 		return hauteurCadreMessages;
 	}
 
@@ -151,22 +161,24 @@ public class FenetreIHM extends JFrame{
     }
     
     private void setTailleFenetre() {
-		int hauteurBoutons = 0;
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int hauteurFenetre = (int) screenSize.getHeight();
-		int largeurFenetre = (int) screenSize.getWidth();
+		Rectangle screen = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+
+		int hauteurFenetre = screen.height;
+		int largeurFenetre = screen.width;
 		
-		int hauteurVueG = hauteurFenetre-hauteurCadreMessages-20;
-		int largeurVueG = largeurFenetre-largeurVueTextuelle+20;
+		int hauteurVueG = hauteurFenetre-hauteurCadreMessages-barreMenu.getHeight();
+		int largeurVueG = largeurFenetre-largeurVueTextuelle;
 		
-		setSize(largeurFenetre, hauteurFenetre);
-		cadreMessages.setSize(largeurFenetre,60);
+		setSize(largeurFenetre, hauteurFenetre); // DEBUG
+		cadreMessages.setSize(largeurFenetre,hauteurCadreMessages-50);
 		cadreMessages.setLocation(0,hauteurVueG);
 		vueGraphique.setLocation(0, 0);
 		vueGraphique.setSize(largeurVueG,hauteurVueG);
 		vueTextuelle.setSize(largeurVueTextuelle,hauteurVueG);
-		vueTextuelle.setLocation(10+largeurVueG,0);
-	}
+		vueTextuelle.setLocation(largeurVueG,0);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		this.setResizable(false);
+    }
 
     public void afficheVueTextuelle(String s){
     	this.vueTextuelle.changeText(s);

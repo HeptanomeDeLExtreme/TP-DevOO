@@ -19,16 +19,20 @@ public class VueTextuelle extends JLabel implements Observer{
 	private String text;
 	private Tournee tournee;
 	private FenetreIHM fenetre;
+	private Plan plan;
 
     /**
+     * @param plan 
      * @param tournee 
      * @param fenetreIHM
      */
-    public VueTextuelle(Tournee tournee, FenetreIHM fenetreIHM) {
+    public VueTextuelle(Plan plan, Tournee tournee, FenetreIHM fenetreIHM) {
     	super();
     	this.fenetre = fenetreIHM;
     	this.tournee = tournee;
     	this.tournee.addObserver(this);
+    	this.plan = plan;
+    	this.plan.addObserver(this);
 		setBorder(BorderFactory.createTitledBorder("Tournée :"));
 		this.setVerticalTextPosition(TOP);
 		this.setVerticalAlignment(TOP);

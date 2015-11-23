@@ -91,19 +91,13 @@ public class EtatDefaut implements Etat {
      * @param listeDeCommande
      */
     public void clicGauche(FenetreIHM fenetre, Plan plan, Point p) {
-        Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
-        if(inter != null){
-	        fenetre.afficheMessage(inter.toString());
-        }
-        else{
-        	fenetre.afficheMessage("Pas d'intersection ici !");
-        }
+
     }
 
+
 	@Override
-	public void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
-		// TODO Auto-generated method stub
-		
+	public void clicDroit(FenetreIHM fenetre, Point p) {
+		fenetre.afficheMessage("Clic droit, c'est bien mais ça ne sert à rien :) ");
 	}
 
 }

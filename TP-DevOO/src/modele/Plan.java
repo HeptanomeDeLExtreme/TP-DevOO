@@ -14,7 +14,7 @@ import xml.ExceptionXML;
 /**
  * 
  */
-public class Plan {
+public class Plan extends Observable{
 
 
     public Plan(Set<Intersection> listeInter) {
@@ -28,8 +28,7 @@ public class Plan {
     /**
      * @param fichier
      */
-    public Boolean chargerPlan() {
-    	Boolean ret = true;
+    public void chargerPlan() {
     	try {
     		intersections = new HashSet<Intersection>();
     		DeserialiseurPlanXML.charger(this);
@@ -39,9 +38,7 @@ public class Plan {
 			System.out.println("Exception constructeur plan");			
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-			ret = false;
 		}
-    	return ret;
     }
     
     
@@ -121,6 +118,11 @@ public class Plan {
 			}
     	}
 		return null;
+    }
+    
+    public void changementEffectue(){
+        setChanged(); 
+        notifyObservers();
     }
     
     /**

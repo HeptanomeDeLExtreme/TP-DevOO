@@ -137,7 +137,6 @@ public class Controleur {
      */
     public void importerLivraison() {
         this.etatCourant.importerLivraison(fenetre,demandeDeLivraison,plan);
-        this.etatCourant = this.etatLivraisonChargee;
     }
 
     /**
@@ -200,8 +199,13 @@ public class Controleur {
 
 	public void ouvrirPlan() {
 		this.etatCourant.ouvrirPlan(this.plan);	
-		this.tournee.changementEffectue();
-		this.etatCourant = this.etatPlanCharge;
+		this.plan.changementEffectue();
+	}
+
+
+
+	public void clicDroit(Point p) {
+		this.etatCourant.clicDroit(fenetre,p);		
 	}
 
 }

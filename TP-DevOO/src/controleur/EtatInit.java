@@ -1,5 +1,6 @@
 package controleur;
 
+import java.awt.Point;
 import java.io.IOException;
 import java.util.*;
 
@@ -30,16 +31,15 @@ public class EtatInit extends EtatDefaut {
      */
     public void ouvrirPlan(Plan plan) {
         plan.chargerPlan();
-//    	try {
-//			DeserialiseurPlanXML.charger(plan);
-//		} catch (ParserConfigurationException 
-//				| SAXException | IOException 
-//				| ExceptionXML | NumberFormatException e) {
-//		}
+        Controleur.setEtatCourant(Controleur.etatPlanCharge);
     }
     
     public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan) {
         fenetre.afficheMessage("Veuillez charger un plan !");
+    }
+    
+    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p){
+    	fenetre.afficheMessage("Aucun plan chargé !");
     }
 
 }

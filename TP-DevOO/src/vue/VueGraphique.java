@@ -3,6 +3,8 @@ package vue;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.util.*;
 
@@ -28,19 +30,22 @@ public class VueGraphique extends JPanel implements Observer {
 	private FenetreIHM fenetre;
 	private Plan plan;
 	
+	public static final float correcteurEchelle = (float) 0.07;
+	
     /**
      * @param plan 
      * @param tournee 
      * @param fenetreIHM
      */
-    public VueGraphique(Tournee tournee, Plan p, float echelleX, float echelleY, FenetreIHM fenetreIHM) {
+    public VueGraphique(Tournee tournee, Plan p, FenetreIHM fenetreIHM) {
     	super();
     	this.plan = p;
+    	this.plan.addObserver(this);
     	this.fenetre = fenetreIHM;
     	this.tournee = tournee;
     	this.tournee.addObserver(this);
-		this.echelleX = echelleX;
-		this.echelleY = echelleY;
+		this.echelleX = (float) 1.0;
+		this.echelleY = (float) 1.0;
 		setLayout(null);
 		setBackground(Color.DARK_GRAY);
 		setSize(largeurVue, hauteurVue);
@@ -57,15 +62,21 @@ public class VueGraphique extends JPanel implements Observer {
 		if(listInter != null && listInter.size()>0){
 			
 			// Calcul de l'echelle en x
-			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			int largeurEcran = (int)screenSize.getWidth();
+			Rectangle screen = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+			int largeurEcran = screen.width;
 			int largeurPlan = this.plan.getLargeur();
-			this.echelleX = (float)(largeurEcran - fenetre.getLargeurVueTextuelle()) / (float)largeurPlan;
+			int largeurVG = largeurEcran - fenetre.getLargeurVueTextuelle();
+			this.echelleX = (float)(largeurVG) / (float)largeurPlan;
+			this.echelleX -= correcteurEchelle;
+			this.fenetre.setEchelleX(echelleX);
 			
 			// Calcul de l'echelle en y
-			int hauteurEcran = (int)screenSize.getHeight()-100;
+			int hauteurEcran = screen.height;
 			int hauteurPlan = this.plan.getHauteur();
-			this.echelleY = (float)(hauteurEcran - fenetre.getHauteurCadreMessages()) / (float)hauteurPlan ;
+			int hauteurVG = hauteurEcran - fenetre.getHauteurCadreMessages();
+			this.echelleY = (float)(hauteurVG) / (float)hauteurPlan ;
+			this.echelleY -= correcteurEchelle;
+			this.fenetre.setEchelleY(echelleY);
 			
 			for(Intersection inter : listInter){
 				// Dessine les intersections		

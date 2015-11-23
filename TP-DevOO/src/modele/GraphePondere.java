@@ -16,10 +16,10 @@ public class GraphePondere {
 	  */
 	 public GraphePondere(Plan plan) {
 	
-		 Set<Intersection> setIntersections =plan.getIntersections();
+		 Set<Intersection> setIntersections = plan.getIntersections();
 		 this.nbNoeuds = setIntersections.size();
 		 
-		 int[][]couts= new int[nbNoeuds][nbNoeuds];
+		 int [][]couts= new int[nbNoeuds][nbNoeuds];
 		 
 		 Integer numeroIntersection = 0;
 		 

@@ -21,14 +21,14 @@ public class GraphePondereTest {
 		Troncon troncon1 = new Troncon("rue1", (float)1, (float)5, inter1, inter2);
 		Troncon troncon2 = new Troncon("rue2", (float)2, (float)5, inter2, inter1);
 		
-		Set<Troncon> set1 = new HashSet<Troncon>();
-		set1.add(troncon1);
+		Set<Troncon> troncsSortants1 = new HashSet<Troncon>();
+		troncsSortants1.add(troncon1);
 		
-		Set<Troncon> set2 = new HashSet<Troncon>();
-		set2.add(troncon2);
+		Set<Troncon> troncsSortants2 = new HashSet<Troncon>();
+		troncsSortants2.add(troncon2);
 		
-		inter1.setTronconsSortant(set1);
-		inter2.setTronconsSortant(set2);
+		inter1.setTronconsSortant(troncsSortants1);
+		inter2.setTronconsSortant(troncsSortants2);
 		
 		Set<Intersection> listeInter = new HashSet<Intersection>();
 		listeInter.add(inter1);
@@ -54,8 +54,15 @@ public class GraphePondereTest {
 		mapIntersectionsObtenue = unGraphe.getMapCorrespondance();
 		
 		assertEquals(nbSommetsAttendus, nbSommetsObtenus);
-		assertArrayEquals(coutsAttendus, coutsObtenus);
 		assertEquals(mapIntersectionsAttendue, mapIntersectionsObtenue);
+		for(int i = 0; i < nbSommetsObtenus; i++) {
+			for(int j = 0; j < nbSommetsObtenus; j++) {
+				System.out.println("Intersection de départ n° : "+i);
+				System.out.println("Intersection d'arrivée n° : "+j);
+				System.out.println("Coût : "+coutsObtenus[i][j]);
+			}
+		}
+		assertArrayEquals(coutsAttendus, coutsObtenus);
 	}
 	
 	@Test
@@ -109,8 +116,15 @@ public class GraphePondereTest {
 		mapIntersectionsObtenue = unGraphe.getMapCorrespondance();
 		
 		assertEquals(nbSommetsAttendus, nbSommetsObtenus);
-		assertArrayEquals(coutsAttendus, coutsObtenus);
 		assertEquals(mapIntersectionsAttendue, mapIntersectionsObtenue);
+		for(int i = 0; i < nbSommetsObtenus; i++) {
+			for(int j = 0; j < nbSommetsObtenus; j++) {
+				System.out.println("Intersection de départ n° : "+i);
+				System.out.println("Intersection d'arrivée n° : "+j);
+				System.out.println("Coût : "+coutsObtenus[i][j]);
+			}
+		}
+		assertArrayEquals(coutsAttendus, coutsObtenus);
 	}
 
 }

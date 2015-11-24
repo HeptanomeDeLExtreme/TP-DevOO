@@ -150,8 +150,10 @@ public class DemandeDeLivraison {
      * @param plan
      */
     public void calculerTournee(Plan plan) {
+    	GraphePondere graphePondere = new GraphePondere(plan);
+    	
     	// Calcul des plus courts chemins a partir d'un livraison sur tout le plan
-    	calculDesPlusCourtsChemins(plan);
+    	calculDesPlusCourtsChemins(plan, graphePondere);
 
     	/*// Creation des correspondances entre un sommet (Integer) et une livraison
 		Map<Integer,Livraison> mapLivraisons = correspondanceLivraisons();
@@ -193,10 +195,7 @@ public class DemandeDeLivraison {
      * 
      * @see Livraison
      */
-    private void calculDesPlusCourtsChemins(Plan plan) {
-    	
-    	GraphePondere graphePondere = new GraphePondere(plan);
-    	
+    private void calculDesPlusCourtsChemins(Plan plan, GraphePondere graphePondere) {    	
     	// Recherche des plus courts chemins pour l'entrepôt mentionné dans le
     	// fichier XML
     	entrepot.calculerPlusCourtsChemins(graphePondere);  	

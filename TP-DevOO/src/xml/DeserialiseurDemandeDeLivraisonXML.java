@@ -1,12 +1,19 @@
 package xml;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.GregorianCalendar;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
 
 import modele.Client;
 import modele.DemandeDeLivraison;
@@ -39,13 +46,15 @@ public class DeserialiseurDemandeDeLivraisonXML {
 	public static void charger(DemandeDeLivraison demandeDeLivraison, Plan plan) throws ParserConfigurationException, SAXException, IOException, ExceptionXML{
 		File xml = OuvreurDeFichierXML.getInstance().ouvre(true);
         DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();	
-        Document document = docBuilder.parse(xml);
-        Element racine = document.getDocumentElement();
-        if (racine.getNodeName().equals("JourneeType")) {
-           construireAPartirDeDOMXML(racine, demandeDeLivraison, plan);
-        }
-        else
+        if (validateAgainstXSD(new FileInputStream(xml), new FileInputStream(new File("src/xml/XSDDemandeDeLivraison.xsd")))){
+        	Document document = docBuilder.parse(xml);
+        	Element racine = document.getDocumentElement();
+            construireAPartirDeDOMXML(racine, demandeDeLivraison, plan);
+        } 
+        else{
         	throw new ExceptionXML("Document non conforme");
+        }
+        
 	}
 
 	/**
@@ -84,12 +93,16 @@ public class DeserialiseurDemandeDeLivraisonXML {
 	 * Cree une fenêtre temporelle
 	 * @param Element item
 	 * @return FenetreTemporelle fenetre
+	 * @throws ExceptionXML 
 	 */
-	private static FenetreTemporelle creeFenetreTemporelle(Element fenetre) {
+	private static FenetreTemporelle creeFenetreTemporelle(Element fenetre) throws ExceptionXML {
 		String[] dateDebXml = fenetre.getAttribute("heureDebut").split(":");
 		String[] dateFinXml = fenetre.getAttribute("heureFin").split(":");
 		Horaire dateDeb = new Horaire(Integer.parseInt(dateDebXml[0]), Integer.parseInt(dateDebXml[1]), Integer.parseInt(dateDebXml[2]));
 		Horaire dateFin = new Horaire(Integer.parseInt(dateFinXml[0]), Integer.parseInt(dateFinXml[1]), Integer.parseInt(dateFinXml[2]));
+		if (dateDeb.compare(dateFin) != -1){
+			throw new ExceptionXML("Document non conforme : La date de début de la fenêtre doit être strictement supérieure à la date de fin.");
+		}
 		return new FenetreTemporelle(dateDeb, dateFin);
 	}
 	
@@ -98,10 +111,14 @@ public class DeserialiseurDemandeDeLivraisonXML {
 	 * @param Element item
 	 * @param Plan plan
 	 * @return Livraison livraison
+	 * @throws ExceptionXML 
 	 */
-	private static Livraison creeLivraison(Element livraisonXml, Plan plan) {
+	private static Livraison creeLivraison(Element livraisonXml, Plan plan) throws ExceptionXML {
     	int idadresse = Integer.parseInt(livraisonXml.getAttribute("adresse"));
     	Intersection adresse = plan.recupererIntersectionParId(idadresse);
+    	if(adresse == null){
+    		throw new ExceptionXML("Document non conforme : Toutes les livraisons de la demande de livraison doivent correspondre à une adresse du plan.");
+    	}
     	int idClient = Integer.parseInt(livraisonXml.getAttribute("client"));
     	Client client = new Client (idClient);
     	int id = Integer.parseInt(livraisonXml.getAttribute("id"));
@@ -113,11 +130,32 @@ public class DeserialiseurDemandeDeLivraisonXML {
 	 * @param Element item
 	 * @param Plan plan
 	 * @return Livraison entrepot
+	 * @throws ExceptionXML 
 	 */
-	private static Livraison creeEntrepot(Element entrepot, Plan plan) {
+	private static Livraison creeEntrepot(Element entrepot, Plan plan) throws ExceptionXML {
     	int idadresse = Integer.parseInt(entrepot.getAttribute("adresse"));
     	Intersection adresse = plan.recupererIntersectionParId(idadresse);
+    	if(adresse == null){
+    		throw new ExceptionXML("Document non conforme : L'entrepot de la demande de livraison n'est pas dans le plan.");
+    	}
     	return new Livraison(0, adresse);
+	}
+	
+	private static boolean validateAgainstXSD(InputStream xml, InputStream xsd) throws ExceptionXML
+	{
+	    try
+	    {
+	        SchemaFactory factory = 
+	            SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+	        Schema schema = factory.newSchema(new StreamSource(xsd));
+	        Validator validator = schema.newValidator();
+	        validator.validate(new StreamSource(xml));
+	        return true;
+	    }
+	    catch(Exception ex)
+	    {
+	    	throw new ExceptionXML("Document non conforme : " + ex.getMessage());
+	    }
 	}
  
 }

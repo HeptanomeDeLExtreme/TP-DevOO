@@ -67,25 +67,11 @@ public class testChargerDemandeDeLivraisonXML {
     	listeInter.add(i7);
     	listeInter.add(i8);
     	listeInter.add(i9);
-//    	Plan plan = new Plan(listeInter);
-    	Plan plan = new Plan();
+    	Plan plan = new Plan(listeInter);
+    	//Plan plan = new Plan();
     	
     	DemandeDeLivraison demandeDeLivraison = new DemandeDeLivraison();
-    	try {
-			DeserialiseurDemandeDeLivraisonXML.charger(demandeDeLivraison, plan);
-		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExceptionXML e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		demandeDeLivraison.chargerLivraison(plan);
     	
     	System.out.println(demandeDeLivraison.toString());
 	}

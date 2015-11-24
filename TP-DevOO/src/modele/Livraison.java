@@ -151,6 +151,7 @@ public class Livraison {
 	public void calculerPlusCourtsChemins(GraphePondere graphe) {
 		Map<Intersection, Integer> mapCorrespondancePlan = graphe.getMapCorrespondance();
 		// TEST
+		System.out.println("Livraison actuelle : " + this.getId());
 		Set<Intersection> setKey = mapCorrespondancePlan.keySet();
 		for(Intersection unInter : setKey) {
 			Integer resultat = mapCorrespondancePlan.get(unInter);

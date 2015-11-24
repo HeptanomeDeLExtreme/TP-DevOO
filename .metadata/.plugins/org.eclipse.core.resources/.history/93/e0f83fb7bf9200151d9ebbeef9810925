@@ -22,19 +22,11 @@ public class Tournee extends Observable {
      * @param coutTotal
      * @param livraisonsEnOrdre
      */
-    public void charge(DemandeDeLivraison ddl, Livraison entrepot, int coutTotal, List<Itineraire> itinerairesEnOrdre) {
+    public Tournee(DemandeDeLivraison ddl, Livraison entrepot, int coutTotal, List<Itineraire> itinerairesEnOrdre) {
     	this.demandeDeLivraison = ddl;
     	this.entrepot = entrepot;
     	this.coutTotal = coutTotal;
     	this.itineraires = itinerairesEnOrdre;
-
-    	for(Itineraire itineraire : itinerairesEnOrdre){
-    		Livraison depart = itineraire.getArrivee();
-    		Livraison arrivee = itineraire.getDepart();
-    		List<Troncon> listeTroncon = depart.rechercherTroncons(arrivee);
-    	}
-    	
-    	this.changementEffectue();
     }
     
     /**

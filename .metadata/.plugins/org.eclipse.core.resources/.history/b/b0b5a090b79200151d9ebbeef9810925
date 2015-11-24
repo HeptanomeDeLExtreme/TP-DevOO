@@ -191,27 +191,23 @@ public class DemandeDeLivraison {
     	int couts[][] = genererTableauArcs(graphePondere.getMapCorrespondance(),mapLivraisons);
     	
     	// Generation du graphe de livraisons
-    	GrapheLivraisons graphe = new GrapheLivraisons(nbLivraisons, couts);
+    	/*GrapheLivraisons graphe = new GrapheLivraisons(nbLivraisons, couts);
     	
     	// Recherche de la solution avec TSP
-    	tsp.chercheSolution(1000, graphe);
-
+    	tsp.chercheSolution(0, graphe);
+    	
     	// Recuperer l'ordre des livraisons a effectuer grace a TSP
     	LinkedList<Livraison> livraisonsEnOrdre = new LinkedList<Livraison>();
     	livraisonsEnOrdre = recupererLivraisonsEnOrdre(graphe, mapLivraisons);
     	
-    	for(Livraison uneLiv : livraisonsEnOrdre) {
-    		System.out.println("Livraison : "+uneLiv);
-    	}
     	// Récupérer l'ordre des itinéraires entre les livraisons.
     	List<Itineraire> itinerairesEnOrdre = new LinkedList<Itineraire>();
     	itinerairesEnOrdre = recupererItinerairesEnOrdre(livraisonsEnOrdre, mapLivraisons,couts);
     	
     	// Créer la tournée
     	int coutTotalSolution = tsp.getCoutSolution();
-    	this.tournee.charge(this, entrepot, coutTotalSolution, itinerairesEnOrdre);
-    	System.out.println(this.tournee);
-    
+    	Tournee tournee = new Tournee(this, entrepot, coutTotalSolution, itinerairesEnOrdre);
+    */
     }
 
 
@@ -379,6 +375,7 @@ public class DemandeDeLivraison {
     		if(livraisonSourceActuelle.getId() != entrepot.getId()){
     			Integer integerSource = getKeyByValue(map,livraisonSourceActuelle);
     			Integer integerEntrepot = getKeyByValue(map,entrepot);
+    			System.out.println("S : "+integerSource+ " E : "+integerEntrepot);
     			tableauArcs[integerSource][integerEntrepot] = livraisonSourceActuelle.rechercherCout(correspondancePlan,
     					entrepot);
     		}

@@ -9,10 +9,7 @@ import java.util.*;
  */
 public class Tournee extends Observable {
 
-    private int coutTotal;
-
-
-	/**
+    /**
      * Default constructor
      */
     public Tournee() {
@@ -22,19 +19,7 @@ public class Tournee extends Observable {
      * @param coutTotal
      * @param livraisonsEnOrdre
      */
-    public void charge(DemandeDeLivraison ddl, Livraison entrepot, int coutTotal, List<Itineraire> itinerairesEnOrdre) {
-    	this.demandeDeLivraison = ddl;
-    	this.entrepot = entrepot;
-    	this.coutTotal = coutTotal;
-    	this.itineraires = itinerairesEnOrdre;
-
-    	for(Itineraire itineraire : itinerairesEnOrdre){
-    		Livraison depart = itineraire.getArrivee();
-    		Livraison arrivee = itineraire.getDepart();
-    		List<Troncon> listeTroncon = depart.rechercherTroncons(arrivee);
-    	}
-    	
-    	this.changementEffectue();
+    public Tournee(DemandeDeLivraison ddl, Livraison entrepot, int coutTotal, List<Itineraire> itinerairesEnOrdre) {
     }
     
     /**
@@ -111,7 +96,7 @@ public class Tournee extends Observable {
 	}
 
     public String toString(){
-    	String toRet="";
+    	String toRet;
     	for(Itineraire iti : itineraires){
     		List<Troncon> listeTroncon = iti.getTroncons();
     		for(Troncon tronc : listeTroncon ){

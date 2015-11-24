@@ -209,8 +209,7 @@ public class DemandeDeLivraison {
     	
     	// Créer la tournée
     	int coutTotalSolution = tsp.getCoutSolution();
-    	this.tournee.charge(this, entrepot, coutTotalSolution, itinerairesEnOrdre);
-    	System.out.println(this.tournee);
+    	Tournee tournee = new Tournee(this, entrepot, coutTotalSolution, itinerairesEnOrdre);
     
     }
 

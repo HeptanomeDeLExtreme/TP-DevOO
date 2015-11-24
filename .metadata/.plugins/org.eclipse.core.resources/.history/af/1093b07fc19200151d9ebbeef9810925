@@ -28,12 +28,6 @@ public class Tournee extends Observable {
     	this.coutTotal = coutTotal;
     	this.itineraires = itinerairesEnOrdre;
 
-    	for(Itineraire itineraire : itinerairesEnOrdre){
-    		Livraison depart = itineraire.getArrivee();
-    		Livraison arrivee = itineraire.getDepart();
-    		List<Troncon> listeTroncon = depart.rechercherTroncons(arrivee);
-    	}
-    	
     	this.changementEffectue();
     }
     

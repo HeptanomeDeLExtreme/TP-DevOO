@@ -152,15 +152,25 @@ public class Livraison {
 		Map<Intersection, Integer> mapCorrespondancePlan = graphe.getMapCorrespondance();
 		// TEST
 		System.out.println("Livraison actuelle : " + this.getId());
+		System.out.println("Intersection actuelle : " + this.getAdresse());
 		Set<Intersection> setKey = mapCorrespondancePlan.keySet();
 		for(Intersection unInter : setKey) {
 			Integer resultat = mapCorrespondancePlan.get(unInter);
 			System.out.println("Clé : " + unInter + ", Valeur : " + resultat);
 		}
-		// TEST
 		Integer numeroSommet = mapCorrespondancePlan.get(this.adresse);
+		System.out.println(numeroSommet);
 		int [][]piEtD = Dijkstra.dijkstra(graphe, numeroSommet);
 		tableauD = piEtD[0];
+		for(int i = 0; i < tableauD.length; i++) {
+			int resultat = tableauD[i];
+			System.out.println("resultat D : "+ resultat);
+		}
 		tableauPi = piEtD[1];
+		for(int i = 0; i < tableauPi.length; i++) {
+			int resultat = tableauPi[i];
+			System.out.println("resultat PI : "+ resultat);
+		}
+		// TEST
 	}
 }

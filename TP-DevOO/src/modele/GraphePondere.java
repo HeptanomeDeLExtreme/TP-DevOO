@@ -22,7 +22,6 @@ public class GraphePondere {
 		 int[][]couts= new int[nbNoeuds][nbNoeuds];
 		 
 		 Integer numeroIntersection = 0;
-		 
 		 // Attribution d'un numéro à toutes les intersections
 		 Map<Intersection, Integer> mapIntersections = new HashMap<Intersection, Integer>();
 		 for(Intersection intersection : setIntersections){

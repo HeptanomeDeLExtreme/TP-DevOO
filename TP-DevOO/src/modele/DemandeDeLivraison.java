@@ -367,7 +367,13 @@ public class DemandeDeLivraison {
 				}
 			}
     	}
-    	
+    	//TEST
+    	for(int i =0; i < nbLivraisons; i++){
+    		for(int j = 0; j < nbLivraisons; j++){
+    			System.out.println("tableauArc "+i+" "+j+" :"+tableauArcs[i][j]);
+    		}
+    	}
+    	//TEST
     	return tableauArcs;
     }
     

@@ -35,7 +35,8 @@ public class EcouteurBoutons implements ActionListener {
 		System.out.println(e.getActionCommand());	
 		switch (e.getActionCommand()){
 		case "ChargerPlan": controleur.ouvrirPlan(); break;
-		case "ChargerLivraison" : controleur.importerLivraison();
+		case "ChargerLivraison" : controleur.importerLivraison(); break;
+		case "CalculTournee" : controleur.calculerTournee(); break;
 		}
 	}
 

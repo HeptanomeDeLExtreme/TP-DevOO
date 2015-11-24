@@ -22,7 +22,7 @@ public class Plan extends Observable{
 	}
     
     public Plan(){
-    	// TODO
+    	intersections = new HashSet<Intersection>();
     }
     
     /**
@@ -36,8 +36,8 @@ public class Plan extends Observable{
 				| ExceptionXML e) {
 			// TODO Auto-generated catch block
 			System.out.println("Exception constructeur plan");			
-			System.out.println(e.getMessage());
-			e.printStackTrace();
+//			System.out.println(e.getMessage());
+//			e.printStackTrace();
 		}
     }
     

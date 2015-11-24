@@ -20,6 +20,7 @@ public class Controleur {
 	public static final EtatInit etatInit = new EtatInit();
 	public static final EtatPlanCharge etatPlanCharge = new EtatPlanCharge();
 	public static final EtatLivraisonChargee etatLivraisonChargee = new EtatLivraisonChargee();
+	public static final EtatTourneeCalculee etatTourneeCalculee = new EtatTourneeCalculee();
 	
 	/**
 	 * Change l'etat courant du controleur
@@ -27,6 +28,7 @@ public class Controleur {
 	 */
 	protected static void setEtatCourant(Etat etat){
 		etatCourant = etat;
+		System.out.println("Etat changé pour : "+etat);
 	}
 	
     /**
@@ -65,53 +67,11 @@ public class Controleur {
      * Default constructor
      */
     public Controleur() {
-//    	Intersection i1 = new Intersection(1, 10, 10);
-//    	Intersection i2 = new Intersection(2,30,20);
-//    	Intersection i3 = new Intersection(3,50,80);
-//    	Troncon t1 = new Troncon("rue 1");
-//    	Troncon t2 = new Troncon("rue 2");
-//    	Troncon t3 = new Troncon("rue 3");
-//    	t1.setOrigine(i1);
-//    	t1.setDestination(i2);
-//    	t2.setOrigine(i2);
-//    	t2.setDestination(i3);
-//    	t3.setOrigine(i1);
-//    	t3.setDestination(i3);
-//    	Set<Troncon> tronconE1 = new HashSet<Troncon>();
-//    	Set<Troncon> tronconS1 = new HashSet<Troncon>();
-//    	tronconS1.add(t1);
-//    	tronconS1.add(t3);
-//    	Set<Troncon> tronconE2 = new HashSet<Troncon>();
-//    	tronconE2.add(t1);
-//    	Set<Troncon> tronconS2 = new HashSet<Troncon>();
-//    	tronconS2.add(t2);
-//    	Set<Troncon> tronconE3 = new HashSet<Troncon>();
-//    	tronconE3.add(t2);
-//    	tronconE3.add(t3);
-//    	Set<Troncon> tronconS3 = new HashSet<Troncon>();
-//    	i1.setTronçonsEntrant(tronconE1);
-//    	i1.setTronçonsSortant(tronconS1);
-//    	i2.setTronçonsEntrant(tronconE2);
-//    	i2.setTronçonsSortant(tronconS2);
-//    	i3.setTronçonsEntrant(tronconE3);
-//    	i3.setTronçonsSortant(tronconS3);
-//    	Set<Intersection> listeInter = new HashSet<Intersection>();
-//    	listeInter.add(i1);
-//    	listeInter.add(i2);
-//    	listeInter.add(i3);
     	this.plan = new Plan();
     	
     	this.tournee = new Tournee();
-//    	List<Itineraire> lit = new ArrayList<Itineraire>();
-//    	Itineraire it1 = new Itineraire();
-//    	List<Troncon> lt1 = new ArrayList<Troncon>();
-//    	lt1.add(t1);
-//    	lt1.add(t2);
-//    	it1.setTronçons(lt1);
-//    	lit.add(it1);
-//    	tournee.setItineraires(lit);
     	
-    	this.demandeDeLivraison = new DemandeDeLivraison();
+    	this.demandeDeLivraison = new DemandeDeLivraison(this.tournee);
     	
     	etatCourant = etatInit;
     	
@@ -142,8 +102,8 @@ public class Controleur {
     /**
      * 
      */
-    protected void calculerTournee() {
-        // TODO implement here
+    public void calculerTournee() {
+        this.etatCourant.calculerTournee(fenetre, plan, demandeDeLivraison);
     }
 
     /**

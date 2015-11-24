@@ -1,13 +1,21 @@
 package controleur;
 
 import java.awt.Point;
+import java.io.IOException;
 import java.util.*;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 
 import modele.DemandeDeLivraison;
 import modele.Intersection;
 import modele.Plan;
 
 import vue.FenetreIHM;
+import xml.DeserialiseurDemandeDeLivraisonXML;
+import xml.DeserialiseurPlanXML;
+import xml.ExceptionXML;
 
 /**
  * 
@@ -20,28 +28,44 @@ public class EtatLivraisonChargee extends EtatDefaut {
     public EtatLivraisonChargee() {
     }
 
+    public String toString(){
+    	return "Etat Livraison Chargée";
+    }
+    
     /**
      * @param fenetre
      */
     public void ouvrirPlan(Plan plan) {
-        plan.chargerPlan();
-        Controleur.setEtatCourant(Controleur.etatPlanCharge);
+    	try {
+    		DeserialiseurPlanXML.charger(plan);
+    		Controleur.setEtatCourant(Controleur.etatPlanCharge);
+		} catch (ParserConfigurationException | SAXException | IOException
+				| ExceptionXML e) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception constructeur plan");			
+		}
     }
 
     /**
      * @param fenetre
      */
     public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan){
-    	demandeDeLivraison.chargerLivraison(plan);
-    	Controleur.setEtatCourant(Controleur.etatLivraisonChargee);
+    	try {
+    		DeserialiseurDemandeDeLivraisonXML.charger(demandeDeLivraison,plan);
+            Controleur.setEtatCourant(Controleur.etatLivraisonChargee);
+		} catch (ParserConfigurationException | SAXException | IOException
+				| ExceptionXML e) {
+			System.out.println("Exception constructeur livraisons");			
+		}
     }
 
     /**
      * @param plan 
      * @param demandeDeLivraison
      */
-    public void calculerTournee(Plan plan, DemandeDeLivraison demandeDeLivraison) {
-        // TODO implement here
+    public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison) {
+        demandeDeLivraison.calculerTournee(plan);
+        Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
     }
     
     public void clicGauche(FenetreIHM fenetre, Plan plan, Point p){

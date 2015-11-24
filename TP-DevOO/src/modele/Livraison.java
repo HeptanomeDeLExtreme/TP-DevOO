@@ -105,5 +105,25 @@ public class Livraison {
 	public void setClient(Client client) {
 		this.client = client;
 	}
+	
+	/**
+	 * 
+	 * @param livraisonDest
+	 * @return
+	 */
+	public int rechercherCout(Livraison livraisonDest)
+	{
+		return 1;
+	}
+	
+	public List<Troncon> rechercherTroncons(Livraison livraisonDest)
+	{
+		//TODO implémenter la recherche des tronçons.
+		return null;
+	}
+
+	public void calculerPlusCourtsChemins(Plan plan) {
+		// TODO Auto-generated method stub
+	}
 
 }

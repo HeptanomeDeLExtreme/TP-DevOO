@@ -17,6 +17,11 @@ public class EtatTourneeCalculee extends EtatDefaut {
     public EtatTourneeCalculee() {
     }
 
+    
+    public String toString(){
+    	return "Etat Tournée Calculée";
+    }
+    
     /**
      * @param listeDeCommande
      */

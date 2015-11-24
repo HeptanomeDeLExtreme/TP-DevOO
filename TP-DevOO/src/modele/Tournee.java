@@ -16,6 +16,13 @@ public class Tournee extends Observable {
     }
 
     /**
+     * @param coutTotal
+     * @param livraisonsEnOrdre
+     */
+    public Tournee(DemandeDeLivraison ddl, Livraison entrepot, int coutTotal, List<Itineraire> itinerairesEnOrdre) {
+    }
+    
+    /**
      * 
      */
     protected Float duree;
@@ -35,10 +42,6 @@ public class Tournee extends Observable {
      */
     protected List<Itineraire> itineraires;
 
-    /**
-     * 
-     */
-    protected Tournee singleton;
 
     /**
      * @param livraison1 

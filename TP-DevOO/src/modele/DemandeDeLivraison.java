@@ -48,6 +48,13 @@ public class DemandeDeLivraison {
     /**
      * Default constructor
      */
+    public DemandeDeLivraison() {
+    	
+    }
+    
+    /**
+     * @param tournee
+     */
     public DemandeDeLivraison(Tournee tournee) {
     	this.tournee = tournee;
     	fenetres = new ArrayList<FenetreTemporelle>();
@@ -194,9 +201,12 @@ public class DemandeDeLivraison {
      * @see Livraison
      */
     private void calculDesPlusCourtsChemins(Plan plan) {
+    	
+    	GraphePondere graphePondere = new GraphePondere(plan);
+    	
     	// Recherche des plus courts chemins pour l'entrepôt mentionné dans le
     	// fichier XML
-    	entrepot.calculerPlusCourtsChemins(plan);  	
+    	entrepot.calculerPlusCourtsChemins(graphePondere);  	
     	
     	// Recherche des plus courts chemins pour toutes les livraisons du fichier
     	// XML
@@ -207,7 +217,7 @@ public class DemandeDeLivraison {
     		livraisons = fenetre.getLivraisons();
     		
     		for (Livraison livraisonDepart : livraisons) {
-    			livraisonDepart.calculerPlusCourtsChemins(plan);
+    			livraisonDepart.calculerPlusCourtsChemins(graphePondere);
     		}
     	}
 	}

@@ -58,7 +58,33 @@ public class Livraison {
     /**
      * 
      */
-    public Client client;
+    protected Client client;
+    
+    /**
+     * 
+     */
+    protected int[] tableauPi;
+    
+    public int[] getTableauPi() {
+		return tableauPi;
+	}
+
+	public void setTableauPi(int[] tableauPi) {
+		this.tableauPi = tableauPi;
+	}
+
+	public int[] getTableauD() {
+		return tableauD;
+	}
+
+	public void setTableauD(int[] tableauD) {
+		this.tableauD = tableauD;
+	}
+
+	/**
+     * 
+     */
+    protected int[] tableauD;
     
     @Override
     public String toString(){
@@ -122,8 +148,11 @@ public class Livraison {
 		return null;
 	}
 
-	public void calculerPlusCourtsChemins(Plan plan) {
-		// TODO Auto-generated method stub
+	public void calculerPlusCourtsChemins(GraphePondere graphe) {
+		Map<Intersection, Integer> mapCorrespondancePlan = graphe.getMapCorrespondance();
+		Integer numeroSommet = mapCorrespondancePlan.get(this.adresse);
+		int [][]piEtD = Dijkstra.dijkstra(graphe, numeroSommet);
+		tableauD = piEtD[0];
+		tableauPi = piEtD[1];
 	}
-
 }

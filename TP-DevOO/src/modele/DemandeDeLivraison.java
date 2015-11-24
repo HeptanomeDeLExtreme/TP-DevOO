@@ -150,12 +150,10 @@ public class DemandeDeLivraison {
      * @param plan
      */
     public void calculerTournee(Plan plan) {
-        // TODO implement here
-    	
     	// Calcul des plus courts chemins a partir d'un livraison sur tout le plan
     	calculDesPlusCourtsChemins(plan);
 
-    	// Creation des correspondances entre un sommet (Integer) et une livraison
+    	/*// Creation des correspondances entre un sommet (Integer) et une livraison
 		Map<Integer,Livraison> mapLivraisons = correspondanceLivraisons();
 		
     	// Generation des arcs du graphe de livraisons
@@ -178,6 +176,7 @@ public class DemandeDeLivraison {
     	// Créer la tournée
     	int coutTotalSolution = tsp.getCoutSolution();
     	Tournee tournee = new Tournee(this, entrepot, coutTotalSolution, itinerairesEnOrdre);
+    */
     }
 
 

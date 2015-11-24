@@ -150,6 +150,13 @@ public class Livraison {
 
 	public void calculerPlusCourtsChemins(GraphePondere graphe) {
 		Map<Intersection, Integer> mapCorrespondancePlan = graphe.getMapCorrespondance();
+		// TEST
+		Set<Intersection> setKey = mapCorrespondancePlan.keySet();
+		for(Intersection unInter : setKey) {
+			Integer resultat = mapCorrespondancePlan.get(unInter);
+			System.out.println("Clé : " + unInter + ", Valeur : " + resultat);
+		}
+		// TEST
 		Integer numeroSommet = mapCorrespondancePlan.get(this.adresse);
 		int [][]piEtD = Dijkstra.dijkstra(graphe, numeroSommet);
 		tableauD = piEtD[0];

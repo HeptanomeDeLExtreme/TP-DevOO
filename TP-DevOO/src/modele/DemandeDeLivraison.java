@@ -99,9 +99,32 @@ public class DemandeDeLivraison {
 	}
     
     
-    public void chargerLivraison(Plan plan){
+    public int getNbLivraisons() {
+		return nbLivraisons;
+	}
+
+	public void setNbLivraisons(int nbLivraisons) {
+		this.nbLivraisons = nbLivraisons;
+	}
+
+	public void chargerLivraison(Plan plan){
     	try {
     		fenetres = new ArrayList<FenetreTemporelle>();
+    		
+    		// Compte le nombre de livraisons du fichier XML
+    		nbLivraisons = 0;
+    	
+    		for (FenetreTemporelle fenetre : fenetres) {
+    			System.out.println("Fenetre : "+fenetre);
+    			Set<Livraison> livraisonsFActuelle = fenetre.getLivraisons();
+    			System.out.println("Nombre de livraisons : "+livraisonsFActuelle.size());
+    			nbLivraisons += livraisonsFActuelle.size();
+    		}
+    		
+    		// Ajout de l'entrepot
+    		nbLivraisons++;
+    		System.out.println("Nombre de livraisons totales : "+nbLivraisons);
+    		
     		DeserialiseurDemandeDeLivraisonXML.charger(this,plan);
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
@@ -161,14 +184,14 @@ public class DemandeDeLivraison {
     	// Calcul des plus courts chemins a partir d'un livraison sur tout le plan
     	calculDesPlusCourtsChemins(plan, graphePondere);
 
-    	/*// Creation des correspondances entre un sommet (Integer) et une livraison
-		Map<Integer,Livraison> mapLivraisons = correspondanceLivraisons();
+    	// Creation des correspondances entre un sommet (Integer) et une livraison
+    	Map<Integer,Livraison> mapLivraisons = correspondanceLivraisons();
 		
     	// Generation des arcs du graphe de livraisons
     	int couts[][] = genererTableauArcs(mapLivraisons);
     	
     	// Generation du graphe de livraisons
-    	GrapheLivraisons graphe = new GrapheLivraisons(nbLivraisons, couts);
+    	/*GrapheLivraisons graphe = new GrapheLivraisons(nbLivraisons, couts);
     	
     	// Recherche de la solution avec TSP
     	tsp.chercheSolution(0, graphe);
@@ -250,6 +273,14 @@ public class DemandeDeLivraison {
     		}	
     	}
     	
+    	// TEST
+    	
+    	for(int compteur = 0; compteur < mapLivraisons.size(); compteur++){
+    		Livraison result = mapLivraisons.get(compteur);
+    		System.out.println("compteur : "+compteur+"livraison : "+result);
+    	}
+    	// TEST
+    	
     	return mapLivraisons;
     	
     }
@@ -270,7 +301,7 @@ public class DemandeDeLivraison {
      * @see correspondanceLivraisons
      */
     protected int[][] genererTableauArcs(Map<Integer,Livraison> map){
-    	
+    	System.out.println("NbLivraisons : "+nbLivraisons);
     	int tableauArcs[][]= new int[nbLivraisons][nbLivraisons];
     	
     	// Creation d'un arc entre l'entrepot et les livraisons de 

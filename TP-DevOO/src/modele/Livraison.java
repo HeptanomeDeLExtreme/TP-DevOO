@@ -1,6 +1,9 @@
 package modele;
 
 import java.util.*;
+import java.util.Map.Entry;
+
+import org.hamcrest.CoreMatchers;
 
 /**
  * 
@@ -145,6 +148,23 @@ public class Livraison {
 		return this.tableauD[idDest];
 	}
 	
+    /**
+     * 
+     * @param map
+     * @param value
+     * @return
+     */
+    public Intersection getKeyByValue(Map<Intersection, Integer> map, Integer value) {
+    	Intersection resultat = null;
+    	Set<Intersection> setIntersection = map.keySet();
+    	for(Intersection uneInter : setIntersection) {
+    		if (value == map.get(uneInter)) {
+    			resultat =  uneInter;
+    		}
+    	}
+    	return resultat;
+    }
+    
 	public List<Troncon> rechercherTroncons(Map<Intersection, Integer> correspondancePlan, Livraison livraisonDest)
 	{
 		List<Troncon> tronconsOrdonnes = new LinkedList<>(); 
@@ -154,18 +174,27 @@ public class Livraison {
 		Integer numeroSommetLivDepart = correspondancePlan.get(adresse);
 		
 		Integer numeroSommetSuivant = tableauPi[numeroSommet];
+		Intersection interNumeroSommetSuivant = 
+				getKeyByValue(correspondancePlan, numeroSommetSuivant);
+
 		// TODO OPHELIE
 		while(numeroSommetSuivant != numeroSommetLivDepart){
 			// Rechercher troncon avec numeroSommet et numeroSommetSuivant
-			Troncon unTroncon = adresse.rechercherTroncon(arrivee);
+			Troncon unTroncon = arrivee.rechercherTroncon(interNumeroSommetSuivant);
 			System.out.println("KFS : "+adresse+" "+arrivee+" "+unTroncon);
 			// Ajouter le troncon à la liste
 			tronconsOrdonnes.add(unTroncon);
 			// Dire que numeroSommet = numeroSommetSuivant
 			numeroSommet = numeroSommetSuivant;
+			// Changement de l'intersection suivante
+			arrivee = interNumeroSommetSuivant;
 			// Récupérer numeroSommetSuivant avec tableauPi[numeroSommet]
 			numeroSommetSuivant = tableauPi[numeroSommet];
 		}
+		// Insertion du dernier troncon
+		Troncon unTroncon = arrivee.rechercherTroncon(adresse);
+		System.out.println("Dernier tronocn :"+unTroncon);
+		tronconsOrdonnes.add(unTroncon);
 		return tronconsOrdonnes;
 	}
 

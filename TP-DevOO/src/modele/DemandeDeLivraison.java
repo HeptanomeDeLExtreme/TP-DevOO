@@ -35,7 +35,15 @@ public class DemandeDeLivraison {
      */
     protected List<FenetreTemporelle> fenetres;
 
-    /**
+    public TSP1 getTsp() {
+		return tsp;
+	}
+
+	public void setTsp(TSP1 tsp) {
+		this.tsp = tsp;
+	}
+
+	/**
      * La livraison de depart et d'arrivee de la tournee.
      */
     protected Livraison entrepot;
@@ -49,9 +57,7 @@ public class DemandeDeLivraison {
     /**
      * Default constructor
      */
-    public DemandeDeLivraison() {
-    	
-    }
+    public DemandeDeLivraison() {}
     
     /**
      * @param tournee
@@ -63,6 +69,9 @@ public class DemandeDeLivraison {
     	this.tsp = new TSP1();
     }
     
+    /**
+     * 
+     */
     public void nettoieDemandeDeLivraison(){
     	fenetres = new ArrayList<FenetreTemporelle>();
     	int nbLivraisons = 0;
@@ -78,7 +87,7 @@ public class DemandeDeLivraison {
      * @param entrepot
      * 	Entrepot defini dans le XML.
      */
-    public DemandeDeLivraison(List<FenetreTemporelle> fenetres, Livraison entrepot) {
+    /*public DemandeDeLivraison(List<FenetreTemporelle> fenetres, Livraison entrepot) {
 		super();
 		this.tsp = new TSP1();
 		this.tournee = new Tournee();
@@ -97,7 +106,7 @@ public class DemandeDeLivraison {
 		nbLivraisons++;
 		
 		this.nbLivraisons = nbLivraisons;
-	}
+	}*/
     
     
     public int getNbLivraisons() {

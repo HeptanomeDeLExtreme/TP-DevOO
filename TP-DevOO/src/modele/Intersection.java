@@ -26,6 +26,8 @@ public class Intersection {
 	
 	
 	public boolean equals(Intersection i2) {
+		System.out.println("ID de l'objet : "+id);
+		System.out.println("ID de l'objet passé en paramètre : "+i2.getId());
 		return (this.id == i2.id);
 	}
 

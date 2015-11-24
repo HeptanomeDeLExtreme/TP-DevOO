@@ -30,22 +30,25 @@ public class GraphePondereTest {
 		inter1.setTronconsSortant(troncsSortants1);
 		inter2.setTronconsSortant(troncsSortants2);
 		
-		Set<Intersection> listeInter = new HashSet<Intersection>();
-		listeInter.add(inter1);
-		listeInter.add(inter2);
+		Set<Intersection> sacInter = new HashSet<Intersection>();
+		sacInter.add(inter1);
+		sacInter.add(inter2);
 		
-		Plan plan = new Plan(listeInter);
+		Plan plan = new Plan(sacInter);
 		
 		// Graphe
 		int [][]coutsObtenus;
-		int [][]coutsAttendus = { {0, 50}, {100, 0} };
-		
-		int nbSommetsAttendus = 2;
 		int nbSommetsObtenus;
 		
+		int [][]coutsAttendus = { {0, 50}, {100, 0} };
+		int nbSommetsAttendus = 2;
+		
 		Map<Intersection, Integer> mapIntersectionsAttendue = new HashMap<Intersection, Integer>();
-		mapIntersectionsAttendue.put(inter1, 0);
-		mapIntersectionsAttendue.put(inter2, 1);
+		Integer compteur = 0;
+		for(Intersection uneIntersection : plan.getIntersections()) {
+			mapIntersectionsAttendue.put(uneIntersection, compteur);
+			compteur++;
+		}
 		Map<Intersection, Integer> mapIntersectionsObtenue = new HashMap<Intersection, Integer>();
 		
 		GraphePondere unGraphe = new GraphePondere(plan);
@@ -105,9 +108,11 @@ public class GraphePondereTest {
 		int nbSommetsObtenus;
 		
 		Map<Intersection, Integer> mapIntersectionsAttendue = new HashMap<Intersection, Integer>();
-		mapIntersectionsAttendue.put(inter1, 0);
-		mapIntersectionsAttendue.put(inter2, 1);
-		mapIntersectionsAttendue.put(inter3, 2);
+		Integer compteur = 0;
+		for(Intersection uneIntersection : plan.getIntersections()) {
+			mapIntersectionsAttendue.put(uneIntersection, compteur);
+			compteur++;
+		}
 		Map<Intersection, Integer> mapIntersectionsObtenue = new HashMap<Intersection, Integer>();
 		
 		GraphePondere unGraphe = new GraphePondere(plan);

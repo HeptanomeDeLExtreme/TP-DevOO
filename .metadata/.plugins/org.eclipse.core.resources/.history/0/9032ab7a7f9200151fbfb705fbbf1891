@@ -36,12 +36,15 @@ public class EtatInit extends EtatDefaut {
      */
     public void ouvrirPlan(Plan plan) {
     	try {
-    		DeserialiseurPlanXML.charger(plan);
-    		Controleur.setEtatCourant(Controleur.etatPlanCharge);
+    		intersections = new HashSet<Intersection>();
+    		DeserialiseurPlanXML.charger(this);
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
+			// TODO Auto-generated catch block
 			System.out.println("Exception constructeur plan");			
 		}
+//        plan.chargerPlan();
+        Controleur.setEtatCourant(Controleur.etatPlanCharge);
     }
     
     public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan) {

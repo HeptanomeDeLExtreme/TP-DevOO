@@ -19,16 +19,16 @@ import xml.ExceptionXML;
 /**
  * 
  */
-public class EtatInit extends EtatDefaut {
+public class EtatLivraisonChargee extends EtatDefaut {
 
     /**
      * Default constructor
      */
-    public EtatInit() {
+    public EtatLivraisonChargee() {
     }
 
     public String toString(){
-    	return "Etat Init";
+    	return "Etat Livraison Chargée";
     }
     
     /**
@@ -40,20 +40,36 @@ public class EtatInit extends EtatDefaut {
     		Controleur.setEtatCourant(Controleur.etatPlanCharge);
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
+			// TODO Auto-generated catch block
 			System.out.println("Exception constructeur plan");			
 		}
     }
-    
-    public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan) {
-        fenetre.afficheMessage("Veuillez charger un plan !");
+
+    /**
+     * @param fenetre
+     */
+    public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan){
+    	demandeDeLivraison.chargerLivraison(plan);
+    	Controleur.setEtatCourant(Controleur.etatLivraisonChargee);
     }
-    
+
+    /**
+     * @param plan 
+     * @param demandeDeLivraison
+     */
     public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison) {
-        fenetre.afficheMessage("Veuillez charger un plan puis une livraison !");
+        demandeDeLivraison.calculerTournee(plan);
+        Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
     }
     
     public void clicGauche(FenetreIHM fenetre, Plan plan, Point p){
-    	fenetre.afficheMessage("Aucun plan chargé !");
+        Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
+        if(inter != null){
+	        fenetre.afficheMessage(inter.toString());
+        }
+        else{
+        	fenetre.afficheMessage("Pas d'intersection ici !");
+        }
     }
 
 }

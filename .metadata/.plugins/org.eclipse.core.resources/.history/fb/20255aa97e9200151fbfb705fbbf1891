@@ -50,7 +50,6 @@ public class DemandeDeLivraison {
      */
     public DemandeDeLivraison(Tournee tournee) {
     	this.tournee = tournee;
-    	fenetres = new ArrayList<FenetreTemporelle>();
     	int nbLivraisons = 0;
     	this.tsp = new TSP1();
     }
@@ -94,8 +93,8 @@ public class DemandeDeLivraison {
 				| ExceptionXML e) {
 			// TODO Auto-generated catch block
 			System.out.println("Exception constructeur livraisons");			
-//			System.out.println(e.getMessage());
-//			e.printStackTrace();
+			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
     }
 

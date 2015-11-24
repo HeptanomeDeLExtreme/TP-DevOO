@@ -22,7 +22,7 @@ public class Plan extends Observable{
 	}
     
     public Plan(){
-    	intersections = new HashSet<Intersection>();
+    	// TODO
     }
     
     /**

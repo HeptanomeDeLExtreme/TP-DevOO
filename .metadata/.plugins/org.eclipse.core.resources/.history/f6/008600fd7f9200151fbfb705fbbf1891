@@ -55,6 +55,7 @@ public class EtatLivraisonChargee extends EtatDefaut {
             Controleur.setEtatCourant(Controleur.etatLivraisonChargee);
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
+			// TODO Auto-generated catch block
 			System.out.println("Exception constructeur livraisons");			
 		}
     }

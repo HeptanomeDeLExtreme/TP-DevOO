@@ -40,6 +40,7 @@ public class EtatInit extends EtatDefaut {
     		Controleur.setEtatCourant(Controleur.etatPlanCharge);
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
+			// TODO Auto-generated catch block
 			System.out.println("Exception constructeur plan");			
 		}
     }

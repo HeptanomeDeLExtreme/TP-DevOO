@@ -58,7 +58,6 @@ public class DemandeDeLivraison {
     public void nettoieDemandeDeLivraison(){
     	fenetres = new ArrayList<FenetreTemporelle>();
     	int nbLivraisons = 0;
-    	this.tsp = new TSP1();
     }
     
     /**

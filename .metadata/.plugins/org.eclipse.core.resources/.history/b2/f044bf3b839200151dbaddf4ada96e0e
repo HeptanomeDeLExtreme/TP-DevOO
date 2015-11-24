@@ -55,12 +55,6 @@ public class DemandeDeLivraison {
     	this.tsp = new TSP1();
     }
     
-    public void nettoieDemandeDeLivraison(){
-    	fenetres = new ArrayList<FenetreTemporelle>();
-    	int nbLivraisons = 0;
-    	this.tsp = new TSP1();
-    }
-    
     /**
      * Cree un objet DemandeDeLivraison a partir d'un fichier XML.
      * 

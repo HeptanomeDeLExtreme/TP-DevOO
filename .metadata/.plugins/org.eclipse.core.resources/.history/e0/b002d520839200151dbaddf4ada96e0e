@@ -25,10 +25,6 @@ public class Plan extends Observable{
     	intersections = new HashSet<Intersection>();
     }
     
-    public void nettoiePlan(){
-    	intersections = new HashSet<Intersection>();
-    }
-    
     /**
      * @param fichier
      */

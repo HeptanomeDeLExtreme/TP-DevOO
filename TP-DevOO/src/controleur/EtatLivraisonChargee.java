@@ -37,11 +37,11 @@ public class EtatLivraisonChargee extends EtatDefaut {
      */
     public void ouvrirPlan(Plan plan) {
     	try {
+    		plan.nettoiePlan();
     		DeserialiseurPlanXML.charger(plan);
     		Controleur.setEtatCourant(Controleur.etatPlanCharge);
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
-			// TODO Auto-generated catch block
 			System.out.println("Exception constructeur plan");			
 		}
     }
@@ -51,6 +51,7 @@ public class EtatLivraisonChargee extends EtatDefaut {
      */
     public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan){
     	try {
+    		demandeDeLivraison.nettoieDemandeDeLivraison();
     		DeserialiseurDemandeDeLivraisonXML.charger(demandeDeLivraison,plan);
             Controleur.setEtatCourant(Controleur.etatLivraisonChargee);
 		} catch (ParserConfigurationException | SAXException | IOException

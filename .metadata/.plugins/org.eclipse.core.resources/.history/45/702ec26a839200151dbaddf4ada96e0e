@@ -36,7 +36,6 @@ public class EtatInit extends EtatDefaut {
      */
     public void ouvrirPlan(Plan plan) {
     	try {
-    		plan.nettoiePlan();
     		DeserialiseurPlanXML.charger(plan);
     		Controleur.setEtatCourant(Controleur.etatPlanCharge);
 		} catch (ParserConfigurationException | SAXException | IOException

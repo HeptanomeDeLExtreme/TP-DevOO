@@ -211,6 +211,7 @@ public class DemandeDeLivraison {
     	// Créer la tournée
     	int coutTotalSolution = tsp.getCoutSolution();
     	this.tournee.charge(graphePondere.getMapCorrespondance(),this, entrepot, coutTotalSolution, itinerairesEnOrdre);
+    	System.out.println("Tournée :");
     	System.out.println(this.tournee);
     
     }
@@ -470,6 +471,8 @@ public class DemandeDeLivraison {
     	int arrivee = getKeyByValue(mapLivraisons, premiereLivraison);
     	int coutItineraire = couts[depart][arrivee];
     	List<Troncon> troncons = derniereLivraison.rechercherTroncons(correspondancePlan,premiereLivraison);
+    	Itineraire itineraire = new Itineraire(coutItineraire, troncons, derniereLivraison, premiereLivraison);
+    	itinerairesEnOrdre.add(itineraire);
     	
     	return itinerairesEnOrdre;
     }

@@ -134,15 +134,12 @@ public class Livraison {
 	
 	/**
 	 * 
-	 * @param correspondancePlan 
 	 * @param livraisonDest
 	 * @return
 	 */
-	public int rechercherCout(Map<Intersection, Integer> correspondancePlan, Livraison livraisonDest)
+	public int rechercherCout(Livraison livraisonDest)
 	{
-		Intersection adresseDestination = livraisonDest.getAdresse();
-		int idDest = correspondancePlan.get(adresseDestination);
-		return this.tableauD[idDest];
+		return 1;
 	}
 	
 	public List<Troncon> rechercherTroncons(Livraison livraisonDest)

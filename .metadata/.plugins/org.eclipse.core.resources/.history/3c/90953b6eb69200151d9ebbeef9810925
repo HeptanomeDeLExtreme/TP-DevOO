@@ -375,9 +375,9 @@ public class DemandeDeLivraison {
     		if(livraisonSourceActuelle.getId() != entrepot.getId()){
     			Integer integerSource = getKeyByValue(map,livraisonSourceActuelle);
     			Integer integerEntrepot = getKeyByValue(map,entrepot);
-    			System.out.println("S : "+integerSource+ " E : "+integerEntrepot);
+    			System.out.println("S : "+integerSource+ "E : "+integerEntrepot);
     			tableauArcs[integerSource][integerEntrepot] = livraisonSourceActuelle.rechercherCout(correspondancePlan,
-    					entrepot);
+    					livraisonSourceActuelle);
     		}
     	}
     	

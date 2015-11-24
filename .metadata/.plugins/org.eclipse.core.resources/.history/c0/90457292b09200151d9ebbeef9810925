@@ -141,8 +141,8 @@ public class Livraison {
 	public int rechercherCout(Map<Intersection, Integer> correspondancePlan, Livraison livraisonDest)
 	{
 		Intersection adresseDestination = livraisonDest.getAdresse();
-		int idDest = correspondancePlan.get(adresseDestination);
-		return this.tableauD[idDest];
+		
+		return 1;
 	}
 	
 	public List<Troncon> rechercherTroncons(Livraison livraisonDest)

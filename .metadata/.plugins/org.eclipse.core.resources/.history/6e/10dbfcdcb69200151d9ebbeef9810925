@@ -377,7 +377,9 @@ public class DemandeDeLivraison {
     			Integer integerEntrepot = getKeyByValue(map,entrepot);
     			System.out.println("S : "+integerSource+ " E : "+integerEntrepot);
     			tableauArcs[integerSource][integerEntrepot] = livraisonSourceActuelle.rechercherCout(correspondancePlan,
-    					entrepot);
+    					livraisonSourceActuelle);
+    			System.out.println(livraisonSourceActuelle.rechercherCout(correspondancePlan,
+    					livraisonSourceActuelle));
     		}
     	}
     	

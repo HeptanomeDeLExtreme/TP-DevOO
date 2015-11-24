@@ -337,7 +337,7 @@ public class DemandeDeLivraison {
     				if(livraisonDestActuelle.getId() != livraisonSourceActuelle.getId()){
     					Integer integerSource = getKeyByValue(map,livraisonSourceActuelle);
     					Integer integerDest = getKeyByValue(map, livraisonDestActuelle);
-    					tableauArcs[integerSource][integerDest] = livraisonSourceActuelle.rechercherCout(correspondancePlan,livraisonDestActuelle);					
+    					tableauArcs[integerSource][integerDest] = livraisonSourceActuelle.rechercherCout(livraisonDestActuelle);					
     				}
     			}
     			
@@ -346,7 +346,7 @@ public class DemandeDeLivraison {
     			for(Livraison livraisonDestSuivante : livraisonsFSuivante){
     				Integer integerSource = getKeyByValue(map,livraisonSourceActuelle);
     				Integer integerDest = getKeyByValue(map, livraisonDestSuivante);
-    				tableauArcs[integerSource][integerDest] = livraisonSourceActuelle.rechercherCout(correspondancePlan,livraisonDestSuivante);
+    				tableauArcs[integerSource][integerDest] = livraisonSourceActuelle.rechercherCout(livraisonDestSuivante);
     			}
     		}
     	}
@@ -363,25 +363,10 @@ public class DemandeDeLivraison {
 				if(livraisonDestActuelle.getId() != livraisonSourceActuelle.getId()){
 					Integer integerSource = getKeyByValue(map,livraisonSourceActuelle);
 					Integer integerDest = getKeyByValue(map, livraisonDestActuelle);
-					tableauArcs[integerSource][integerDest] = livraisonSourceActuelle.rechercherCout(correspondancePlan,
-							livraisonDestActuelle);					
+					tableauArcs[integerSource][integerDest] = livraisonSourceActuelle.rechercherCout(livraisonDestActuelle);					
 				}
 			}
     	}
-    	
-    	fenetreActuelle = fenetres.get(fenetres.size()-1);
-    	livraisonsFActuelle = fenetreActuelle.getLivraisons();
-    	for(Livraison livraisonSourceActuelle : livraisonsFActuelle){
-    		if(livraisonSourceActuelle.getId() != entrepot.getId()){
-    			Integer integerSource = getKeyByValue(map,livraisonSourceActuelle);
-    			Integer integerEntrepot = getKeyByValue(map,entrepot);
-    			System.out.println("S : "+integerSource+ " E : "+integerEntrepot);
-    			tableauArcs[integerSource][integerEntrepot] = livraisonSourceActuelle.rechercherCout(correspondancePlan,
-    					entrepot);
-    		}
-    	}
-    	
-    	
     	//TEST
     	for(int i =0; i < nbLivraisons; i++){
     		for(int j = 0; j < nbLivraisons; j++){

@@ -372,12 +372,12 @@ public class DemandeDeLivraison {
     	fenetreActuelle = fenetres.get(fenetres.size()-1);
     	livraisonsFActuelle = fenetreActuelle.getLivraisons();
     	for(Livraison livraisonSourceActuelle : livraisonsFActuelle){
+    		System.out.println("Posez cette poule vous etes cerné !")
     		if(livraisonSourceActuelle.getId() != entrepot.getId()){
     			Integer integerSource = getKeyByValue(map,livraisonSourceActuelle);
     			Integer integerEntrepot = getKeyByValue(map,entrepot);
-    			System.out.println("S : "+integerSource+ " E : "+integerEntrepot);
     			tableauArcs[integerSource][integerEntrepot] = livraisonSourceActuelle.rechercherCout(correspondancePlan,
-    					entrepot);
+    					livraisonSourceActuelle);
     		}
     	}
     	

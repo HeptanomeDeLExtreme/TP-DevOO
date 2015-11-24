@@ -16,7 +16,7 @@ import xml.ExceptionXML;
 /**
  * 
  */
-public class DemandeDeLivraison extends Observable{
+public class DemandeDeLivraison {
 
 	/**
      * La tournee qui correspond a la demande de livraisons. Vide lors de la 
@@ -59,11 +59,6 @@ public class DemandeDeLivraison extends Observable{
     	fenetres = new ArrayList<FenetreTemporelle>();
     	int nbLivraisons = 0;
     	this.tsp = new TSP1();
-    }
-    
-    public void changementEffectue(){
-        setChanged(); 
-        notifyObservers();
     }
     
     /**

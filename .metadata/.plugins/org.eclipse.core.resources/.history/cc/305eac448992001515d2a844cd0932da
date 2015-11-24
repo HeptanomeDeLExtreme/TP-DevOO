@@ -61,11 +61,6 @@ public class DemandeDeLivraison extends Observable{
     	this.tsp = new TSP1();
     }
     
-    public void changementEffectue(){
-        setChanged(); 
-        notifyObservers();
-    }
-    
     /**
      * Cree un objet DemandeDeLivraison a partir d'un fichier XML.
      * 

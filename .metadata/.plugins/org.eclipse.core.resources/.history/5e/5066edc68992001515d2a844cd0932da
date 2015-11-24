@@ -11,10 +11,8 @@ import java.util.*;
 import javax.swing.JPanel;
 
 import modele.DemandeDeLivraison;
-import modele.FenetreTemporelle;
 import modele.Intersection;
 import modele.Itineraire;
-import modele.Livraison;
 import modele.Plan;
 import modele.Tournee;
 import modele.Troncon;
@@ -64,11 +62,8 @@ public class VueGraphique extends JPanel implements Observer {
 		super.paintComponent(g);
 		g.setColor(Color.lightGray);
 		
-	
 		Set<Intersection> listInter = plan.getIntersections();
 		if(listInter != null && listInter.size()>0){
-			
-			// DESSINE LE PLAN 
 			
 			// Calcul de l'echelle en x
 			Rectangle screen = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
@@ -108,24 +103,9 @@ public class VueGraphique extends JPanel implements Observer {
 			}
 		
 		
-			// DESSINE LA DEMANDE DE LIVRAISON
-			g.setColor(Color.GREEN);
-			List<FenetreTemporelle> listeFenetre = this.demandeDeLivraison.getFenetres();
-			if(listeFenetre != null){
-				for(FenetreTemporelle fenetre : listeFenetre){
-					Set<Livraison> livraisons = fenetre.getLivraisons();
-					if(livraisons != null){
-						for(Livraison livraison : livraisons){
-							Intersection inter = livraison.getAdresse();
-							int x = (int) (inter.getX()*echelleX);
-							int y = (int) (inter.getY()*echelleY);
-							g.fillOval(x, y, 10, 10);
-						}
-					}
-				}
-			}
+			// Dessine la demande de livraison
 			
-			// DESSINE LA TOURNEE
+			// Dessine la tournée
 			List<Itineraire> listeItineraire = this.tournee.getItineraires();
 			if(listeItineraire != null){
 		        List<Troncon> listeTroncon = new ArrayList<Troncon>();

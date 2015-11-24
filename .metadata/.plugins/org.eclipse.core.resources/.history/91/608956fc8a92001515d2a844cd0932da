@@ -117,8 +117,8 @@ public class VueGraphique extends JPanel implements Observer {
 					if(livraisons != null){
 						for(Livraison livraison : livraisons){
 							Intersection inter = livraison.getAdresse();
-							int x = (int) (inter.getX()*echelleX);
-							int y = (int) (inter.getY()*echelleY);
+							int x = inter.getX()*echelleX;
+							int y = inter.getY()*echelleY;
 							g.fillOval(x, y, 10, 10);
 						}
 					}

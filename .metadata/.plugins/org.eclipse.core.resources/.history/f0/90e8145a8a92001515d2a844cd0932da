@@ -109,17 +109,13 @@ public class VueGraphique extends JPanel implements Observer {
 		
 		
 			// DESSINE LA DEMANDE DE LIVRAISON
-			g.setColor(Color.GREEN);
 			List<FenetreTemporelle> listeFenetre = this.demandeDeLivraison.getFenetres();
 			if(listeFenetre != null){
 				for(FenetreTemporelle fenetre : listeFenetre){
 					Set<Livraison> livraisons = fenetre.getLivraisons();
 					if(livraisons != null){
 						for(Livraison livraison : livraisons){
-							Intersection inter = livraison.getAdresse();
-							int x = (int) (inter.getX()*echelleX);
-							int y = (int) (inter.getY()*echelleY);
-							g.fillOval(x, y, 10, 10);
+							
 						}
 					}
 				}

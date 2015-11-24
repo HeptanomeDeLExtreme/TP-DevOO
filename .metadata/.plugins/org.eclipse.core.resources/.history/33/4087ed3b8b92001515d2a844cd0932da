@@ -161,7 +161,6 @@ public class Controleur {
 	public void ouvrirPlan() {
 		this.etatCourant.ouvrirPlan(this.plan);	
 		this.plan.changementEffectue();
-		this.demandeDeLivraison.nettoieDemandeDeLivraison();
 	}
 
 

@@ -25,14 +25,15 @@ public class Intersection {
 	
 	
 	
-	public boolean equals(Intersection i2) {
-		return (this.id == i2.id);
+	@Override
+	public boolean equals(Troncon t2) {
+		return (this.id == t2.id);
 	}
 
 	public Troncon rechercherTroncon(Intersection arrivee){
 		Troncon toRet = null;
 		for(Troncon tronc : tronconsSortant){
-			if(tronc.getOrigine().equals(this) && tronc.getDestination().equals(arrivee)){
+			if(tronc.getOrigine() == this && arrivee == tronc.getDestination()){
 				toRet = tronc;
 			}
 		}

@@ -428,7 +428,7 @@ public class DemandeDeLivraison {
     
     /**
      * Permet de recuperer les itineraires entre chaque livraison.
-     * @param correspondancePlan 
+     * @param graphe 
      * 
      * @param listeLivraisons
      * 	La liste des livraisons ordonnes apres l'appel a TSP.
@@ -440,7 +440,7 @@ public class DemandeDeLivraison {
      * @return
      * 	Liste d'itinéraires en fonction de la liste de livraisons.
      */
-    private List<Itineraire> recupererItinerairesEnOrdre(Map<Intersection, Integer> correspondancePlan, LinkedList<Livraison> listeLivraisons, 
+    private List<Itineraire> recupererItinerairesEnOrdre(GrapheLivraisons graphe, LinkedList<Livraison> listeLivraisons, 
     		Map<Integer, Livraison> mapLivraisons, int[][] couts){
  
     	List<Itineraire> itinerairesEnOrdre = new LinkedList<Itineraire>();
@@ -454,7 +454,7 @@ public class DemandeDeLivraison {
     		int depart = getKeyByValue(mapLivraisons, livraisonActuelle);
     		int arrivee = getKeyByValue(mapLivraisons, livraisonSuivante);
     		int coutItineraire = couts[depart][arrivee];
-    		List <Troncon> troncons = livraisonActuelle.rechercherTroncons(correspondancePlan,livraisonSuivante);
+    		List <Troncon> troncons = livraisonActuelle.rechercherTroncons(livraisonSuivante);
     		
     		Itineraire itineraire = new Itineraire(coutItineraire, troncons, livraisonActuelle, livraisonSuivante);
     		
@@ -469,7 +469,7 @@ public class DemandeDeLivraison {
     	int depart = getKeyByValue(mapLivraisons, derniereLivraison);
     	int arrivee = getKeyByValue(mapLivraisons, premiereLivraison);
     	int coutItineraire = couts[depart][arrivee];
-    	List<Troncon> troncons = derniereLivraison.rechercherTroncons(correspondancePlan,premiereLivraison);
+    	List<Troncon> troncons = derniereLivraison.rechercherTroncons(premiereLivraison);
     	
     	return itinerairesEnOrdre;
     }

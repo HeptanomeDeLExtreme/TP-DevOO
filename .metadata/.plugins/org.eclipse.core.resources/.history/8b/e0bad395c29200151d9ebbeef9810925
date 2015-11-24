@@ -19,11 +19,10 @@ public class Tournee extends Observable {
     }
 
     /**
-     * @param correspondancePlan 
      * @param coutTotal
      * @param livraisonsEnOrdre
      */
-    public void charge(Map<Intersection, Integer> correspondancePlan, DemandeDeLivraison ddl, Livraison entrepot, int coutTotal, List<Itineraire> itinerairesEnOrdre) {
+    public void charge(DemandeDeLivraison ddl, Livraison entrepot, int coutTotal, List<Itineraire> itinerairesEnOrdre) {
     	this.demandeDeLivraison = ddl;
     	this.entrepot = entrepot;
     	this.coutTotal = coutTotal;
@@ -32,7 +31,7 @@ public class Tournee extends Observable {
     	for(Itineraire itineraire : itinerairesEnOrdre){
     		Livraison depart = itineraire.getArrivee();
     		Livraison arrivee = itineraire.getDepart();
-    		List<Troncon> listeTroncon = depart.rechercherTroncons(correspondancePlan,arrivee);
+    		List<Troncon> listeTroncon = depart.rechercherTroncons(arrivee);
     	}
     	
     	this.changementEffectue();

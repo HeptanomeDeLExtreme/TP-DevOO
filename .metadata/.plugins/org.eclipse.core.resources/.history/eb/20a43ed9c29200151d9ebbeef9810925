@@ -147,26 +147,11 @@ public class Livraison {
 	
 	public List<Troncon> rechercherTroncons(Map<Intersection, Integer> correspondancePlan, Livraison livraisonDest)
 	{
-		List<Troncon> tronconsOrdonnes = new LinkedList<>(); 
-		
 		Intersection arrivee = livraisonDest.getAdresse();
-		Integer numeroSommet = correspondancePlan.get(arrivee);
-		Integer numeroSommetLivDepart = correspondancePlan.get(adresse);
-		
-		Integer numeroSommetSuivant = tableauPi[numeroSommet];
-		// TODO OPHELIE
-		while(numeroSommetSuivant != numeroSommetLivDepart){
-			// Rechercher troncon avec numeroSommet et numeroSommetSuivant
-			Troncon unTroncon = adresse.rechercherTroncon(arrivee);
-			System.out.println("KFS : "+adresse+" "+arrivee+" "+unTroncon);
-			// Ajouter le troncon à la liste
-			tronconsOrdonnes.add(unTroncon);
-			// Dire que numeroSommet = numeroSommetSuivant
-			numeroSommet = numeroSommetSuivant;
-			// Récupérer numeroSommetSuivant avec tableauPi[numeroSommet]
-			numeroSommetSuivant = tableauPi[numeroSommet];
+		while(this.tableauPi[] != ){
+			
 		}
-		return tronconsOrdonnes;
+		return null;
 	}
 
 	public void calculerPlusCourtsChemins(GraphePondere graphe) {

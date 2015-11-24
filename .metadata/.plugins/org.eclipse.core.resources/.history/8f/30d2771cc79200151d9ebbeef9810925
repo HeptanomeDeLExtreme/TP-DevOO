@@ -154,11 +154,11 @@ public class Livraison {
 		Integer numeroSommetLivDepart = correspondancePlan.get(adresse);
 		
 		Integer numeroSommetSuivant = tableauPi[numeroSommet];
-		// TODO OPHELIE
+		
 		while(numeroSommetSuivant != numeroSommetLivDepart){
 			// Rechercher troncon avec numeroSommet et numeroSommetSuivant
 			Troncon unTroncon = adresse.rechercherTroncon(arrivee);
-			System.out.println("KFS : "+adresse+" "+arrivee+" "+unTroncon);
+			System.out.println("KFS : "+adresse+" "+arivee+" "+unTroncon);
 			// Ajouter le troncon à la liste
 			tronconsOrdonnes.add(unTroncon);
 			// Dire que numeroSommet = numeroSommetSuivant

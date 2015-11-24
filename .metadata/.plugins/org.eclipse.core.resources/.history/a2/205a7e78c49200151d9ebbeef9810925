@@ -46,7 +46,7 @@ public class Troncon {
 	}
 
 
-	
+
 	@Override
 	public String toString() {
 		return "Troncon [longueur=" + longueur + ", vitesseMoyenne="

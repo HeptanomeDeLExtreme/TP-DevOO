@@ -32,7 +32,7 @@ public class Tournee extends Observable {
     	for(Itineraire itineraire : itinerairesEnOrdre){
     		Livraison depart = itineraire.getArrivee();
     		Livraison arrivee = itineraire.getDepart();
-    		List<Troncon> listeTroncon = depart.rechercherTroncons(correspondancePlan,arrivee);
+    		List<Troncon> listeTroncon = depart.rechercherTroncons(arrivee);
     	}
     	
     	this.changementEffectue();

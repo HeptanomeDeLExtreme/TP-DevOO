@@ -22,22 +22,6 @@ public class Intersection {
 		this.tronconsSortant = new HashSet<Troncon>();
 		
 	}
-	
-	
-	
-	public boolean equals(Intersection i2) {
-		return (this.id == i2.id);
-	}
-
-	public Troncon rechercherTroncon(Intersection arrivee){
-		Troncon toRet = null;
-		for(Troncon tronc : tronconsSortant){
-			if(tronc.getOrigine().equals(this) && tronc.getDestination().equals(arrivee)){
-				toRet = tronc;
-			}
-		}
-		return toRet;
-	}
    
     public Set<Troncon> getTronconsSortant() {
 		return tronconsSortant;

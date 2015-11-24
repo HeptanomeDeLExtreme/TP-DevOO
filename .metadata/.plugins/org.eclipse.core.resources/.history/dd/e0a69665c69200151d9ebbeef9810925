@@ -469,7 +469,7 @@ public class DemandeDeLivraison {
     	int depart = getKeyByValue(mapLivraisons, derniereLivraison);
     	int arrivee = getKeyByValue(mapLivraisons, premiereLivraison);
     	int coutItineraire = couts[depart][arrivee];
-    	List<Troncon> troncons = derniereLivraison.rechercherTroncons(correspondancePlan,premiereLivraison);
+    	List<Troncon> troncons = derniereLivraison.rechercherTroncons(premiereLivraison);
     	
     	return itinerairesEnOrdre;
     }

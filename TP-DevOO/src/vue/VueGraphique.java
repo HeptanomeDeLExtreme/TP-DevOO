@@ -144,6 +144,7 @@ public class VueGraphique extends JPanel implements Observer {
 		        
 		        for(int i = 0; i<listeTroncon.size();i++){
 		        	Troncon troncon = listeTroncon.get(i);
+		        	if(troncon == null){continue;}
 		        	Intersection origine = troncon.getOrigine();
 		        	Intersection destination = troncon.getDestination();
 		        	

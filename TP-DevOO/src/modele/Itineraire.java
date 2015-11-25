@@ -43,7 +43,25 @@ public class Itineraire {
      */
     protected Livraison depart;
 
-    /**
+    
+    
+    public Livraison getDepart() {
+		return depart;
+	}
+
+	public void setDepart(Livraison depart) {
+		this.depart = depart;
+	}
+
+	public Livraison getArrivee() {
+		return arrivee;
+	}
+
+	public void setArrivee(Livraison arrivee) {
+		this.arrivee = arrivee;
+	}
+
+	/**
      * 
      */
     protected Livraison arrivee;

@@ -1,4 +1,4 @@
-package modele;
+package tests;
 
 import static org.junit.Assert.*;
 
@@ -6,6 +6,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
+import modele.GraphePondere;
+import modele.Intersection;
+import modele.Plan;
+import modele.Troncon;
 
 import org.junit.After;
 import org.junit.Before;

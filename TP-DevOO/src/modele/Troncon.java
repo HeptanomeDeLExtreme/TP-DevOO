@@ -46,7 +46,7 @@ public class Troncon {
 	}
 
 
-
+	
 	@Override
 	public String toString() {
 		return "Troncon [longueur=" + longueur + ", vitesseMoyenne="
@@ -88,9 +88,9 @@ public class Troncon {
      * @return
      */
     public int getCout(){
-    	float floatCout = longueur*vitesseMoyenne*10;
-    	int intCout = (int)floatCout;
-    	return intCout;
+    	int l = (int) (longueur*10);
+    	int v = (int) (vitesseMoyenne*10);
+    	return (l/v);
     }
     
 }

@@ -1,6 +1,9 @@
 package modele;
 
 import java.util.*;
+import java.util.Map.Entry;
+
+import org.hamcrest.CoreMatchers;
 
 /**
  * 
@@ -58,7 +61,33 @@ public class Livraison {
     /**
      * 
      */
-    public Client client;
+    protected Client client;
+    
+    /**
+     * 
+     */
+    protected int[] tableauPi;
+    
+    public int[] getTableauPi() {
+		return tableauPi;
+	}
+
+	public void setTableauPi(int[] tableauPi) {
+		this.tableauPi = tableauPi;
+	}
+
+	public int[] getTableauD() {
+		return tableauD;
+	}
+
+	public void setTableauD(int[] tableauD) {
+		this.tableauD = tableauD;
+	}
+
+	/**
+     * 
+     */
+    protected int[] tableauD;
     
     @Override
     public String toString(){
@@ -108,22 +137,90 @@ public class Livraison {
 	
 	/**
 	 * 
+	 * @param correspondancePlan 
 	 * @param livraisonDest
 	 * @return
 	 */
-	public int rechercherCout(Livraison livraisonDest)
+	public int rechercherCout(Map<Intersection, Integer> correspondancePlan, Livraison livraisonDest)
 	{
-		return 1;
+		Intersection adresseDestination = livraisonDest.getAdresse();
+		int idDest = correspondancePlan.get(adresseDestination);
+		return this.tableauD[idDest];
 	}
 	
-	public List<Troncon> rechercherTroncons(Livraison livraisonDest)
+    /**
+     * 
+     * @param map
+     * @param value
+     * @return
+     */
+    public Intersection getKeyByValue(Map<Intersection, Integer> map, Integer value) {
+    	Intersection resultat = null;
+    	Set<Intersection> setIntersection = map.keySet();
+    	for(Intersection uneInter : setIntersection) {
+    		if (value == map.get(uneInter)) {
+    			resultat =  uneInter;
+    		}
+    	}
+    	return resultat;
+    }
+    
+	public List<Troncon> rechercherTroncons(Map<Intersection, Integer> correspondancePlan, Livraison livraisonDest)
 	{
-		//TODO implémenter la recherche des tronçons.
-		return null;
+		List<Troncon> tronconsOrdonnes = new LinkedList<>(); 
+		
+		Intersection arrivee = livraisonDest.getAdresse();
+		Integer numeroSommet = correspondancePlan.get(arrivee);
+		Integer numeroSommetLivDepart = correspondancePlan.get(adresse);
+		
+		Integer numeroSommetSuivant = tableauPi[numeroSommet];
+		Intersection interNumeroSommetSuivant = 
+				getKeyByValue(correspondancePlan, numeroSommetSuivant);
+
+		// TODO OPHELIE
+		while(numeroSommetSuivant != numeroSommetLivDepart){
+			// Rechercher troncon avec numeroSommet et numeroSommetSuivant
+			Troncon unTroncon = arrivee.rechercherTroncon(interNumeroSommetSuivant);
+			System.out.println("KFS : "+adresse+" "+arrivee+" "+unTroncon);
+			// Ajouter le troncon à la liste
+			tronconsOrdonnes.add(unTroncon);
+			// Dire que numeroSommet = numeroSommetSuivant
+			numeroSommet = numeroSommetSuivant;
+			// Changement de l'intersection suivante
+			arrivee = interNumeroSommetSuivant;
+			// Récupérer numeroSommetSuivant avec tableauPi[numeroSommet]
+			numeroSommetSuivant = tableauPi[numeroSommet];
+		}
+		// Insertion du dernier troncon
+		Troncon unTroncon = arrivee.rechercherTroncon(adresse);
+		System.out.println("Dernier tronocn :"+unTroncon);
+		tronconsOrdonnes.add(unTroncon);
+		return tronconsOrdonnes;
 	}
 
-	public void calculerPlusCourtsChemins(Plan plan) {
-		// TODO Auto-generated method stub
+	public void calculerPlusCourtsChemins(GraphePondere graphe) {
+		Map<Intersection, Integer> mapCorrespondancePlan = graphe.getMapCorrespondance();
+		// TEST
+		System.out.println("Livraison actuelle : " + this.getId());
+		System.out.println("Intersection actuelle : " + this.getAdresse());
+		Set<Intersection> setKey = mapCorrespondancePlan.keySet();
+		for(Intersection unInter : setKey) {
+			Integer resultat = mapCorrespondancePlan.get(unInter);
+			System.out.println("Clé : " + unInter + ", Valeur : " + resultat);
+		}
+		Integer numeroSommet = mapCorrespondancePlan.get(this.adresse);
+		System.out.println(numeroSommet);
+		int [][]piEtD = Dijkstra.dijkstra(graphe, numeroSommet);
+		tableauD = piEtD[0];
+		for(int i = 0; i < tableauD.length; i++) {
+			int resultat = tableauD[i];
+			System.out.println("resultat D : "+ resultat);
+		}
+		tableauPi = piEtD[1];
+		for(int i = 0; i < tableauPi.length; i++) {
+			int resultat = tableauPi[i];
+			System.out.println("resultat PI : "+ resultat);
+		}
+		// TEST
 	}
-
 }

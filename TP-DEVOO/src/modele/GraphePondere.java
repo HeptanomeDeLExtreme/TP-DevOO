@@ -22,7 +22,7 @@ public class GraphePondere {
 		 int[][]couts= new int[nbNoeuds][nbNoeuds];
 		 for(int i = 0;i<nbNoeuds;i++){
 			 for(int j = 0; j<nbNoeuds;j++){
-				 couts[i][j] = -1;
+				 couts[i][j] = 0;
 			 }
 		 }
 		 
@@ -59,6 +59,16 @@ public class GraphePondere {
 		 
 		 this.couts = couts;
 	 } 
+	 
+	 public String toString(){
+		 String toRet = "";
+		 for(int i = 0; i< this.nbNoeuds;i++){
+			 for(int j = 0;j<this.nbNoeuds;j++){
+				 toRet += i+" est relié à "+j+" avec un cout de "+getWeight(i,j) +"\n";
+			 }
+		 }
+		 return toRet;
+	 }
 	 
 	 public Map<Intersection, Integer> getMapCorrespondance() {
 		return mapCorrespondance;

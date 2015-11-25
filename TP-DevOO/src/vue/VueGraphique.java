@@ -10,8 +10,11 @@ import java.util.*;
 
 import javax.swing.JPanel;
 
+import modele.DemandeDeLivraison;
+import modele.FenetreTemporelle;
 import modele.Intersection;
 import modele.Itineraire;
+import modele.Livraison;
 import modele.Plan;
 import modele.Tournee;
 import modele.Troncon;
@@ -28,6 +31,7 @@ public class VueGraphique extends JPanel implements Observer {
 	private Graphics g;
 	private Tournee tournee;
 	private FenetreIHM fenetre;
+	private DemandeDeLivraison demandeDeLivraison;
 	private Plan plan;
 	
 	public static final float correcteurEchelle = (float) 0.07;
@@ -37,11 +41,13 @@ public class VueGraphique extends JPanel implements Observer {
      * @param tournee 
      * @param fenetreIHM
      */
-    public VueGraphique(Tournee tournee, Plan p, FenetreIHM fenetreIHM) {
+    public VueGraphique(DemandeDeLivraison demandeDeLivraison, Tournee tournee, Plan p, FenetreIHM fenetreIHM) {
     	super();
     	this.plan = p;
     	this.plan.addObserver(this);
     	this.fenetre = fenetreIHM;
+    	this.demandeDeLivraison = demandeDeLivraison;
+    	this.demandeDeLivraison.addObserver(this);
     	this.tournee = tournee;
     	this.tournee.addObserver(this);
 		this.echelleX = (float) 1.0;
@@ -58,8 +64,11 @@ public class VueGraphique extends JPanel implements Observer {
 		super.paintComponent(g);
 		g.setColor(Color.lightGray);
 		
+	
 		Set<Intersection> listInter = plan.getIntersections();
 		if(listInter != null && listInter.size()>0){
+			
+			// DESSINE LE PLAN 
 			
 			// Calcul de l'echelle en x
 			Rectangle screen = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
@@ -83,7 +92,7 @@ public class VueGraphique extends JPanel implements Observer {
 				String id = inter.getId()+"";
 				int x = (int) (inter.getX()*echelleX);
 				int y = (int) (inter.getY()*echelleY);
-				g.drawString(id, x-5, y-5);
+//				g.drawString(id, x-5, y-5);
 				g.fillOval(x, y, 10, 10);
 				
 				// Dessine les troncons
@@ -99,6 +108,32 @@ public class VueGraphique extends JPanel implements Observer {
 			}
 		
 		
+			// DESSINE LA DEMANDE DE LIVRAISON
+			g.setColor(Color.BLUE);
+			Livraison entrepot = this.demandeDeLivraison.getEntrepot();
+			if(entrepot != null){
+				Intersection inter  = entrepot.getAdresse();
+				int x = (int) (inter.getX()*echelleX);
+				int y = (int) (inter.getY()*echelleY);
+				g.fillOval(x, y, 10, 10);
+			}
+			List<FenetreTemporelle> listeFenetre = this.demandeDeLivraison.getFenetres();
+			if(listeFenetre != null){
+				g.setColor(Color.GREEN);
+				for(FenetreTemporelle fenetre : listeFenetre){
+					Set<Livraison> livraisons = fenetre.getLivraisons();
+					if(livraisons != null){
+						for(Livraison livraison : livraisons){
+							Intersection inter = livraison.getAdresse();
+							int x = (int) (inter.getX()*echelleX);
+							int y = (int) (inter.getY()*echelleY);
+							g.fillOval(x, y, 10, 10);
+						}
+					}
+				}
+			}
+			
+			// DESSINE LA TOURNEE
 			List<Itineraire> listeItineraire = this.tournee.getItineraires();
 			if(listeItineraire != null){
 		        List<Troncon> listeTroncon = new ArrayList<Troncon>();
@@ -109,6 +144,7 @@ public class VueGraphique extends JPanel implements Observer {
 		        
 		        for(int i = 0; i<listeTroncon.size();i++){
 		        	Troncon troncon = listeTroncon.get(i);
+		        	if(troncon == null){continue;}
 		        	Intersection origine = troncon.getOrigine();
 		        	Intersection destination = troncon.getDestination();
 		        	
@@ -117,13 +153,13 @@ public class VueGraphique extends JPanel implements Observer {
 		        	// Origine
 		        	int x1 = (int) (origine.getX()*echelleX);
 		        	int y1 = (int) (origine.getY()*echelleY);
-		        	g.fillOval(x1, y1, 10, 10);
+//		        	g.fillOval(x1, y1, 10, 10);
 		        	
 		        	// Destination
 		        	int x2 = (int) (destination.getX()*echelleX);
 		        	int y2 = (int) (destination.getY()*echelleY);
-		        	g.fillOval(x2, y2, 10, 10);
-		        	
+//		        	g.fillOval(x2, y2, 10, 10);
+//		        	
 		        	// Lien entre les deux
 		        	g.drawLine(x1+5,y1+5,x2+5,y2+5);
 		        }

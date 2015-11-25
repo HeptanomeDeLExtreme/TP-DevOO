@@ -9,17 +9,33 @@ import java.util.*;
  */
 public class Tournee extends Observable {
 
-    /**
+    private int coutTotal;
+
+
+	/**
      * Default constructor
      */
     public Tournee() {
     }
 
     /**
+     * @param correspondancePlan 
      * @param coutTotal
      * @param livraisonsEnOrdre
      */
-    public Tournee(DemandeDeLivraison ddl, Livraison entrepot, int coutTotal, List<Itineraire> itinerairesEnOrdre) {
+    public void charge(Map<Intersection, Integer> correspondancePlan, DemandeDeLivraison ddl, Livraison entrepot, int coutTotal, List<Itineraire> itinerairesEnOrdre) {
+    	this.demandeDeLivraison = ddl;
+    	this.entrepot = entrepot;
+    	this.coutTotal = coutTotal;
+    	this.itineraires = itinerairesEnOrdre;
+
+    	for(Itineraire itineraire : itinerairesEnOrdre){
+    		Livraison depart = itineraire.getArrivee();
+    		Livraison arrivee = itineraire.getDepart();
+    		List<Troncon> listeTroncon = depart.rechercherTroncons(correspondancePlan,arrivee);
+    	}
+    	
+    	this.changementEffectue();
     }
     
     /**
@@ -95,5 +111,15 @@ public class Tournee extends Observable {
 		this.itineraires = itineraires;
 	}
 
-    
+    public String toString(){
+    	String toRet="";
+    	for(Itineraire iti : itineraires){
+    		List<Troncon> listeTroncon = iti.getTroncons();
+    		for(Troncon tronc : listeTroncon ){
+    			toRet += "\n";
+    			toRet +=tronc;
+    		}
+    	}
+    	return toRet;
+    }
 }

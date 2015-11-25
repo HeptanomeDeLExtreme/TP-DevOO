@@ -9,7 +9,9 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 import modele.DemandeDeLivraison;
+import modele.FenetreTemporelle;
 import modele.Intersection;
+import modele.Livraison;
 import modele.Plan;
 
 import vue.FenetreIHM;
@@ -53,6 +55,17 @@ public class EtatLivraisonChargee extends EtatDefaut {
     	try {
     		demandeDeLivraison.nettoieDemandeDeLivraison();
     		DeserialiseurDemandeDeLivraisonXML.charger(demandeDeLivraison,plan);
+    		
+    		int nbLivraisons = 0;
+        	List<FenetreTemporelle> fenetres = demandeDeLivraison.getFenetres();
+        	
+    		for (FenetreTemporelle petitFenetre : fenetres) {
+    			Set<Livraison> livraisonsFActuelle = petitFenetre.getLivraisons();
+    			nbLivraisons += livraisonsFActuelle.size();
+    		}
+    		// Ajout de l'entrepot
+    		nbLivraisons++;
+    		demandeDeLivraison.setNbLivraisons(nbLivraisons);
             Controleur.setEtatCourant(Controleur.etatLivraisonChargee);
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {

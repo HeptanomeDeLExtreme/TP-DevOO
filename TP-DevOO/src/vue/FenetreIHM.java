@@ -13,6 +13,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import modele.DemandeDeLivraison;
 import modele.Intersection;
 import modele.Plan;
 import modele.Tournee;
@@ -54,7 +55,7 @@ public class FenetreIHM extends JFrame{
     /**
      * Default constructor
      */
-    public FenetreIHM(Tournee tournee, Controleur controleur, Plan plan) {
+    public FenetreIHM(DemandeDeLivraison demandeDeLivraison, Tournee tournee, Controleur controleur, Plan plan) {
     	
 		this.controleur = controleur;
 		
@@ -64,7 +65,7 @@ public class FenetreIHM extends JFrame{
 		cadreMessages.setBorder(BorderFactory.createTitledBorder("Messages..."));
 		getContentPane().add(cadreMessages);
 		vueTextuelle = new VueTextuelle(plan,tournee,this);
-		vueGraphique = new VueGraphique(tournee,plan,this);
+		vueGraphique = new VueGraphique(demandeDeLivraison,tournee,plan,this);
 		ecouteurSouris = new EcouteurSouris(controleur,vueGraphique,this);
 		addMouseListener(ecouteurSouris);
 		setTailleFenetre();

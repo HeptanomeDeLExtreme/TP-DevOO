@@ -58,11 +58,14 @@ public class VueTextuelle extends JLabel implements Observer{
 	        
 	
 	        this.setText("<html>");
-	        for(Troncon troncon : listeTroncon){
-	        	this.setText(this.getText()+"\n"+"Prenez :\n"+troncon.getNomDeRue()+"<br>");
+	        if(listeTroncon != null){
+		        for(Troncon troncon : listeTroncon){
+		        	if(troncon != null){
+		        		this.setText(this.getText()+"\n"+"Prenez :\n"+troncon.getNomDeRue()+"<br>");
+		        	}
+		        }
+		        this.setText(this.getText()+"</html>");
 	        }
-	        this.setText(this.getText()+"</html>");
-	        
     	}
         
     }

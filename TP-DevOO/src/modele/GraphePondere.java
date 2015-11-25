@@ -20,9 +20,13 @@ public class GraphePondere {
 		 this.nbNoeuds = setIntersections.size();
 		 
 		 int[][]couts= new int[nbNoeuds][nbNoeuds];
+		 for(int i = 0;i<nbNoeuds;i++){
+			 for(int j = 0; j<nbNoeuds;j++){
+				 couts[i][j] = -1;
+			 }
+		 }
 		 
 		 Integer numeroIntersection = 0;
-		 
 		 // Attribution d'un numéro à toutes les intersections
 		 Map<Intersection, Integer> mapIntersections = new HashMap<Intersection, Integer>();
 		 for(Intersection intersection : setIntersections){

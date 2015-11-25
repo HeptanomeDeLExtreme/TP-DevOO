@@ -75,7 +75,7 @@ public class Controleur {
     	
     	etatCourant = etatInit;
     	
-    	fenetre = new FenetreIHM(tournee, this, plan);
+    	fenetre = new FenetreIHM(demandeDeLivraison, tournee, this, plan);
     }
     
 
@@ -97,6 +97,7 @@ public class Controleur {
      */
     public void importerLivraison() {
         this.etatCourant.importerLivraison(fenetre,demandeDeLivraison,plan);
+        this.demandeDeLivraison.changementEffectue();
     }
 
     /**

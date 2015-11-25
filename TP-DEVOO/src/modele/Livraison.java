@@ -180,7 +180,6 @@ public class Livraison {
 		while(numeroSommetSuivant != numeroSommetLivDepart){
 			// Rechercher troncon avec numeroSommet et numeroSommetSuivant
 			Troncon unTroncon = arrivee.rechercherTroncon(interNumeroSommetSuivant);
-			System.out.println("KFS : "+adresse+" "+arrivee+" "+unTroncon);
 			// Ajouter le troncon à la liste
 			tronconsOrdonnes.add(unTroncon);
 			// Dire que numeroSommet = numeroSommetSuivant
@@ -192,7 +191,6 @@ public class Livraison {
 		}
 		// Insertion du dernier troncon
 		Troncon unTroncon = arrivee.rechercherTroncon(adresse);
-		System.out.println("Dernier tronocn :"+unTroncon);
 		tronconsOrdonnes.add(unTroncon);
 		return tronconsOrdonnes;
 	}

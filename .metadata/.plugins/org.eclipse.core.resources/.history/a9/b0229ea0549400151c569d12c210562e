@@ -206,7 +206,7 @@ public class DemandeDeLivraison extends Observable{
 		
     	// Generation des arcs du graphe de livraisons
     	int couts[][] = genererTableauArcs(graphePondere.getMapCorrespondance(),mapLivraisons);
-    	    	
+    	
     	// Generation du graphe de livraisons
     	GrapheLivraisons graphe = new GrapheLivraisons(nbLivraisons, couts);
     	
@@ -336,12 +336,6 @@ public class DemandeDeLivraison extends Observable{
     	System.out.println("NbLivraisons : "+nbLivraisons);
     	int tableauArcs[][]= new int[nbLivraisons][nbLivraisons];
     	
-    	for(int i = 0;i<nbLivraisons;i++){
-    		for(int j = 0;j<nbLivraisons;j++){
-    			tableauArcs[i][j] = Integer.MAX_VALUE;
-    		}
-    	}
-    	
     	// Creation d'un arc entre l'entrepot et les livraisons de 
     	// la premiere fenetre de livraisons
     	FenetreTemporelle fenetre = fenetres.get(0);
@@ -454,7 +448,6 @@ public class DemandeDeLivraison extends Observable{
     		Integer numeroSommet = tsp.getSolution(i);
     		System.out.println("Sol : "+numeroSommet);
     		Livraison livraison = mapLivraisons.get(numeroSommet);
-    		System.out.println(livraison);
         	livraisonsEnOrdre.add(livraison);
     	}
     	

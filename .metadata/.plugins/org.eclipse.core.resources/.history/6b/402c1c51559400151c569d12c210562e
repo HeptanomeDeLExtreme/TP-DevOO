@@ -338,7 +338,7 @@ public class DemandeDeLivraison extends Observable{
     	
     	for(int i = 0;i<nbLivraisons;i++){
     		for(int j = 0;j<nbLivraisons;j++){
-    			tableauArcs[i][j] = Integer.MAX_VALUE;
+    			tableauArcs[i][j] = -1;
     		}
     	}
     	

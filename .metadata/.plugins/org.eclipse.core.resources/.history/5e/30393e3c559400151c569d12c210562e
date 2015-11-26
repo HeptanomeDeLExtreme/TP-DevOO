@@ -336,12 +336,6 @@ public class DemandeDeLivraison extends Observable{
     	System.out.println("NbLivraisons : "+nbLivraisons);
     	int tableauArcs[][]= new int[nbLivraisons][nbLivraisons];
     	
-    	for(int i = 0;i<nbLivraisons;i++){
-    		for(int j = 0;j<nbLivraisons;j++){
-    			tableauArcs[i][j] = Integer.MAX_VALUE;
-    		}
-    	}
-    	
     	// Creation d'un arc entre l'entrepot et les livraisons de 
     	// la premiere fenetre de livraisons
     	FenetreTemporelle fenetre = fenetres.get(0);

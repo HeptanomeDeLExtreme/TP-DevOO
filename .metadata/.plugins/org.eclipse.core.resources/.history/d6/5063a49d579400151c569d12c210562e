@@ -199,7 +199,7 @@ public class DemandeDeLivraison extends Observable{
     	// Calcul des plus courts chemins a partir d'un livraison sur tout le plan
     	calculDesPlusCourtsChemins(plan, graphePondere);
 
-    	System.out.println(graphePondere.toString());
+//    	System.out.println(graphePondere.toString());
     	
     	// Creation des correspondances entre un sommet (Integer) et une livraison
     	Map<Integer,Livraison> mapLivraisons = correspondanceLivraisons();

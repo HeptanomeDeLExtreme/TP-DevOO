@@ -70,17 +70,7 @@ public class Livraison {
      */
     protected int[] tableauPi;
     
-    
-    
-    public FenetreTemporelle getFenetre() {
-		return fenetre;
-	}
-
-	public void setFenetre(FenetreTemporelle fenetre) {
-		this.fenetre = fenetre;
-	}
-
-	public int[] getTableauPi() {
+    public int[] getTableauPi() {
 		return tableauPi;
 	}
 

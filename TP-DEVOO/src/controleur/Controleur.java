@@ -2,6 +2,8 @@ package controleur;
 
 import java.awt.Point;
 import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 import modele.DemandeDeLivraison;
@@ -12,6 +14,7 @@ import modele.Tournee;
 import modele.Troncon;
 
 import vue.FenetreIHM;
+import xml.GenerateurFeuilleDeRoute;
 
 /**
  * 
@@ -120,8 +123,16 @@ public class Controleur {
     /**
      * 
      */
-    protected void genererFeuilleRoute() {
-        // TODO implement here
+    public void genererFeuilleRoute() {
+        try {
+			GenerateurFeuilleDeRoute.genererFeuilleDeRoute(this.tournee);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     /**
@@ -182,6 +193,9 @@ public class Controleur {
 				break;
 			case KeyEvent.VK_T:
 				this.calculerTournee();
+				break;
+			case KeyEvent.VK_G:
+				this.genererFeuilleRoute();
 				break;
 		}
 	}

@@ -126,4 +126,8 @@ public class Tournee extends Observable {
     	}
     	return toRet;
     }
+
+	public float getDuree() {
+		return 10; // TODO
+	}
 }

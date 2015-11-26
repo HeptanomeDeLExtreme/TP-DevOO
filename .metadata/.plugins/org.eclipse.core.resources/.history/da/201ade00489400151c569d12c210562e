@@ -175,13 +175,13 @@ public class Controleur {
 	public void caractereSaisi(int keyCode) {
 		switch(keyCode){
 			case KeyEvent.VK_P:
-				this.ouvrirPlan();
+				
 				break;
 			case KeyEvent.VK_L:
-				this.importerLivraison();
+				
 				break;
 			case KeyEvent.VK_T:
-				this.calculerTournee();
+				
 				break;
 		}
 	}

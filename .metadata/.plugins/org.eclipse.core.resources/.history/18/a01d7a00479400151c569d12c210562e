@@ -1,7 +1,6 @@
 package controleur;
 
 import java.awt.Point;
-import java.awt.event.KeyEvent;
 import java.util.*;
 
 import modele.DemandeDeLivraison;
@@ -79,9 +78,7 @@ public class Controleur {
     	fenetre = new FenetreIHM(demandeDeLivraison, tournee, this, plan);
     }
     
-    public void afficheMessageIHM(String s){
-    	this.fenetre.afficheMessage(s);
-    }
+
     
     protected void undo() {
         // TODO implement here
@@ -170,20 +167,6 @@ public class Controleur {
 
 	public void clicDroit(Point p) {
 		this.etatCourant.clicDroit(fenetre,p);		
-	}
-
-	public void caractereSaisi(int keyCode) {
-		switch(keyCode){
-			case KeyEvent.VK_P:
-				this.ouvrirPlan();
-				break;
-			case KeyEvent.VK_L:
-				this.importerLivraison();
-				break;
-			case KeyEvent.VK_T:
-				this.calculerTournee();
-				break;
-		}
 	}
 
 }

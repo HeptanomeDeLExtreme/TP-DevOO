@@ -26,7 +26,6 @@ public class FenetreIHM extends JFrame{
 
     protected EcouteurBoutons ecouteurBoutons;
     protected EcouteurSouris ecouteurSouris;
-    protected EcouteurClavier ecouteurClavier;
     protected VueGraphique vueGraphique;
     protected VueTextuelle vueTextuelle;
     protected Controleur controleur;
@@ -68,8 +67,6 @@ public class FenetreIHM extends JFrame{
 		vueTextuelle = new VueTextuelle(plan,tournee,this);
 		vueGraphique = new VueGraphique(demandeDeLivraison,tournee,plan,this);
 		ecouteurSouris = new EcouteurSouris(controleur,vueGraphique,this);
-		ecouteurClavier = new EcouteurClavier(controleur);
-		addKeyListener(ecouteurClavier);
 		addMouseListener(ecouteurSouris);
 		setTailleFenetre();
 		setVisible(true);

@@ -175,6 +175,7 @@ public class VueGraphique extends JPanel implements Observer {
 		        	// Lien entre les deux
 		        	g.drawLine(x1,y1,x2,y2);
 		        	
+		        	
 		        	// Bout de la fleche
 		        	double theta = Math.atan2(y2 - y1, x2 - x1);
 		    		drawArrow(g2,theta,(double)x2,(double)y2);

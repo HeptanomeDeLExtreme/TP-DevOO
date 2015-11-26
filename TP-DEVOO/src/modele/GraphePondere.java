@@ -17,7 +17,9 @@ public class GraphePondere {
 	 public GraphePondere(Plan plan) {
 	
 		 Set<Intersection> setIntersections =plan.getIntersections();
+		 System.out.println("Intersections du plan : " + setIntersections);
 		 this.nbNoeuds = setIntersections.size();
+		 System.out.println("Nombre de noeuds dans le graphe : " + nbNoeuds);
 		 
 		 int[][]couts= new int[nbNoeuds][nbNoeuds];
 		 for(int i = 0;i<nbNoeuds;i++){

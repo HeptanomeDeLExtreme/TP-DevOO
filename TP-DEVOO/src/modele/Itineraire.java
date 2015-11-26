@@ -43,7 +43,17 @@ public class Itineraire {
      */
     protected Integer cout;
 
-    /**
+    public Integer getCout() {
+		return cout;
+	}
+
+	public void setCout(Integer cout) {
+		this.cout = cout;
+	}
+
+
+
+	/**
      * 
      */
     protected List<Troncon> troncons;

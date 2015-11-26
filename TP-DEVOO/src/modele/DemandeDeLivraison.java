@@ -199,18 +199,20 @@ public class DemandeDeLivraison extends Observable{
     	// Calcul des plus courts chemins a partir d'un livraison sur tout le plan
     	calculDesPlusCourtsChemins(plan, graphePondere);
 
-    	System.out.println(graphePondere.toString());
+    	System.out.println("Map de correspondance entre sommets graphe plan et intersection :");
+    	System.out.println(graphePondere.mapCorrespondance);
     	
     	// Creation des correspondances entre un sommet (Integer) et une livraison
     	Map<Integer,Livraison> mapLivraisons = correspondanceLivraisons();
+    	System.out.println("Map de correspondance entre sommets graphe livraison et livraisons : ");
+    	System.out.println(mapLivraisons);
 		
     	// Generation des arcs du graphe de livraisons
     	int couts[][] = genererTableauArcs(graphePondere.getMapCorrespondance(),mapLivraisons);
     	    	
+    	System.out.println("Tableau de cout : " + couts);
     	// Generation du graphe de livraisons
     	GrapheLivraisons graphe = new GrapheLivraisons(nbLivraisons, couts);
-    	System.out.println("Graphe de livraisons : ");
-    	System.out.println(graphe);
     	
     	// Recherche de la solution avec TSP
     	tsp.chercheSolution(1000, graphe);
@@ -241,12 +243,76 @@ public class DemandeDeLivraison extends Observable{
     	System.out.println("");
     	System.out.println("Tournée :");
     	System.out.println(this.tournee);
+    	
+    	// Mise à jour des données concernant le moment où la livraison s'effectue
+    	int compteur = 0;
+		Horaire heureDerniereLivraison = new Horaire();
+		FenetreTemporelle fenetreDerniereLivraison = new FenetreTemporelle();
+    	for(Itineraire unItineraire : itinerairesEnOrdre) {
+    		// Entrepot -> 1ère livraison
+    		if(compteur == 0) {
+    			Livraison livraison1 = unItineraire.getArrivee();
+    			FenetreTemporelle fenetreLivraison1 = livraison1.getFenetre();
+    			int coutItineraire = unItineraire.getCout();
+    			Horaire horaireArrivee = calculerHeureArrivee(fenetreLivraison1.getHeureDebut(), coutItineraire);
+    			boolean isInFenetre = isHeureDansFenetreTemporelle(horaireArrivee, fenetreLivraison1.getHeureDebut(), fenetreLivraison1.getHeureFin());
+    			
+    			heureDerniereLivraison = horaireArrivee;
+    			fenetreDerniereLivraison = fenetreLivraison1;
+    		} else {
+    			int TEN_MINUTES = 10 * 60;
+    			
+    			Livraison livArrivee = unItineraire.getArrivee();
+    			FenetreTemporelle fenetreLivraison = livArrivee.getFenetre();
+    			
+    			if(fenetreLivraison != fenetreDerniereLivraison) {
+    				heureDerniereLivraison = fenetreLivraison.getHeureDebut();	
+    			}
+    			
+    			long coutItineraire = unItineraire.getCout();
+    			System.out.println("LIVRAISON DEBUT : " + unItineraire.getDepart());
+    			System.out.println("LIVRAISON ARRIVEE : " + unItineraire.getArrivee());
+    			System.out.println("COUT ITINERAIRE : " + coutItineraire);
+    			long coutTotal = coutItineraire + TEN_MINUTES;
+    			System.out.println("Heure passér param_tre : " + heureDerniereLivraison);
+    			System.out.println("cout total passé en paramètre : " + coutTotal);
+    			Horaire horaireArrivee = calculerHeureArrivee(heureDerniereLivraison, coutTotal);
+    			System.out.println("Horaire en sortie : " + horaireArrivee);
+    			boolean isInFenetre = isHeureDansFenetreTemporelle(horaireArrivee, fenetreLivraison.getHeureDebut(), fenetreLivraison.getHeureFin());
+    			
+    			heureDerniereLivraison = horaireArrivee;
+    			fenetreDerniereLivraison = fenetreLivraison;
+    		}
+    		compteur++;
+    	}
     
     }
 
-
-
     /**
+     * @param heureDebut
+     * @param coutItineraire
+     * 	En seconde.
+     * @return
+     */
+    private Horaire calculerHeureArrivee(Horaire heureDebut, long coutItineraire) {
+		Horaire horaire = new Horaire(coutItineraire);
+		Horaire resultatAdd = heureDebut.additionnerHoraire(horaire);
+		Horaire resultat = new Horaire(resultatAdd.getHeure(), resultatAdd.getMinute(), resultatAdd.getSeconde());
+		return resultat;
+	}
+    
+    /**
+     * @param heure
+     * @param horaireDebut
+     * @param horaireArrivee
+     * @return
+     */
+    private boolean isHeureDansFenetreTemporelle(Horaire heure, Horaire horaireDebut, Horaire horaireArrivee) {
+    	boolean resultat = heure.isInFenetreTemporelle(horaireDebut, horaireArrivee);
+    	return resultat;
+    }
+    
+	/**
      * Permet de lancer le calcul des plus courts chemins entre des livraisons
      * (l'entrepot et le reste des livraisons dans le fichier de demande de
      * livraisons) et un plan.

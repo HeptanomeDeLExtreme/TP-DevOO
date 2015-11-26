@@ -27,6 +27,8 @@ public class FenetreTemporelle {
      * Default constructor
      */
     public FenetreTemporelle() {
+    	this.heureDebut = new Horaire();
+    	this.heureFin = new Horaire();
     	this.livraisons = new HashSet<Livraison>();
     }
 
@@ -86,6 +88,14 @@ public class FenetreTemporelle {
 
 	public void setLivraisons(Set<Livraison> livraisons) {
 		this.livraisons = livraisons;
+	}
+
+	public boolean equals(FenetreTemporelle obj) {
+		boolean resultat = false;
+		if( (this.getHeureDebut() == obj.getHeureDebut()) && (this.getHeureFin() == obj.getHeureFin()) ) {
+			resultat = true;
+		}
+		return resultat;
 	}
 
 }

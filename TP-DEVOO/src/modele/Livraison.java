@@ -9,7 +9,19 @@ import java.util.Map.Entry;
  */
 public class Livraison {
 
-    /**
+	public boolean equals(Livraison obj) {
+    	boolean resultat = false;
+    	boolean id = (this.id == obj.id);
+    	boolean client = (this.client == obj.client);
+    	boolean adresse = (this.adresse == obj.adresse);
+    	boolean fenetre = (this.fenetre == obj.fenetre);
+		if( id && client && adresse && fenetre ) {
+			resultat = true;
+		}
+		return resultat;
+	}
+
+	/**
      * Default constructor
      */
     public Livraison() {
@@ -259,12 +271,12 @@ public class Livraison {
 	public void calculerPlusCourtsChemins(GraphePondere graphe) {
 		Map<Intersection, Integer> mapCorrespondancePlan = graphe.getMapCorrespondance();
 		// TEST
-		System.out.println("Livraison actuelle : " + this.getId());
-		System.out.println("Intersection actuelle : " + this.getAdresse());
+		//System.out.println("Livraison actuelle : " + this.getId());
+		//System.out.println("Intersection actuelle : " + this.getAdresse());
 		Set<Intersection> setKey = mapCorrespondancePlan.keySet();
 		for(Intersection unInter : setKey) {
 			Integer resultat = mapCorrespondancePlan.get(unInter);
-			System.out.println("Clé : " + unInter + ", Valeur : " + resultat);
+			//System.out.println("Clé : " + unInter + ", Valeur : " + resultat);
 		}
 		Integer numeroSommet = mapCorrespondancePlan.get(this.adresse);
 		System.out.println(numeroSommet);
@@ -272,12 +284,12 @@ public class Livraison {
 		tableauD = piEtD[0];
 		for(int i = 0; i < tableauD.length; i++) {
 			int resultat = tableauD[i];
-			System.out.println("resultat D : "+ resultat);
+			//System.out.println("resultat D : "+ resultat);
 		}
 		tableauPi = piEtD[1];
 		for(int i = 0; i < tableauPi.length; i++) {
 			int resultat = tableauPi[i];
-			System.out.println("resultat PI : "+ resultat);
+			//System.out.println("resultat PI : "+ resultat);
 		}
 		// TEST
 	}

@@ -209,6 +209,8 @@ public class DemandeDeLivraison extends Observable{
     	
     	// Generation du graphe de livraisons
     	GrapheLivraisons graphe = new GrapheLivraisons(nbLivraisons, couts);
+    	System.out.println("Graphe de livraisons : ");
+    	System.out.println(graphe);
     	
     	// Recherche de la solution avec TSP
     	tsp.chercheSolution(1000, graphe);
@@ -235,7 +237,7 @@ public class DemandeDeLivraison extends Observable{
     	
     	// Créer la tournée
     	int coutTotalSolution = tsp.getCoutSolution();
-    	this.tournee.charge(graphePondere.getMapCorrespondance(),this, entrepot, coutTotalSolution, itinerairesEnOrdre);
+    	this.tournee.charge(graphePondere.getMapCorrespondance(),this, entrepot, coutTotalSolution, livraisonsEnOrdre, itinerairesEnOrdre);
     	System.out.println("");
     	System.out.println("Tournée :");
     	System.out.println(this.tournee);
@@ -474,6 +476,8 @@ public class DemandeDeLivraison extends Observable{
     	
     	// Traitement de la tournee, depuis l'entrepot jusqu'a la derniere
     	// livraisons
+    	System.out.println("Liste des livraisons en ordre donné par TSP :");
+    	System.out.println(listeLivraisons);
     	for(int i = 0; i < listeLivraisons.size()-1; i++) {
     		Livraison livraisonActuelle = listeLivraisons.get(i);
     		Livraison livraisonSuivante = listeLivraisons.get(i+1);

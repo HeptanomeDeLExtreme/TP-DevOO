@@ -28,8 +28,6 @@ import modele.Troncon;
 public class GenerateurFeuilleDeRoute {
 
 
-	private static final int ANNULATION_UTILISATEUR = -1;
-	private static final int SUCCES = 0;
 	
 	/**
 	 * @param tournee : tournee pour laquelle on veut generer la feuille de route
@@ -38,6 +36,7 @@ public class GenerateurFeuilleDeRoute {
 	 * @throws FileNotFoundException 
 	 */
 	public static int genererFeuilleDeRoute(Tournee tournee) throws FileNotFoundException, UnsupportedEncodingException{
+		int execCode=0;
 		String nomFichier = "";
 		
 		 String sb = "TEST CONTENT";
@@ -46,14 +45,12 @@ public class GenerateurFeuilleDeRoute {
 	    int retrival = chooser.showSaveDialog(null);
 	    if (retrival == JFileChooser.APPROVE_OPTION) {
 	        try {
+//	            FileWriter fw = new FileWriter(chooser.getSelectedFile()+".txt");
+//	            fw.write(sb.toString());
 	        	nomFichier = chooser.getSelectedFile().toString();
 	        } catch (Exception ex) {
 	            ex.printStackTrace();
 	        }
-	    }
-	    
-	    if(nomFichier == ""){
-	    	return ANNULATION_UTILISATEUR;
 	    }
 		
 		//TODO amelioration : décider du fichier à écrire avec JFileChooser
@@ -81,7 +78,7 @@ public class GenerateurFeuilleDeRoute {
 		writer.close();
 		
 		
-		return SUCCES;
+		return execCode;
 	}
 	
 	// TODO transformer en constructeur de Horaire ?

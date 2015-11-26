@@ -28,8 +28,6 @@ import modele.Troncon;
 public class GenerateurFeuilleDeRoute {
 
 
-	private static final int ANNULATION_UTILISATEUR = -1;
-	private static final int SUCCES = 0;
 	
 	/**
 	 * @param tournee : tournee pour laquelle on veut generer la feuille de route
@@ -81,7 +79,7 @@ public class GenerateurFeuilleDeRoute {
 		writer.close();
 		
 		
-		return SUCCES;
+		return execCode;
 	}
 	
 	// TODO transformer en constructeur de Horaire ?

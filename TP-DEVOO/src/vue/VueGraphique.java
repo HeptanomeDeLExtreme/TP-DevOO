@@ -92,7 +92,7 @@ public class VueGraphique extends JPanel implements Observer {
 				String id = inter.getId()+"";
 				int x = (int) (inter.getX()*echelleX);
 				int y = (int) (inter.getY()*echelleY);
-//				g.drawString(id, x-5, y-5);
+				g.drawString(id, x-5, y-5);
 				g.fillOval(x, y, 10, 10);
 				
 				// Dessine les troncons

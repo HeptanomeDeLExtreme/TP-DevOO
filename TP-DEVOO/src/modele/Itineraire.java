@@ -28,7 +28,17 @@ public class Itineraire {
 		this.arrivee = arrivee;
 	}
 
-    /**
+    
+    
+    @Override
+	public String toString() {
+		return "Itineraire [cout=" + cout + ", troncons=" + troncons
+				+ ", depart=" + depart + ", arrivee=" + arrivee + "]";
+	}
+
+
+
+	/**
      * 
      */
     protected Integer cout;

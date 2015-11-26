@@ -1,0 +1,14 @@
+FEUILLE DE ROUTE : Durée totale =  h 0 m 0 s 10
+
+
+Livraison au Intersection [id=0, x=20, y=20] prévue à null
+Itinéraire : 
+poire - 
+
+Livraison au Intersection [id=2, x=5, y=70] prévue à null
+Itinéraire : 
+bonbon - 
+
+Livraison au Intersection [id=3, x=35, y=60] prévue à null
+Itinéraire : 
+soda - 

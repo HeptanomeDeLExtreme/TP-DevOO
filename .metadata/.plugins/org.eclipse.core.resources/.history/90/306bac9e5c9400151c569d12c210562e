@@ -31,11 +31,10 @@ public class Livraison {
      * @param Intersection adresse
      * @param int client
      */
-	public Livraison(int id, Client client, Intersection adresse, FenetreTemporelle fenetre) {
+	public Livraison(int id, Client client, Intersection adresse) {
 		this.id = id;
 		this.client = client;
 		this.adresse = adresse;
-		this.fenetre = fenetre;
 	}
 
 	/**
@@ -57,8 +56,6 @@ public class Livraison {
      * 
      */
     protected Intersection adresse;
-    
-    protected FenetreTemporelle fenetre;
 
     /**
      * 
@@ -70,17 +67,7 @@ public class Livraison {
      */
     protected int[] tableauPi;
     
-    
-    
-    public FenetreTemporelle getFenetre() {
-		return fenetre;
-	}
-
-	public void setFenetre(FenetreTemporelle fenetre) {
-		this.fenetre = fenetre;
-	}
-
-	public int[] getTableauPi() {
+    public int[] getTableauPi() {
 		return tableauPi;
 	}
 

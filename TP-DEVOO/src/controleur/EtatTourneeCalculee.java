@@ -133,8 +133,11 @@ public class EtatTourneeCalculee extends EtatDefaut {
     	}
     	else{
     		Controleur.setEtatCourant(Controleur.etatLivraisonsSelectionnees);
+    		Controleur.etatLivraisonsSelectionnees.setLivraison(liv);
     		fenetre.afficheMessage(Controleur.etatCourant.toString());
     	}
     }
-    	
+    
+    
+  	
 }

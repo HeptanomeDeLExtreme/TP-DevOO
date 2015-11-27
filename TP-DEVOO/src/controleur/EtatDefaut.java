@@ -3,6 +3,8 @@ package controleur;
 import java.awt.Point;
 import java.util.*;
 
+import javax.swing.JSpinner.ListEditor;
+
 import modele.DemandeDeLivraison;
 import modele.Intersection;
 import modele.Livraison;
@@ -75,13 +77,6 @@ public class EtatDefaut implements Etat {
     }
 
     /**
-     * @param livraison
-     */
-    public void supprimeLivraison(Livraison livraison) {
-        // TODO implement here
-    }
-
-    /**
      * @param fenetre 
      * @param listeDeCommande
      */
@@ -98,6 +93,11 @@ public class EtatDefaut implements Etat {
 	@Override
 	public void genererFeuilleRoute(FenetreIHM fenetre, Tournee tournee) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void supprimeLivraison(ListeCommande listeCommandes) {
 		
 	}
 

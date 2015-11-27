@@ -60,9 +60,10 @@ public interface Etat {
     public void modifierLivraison(Livraison livraison1, Livraison livraison2);
 
     /**
+     * @param listeCommandes 
      * @param livraison
      */
-    public void supprimeLivraison(Livraison livraison);
+    public void supprimeLivraison(ListeCommande listeCommandes);
 
     /**
      * @param fenetre 

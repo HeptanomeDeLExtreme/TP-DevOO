@@ -15,14 +15,20 @@ import vue.FenetreIHM;
  */
 public class EtatLivraisonsSelectionnees extends EtatDefaut {
 
+	protected Livraison liv;
     /**
      * Default constructor
      */
     public EtatLivraisonsSelectionnees() {
+    	this.liv = null;
     }
 
     public String toString(){
     	return "Etat livraison selectionnée";
+    }
+    
+    public void setLivraison(Livraison liv){
+    	this.liv = liv;
     }
     
     /**
@@ -36,7 +42,9 @@ public class EtatLivraisonsSelectionnees extends EtatDefaut {
     /**
      * @param livraison
      */
-    public void supprimerLivraison(Livraison livraison) {
+    public void supprimerLivraison(ListeCommande list) {
+    	System.out.println("je suis la");
+    	list.ajoute(new CommandeSuprime());
         Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
     }
     

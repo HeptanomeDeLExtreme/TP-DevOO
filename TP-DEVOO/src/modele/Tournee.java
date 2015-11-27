@@ -31,6 +31,7 @@ public class Tournee extends Observable {
     	this.entrepot = entrepot;
     	this.coutTotal = coutTotal;
     	this.livraisonsEnOrdre = livraisonsEnOrdre;
+    	
     	this.itineraires = itinerairesEnOrdre;
 
     	for(Itineraire itineraire : itinerairesEnOrdre){
@@ -70,15 +71,126 @@ public class Tournee extends Observable {
      * @param livraison2
      */
     protected void modifierTournee(Livraison livraison1, Livraison livraison2) {
-        // TODO implement here
+    	
+    	
+    	
+    	
+    	System.out.println("DEBUT DE MODIFIER");
+    	System.out.println("Itineraires avant modif");
+    	for (Itineraire it : itineraires)
+    	{
+    		System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
+    	}
+    	
+    	for (Livraison liv : livraisonsEnOrdre)
+    		{
+    		System.out.println(liv.getAdresse().getId());
+    		}
+    	
+    	Livraison livraisonSuivante1 = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison1)+1);
+    	Livraison livraisonSuivante2 = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison2)+1);
+    	
+    	supprimeLivraison(livraison1);
+    	supprimeLivraison(livraison2);
+    	
+    	ajouteLivraison(livraisonSuivante2, livraison1.getAdresse());
+    	ajouteLivraison(livraisonSuivante1, livraison2.getAdresse());
+    	
+    	charge(graphePondere.getMapCorrespondance(), demandeDeLivraison,entrepot, coutTotal,livraisonsEnOrdre, itineraires );
+    	
+    	System.out.println("Livraisons après modifs");
+    	for (Livraison liv : livraisonsEnOrdre)
+    		{
+    		System.out.println(liv.getAdresse().getId());
+    		}
+    	
+    	System.out.println("Itineraires après modif");
+    	for (Itineraire it : itineraires)
+    	{
+    		System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
+    	}
+    	
     }
 
     /**
      * @param livraison
      */
     protected void supprimeLivraison(Livraison livraison) {
-        // TODO implement here
-    }
+        // 
+    	Livraison livraisonPrecedente = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison) - 1 );
+    	System.out.println(" Livraison Précedente = " + livraisonPrecedente.getAdresse().getId());
+    	Livraison livraisonSuivante = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison) +1 );
+    	System.out.println(" Livraison Suivante = " + livraisonSuivante.getAdresse().getId());
+    	
+    	int coutPrecedentToLivraison = 0;
+    	int coutLivraisonToSuivant = 0;
+    	int coutPrecedentToSuivant = 0;
+    	
+    	System.out.println("Affichage des anciens itineraires");
+		for (Itineraire it : itineraires)
+		{
+		
+			System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
+		}
+    	
+    	Itineraire itiPrecedentToLivraison = new Itineraire();
+    	Itineraire itiLivraisonToSuivant = new Itineraire();
+    	livraisonsEnOrdre.remove(livraison);
+    	
+    	System.out.println("Mise à jour des livraisons");
+    	for (Livraison liv :livraisonsEnOrdre)
+    	{
+    		System.out.println("Id =" + liv.getAdresse().getId() );
+    	}
+    	
+    	for (Itineraire it : itineraires)
+    	{
+    		if (it.getArrivee() == livraison)
+    		{
+    			System.out.println("HEUI on supprime precedentToLivraison");
+    			coutPrecedentToLivraison = it.getCout();
+    			itiPrecedentToLivraison = it;
+    			break;
+    		}	
+    	}
+    		//Suppression des itinéraires "Precedent à Livraison" et "Livraison à Suivant"
+    		//Insertion de l'itineraire "Precedent à suivant"
+    		itiLivraisonToSuivant=itineraires.get(itineraires.indexOf(itiPrecedentToLivraison)+1);
+    		coutLivraisonToSuivant = itiLivraisonToSuivant.getCout();
+    		
+    		coutPrecedentToSuivant = livraisonPrecedente.rechercherCout(graphePondere.getMapCorrespondance(), livraisonSuivante);
+			List <Troncon> tronconsPrecedentToSuivant = livraison.rechercherTroncons(graphePondere.getMapCorrespondance(), livraisonSuivante);
+			Itineraire itiPrecedentToSuivant = new Itineraire(coutPrecedentToSuivant, tronconsPrecedentToSuivant, livraisonPrecedente, livraisonSuivante);
+			
+			System.out.println("Génération de l'itinéraire " + itiPrecedentToSuivant.getDepart().getAdresse().getId() + " à " + itiPrecedentToSuivant.getArrivee().getAdresse().getId());
+			
+			itineraires.add(itineraires.indexOf(itiPrecedentToLivraison), itiPrecedentToSuivant);
+			
+			System.out.println("Suppression de l'itinéraire " + itiLivraisonToSuivant.getDepart().getAdresse().getId() + " à " + itiLivraisonToSuivant.getArrivee().getAdresse().getId());
+			itineraires.remove(itineraires.get(itineraires.indexOf(itiPrecedentToLivraison)+1));
+			itineraires.remove(itiPrecedentToLivraison);
+			System.out.println("Suppression de l'itinéraire " + itiPrecedentToLivraison.getDepart().getAdresse().getId() + " à " + itiPrecedentToLivraison.getArrivee().getAdresse().getId());
+			System.out.println("Changement effectué");
+			
+    		coutTotal = coutTotal - coutLivraisonToSuivant - coutPrecedentToLivraison + coutPrecedentToSuivant ;
+    		
+    		charge(graphePondere.getMapCorrespondance(), demandeDeLivraison,entrepot, coutTotal,livraisonsEnOrdre, itineraires );
+    		
+    		System.out.println("Affichage des nouveaux itineraires");
+			for (Itineraire it : itineraires)
+			{
+			
+				System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
+			}
+    
+    	}
+    	
+    
+    	
+    	
+    	
+    	
+    
     
 	public List<Itineraire> getItineraires() {
 		return itineraires;

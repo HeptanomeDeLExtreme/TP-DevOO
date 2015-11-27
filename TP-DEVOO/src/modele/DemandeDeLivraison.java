@@ -260,21 +260,24 @@ public class DemandeDeLivraison extends Observable{
     	boolean livraisontrouvee=false;
     	Livraison livraisonSuivante = new Livraison();
     	for (Livraison livSuivante : tournee.getLivraisonsEnOrdre()){
-    		if(livSuivante.getAdresse().getId() == 42){
+    		if(livSuivante.getAdresse().getId() == 37){
     			livraisonSuivante =livSuivante;
     		livraisontrouvee=true;
     		}
     	}
     	
-    	if(intersectiontrouvee==false)
-    	{
-    		System.out.println("Mange Merde !");
+    	Livraison livraisonSuivante2 = new Livraison();
+    	for (Livraison livSuivante : tournee.getLivraisonsEnOrdre()){
+    		if(livSuivante.getAdresse().getId() == 42){
+    			livraisonSuivante2 =livSuivante;
+    		livraisontrouvee=true;
+    		}
     	}
-    	if (livraisontrouvee==false)
-    	{
-    		System.out.println("GROOOOOOS CON n°2");
-    	}
-    	tournee.ajouteLivraison(livraisonSuivante, intercible);
+    	
+    	tournee.modifierTournee(livraisonSuivante, livraisonSuivante2);
+    	
+    	//tournee.supprimeLivraison(livraisonSuivante);
+    	//tournee.ajouteLivraison(livraisonSuivante, intercible);
     	
 
     

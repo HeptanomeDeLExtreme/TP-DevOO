@@ -7,7 +7,6 @@ import modele.DemandeDeLivraison;
 import modele.Intersection;
 import modele.Livraison;
 import modele.Plan;
-import modele.Tournee;
 
 import vue.FenetreIHM;
 
@@ -43,8 +42,9 @@ public class EtatLivraisonsSelectionnees extends EtatDefaut {
     /**
      * @param livraison
      */
-    public void supprimeLivraison(Tournee tournee, ListeCommande list) {
-    	list.ajoute(new CommandeSuprime(tournee, liv));
+    public void supprimerLivraison(ListeCommande list) {
+    	System.out.println("je suis la");
+    	list.ajoute(new CommandeSuprime());
         Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
     }
     

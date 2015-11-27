@@ -164,7 +164,9 @@ public class Controleur {
      * 
      */
     public void supprimeLivraison() {
-        this.etatCourant.supprimeLivraison(tournee, listeCommandes);
+    	System.out.println("couille ");
+    	System.out.println(etatCourant.toString());
+        this.etatCourant.supprimeLivraison(listeCommandes);
     }
     
     

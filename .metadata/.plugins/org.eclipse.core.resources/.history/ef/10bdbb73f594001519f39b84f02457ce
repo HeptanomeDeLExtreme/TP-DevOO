@@ -97,11 +97,8 @@ public class EtatDefaut implements Etat {
 	}
 
 	@Override
-	public void supprimeLivraison(Tournee tournee, ListeCommande listeCommandes) {
-		// TODO Auto-generated method stub
+	public void supprimeLivraison(ListeCommande listeCommandes) {
 		
 	}
-
-	
 
 }

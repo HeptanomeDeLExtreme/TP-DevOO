@@ -63,7 +63,7 @@ public interface Etat {
      * @param listeCommandes 
      * @param livraison
      */
-    public void supprimeLivraison(Tournee tournee, ListeCommande listeCommandes);
+    public void supprimeLivraison(ListeCommande listeCommandes);
 
     /**
      * @param fenetre 

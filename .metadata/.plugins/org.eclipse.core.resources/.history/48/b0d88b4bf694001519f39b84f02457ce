@@ -10,6 +10,11 @@ import modele.Tournee;
  */
 public class CommandeSuprime implements Commande {
 
+    /**
+     * Default constructor
+     */
+    public CommandeSuprime() {
+    }
 
     /**
      * 
@@ -21,7 +26,7 @@ public class CommandeSuprime implements Commande {
      * @param tournee 
      * @param livraison
      */
-    public CommandeSuprime(Tournee tournee, Livraison livraison) {
+    public void CommandeSuprime(Tournee tournee, Livraison livraison) {
         this.tournee = tournee;
         this.liv = livraison;
     }
@@ -31,6 +36,7 @@ public class CommandeSuprime implements Commande {
      */
     public void doCommande() {
         this.tournee.supprimeLivraison(this.liv);
+        System.out.println("je lé fai");
     }
 
     /**

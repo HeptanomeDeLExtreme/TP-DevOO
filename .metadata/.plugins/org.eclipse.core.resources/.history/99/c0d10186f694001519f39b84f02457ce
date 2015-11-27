@@ -44,7 +44,7 @@ public class EtatLivraisonsSelectionnees extends EtatDefaut {
      * @param livraison
      */
     public void supprimeLivraison(Tournee tournee, ListeCommande list) {
-    	list.ajoute(new CommandeSuprime(tournee, liv));
+    	list.ajoute(new CommandeSuprime(tournee, list));
         Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
     }
     

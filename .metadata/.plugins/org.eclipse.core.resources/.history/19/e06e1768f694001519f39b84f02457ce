@@ -164,7 +164,7 @@ public class Controleur {
      * 
      */
     public void supprimeLivraison() {
-        this.etatCourant.supprimeLivraison(tournee, listeCommandes);
+        this.etatCourant.supprimeLivraison(listeCommandes);
     }
     
     

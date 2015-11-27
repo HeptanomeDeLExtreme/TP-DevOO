@@ -31,6 +31,7 @@ public class CommandeSuprime implements Commande {
      */
     public void doCommande() {
         this.tournee.supprimeLivraison(this.liv);
+        System.out.println("je lé fai");
     }
 
     /**

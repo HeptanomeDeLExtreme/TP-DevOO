@@ -14,7 +14,7 @@ import modele.Tournee;
 import modele.Troncon;
 
 import vue.FenetreIHM;
-import xml.GenerateurFeuilleDeRoute;
+//import xml.GenerateurFeuilleDeRoute;
 
 /**
  * 
@@ -124,15 +124,15 @@ public class Controleur {
      * 
      */
     public void genererFeuilleRoute() {
-        try {
-			GenerateurFeuilleDeRoute.genererFeuilleDeRoute(this.tournee);
+        /*try {
+			//GenerateurFeuilleDeRoute.genererFeuilleDeRoute(this.tournee);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
     }
 
     /**

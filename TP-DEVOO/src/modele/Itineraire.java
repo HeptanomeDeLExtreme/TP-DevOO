@@ -70,6 +70,16 @@ public class Itineraire {
 	public void setArrivee(Livraison arrivee) {
 		this.arrivee = arrivee;
 	}
+	
+	public Integer getCout() {
+		return cout;
+	}
+
+	public void setCout(Integer cout) {
+		this.cout = cout;
+	}
+
+
 
 	/**
      * 

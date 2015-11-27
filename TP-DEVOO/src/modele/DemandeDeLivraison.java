@@ -195,7 +195,7 @@ public class DemandeDeLivraison extends Observable{
      */
     public void calculerTournee(Plan plan) {
     	GraphePondere graphePondere = new GraphePondere(plan);
-    	
+    	tournee.setGraphePondere(graphePondere);
     	// Calcul des plus courts chemins a partir d'un livraison sur tout le plan
     	calculDesPlusCourtsChemins(plan, graphePondere);
 
@@ -218,6 +218,7 @@ public class DemandeDeLivraison extends Observable{
     	// Recuperer l'ordre des livraisons a effectuer grace a TSP
     	LinkedList<Livraison> livraisonsEnOrdre = new LinkedList<Livraison>();
     	livraisonsEnOrdre = recupererLivraisonsEnOrdre(graphe, mapLivraisons);
+    	tournee.setLivraisonsEnOrdre(livraisonsEnOrdre);
     	
     	System.out.println("");
     	for(Livraison uneLiv : livraisonsEnOrdre) {
@@ -228,6 +229,7 @@ public class DemandeDeLivraison extends Observable{
     	// Récupérer l'ordre des itinéraires entre les livraisons.
     	List<Itineraire> itinerairesEnOrdre = new LinkedList<Itineraire>();
     	itinerairesEnOrdre = recupererItinerairesEnOrdre(graphePondere.getMapCorrespondance(),livraisonsEnOrdre, mapLivraisons,couts);
+    	tournee.setItineraires(itinerairesEnOrdre);
     	
     	System.out.println("");
     	for(Itineraire iti : itinerairesEnOrdre){
@@ -241,6 +243,40 @@ public class DemandeDeLivraison extends Observable{
     	System.out.println("");
     	System.out.println("Tournée :");
     	System.out.println(this.tournee);
+    	
+    	boolean intersectiontrouvee = false;
+    	Set<Intersection> mesinters = plan.getIntersections();
+    	Intersection intercible = new Intersection();
+    	for (Intersection inter : mesinters){
+    		if (inter.getId()== 53){
+    			intercible = inter;
+    			intersectiontrouvee=true;
+    		}
+    		
+    	}
+    	
+    	
+    	
+    	boolean livraisontrouvee=false;
+    	Livraison livraisonSuivante = new Livraison();
+    	for (Livraison livSuivante : tournee.getLivraisonsEnOrdre()){
+    		if(livSuivante.getAdresse().getId() == 42){
+    			livraisonSuivante =livSuivante;
+    		livraisontrouvee=true;
+    		}
+    	}
+    	
+    	if(intersectiontrouvee==false)
+    	{
+    		System.out.println("Mange Merde !");
+    	}
+    	if (livraisontrouvee==false)
+    	{
+    		System.out.println("GROOOOOOS CON n°2");
+    	}
+    	tournee.ajouteLivraison(livraisonSuivante, intercible);
+    	
+
     
     }
 
@@ -340,7 +376,7 @@ public class DemandeDeLivraison extends Observable{
     	
     	for(int i = 0;i<nbLivraisons;i++){
     		for(int j = 0;j<nbLivraisons;j++){
-    			tableauArcs[i][j] = Integer.MAX_VALUE;
+    			tableauArcs[i][j] = 0;
     		}
     	}
     	
@@ -448,7 +484,7 @@ public class DemandeDeLivraison extends Observable{
 	 * 	Liste de livraisons selon l'ordre trouve par TSP.
 	 */
 	private LinkedList<Livraison> recupererLivraisonsEnOrdre(GrapheLivraisons graphe, 
-			 Map<Integer, Livraison> mapLivraisons) {
+		Map<Integer, Livraison> mapLivraisons) {
     	LinkedList<Livraison> livraisonsEnOrdre = new LinkedList<Livraison>();
     	Integer nombreSommet = graphe.getNbSommets();
     	
@@ -459,7 +495,6 @@ public class DemandeDeLivraison extends Observable{
     		System.out.println(livraison);
         	livraisonsEnOrdre.add(livraison);
     	}
-    	
 		return livraisonsEnOrdre;
 	}
     

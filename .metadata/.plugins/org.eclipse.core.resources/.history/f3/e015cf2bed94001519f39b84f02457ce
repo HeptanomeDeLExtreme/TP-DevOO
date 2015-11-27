@@ -93,18 +93,18 @@ public class Horaire {
     }
     
     public Horaire additionnerHoraire(Horaire hor){
-//    	System.out.println("Horaire à additionner : " + hor);
+    	System.out.println("Horaire à additionner : " + hor);
         
         float duree1 = this.horaireToDuree();
-//        System.out.println("durée de du this : " + duree1);
+        System.out.println("durée de du this : " + duree1);
         float duree2 = hor.horaireToDuree();
-//        System.out.println("durée de du hor : " + duree2);
+        System.out.println("durée de du hor : " + duree2);
         
         float duree = duree1 + duree2;
-//        System.out.println("Durée totale + " + duree);
+        System.out.println("Durée totale + " + duree);
         
         Horaire finalHor = new Horaire(duree);
-//        System.out.println("Horaire finale : " + finalHor);
+        System.out.println("Horaire finale : " + finalHor);
         
         return finalHor;
     }

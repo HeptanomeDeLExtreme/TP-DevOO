@@ -213,6 +213,7 @@ public class DemandeDeLivraison extends Observable{
      * @param plan
      */
     public void calculerTournee(Plan plan) {
+    	System.out.println("oj");
     	GraphePondere graphePondere = new GraphePondere(plan);
     	
     	// Calcul des plus courts chemins a partir d'un livraison sur tout le plan
@@ -294,7 +295,7 @@ public class DemandeDeLivraison extends Observable{
 	    			long coutItineraire = unItineraire.getCout();
 //	    			System.out.println("LIVRAISON DEBUT : " + unItineraire.getDepart());
 //	    			System.out.println("LIVRAISON ARRIVEE : " + unItineraire.getArrivee());
-//	    			System.out.println("COUT ITINERAIRE : " + coutItineraire);
+	    			System.out.println("COUT ITINERAIRE : " + coutItineraire);
 	    			long coutTotal = coutItineraire + TEN_MINUTES;
 //	    			System.out.println("Heure passer parametre : " + heureDerniereLivraison);
 //	    			System.out.println("cout total passé en paramètre : " + coutTotal);

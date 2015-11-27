@@ -37,7 +37,7 @@ public class EtatLivraisonsSelectionnees extends EtatDefaut {
      * @param livraison
      */
     public void supprimerLivraison(Livraison livraison) {
-        Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
+        // TODO implement here
     }
     
     public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl){

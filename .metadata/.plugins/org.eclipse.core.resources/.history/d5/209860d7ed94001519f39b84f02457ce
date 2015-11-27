@@ -178,7 +178,7 @@ public class VueGraphique extends JPanel implements Observer {
 					
 					// Depart
 					Livraison arrivee = itineraire.getArrivee();
-					if(arrivee != this.demandeDeLivraison.getEntrepot()){
+					if(arrivee == this.demandeDeLivraison.getEntrepot()){
 						Intersection inter = arrivee.getAdresse();
 						int x = (int) (inter.getX()*echelleX);
 						int y = (int) (inter.getY()*echelleY);

@@ -178,18 +178,17 @@ public class VueGraphique extends JPanel implements Observer {
 					
 					// Depart
 					Livraison arrivee = itineraire.getArrivee();
-					if(arrivee != this.demandeDeLivraison.getEntrepot()){
-						Intersection inter = arrivee.getAdresse();
-						int x = (int) (inter.getX()*echelleX);
-						int y = (int) (inter.getY()*echelleY);
-						if(arrivee.getEstDansFenetre()){
-							g.setColor(couleurLivraison);
-						}
-						else{
-							g.setColor(couleurLivraisonRetard);
-						}
-						g.fillOval(x, y, 10, 10);
+					Intersection inter = arrivee.getAdresse();
+					int x = (int) (inter.getX()*echelleX);
+					int y = (int) (inter.getY()*echelleY);
+					if(arrivee.getEstDansFenetre()){
+						g.setColor(couleurLivraison);
 					}
+					else{
+						g.setColor(couleurLivraisonRetard);
+					}
+					g.fillOval(x, y, 10, 10);
+					
 					// Arrivee
 //					Livraison depart = itineraire.getDepart();
 //					inter = arrivee.getAdresse();

@@ -24,7 +24,7 @@ public class EtatDeuxLivraisonSelectionnee extends EtatDefaut {
      * @param livraison2
      */
     public void modifierLivraison(Livraison livraison1, Livraison livraison2) {
-        Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
+        // TODO implement here
     }
 
 }

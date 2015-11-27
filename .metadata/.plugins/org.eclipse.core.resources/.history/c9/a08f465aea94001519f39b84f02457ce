@@ -23,7 +23,7 @@ public class EtatLivraisonPrecedenteSelectionnee extends EtatDefaut {
      * @param fenetre
      */
     public void ajouterLivraison(FenetreIHM fenetre) {
-        Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
+        // TODO implement here
     }
 
 }

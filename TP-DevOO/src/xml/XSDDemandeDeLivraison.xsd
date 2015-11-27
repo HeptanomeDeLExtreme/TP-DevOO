@@ -49,7 +49,7 @@
 
 	<xs:element name='Livraison'>
 		<xs:complexType>
-			<xs:attribute name='id' type='xs:nonNegativeInteger' use='required'/>
+			<xs:attribute name='id' type='xs:positiveInteger' use='required'/>
 			<xs:attribute name='client' type='xs:nonNegativeInteger' use='required'/>
 			<xs:attribute name='adresse' type='xs:nonNegativeInteger' use='required'/>
 		</xs:complexType>

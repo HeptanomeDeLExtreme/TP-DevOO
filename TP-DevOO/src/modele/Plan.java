@@ -16,7 +16,13 @@ import xml.ExceptionXML;
  */
 public class Plan {
 
-
+    /**
+     * @param fichier
+     */
+    public void Plan(String fichier) {
+        // TODO implement here
+    }
+    
     public Plan(Set<Intersection> listeInter) {
 		this.intersections = listeInter;
 	}
@@ -24,7 +30,17 @@ public class Plan {
     public Plan(){
     	// TODO
     }
-    
+   
+    /**
+     * 
+     */
+    protected Set<Intersection> intersections;
+
+    /**
+     * 
+     */
+    protected Plan singleton;
+ 
     /**
      * @param fichier
      */
@@ -73,6 +89,19 @@ public class Plan {
     		return null;
     	}
     		
+    }    
+    
+    public Intersection cherche(Point p, float echelleX, float echelleY){
+    	if(intersections != null){
+    	Iterator<Intersection> it = intersections.iterator();
+			while (it.hasNext()){
+				Intersection inter = it.next();
+				if (inter.contient(p,echelleX,echelleY)){
+					return inter;
+				}
+			}
+    	}
+		return null;
     }
     
     /**
@@ -109,35 +138,9 @@ public class Plan {
     	}
     	return max;
     }
-    
-    public Intersection cherche(Point p, float echelleX, float echelleY){
-    	if(intersections != null){
-    	Iterator<Intersection> it = intersections.iterator();
-			while (it.hasNext()){
-				Intersection inter = it.next();
-				if (inter.contient(p,echelleX,echelleY)){
-					return inter;
-				}
-			}
-    	}
-		return null;
-    }
-    
-    /**
-     * 
-     */
-    protected Set<Intersection> intersections;
 
-    /**
-     * 
-     */
-    protected Plan singleton;
-
-    /**
-     * @param fichier
-     */
-    public void Plan(String fichier) {
-        // TODO implement here
-    }
+	public void setIntersections(Set<Intersection> intersections) {
+		this.intersections = intersections;
+	}
 
 }

@@ -21,43 +21,6 @@ public class Troncon {
 		this.destination = destination;
 	}
 
-    
-    
-    public Intersection getOrigine() {
-		return origine;
-	}
-
-	public Intersection getDestination() {
-		return destination;
-	}
-
-	public void setOrigine(Intersection origine) {
-		this.origine = origine;
-	}
-
-
-
-	public void setDestination(Intersection destination) {
-		this.destination = destination;
-	}
-
-	public String getNomDeRue() {
-		return nomDeRue;
-	}
-
-
-
-	@Override
-	public String toString() {
-		return "Troncon [longueur=" + longueur + ", vitesseMoyenne="
-				+ vitesseMoyenne + ", nomDeRue=" + nomDeRue + ", origine="
-				+ origine + ", destination=" + destination + "]";
-	}
-
-
-
-
-
 	/**
      * 
      */
@@ -82,5 +45,53 @@ public class Troncon {
      * 
      */
     protected Intersection destination;
+    
+	@Override
+	public String toString() {
+		return "Troncon [longueur=" + longueur + ", vitesseMoyenne="
+				+ vitesseMoyenne + ", nomDeRue=" + nomDeRue + ", origine="
+				+ origine + ", destination=" + destination + "]";
+	}
+
+	public Float getLongueur() {
+		return longueur;
+	}
+
+	public void setLongueur(Float longueur) {
+		this.longueur = longueur;
+	}
+
+	public Float getVitesseMoyenne() {
+		return vitesseMoyenne;
+	}
+
+	public void setVitesseMoyenne(Float vitesseMoyenne) {
+		this.vitesseMoyenne = vitesseMoyenne;
+	}
+
+	public void setNomDeRue(String nomDeRue) {
+		this.nomDeRue = nomDeRue;
+	}
+	 
+    public Intersection getOrigine() {
+		return origine;
+	}
+
+	public Intersection getDestination() {
+		return destination;
+	}
+
+	public void setOrigine(Intersection origine) {
+		this.origine = origine;
+	}
+
+	public void setDestination(Intersection destination) {
+		this.destination = destination;
+	}
+
+	public String getNomDeRue() {
+		return nomDeRue;
+	}
+
 
 }

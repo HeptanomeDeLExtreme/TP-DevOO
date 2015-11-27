@@ -56,6 +56,30 @@ public class DeserialiseurDemandeDeLivraisonXML {
         }
         
 	}
+	
+	/**
+	 * Ouvre un fichier xml passé en parametre et cree une demande de livraison a partir du contenu du fichier
+	 * @param DemandeDeLivraison demandeDeLivraison
+	 * @param Plan plan
+	 * @param File xml
+	 * @throws ParserConfigurationException
+	 * @throws SAXException
+	 * @throws IOException
+	 * @throws ExceptionXML
+	 */
+	public static void charger(DemandeDeLivraison demandeDeLivraison, Plan plan, File xml) throws ParserConfigurationException, SAXException, IOException, ExceptionXML{
+
+        DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();	
+        if (validateAgainstXSD(new FileInputStream(xml), new FileInputStream(new File("src/xml/XSDDemandeDeLivraison.xsd")))){
+        	Document document = docBuilder.parse(xml);
+        	Element racine = document.getDocumentElement();
+            construireAPartirDeDOMXML(racine, demandeDeLivraison, plan);
+        } 
+        else{
+        	throw new ExceptionXML("Document non conforme");
+        }
+        
+	}
 
 	/**
 	 * Construit l'objet demande de livraison à partir du fichier xml chargé

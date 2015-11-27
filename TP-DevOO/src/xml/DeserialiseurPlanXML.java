@@ -47,9 +47,32 @@ public class DeserialiseurPlanXML {
         	Document document = docBuilder.parse(xml);
         	document.getDocumentElement().normalize();
         	Element racine = document.getDocumentElement();
-            if (racine.getNodeName().equals("Reseau")) {
-               construireAPartirDeDOMXML(racine, plan);
-            }
+            construireAPartirDeDOMXML(racine, plan);
+            
+        }
+		else{
+            	throw new ExceptionXML("Document non conforme");
+		}
+	}
+	
+	/**
+	 * Ouvre un fichier xml passé en parametre et cree plan a partir du contenu du fichier
+	 * 
+	 * @param Plan plan
+	 * @param File xml
+	 * @throws ParserConfigurationException
+	 * @throws SAXException
+	 * @throws IOException
+	 * @throws ExceptionXML
+	 */
+	public static void charger(Plan plan, File xml) throws ParserConfigurationException, SAXException, IOException, ExceptionXML {
+
+		DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+		if (validateAgainstXSD(new FileInputStream(xml), new FileInputStream(new File("src/xml/XSDPlan.xsd")))){
+        	Document document = docBuilder.parse(xml);
+        	document.getDocumentElement().normalize();
+        	Element racine = document.getDocumentElement();
+            construireAPartirDeDOMXML(racine, plan);
             
         }
 		else{
@@ -124,6 +147,9 @@ public class DeserialiseurPlanXML {
 		Float vitesse = Float.parseFloat(tronconXML.getAttribute("vitesse").replace(",", "."));
 		Float longueur = Float.parseFloat(tronconXML.getAttribute("longueur").replace(",", "."));
 		Integer idDestination = Integer.parseInt(tronconXML.getAttribute("idNoeudDestination"));
+		if(idDestination == origine.getId()){
+			throw new ExceptionXML("Document non conforme : Un tronçon ne peut avoir la même intersection comme origine et destination.");
+		}
 		Intersection destination = plan.recupererIntersectionParId(idDestination);
 		Troncon troncon = new Troncon(nomRue, vitesse, longueur, origine, destination);
 		origine.ajouteTronconSortant(troncon);

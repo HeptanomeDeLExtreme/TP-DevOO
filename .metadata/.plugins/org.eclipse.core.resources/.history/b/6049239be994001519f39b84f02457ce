@@ -41,11 +41,13 @@ public class EcouteurBoutons implements ActionListener {
 		case "ChargerLivraison" : controleur.importerLivraison(); break;
 		case "CalculTournee" : controleur.calculerTournee(); break;
 		case "Generer Feuille de Route" : controleur.genererFeuilleRoute(); break;
-		case "Ajouter Livraison" : controleur.ajouterLivraison(); break;
-		case "Modifier Livraison": controleur.modifierLivraison(); break;
-		case "Supprimer Livraison": controleur.supprimeLivraison(); break;
-		case "Undo": controleur.undo(); break;
-		case "Redo": controleur.redo(); break;
+		case "Ajouter Livraison" : break;
+		case "Modifier Livraison": break;
+		case "Supprimer Livraison": break;
+		case "Historique": break;
+		case "Undo": break;
+		case "Redo": break;
+		
 		}
 	}
 

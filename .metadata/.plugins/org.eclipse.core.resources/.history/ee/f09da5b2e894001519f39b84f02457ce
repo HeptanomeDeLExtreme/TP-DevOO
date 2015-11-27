@@ -13,30 +13,19 @@ import vue.FenetreIHM;
 /**
  * 
  */
-public class EtatLivraisonsSelectionnees extends EtatDefaut {
+public class EtatIntersectionSelectionnee extends EtatDefaut {
 
     /**
      * Default constructor
      */
-    public EtatLivraisonsSelectionnees() {
+    public EtatIntersectionSelectionnee() {
     }
 
-    public String toString(){
-    	return "Etat livraison selectionnée";
-    }
-    
     /**
      * @param fenetre 
      * @param listeDeCommande
      */
     public void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
-        // TODO implement here
-    }
-
-    /**
-     * @param livraison
-     */
-    public void supprimerLivraison(Livraison livraison) {
         // TODO implement here
     }
     
@@ -48,7 +37,7 @@ public class EtatLivraisonsSelectionnees extends EtatDefaut {
     		Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
     	}
     	else{
-    		Controleur.setEtatCourant(Controleur.etatDeuxLivraisonSelectionnee);
+    		Controleur.setEtatCourant(Controleur.etatLivraisonPrecedenteSelectionnee);
     	}
     }
 

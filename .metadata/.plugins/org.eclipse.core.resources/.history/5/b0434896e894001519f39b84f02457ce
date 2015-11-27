@@ -21,10 +21,6 @@ public class EtatLivraisonsSelectionnees extends EtatDefaut {
     public EtatLivraisonsSelectionnees() {
     }
 
-    public String toString(){
-    	return "Etat livraison selectionnée";
-    }
-    
     /**
      * @param fenetre 
      * @param listeDeCommande

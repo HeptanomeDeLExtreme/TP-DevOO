@@ -21,6 +21,10 @@ public class EtatIntersectionSelectionnee extends EtatDefaut {
     public EtatIntersectionSelectionnee() {
     }
 
+    public String toString(){
+    	return "Etat intersection selectionne";
+    }
+    
     /**
      * @param fenetre 
      * @param listeDeCommande

@@ -14,10 +14,6 @@ public class EtatLivraisonPrecedenteSelectionnee extends EtatDefaut {
      */
     public EtatLivraisonPrecedenteSelectionnee() {
     }
-    
-    public String toString(){
-    	return "Etat livraison precedente selectionne";
-    }
 
     /**
      * @param fenetre

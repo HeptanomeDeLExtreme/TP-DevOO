@@ -14,10 +14,6 @@ public class EtatDeuxLivraisonSelectionnee extends EtatDefaut {
      */
     public EtatDeuxLivraisonSelectionnee() {
     }
-    
-    public String toString(){
-    	return "Etat deux livraisons selectionnés ";
-    }
 
     /**
      * @param livraison1 

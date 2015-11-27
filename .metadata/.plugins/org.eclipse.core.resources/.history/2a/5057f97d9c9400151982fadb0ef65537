@@ -288,6 +288,11 @@ public class Livraison {
 		tableauPi = piEtD[1];
 		for(int i = 0; i < tableauPi.length; i++) {
 			int resultat = tableauPi[i];
+<<<<<<< Updated upstream
+			//System.out.println("resultat PI : "+ resultat);
+=======
+//			System.out.println("resultat PI : "+ resultat);
+>>>>>>> Stashed changes
 		}
 		// TEST
 	}

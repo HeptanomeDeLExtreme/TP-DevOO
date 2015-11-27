@@ -182,7 +182,8 @@ public class Controleur {
 	public void clicDroit(Point p) {
 		this.etatCourant.clicDroit(fenetre,p);		
 	}
-
+	
+	int kil = 0;
 	public void caractereSaisi(int keyCode) {
 		switch(keyCode){
 			case KeyEvent.VK_P:
@@ -193,6 +194,8 @@ public class Controleur {
 				break;
 			case KeyEvent.VK_T:
 				this.calculerTournee();
+				System.out.println("Calcul tournée!!");
+				this.fenetre.afficheMessage("Essai"+kil++);
 				break;
 			case KeyEvent.VK_G:
 				this.genererFeuilleRoute();

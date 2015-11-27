@@ -17,12 +17,13 @@ import modele.Troncon;
 /**
  * 
  */
-public class VueTextuelle extends JTextArea implements Observer{
+public class VueTextuelle extends JScrollPane implements Observer{
 
 	private String text;
 	private Tournee tournee;
 	private FenetreIHM fenetre;
 	private Plan plan;
+	private JLabel label;
 
     /**
      * @param plan 
@@ -40,7 +41,15 @@ public class VueTextuelle extends JTextArea implements Observer{
 //		this.setVerticalTextPosition(TOP);
 //		this.setVerticalAlignment(TOP);
 		
+		label = new JLabel();
+		this.setViewportView(label);
+		
 		fenetre.getContentPane().add(this);
+		
+    }
+    
+    protected void setText(String s){
+    	this.label.setText(s);
     }
     
     protected void changeText(String s){
@@ -54,28 +63,32 @@ public class VueTextuelle extends JTextArea implements Observer{
     public void update(Observable observable, Object objet) {
     	String html = "<html>";
     	
-    	List<Itineraire> listeItineraire = this.tournee.getItineraires();
-    	for(Itineraire itineraire : listeItineraire){
-    		// Depart 
-    		Livraison depart = itineraire.getDepart();
-    		Intersection interDepart = depart.getAdresse();
-    		html +="Partir de x = "+interDepart.getX()+" y = "+interDepart.getY()+"<br>";
-    		
-    		// Troncons
-    		List<Troncon> listeTroncon = itineraire.getTroncons();
-    		for(Troncon tronc : listeTroncon){
-    			html += "Passer par "+tronc.getNomDeRue()+"<br>";
-    		}
-    		
-    		// Arrivee
-    		Livraison arrivee = itineraire.getArrivee();
-    		Intersection interArrivee = arrivee.getAdresse();
-    		html +="Partir de x = "+interArrivee.getX()+" y = "+interArrivee.getY()+"<br>";
-    		html +="Heure d'arivée estimée : "+arrivee.getHeureArrivee()+"<br>";
-    		html +="Fenetre : "+arrivee.getFenetre().getHeureDebut()+" "+arrivee.getFenetre().getHeureFin()+"<br><br>";
+    	if(tournee != null){
+	    	List<Itineraire> listeItineraire = this.tournee.getItineraires();
+	    	if(listeItineraire != null){
+		    	for(Itineraire itineraire : listeItineraire){
+		    		// Depart 
+		    		Livraison depart = itineraire.getDepart();
+		    		Intersection interDepart = depart.getAdresse();
+		    		html +="Partir de x = "+interDepart.getX()+" y = "+interDepart.getY()+"<br>";
+		    		
+		    		// Troncons
+		    		List<Troncon> listeTroncon = itineraire.getTroncons();
+		    		for(Troncon tronc : listeTroncon){
+		    			html += "Passer par "+tronc.getNomDeRue()+"<br>";
+		    		}
+		    		
+		    		// Arrivee
+		    		Livraison arrivee = itineraire.getArrivee();
+		    		Intersection interArrivee = arrivee.getAdresse();
+		    		html +="Partir de x = "+interArrivee.getX()+" y = "+interArrivee.getY()+"<br>";
+		    		html +="Heure d'arivée estimée : "+arrivee.getHeureArrivee()+"<br>";
+		    		html +="Fenetre : "+arrivee.getFenetre().getHeureDebut()+" "+arrivee.getFenetre().getHeureFin()+"<br><br>";
+		    	}
+		        
+		    	this.setText(html);
+	    	}
     	}
-        
-    	this.setText(html);
     }
 
 

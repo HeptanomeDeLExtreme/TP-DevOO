@@ -284,10 +284,20 @@ public class Livraison {
 		tableauD = piEtD[0];
 		for(int i = 0; i < tableauD.length; i++) {
 			int resultat = tableauD[i];
+<<<<<<< Updated upstream
+			//System.out.println("resultat D : "+ resultat);
+=======
+//			System.out.println("resultat D : "+ resultat);
+>>>>>>> Stashed changes
 		}
 		tableauPi = piEtD[1];
 		for(int i = 0; i < tableauPi.length; i++) {
 			int resultat = tableauPi[i];
+<<<<<<< Updated upstream
+			//System.out.println("resultat PI : "+ resultat);
+=======
+//			System.out.println("resultat PI : "+ resultat);
+>>>>>>> Stashed changes
 		}
 		// TEST
 	}

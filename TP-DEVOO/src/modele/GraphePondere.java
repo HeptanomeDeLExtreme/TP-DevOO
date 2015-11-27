@@ -37,6 +37,9 @@ public class GraphePondere {
 		 }
 		 this.mapCorrespondance = mapIntersections;
 		 
+		 System.out.println(setIntersections.size());
+		 System.out.println("MAP : "+mapCorrespondance.size());
+		 
 		 //Récupération des intersections voisines de chaque intersection et du cout associé
 		 for (Intersection intersection : setIntersections){
 			 

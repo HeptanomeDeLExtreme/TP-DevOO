@@ -271,12 +271,21 @@ public class Livraison {
 	public void calculerPlusCourtsChemins(GraphePondere graphe) {
 		Map<Intersection, Integer> mapCorrespondancePlan = graphe.getMapCorrespondance();
 		// TEST
+<<<<<<< Updated upstream
+		//System.out.println("Livraison actuelle : " + this.getId());
+		//System.out.println("Intersection actuelle : " + this.getAdresse());
+		Set<Intersection> setKey = mapCorrespondancePlan.keySet();
+		for(Intersection unInter : setKey) {
+			Integer resultat = mapCorrespondancePlan.get(unInter);
+			//System.out.println("Clé : " + unInter + ", Valeur : " + resultat);
+=======
 //		System.out.println("Livraison actuelle : " + this.getId());
 //		System.out.println("Intersection actuelle : " + this.getAdresse());
 		Set<Intersection> setKey = mapCorrespondancePlan.keySet();
 		for(Intersection unInter : setKey) {
 			Integer resultat = mapCorrespondancePlan.get(unInter);
 //			System.out.println("Clé : " + unInter + ", Valeur : " + resultat);
+>>>>>>> Stashed changes
 		}
 		Integer numeroSommet = mapCorrespondancePlan.get(this.adresse);
 //		System.out.println(numeroSommet);
@@ -284,10 +293,20 @@ public class Livraison {
 		tableauD = piEtD[0];
 		for(int i = 0; i < tableauD.length; i++) {
 			int resultat = tableauD[i];
+<<<<<<< Updated upstream
+			//System.out.println("resultat D : "+ resultat);
+=======
+//			System.out.println("resultat D : "+ resultat);
+>>>>>>> Stashed changes
 		}
 		tableauPi = piEtD[1];
 		for(int i = 0; i < tableauPi.length; i++) {
 			int resultat = tableauPi[i];
+<<<<<<< Updated upstream
+			//System.out.println("resultat PI : "+ resultat);
+=======
+//			System.out.println("resultat PI : "+ resultat);
+>>>>>>> Stashed changes
 		}
 		// TEST
 	}

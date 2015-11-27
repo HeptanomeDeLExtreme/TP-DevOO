@@ -128,7 +128,7 @@ public class EtatTourneeCalculee extends EtatDefaut {
     	Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
     	
     	if(liv == null){
-    		Controleur.setEtatCourant(Controleur.etatIntersectionSelectionnee);
+    		
     	}
     	else{
     		Controleur.setEtatCourant(Controleur.etatLivraisonsSelectionnees);

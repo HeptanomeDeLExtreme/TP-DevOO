@@ -127,12 +127,8 @@ public class EtatTourneeCalculee extends EtatDefaut {
     	Livraison liv = ddl.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
     	Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
     	
-    	if(liv == null){
-    		Controleur.setEtatCourant(Controleur.etatIntersectionSelectionnee);
-    	}
-    	else{
-    		Controleur.setEtatCourant(Controleur.etatLivraisonsSelectionnees);
-    	}
+    	System.out.println(liv);
+    	System.out.println(inter);
     }
     	
 }

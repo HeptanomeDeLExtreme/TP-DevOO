@@ -241,48 +241,54 @@ public class DemandeDeLivraison extends Observable{
     	this.tournee.charge(graphePondere.getMapCorrespondance(),this, entrepot, coutTotalSolution, livraisonsEnOrdre, itinerairesEnOrdre);
 
     	// Mise à jour des données concernant le moment où la livraison s'effectue
-//    	int compteur = 0;
-//		Horaire heureDerniereLivraison = new Horaire();
-//		FenetreTemporelle fenetreDerniereLivraison = new FenetreTemporelle();
-//    	for(Itineraire unItineraire : itinerairesEnOrdre) {
-//    		// Entrepot -> 1ère livraison
-//    		if(compteur == 0) {
-//    			Livraison livraison1 = unItineraire.getArrivee();
-//    			FenetreTemporelle fenetreLivraison1 = livraison1.getFenetre();
-//    			int coutItineraire = unItineraire.getCout();
-//    			Horaire horaireArrivee = calculerHeureArrivee(fenetreLivraison1.getHeureDebut(), coutItineraire);
-//    			boolean isInFenetre = isHeureDansFenetreTemporelle(horaireArrivee, fenetreLivraison1.getHeureDebut(), fenetreLivraison1.getHeureFin());
-//    			
-//    			heureDerniereLivraison = horaireArrivee;
-//    			fenetreDerniereLivraison = fenetreLivraison1;
-//    		} else {
-//    			int TEN_MINUTES = 10 * 60;
-//    			
-//    			Livraison livArrivee = unItineraire.getArrivee();
-//    			FenetreTemporelle fenetreLivraison = livArrivee.getFenetre();
-//    			
-//    			if(fenetreLivraison != fenetreDerniereLivraison) {
-//    				heureDerniereLivraison = fenetreLivraison.getHeureDebut();	
-//    			}
-//    			
-//    			long coutItineraire = unItineraire.getCout();
-//    			System.out.println("LIVRAISON DEBUT : " + unItineraire.getDepart());
-//    			System.out.println("LIVRAISON ARRIVEE : " + unItineraire.getArrivee());
-//    			System.out.println("COUT ITINERAIRE : " + coutItineraire);
-//    			long coutTotal = coutItineraire + TEN_MINUTES;
-//    			System.out.println("Heure passér param_tre : " + heureDerniereLivraison);
-//    			System.out.println("cout total passé en paramètre : " + coutTotal);
-//    			Horaire horaireArrivee = calculerHeureArrivee(heureDerniereLivraison, coutTotal);
-//    			System.out.println("Horaire en sortie : " + horaireArrivee);
-//    			boolean isInFenetre = isHeureDansFenetreTemporelle(horaireArrivee, fenetreLivraison.getHeureDebut(), fenetreLivraison.getHeureFin());
-//    			
-//    			heureDerniereLivraison = horaireArrivee;
-//    			fenetreDerniereLivraison = fenetreLivraison;
-//    		}
-//    		compteur++;
-//    	}
+    	int compteur = 0;
+		Horaire heureDerniereLivraison = new Horaire();
+		FenetreTemporelle fenetreDerniereLivraison = new FenetreTemporelle();
+    	for(Itineraire unItineraire : itinerairesEnOrdre) {
+    		// Entrepot -> 1ère livraison
+    		if(compteur == 0) {
+    			Livraison livraison1 = unItineraire.getArrivee();
+    			FenetreTemporelle fenetreLivraison1 = livraison1.getFenetre();
+    			int coutItineraire = unItineraire.getCout();
+    			Horaire horaireArrivee = calculerHeureArrivee(fenetreLivraison1.getHeureDebut(), coutItineraire);
+    			boolean isInFenetre = isHeureDansFenetreTemporelle(horaireArrivee, fenetreLivraison1.getHeureDebut(), fenetreLivraison1.getHeureFin());
+    			
+    			livraison1.setHeureArrivee(horaireArrivee);
+    			livraison1.setEstDansFenetre(isInFenetre);
+    			heureDerniereLivraison = horaireArrivee;
+    			fenetreDerniereLivraison = fenetreLivraison1;
+    		} else {
+    			int TEN_MINUTES = 10 * 60;
+    			
+    			Livraison livArrivee = unItineraire.getArrivee();
+    			FenetreTemporelle fenetreLivraison = livArrivee.getFenetre();
+    			
+    			if(fenetreLivraison != fenetreDerniereLivraison) {
+    				heureDerniereLivraison = fenetreLivraison.getHeureDebut();	
+    			}
+    			
+    			long coutItineraire = unItineraire.getCout();
+    			System.out.println("LIVRAISON DEBUT : " + unItineraire.getDepart());
+    			System.out.println("LIVRAISON ARRIVEE : " + unItineraire.getArrivee());
+    			System.out.println("COUT ITINERAIRE : " + coutItineraire);
+    			long coutTotal = coutItineraire + TEN_MINUTES;
+    			System.out.println("Heure passér param_tre : " + heureDerniereLivraison);
+    			System.out.println("cout total passé en paramètre : " + coutTotal);
+    			Horaire horaireArrivee = calculerHeureArrivee(heureDerniereLivraison, coutTotal);
+    			System.out.println("Horaire en sortie : " + horaireArrivee);
+    			boolean isInFenetre = isHeureDansFenetreTemporelle(horaireArrivee, fenetreLivraison.getHeureDebut(), fenetreLivraison.getHeureFin());
+    			
+    			livArrivee.setHeureArrivee(horaireArrivee);
+    			livArrivee.setEstDansFenetre(isInFenetre);
+    			    			
+    			heureDerniereLivraison = horaireArrivee;
+    			fenetreDerniereLivraison = fenetreLivraison;
+    		}
+    		compteur++;
+    	}
 
-    
+    	this.tournee.changementEffectue();
+
     }
 
     /**

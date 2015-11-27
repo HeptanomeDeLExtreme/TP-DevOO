@@ -39,7 +39,6 @@ public class Tournee extends Observable {
     		List<Troncon> listeTroncon = depart.rechercherTroncons(correspondancePlan,arrivee);
     	}
     	
-    	this.changementEffectue();
     }
     
     /**

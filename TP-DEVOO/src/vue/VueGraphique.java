@@ -181,8 +181,7 @@ public class VueGraphique extends JPanel implements Observer {
 					Intersection inter = arrivee.getAdresse();
 					int x = (int) (inter.getX()*echelleX);
 					int y = (int) (inter.getY()*echelleY);
-//					if(arrivee.getEstDansFenetre()){
-					if(false){
+					if(arrivee.getEstDansFenetre()){
 						g.setColor(couleurLivraison);
 					}
 					else{
@@ -195,8 +194,7 @@ public class VueGraphique extends JPanel implements Observer {
 					inter = arrivee.getAdresse();
 					x = (int) (inter.getX()*echelleX);
 					y = (int) (inter.getY()*echelleY);
-//					if(arrivee.getEstDansFenetre()){
-					if(false){
+					if(arrivee.getEstDansFenetre()){
 						g.setColor(couleurLivraison);
 					}
 					else{

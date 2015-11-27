@@ -37,6 +37,7 @@ public class EcouteurBoutons implements ActionListener {
 		case "ChargerPlan": controleur.ouvrirPlan(); break;
 		case "ChargerLivraison" : controleur.importerLivraison(); break;
 		case "CalculTournee" : controleur.calculerTournee(); break;
+		case "Generer Feuille de Route" : controleur.genererFeuilleRoute(); break;
 		}
 	}
 

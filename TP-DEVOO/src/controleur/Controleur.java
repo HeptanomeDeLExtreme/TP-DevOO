@@ -1,6 +1,9 @@
 package controleur;
 
 import java.awt.Point;
+import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 import modele.DemandeDeLivraison;
@@ -11,6 +14,7 @@ import modele.Tournee;
 import modele.Troncon;
 
 import vue.FenetreIHM;
+import xml.GenerateurFeuilleDeRoute;
 
 /**
  * 
@@ -78,7 +82,9 @@ public class Controleur {
     	fenetre = new FenetreIHM(demandeDeLivraison, tournee, this, plan);
     }
     
-
+    public void afficheMessageIHM(String s){
+    	this.fenetre.afficheMessage(s);
+    }
     
     protected void undo() {
         // TODO implement here
@@ -117,8 +123,16 @@ public class Controleur {
     /**
      * 
      */
-    protected void genererFeuilleRoute() {
-        // TODO implement here
+    public void genererFeuilleRoute() {
+        try {
+			GenerateurFeuilleDeRoute.genererFeuilleDeRoute(this.tournee);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     /**
@@ -167,6 +181,26 @@ public class Controleur {
 
 	public void clicDroit(Point p) {
 		this.etatCourant.clicDroit(fenetre,p);		
+	}
+	
+	int kil = 0;
+	public void caractereSaisi(int keyCode) {
+		switch(keyCode){
+			case KeyEvent.VK_P:
+				this.ouvrirPlan();
+				break;
+			case KeyEvent.VK_L:
+				this.importerLivraison();
+				break;
+			case KeyEvent.VK_T:
+				this.calculerTournee();
+				System.out.println("Calcul tournée!!");
+				this.fenetre.afficheMessage("Essai"+kil++);
+				break;
+			case KeyEvent.VK_G:
+				this.genererFeuilleRoute();
+				break;
+		}
 	}
 
 }

@@ -9,7 +9,19 @@ import java.util.Map.Entry;
  */
 public class Livraison {
 
-    /**
+	public boolean equals(Livraison obj) {
+    	boolean resultat = false;
+    	boolean id = (this.id == obj.id);
+    	boolean client = (this.client == obj.client);
+    	boolean adresse = (this.adresse == obj.adresse);
+    	boolean fenetre = (this.fenetre == obj.fenetre);
+		if( id && client && adresse && fenetre ) {
+			resultat = true;
+		}
+		return resultat;
+	}
+
+	/**
      * Default constructor
      */
     public Livraison() {
@@ -31,10 +43,11 @@ public class Livraison {
      * @param Intersection adresse
      * @param int client
      */
-	public Livraison(int id, Client client, Intersection adresse) {
+	public Livraison(int id, Client client, Intersection adresse, FenetreTemporelle fenetre) {
 		this.id = id;
 		this.client = client;
 		this.adresse = adresse;
+		this.fenetre = fenetre;
 	}
 
 	/**
@@ -56,6 +69,8 @@ public class Livraison {
      * 
      */
     protected Intersection adresse;
+    
+    protected FenetreTemporelle fenetre;
 
     /**
      * 
@@ -67,7 +82,17 @@ public class Livraison {
      */
     protected int[] tableauPi;
     
-    public int[] getTableauPi() {
+    
+    
+    public FenetreTemporelle getFenetre() {
+		return fenetre;
+	}
+
+	public void setFenetre(FenetreTemporelle fenetre) {
+		this.fenetre = fenetre;
+	}
+
+	public int[] getTableauPi() {
 		return tableauPi;
 	}
 
@@ -164,61 +189,105 @@ public class Livraison {
     	return resultat;
     }
     
+//	public List<Troncon> rechercherTroncons(Map<Intersection, Integer> correspondancePlan, Livraison livraisonDest)
+//	{
+//		List<Troncon> tronconsOrdonnes = new LinkedList<>(); 
+//		
+//		Intersection arrivee = livraisonDest.getAdresse();
+//		Integer numeroSommet = correspondancePlan.get(arrivee);
+//		Integer numeroSommetLivDepart = correspondancePlan.get(adresse);
+//		
+//		Integer numeroSommetSuivant = tableauPi[numeroSommet];
+//		Intersection interNumeroSommetSuivant = 
+//				getKeyByValue(correspondancePlan, numeroSommetSuivant);
+//
+//		// TODO OPHELIE
+//		while(numeroSommetSuivant != numeroSommetLivDepart){
+//			// Rechercher troncon avec numeroSommet et numeroSommetSuivant
+//			Troncon unTroncon = arrivee.rechercherTroncon(interNumeroSommetSuivant);
+//			// Ajouter le troncon à la liste
+//			tronconsOrdonnes.add(unTroncon);
+//			// Dire que numeroSommet = numeroSommetSuivant
+//			numeroSommet = numeroSommetSuivant;
+//			// Changement de l'intersection suivante
+//			arrivee = interNumeroSommetSuivant;
+//			// Récupérer numeroSommetSuivant avec tableauPi[numeroSommet]
+//			numeroSommetSuivant = tableauPi[numeroSommet];
+//		}
+//		
+//		// Insertion du dernier troncon
+//		Troncon unTroncon = arrivee.rechercherTroncon(adresse);
+//		tronconsOrdonnes.add(unTroncon);
+//		return tronconsOrdonnes;
+//	}
+    
 	public List<Troncon> rechercherTroncons(Map<Intersection, Integer> correspondancePlan, Livraison livraisonDest)
 	{
-		List<Troncon> tronconsOrdonnes = new LinkedList<>(); 
-		
-		Intersection arrivee = livraisonDest.getAdresse();
-		Integer numeroSommet = correspondancePlan.get(arrivee);
-		Integer numeroSommetLivDepart = correspondancePlan.get(adresse);
-		
-		Integer numeroSommetSuivant = tableauPi[numeroSommet];
-		Intersection interNumeroSommetSuivant = 
-				getKeyByValue(correspondancePlan, numeroSommetSuivant);
 
-		// TODO OPHELIE
-		while(numeroSommetSuivant != numeroSommetLivDepart){
-			// Rechercher troncon avec numeroSommet et numeroSommetSuivant
-			Troncon unTroncon = arrivee.rechercherTroncon(interNumeroSommetSuivant);
-			System.out.println("KFS : "+adresse+" "+arrivee+" "+unTroncon);
-			// Ajouter le troncon à la liste
-			tronconsOrdonnes.add(unTroncon);
-			// Dire que numeroSommet = numeroSommetSuivant
-			numeroSommet = numeroSommetSuivant;
-			// Changement de l'intersection suivante
-			arrivee = interNumeroSommetSuivant;
-			// Récupérer numeroSommetSuivant avec tableauPi[numeroSommet]
-			numeroSommetSuivant = tableauPi[numeroSommet];
+		// Recuperer l'int de destination
+		Intersection arrivee = livraisonDest.getAdresse();
+		Integer intDestination = correspondancePlan.get(arrivee);
+		
+		// Recupere l'int de l'origine
+		Integer intOrigine = correspondancePlan.get(adresse);
+		
+		// Recherche de la liste des int des intersections
+		List<Integer> listeEntierIntersection = new LinkedList<Integer>();
+		calculPlusCourtCheminRecursif(intOrigine, intDestination, this.tableauPi, listeEntierIntersection);
+		
+		// Passage des int en intersections
+		List<Intersection> listeIntersection = new LinkedList<Intersection>();
+		for(Integer intInter : listeEntierIntersection){
+			Intersection inter = getKeyByValue(correspondancePlan, intInter);
+			listeIntersection.add(inter);
 		}
-		// Insertion du dernier troncon
-		Troncon unTroncon = arrivee.rechercherTroncon(adresse);
-		System.out.println("Dernier tronocn :"+unTroncon);
-		tronconsOrdonnes.add(unTroncon);
+		
+	
+		// Recherche des troncons
+		List<Troncon> tronconsOrdonnes = new LinkedList<>();
+		for(int i = 0 ; i<listeIntersection.size()-1;i++){
+			Intersection depart = listeIntersection.get(i);
+			Intersection dest = listeIntersection.get(i+1);
+			Troncon tronc = depart.rechercherTroncon(dest);
+			tronconsOrdonnes.add(tronc);
+		}
+		
 		return tronconsOrdonnes;
+	}
+
+	private void calculPlusCourtCheminRecursif(Integer intOrigine, Integer intDestination, int[] Pi, List<Integer> listeEntierIntersection) {
+		if(intOrigine == intDestination){
+			listeEntierIntersection.add(intOrigine);
+		}
+		else if(Pi[intDestination] == -1){
+			System.out.println("NOOON MA VIE EST FOUTUE :'( ");
+		}
+		else{
+			calculPlusCourtCheminRecursif(intOrigine, Pi[intDestination], Pi, listeEntierIntersection);
+			listeEntierIntersection.add(intDestination);
+		}
 	}
 
 	public void calculerPlusCourtsChemins(GraphePondere graphe) {
 		Map<Intersection, Integer> mapCorrespondancePlan = graphe.getMapCorrespondance();
 		// TEST
-		System.out.println("Livraison actuelle : " + this.getId());
-		System.out.println("Intersection actuelle : " + this.getAdresse());
+//		System.out.println("Livraison actuelle : " + this.getId());
+//		System.out.println("Intersection actuelle : " + this.getAdresse());
 		Set<Intersection> setKey = mapCorrespondancePlan.keySet();
 		for(Intersection unInter : setKey) {
 			Integer resultat = mapCorrespondancePlan.get(unInter);
-			System.out.println("Clé : " + unInter + ", Valeur : " + resultat);
+//			System.out.println("Clé : " + unInter + ", Valeur : " + resultat);
 		}
 		Integer numeroSommet = mapCorrespondancePlan.get(this.adresse);
-		System.out.println(numeroSommet);
+//		System.out.println(numeroSommet);
 		int [][]piEtD = Dijkstra.dijkstra(graphe, numeroSommet);
 		tableauD = piEtD[0];
 		for(int i = 0; i < tableauD.length; i++) {
 			int resultat = tableauD[i];
-			System.out.println("resultat D : "+ resultat);
 		}
 		tableauPi = piEtD[1];
 		for(int i = 0; i < tableauPi.length; i++) {
 			int resultat = tableauPi[i];
-			System.out.println("resultat PI : "+ resultat);
 		}
 		// TEST
 	}

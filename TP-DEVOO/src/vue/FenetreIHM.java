@@ -1,5 +1,6 @@
 package vue;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
@@ -12,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import modele.DemandeDeLivraison;
 import modele.Intersection;
@@ -26,6 +29,7 @@ public class FenetreIHM extends JFrame{
 
     protected EcouteurBoutons ecouteurBoutons;
     protected EcouteurSouris ecouteurSouris;
+    protected EcouteurClavier ecouteurClavier;
     protected VueGraphique vueGraphique;
     protected VueTextuelle vueTextuelle;
     protected Controleur controleur;
@@ -43,7 +47,7 @@ public class FenetreIHM extends JFrame{
 	private JMenuItem modifierLivraison;
 	private JMenuItem undo;
 	private JMenuItem redo;
-	
+
 	private JLabel cadreMessages;
 	
 	private final int hauteurCadreMessages = 100;
@@ -67,11 +71,12 @@ public class FenetreIHM extends JFrame{
 		vueTextuelle = new VueTextuelle(plan,tournee,this);
 		vueGraphique = new VueGraphique(demandeDeLivraison,tournee,plan,this);
 		ecouteurSouris = new EcouteurSouris(controleur,vueGraphique,this);
+		ecouteurClavier = new EcouteurClavier(controleur);
+		addKeyListener(ecouteurClavier);
 		addMouseListener(ecouteurSouris);
 		setTailleFenetre();
 		setVisible(true);
-		
-		
+
     }
 
     

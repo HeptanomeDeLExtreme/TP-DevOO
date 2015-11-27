@@ -28,12 +28,32 @@ public class Itineraire {
 		this.arrivee = arrivee;
 	}
 
-    /**
+    
+    
+    @Override
+	public String toString() {
+		return "Itineraire [cout=" + cout + ", troncons=" + troncons
+				+ ", depart=" + depart + ", arrivee=" + arrivee + "]";
+	}
+
+
+
+	/**
      * 
      */
     protected Integer cout;
 
-    /**
+    public Integer getCout() {
+		return cout;
+	}
+
+	public void setCout(Integer cout) {
+		this.cout = cout;
+	}
+
+
+
+	/**
      * 
      */
     protected List<Troncon> troncons;

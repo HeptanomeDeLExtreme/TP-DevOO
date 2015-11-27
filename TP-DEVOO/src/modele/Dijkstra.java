@@ -13,6 +13,9 @@ public class Dijkstra {
 		final int[] dist = new int[G.getNbNoeuds()]; // tableau des distances
 		final int[] pred = new int[G.getNbNoeuds()]; // tableau des
 														// prédécesseurs
+		for(int index = 0;index<G.getNbNoeuds();index++){
+			pred[index] = -1;
+		}
 		final boolean[] visite = new boolean[G.getNbNoeuds()]; // couleurs
 
 		for (int i = 0; i < dist.length; i++) {

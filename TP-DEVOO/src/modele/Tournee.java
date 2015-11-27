@@ -11,6 +11,8 @@ public class Tournee extends Observable {
 
     private int coutTotal;
 
+	private List<Livraison> livraisonsEnOrdre;
+
 
 	/**
      * Default constructor
@@ -21,12 +23,14 @@ public class Tournee extends Observable {
     /**
      * @param correspondancePlan 
      * @param coutTotal
+     * @param livraisonsEnOrdre 
      * @param livraisonsEnOrdre
      */
-    public void charge(Map<Intersection, Integer> correspondancePlan, DemandeDeLivraison ddl, Livraison entrepot, int coutTotal, List<Itineraire> itinerairesEnOrdre) {
+    public void charge(Map<Intersection, Integer> correspondancePlan, DemandeDeLivraison ddl, Livraison entrepot, int coutTotal, List<Livraison> livraisonsEnOrdre, List<Itineraire> itinerairesEnOrdre) {
     	this.demandeDeLivraison = ddl;
     	this.entrepot = entrepot;
     	this.coutTotal = coutTotal;
+    	this.livraisonsEnOrdre = livraisonsEnOrdre;
     	this.itineraires = itinerairesEnOrdre;
 
     	for(Itineraire itineraire : itinerairesEnOrdre){
@@ -122,4 +126,8 @@ public class Tournee extends Observable {
     	}
     	return toRet;
     }
+
+	public float getDuree() {
+		return 10; // TODO
+	}
 }

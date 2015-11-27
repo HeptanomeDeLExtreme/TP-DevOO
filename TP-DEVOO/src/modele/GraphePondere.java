@@ -17,12 +17,14 @@ public class GraphePondere {
 	 public GraphePondere(Plan plan) {
 	
 		 Set<Intersection> setIntersections =plan.getIntersections();
+		 System.out.println("Intersections du plan : " + setIntersections);
 		 this.nbNoeuds = setIntersections.size();
+		 System.out.println("Nombre de noeuds dans le graphe : " + nbNoeuds);
 		 
 		 int[][]couts= new int[nbNoeuds][nbNoeuds];
 		 for(int i = 0;i<nbNoeuds;i++){
 			 for(int j = 0; j<nbNoeuds;j++){
-				 couts[i][j] = -1;
+				 couts[i][j] = 0;
 			 }
 		 }
 		 
@@ -34,6 +36,9 @@ public class GraphePondere {
 			 numeroIntersection++;
 		 }
 		 this.mapCorrespondance = mapIntersections;
+		 
+		 System.out.println(setIntersections.size());
+		 System.out.println("MAP : "+mapCorrespondance.size());
 		 
 		 //Récupération des intersections voisines de chaque intersection et du cout associé
 		 for (Intersection intersection : setIntersections){
@@ -59,6 +64,16 @@ public class GraphePondere {
 		 
 		 this.couts = couts;
 	 } 
+	 
+	 public String toString(){
+		 String toRet = "";
+		 for(int i = 0; i< this.nbNoeuds;i++){
+			 for(int j = 0;j<this.nbNoeuds;j++){
+				 toRet += i+" est relié à "+j+" avec un cout de "+getWeight(i,j) +"\n";
+			 }
+		 }
+		 return toRet;
+	 }
 	 
 	 public Map<Intersection, Integer> getMapCorrespondance() {
 		return mapCorrespondance;

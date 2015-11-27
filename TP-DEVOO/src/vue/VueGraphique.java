@@ -3,9 +3,12 @@ package vue;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
+import java.awt.RenderingHints;
 import java.awt.Toolkit;
+import java.awt.geom.Line2D;
 import java.util.*;
 
 import javax.swing.JPanel;
@@ -36,6 +39,11 @@ public class VueGraphique extends JPanel implements Observer {
 	
 	public static final float correcteurEchelle = (float) 0.07;
 	
+	public static final Color couleurEntrepot = Color.BLUE;
+	public static final Color couleurIntersection = Color.LIGHT_GRAY;
+	public static final Color couleurLivraison = Color.GREEN;
+	public static final Color couleurLivraisonRetard = Color.RED;
+	
     /**
      * @param plan 
      * @param tournee 
@@ -62,7 +70,10 @@ public class VueGraphique extends JPanel implements Observer {
 	public void paintComponent(Graphics g) {
 		
 		super.paintComponent(g);
-		g.setColor(Color.lightGray);
+		Graphics2D g2 = (Graphics2D)g;
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                            RenderingHints.VALUE_ANTIALIAS_ON);
+		g.setColor(couleurIntersection);
 		
 	
 		Set<Intersection> listInter = plan.getIntersections();
@@ -92,7 +103,7 @@ public class VueGraphique extends JPanel implements Observer {
 				String id = inter.getId()+"";
 				int x = (int) (inter.getX()*echelleX);
 				int y = (int) (inter.getY()*echelleY);
-//				g.drawString(id, x-5, y-5);
+				g.drawString(id, x-5, y-5);
 				g.fillOval(x, y, 10, 10);
 				
 				// Dessine les troncons
@@ -109,7 +120,7 @@ public class VueGraphique extends JPanel implements Observer {
 		
 		
 			// DESSINE LA DEMANDE DE LIVRAISON
-			g.setColor(Color.BLUE);
+			g.setColor(couleurEntrepot);
 			Livraison entrepot = this.demandeDeLivraison.getEntrepot();
 			if(entrepot != null){
 				Intersection inter  = entrepot.getAdresse();
@@ -136,38 +147,81 @@ public class VueGraphique extends JPanel implements Observer {
 			// DESSINE LA TOURNEE
 			List<Itineraire> listeItineraire = this.tournee.getItineraires();
 			if(listeItineraire != null){
-		        List<Troncon> listeTroncon = new ArrayList<Troncon>();
-		        for(int i = 0; i<listeItineraire.size();i++){
-		        	Itineraire itineraire = listeItineraire.get(i);
-		        	listeTroncon.addAll(itineraire.getTroncons());
-		        }
-		        
-		        for(int i = 0; i<listeTroncon.size();i++){
-		        	Troncon troncon = listeTroncon.get(i);
-		        	if(troncon == null){continue;}
-		        	Intersection origine = troncon.getOrigine();
-		        	Intersection destination = troncon.getDestination();
-		        	
-		        	g.setColor(Color.GREEN);
-		        	
-		        	// Origine
-		        	int x1 = (int) (origine.getX()*echelleX);
-		        	int y1 = (int) (origine.getY()*echelleY);
-//		        	g.fillOval(x1, y1, 10, 10);
-		        	
-		        	// Destination
-		        	int x2 = (int) (destination.getX()*echelleX);
-		        	int y2 = (int) (destination.getY()*echelleY);
-//		        	g.fillOval(x2, y2, 10, 10);
-//		        	
-		        	// Lien entre les deux
-		        	g.drawLine(x1+5,y1+5,x2+5,y2+5);
-		        }
+				
+				
+				for(Itineraire itineraire : listeItineraire){
+					
+					// Troncon
+					List<Troncon> listeTroncon = itineraire.getTroncons();
+					for(Troncon tronc : listeTroncon){
+						Intersection origine = tronc.getOrigine();
+						Intersection destination = tronc.getDestination();
+						
+						int x1 = (int) (origine.getX()*echelleX);
+						int y1 = (int) (origine.getY()*echelleY);
+						int x2 = (int) (destination.getX()*echelleX);
+						int y2 = (int) (destination.getY()*echelleY);
+						
+			        	// Correction pour les fleche
+			        	x1 +=5;
+			        	y1 +=5;
+			        	x2+=5;
+			        	y2+=5;
+			        	
+			        	// Lien entre les deux
+			        	g.drawLine(x1,y1,x2,y2);
+			        	
+			        	// Bout de la fleche
+			        	double theta = Math.atan2(y2 - y1, x2 - x1);
+			    		drawArrow(g2,theta,(double)x2,(double)y2);
+					}
+					
+					// Depart
+					Livraison arrivee = itineraire.getArrivee();
+					Intersection inter = arrivee.getAdresse();
+					int x = (int) (inter.getX()*echelleX);
+					int y = (int) (inter.getY()*echelleY);
+//					if(arrivee.getEstDansFenetre()){
+					if(false){
+						g.setColor(couleurLivraison);
+					}
+					else{
+						g.setColor(couleurLivraisonRetard);
+					}
+					g.fillOval(x, y, 10, 10);
+					
+					// Arrivee
+					Livraison depart = itineraire.getDepart();
+					inter = arrivee.getAdresse();
+					x = (int) (inter.getX()*echelleX);
+					y = (int) (inter.getY()*echelleY);
+//					if(arrivee.getEstDansFenetre()){
+					if(false){
+						g.setColor(couleurLivraison);
+					}
+					else{
+						g.setColor(couleurLivraisonRetard);
+					}
+					g.fillOval(x, y, 10, 10);
+
+				}
 			}
 		}
-        
+		
 		this.g = g;
 	}
+	
+    private void drawArrow(Graphics2D g2, double theta, double x0, double y0)
+    {
+    	int barb = 20;                   // barb length
+        double phi = Math.PI/6;   
+        double x = x0 - barb * Math.cos(theta + phi);
+        double y = y0 - barb * Math.sin(theta + phi);
+        g2.draw(new Line2D.Double(x0, y0, x, y));
+        x = x0 - barb * Math.cos(theta - phi);
+        y = y0 - barb * Math.sin(theta - phi);
+        g2.draw(new Line2D.Double(x0, y0, x, y));
+    }
 	
 	public float getEchelleX() {
 		return echelleX;

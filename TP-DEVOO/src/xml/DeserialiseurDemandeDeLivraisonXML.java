@@ -75,7 +75,7 @@ public class DeserialiseurDemandeDeLivraisonXML {
     		Element Livraisons  = (Element) fenetreTemporelle.getElementsByTagName("Livraisons").item(0);
     		NodeList listeLivraisons = Livraisons.getElementsByTagName("Livraison");
     		for (int j = 0; j < listeLivraisons.getLength(); j++) {
-    			fenetre.ajouteLivraison(creeLivraison((Element) listeLivraisons.item(j), plan));
+    			fenetre.ajouteLivraison(creeLivraison((Element) listeLivraisons.item(j), plan, fenetre));
     		}
        	}
     }
@@ -99,13 +99,13 @@ public class DeserialiseurDemandeDeLivraisonXML {
 	 * @param Plan plan
 	 * @return Livraison livraison
 	 */
-	private static Livraison creeLivraison(Element livraisonXml, Plan plan) {
+	private static Livraison creeLivraison(Element livraisonXml, Plan plan, FenetreTemporelle fenetre) {
     	int idadresse = Integer.parseInt(livraisonXml.getAttribute("adresse"));
     	Intersection adresse = plan.recupererIntersectionParId(idadresse);
     	int idClient = Integer.parseInt(livraisonXml.getAttribute("client"));
     	Client client = new Client (idClient);
     	int id = Integer.parseInt(livraisonXml.getAttribute("id"));
-    	return new Livraison(id, client, adresse);
+    	return new Livraison(id, client, adresse, fenetre);
 	}
 
 	/**

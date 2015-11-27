@@ -71,7 +71,7 @@ public class GenerateurFeuilleDeRoute {
 			writer.println("Itinéraire : ");
 			List<Troncon> troncons = iti.getTroncons();
 			for(Troncon tr : troncons){
-				writer.print(tr.getNomDeRue() + " - ");
+				writer.println("Prenez la rue " + tr.getNomDeRue() + " sur " + tr.getLongueur() + " mètres.");
 			}
 			writer.println("");
 		}

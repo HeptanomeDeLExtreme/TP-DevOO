@@ -36,7 +36,7 @@ public interface Etat {
     /**
      * @param fenetre
      */
-    public void ajouterLivraison(FenetreIHM fenetre);
+    public void ajouterLivraison(Tournee tournee, ListeCommande ldc);
 
     /**
      * @param tournee

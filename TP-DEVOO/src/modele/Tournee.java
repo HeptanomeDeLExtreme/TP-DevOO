@@ -178,7 +178,7 @@ public class Tournee extends Observable {
      * @param livraisonAvant 
      * @param livraison
      */
-    protected void ajouteLivraison(Livraison livraisonSuivante, Intersection intersectionCible) {
+    public void ajouteLivraison(Livraison livraisonSuivante, Intersection intersectionCible) {
         // TODO implement here
     	//Récupération d'un ID non attribue
     	
@@ -261,13 +261,6 @@ public class Tournee extends Observable {
 		return itineraires;
 	}
 
-	/**
-     * @param livraisonAvant 
-     * @param livraison
-     */
-    protected void ajouteLivraison(Livraison livraisonAvant, Livraison livraison) {
-        // TODO implement here
-    }
 
     /**
      * @param preTournee

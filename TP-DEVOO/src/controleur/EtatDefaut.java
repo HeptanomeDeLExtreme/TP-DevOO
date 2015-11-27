@@ -47,14 +47,6 @@ public class EtatDefaut implements Etat {
     }
 
     /**
-     * @param fenetre
-     */
-    public void ajouterLivraison(FenetreIHM fenetre) {
-        // TODO implement here
-    }
-
-
-    /**
      * @param listeCommande
      */
     public void undo(ListeCommande listeCommande) {
@@ -98,6 +90,12 @@ public class EtatDefaut implements Etat {
 
 	@Override
 	public void supprimeLivraison(Tournee tournee, ListeCommande listeCommandes) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void ajouterLivraison(Tournee tournee, ListeCommande ldc) {
 		// TODO Auto-generated method stub
 		
 	}

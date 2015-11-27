@@ -147,7 +147,7 @@ public class Controleur {
      * 
      */
     public void ajouterLivraison() {
-        this.etatCourant.ajouterLivraison(fenetre);
+        this.etatCourant.ajouterLivraison(tournee, listeCommandes);
     }
 
     /**

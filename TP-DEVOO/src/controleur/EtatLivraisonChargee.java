@@ -13,6 +13,7 @@ import modele.FenetreTemporelle;
 import modele.Intersection;
 import modele.Livraison;
 import modele.Plan;
+import modele.Tournee;
 
 import vue.FenetreIHM;
 import xml.DeserialiseurDemandeDeLivraisonXML;
@@ -82,7 +83,11 @@ public class EtatLivraisonChargee extends EtatDefaut {
         Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
     }
     
-    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p){
+    public void genererFeuilleRoute(FenetreIHM fenetre, Tournee tournee) {
+    	fenetre.afficheMessage("Veuillez effectuer le calcul de la tournée !");
+    }
+    
+    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl){
         Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
         if(inter != null){
 	        fenetre.afficheMessage(inter.toString());

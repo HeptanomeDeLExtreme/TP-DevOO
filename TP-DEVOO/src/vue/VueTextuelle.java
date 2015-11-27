@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import modele.FenetreTemporelle;
 import modele.Intersection;
 import modele.Itineraire;
 import modele.Livraison;
@@ -83,7 +84,10 @@ public class VueTextuelle extends JScrollPane implements Observer{
 		    		Intersection interArrivee = arrivee.getAdresse();
 		    		html +="Partir de x = "+interArrivee.getX()+" y = "+interArrivee.getY()+"<br>";
 		    		html +="Heure d'arivée estimée : "+arrivee.getHeureArrivee()+"<br>";
-		    		html +="Fenetre : "+arrivee.getFenetre().getHeureDebut()+" "+arrivee.getFenetre().getHeureFin()+"<br><br>";
+		    		FenetreTemporelle fenetreArrivee = arrivee.getFenetre();
+		    		if(fenetreArrivee != null){
+		    			html +="Fenetre : "+arrivee.getFenetre().getHeureDebut()+" "+arrivee.getFenetre().getHeureFin()+"<br><br>";
+		    		}
 		    	}
 		        
 		    	this.setText(html);

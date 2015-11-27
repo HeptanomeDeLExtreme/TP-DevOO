@@ -11,6 +11,7 @@ import org.xml.sax.SAXException;
 import modele.DemandeDeLivraison;
 import modele.Intersection;
 import modele.Plan;
+import modele.Tournee;
 
 import vue.FenetreIHM;
 import xml.DeserialiseurPlanXML;
@@ -53,7 +54,11 @@ public class EtatInit extends EtatDefaut {
         fenetre.afficheMessage("Veuillez charger un plan puis une livraison !");
     }
     
-    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p){
+    public void genererFeuilleRoute(FenetreIHM fenetre, Tournee tournee) {
+    	fenetre.afficheMessage("Veuillez effectuer le calcul de la tournée !");
+    }
+    
+    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl){
     	fenetre.afficheMessage("Aucun plan chargé !");
     }
 

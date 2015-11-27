@@ -1,5 +1,6 @@
 package modele;
 
+import java.awt.Point;
 import java.io.IOException;
 import java.util.*;
 import java.util.Map.Entry;
@@ -78,6 +79,26 @@ public class DemandeDeLivraison extends Observable{
     	this.tsp = new TSP1();
     }
     
+    public Livraison cherche(Point p, float echelleX, float echelleY){
+   	
+    	Set<Livraison> touteLivraison = new HashSet<Livraison>();
+    	for(FenetreTemporelle fenetre : fenetres){
+    		for(Livraison liv : fenetre.getLivraisons()){
+    			touteLivraison.add(liv);
+    		}
+    	}
+    	
+    	Iterator<Livraison> it = touteLivraison.iterator();
+			while (it.hasNext()){
+				Livraison livrai = it.next();
+				Intersection inters = livrai.getAdresse();
+				if (inters.contient(p,echelleX,echelleY)){
+					return livrai;
+				}
+			}
+    	
+    	return null;
+    }
     /**
      * Cree un objet DemandeDeLivraison a partir d'un fichier XML.
      * 
@@ -223,6 +244,7 @@ public class DemandeDeLivraison extends Observable{
     	System.out.println("");
     	for(Livraison uneLiv : livraisonsEnOrdre) {
     		System.out.println("Livraison : "+uneLiv);
+    		System.out.println(uneLiv.getFenetre());
     	}
     	System.out.println("");
     	
@@ -244,9 +266,11 @@ public class DemandeDeLivraison extends Observable{
     	int compteur = 0;
 		Horaire heureDerniereLivraison = new Horaire();
 		FenetreTemporelle fenetreDerniereLivraison = new FenetreTemporelle();
+		Livraison entrepot = null;
     	for(Itineraire unItineraire : itinerairesEnOrdre) {
     		// Entrepot -> 1ère livraison
     		if(compteur == 0) {
+    			entrepot = unItineraire.getDepart();
     			Livraison livraison1 = unItineraire.getArrivee();
     			FenetreTemporelle fenetreLivraison1 = livraison1.getFenetre();
     			int coutItineraire = unItineraire.getCout();
@@ -263,26 +287,35 @@ public class DemandeDeLivraison extends Observable{
     			Livraison livArrivee = unItineraire.getArrivee();
     			FenetreTemporelle fenetreLivraison = livArrivee.getFenetre();
     			
-    			if(fenetreLivraison != fenetreDerniereLivraison) {
-    				heureDerniereLivraison = fenetreLivraison.getHeureDebut();	
+    			if(livArrivee != entrepot){   			
+	    			if(fenetreLivraison != fenetreDerniereLivraison) {
+	    				heureDerniereLivraison = fenetreLivraison.getHeureDebut();	
+	    			}
+	    			
+	    			long coutItineraire = unItineraire.getCout();
+	    			System.out.println("LIVRAISON DEBUT : " + unItineraire.getDepart());
+	    			System.out.println("LIVRAISON ARRIVEE : " + unItineraire.getArrivee());
+	    			System.out.println("COUT ITINERAIRE : " + coutItineraire);
+	    			long coutTotal = coutItineraire + TEN_MINUTES;
+	    			System.out.println("Heure passer parametre : " + heureDerniereLivraison);
+	    			System.out.println("cout total passé en paramètre : " + coutTotal);
+	    			Horaire horaireArrivee = calculerHeureArrivee(heureDerniereLivraison, coutTotal);
+	    			System.out.println("Horaire en sortie : " + horaireArrivee);
+	    			boolean isInFenetre = isHeureDansFenetreTemporelle(horaireArrivee, fenetreLivraison.getHeureDebut(), fenetreLivraison.getHeureFin());
+	    			
+	    			livArrivee.setHeureArrivee(horaireArrivee);
+	    			livArrivee.setEstDansFenetre(isInFenetre);
+	    			    			
+	    			heureDerniereLivraison = horaireArrivee;
+	    			fenetreDerniereLivraison = fenetreLivraison;
     			}
-    			
-    			long coutItineraire = unItineraire.getCout();
-    			System.out.println("LIVRAISON DEBUT : " + unItineraire.getDepart());
-    			System.out.println("LIVRAISON ARRIVEE : " + unItineraire.getArrivee());
-    			System.out.println("COUT ITINERAIRE : " + coutItineraire);
-    			long coutTotal = coutItineraire + TEN_MINUTES;
-    			System.out.println("Heure passér param_tre : " + heureDerniereLivraison);
-    			System.out.println("cout total passé en paramètre : " + coutTotal);
-    			Horaire horaireArrivee = calculerHeureArrivee(heureDerniereLivraison, coutTotal);
-    			System.out.println("Horaire en sortie : " + horaireArrivee);
-    			boolean isInFenetre = isHeureDansFenetreTemporelle(horaireArrivee, fenetreLivraison.getHeureDebut(), fenetreLivraison.getHeureFin());
-    			
-    			livArrivee.setHeureArrivee(horaireArrivee);
-    			livArrivee.setEstDansFenetre(isInFenetre);
-    			    			
-    			heureDerniereLivraison = horaireArrivee;
-    			fenetreDerniereLivraison = fenetreLivraison;
+    			else{
+    				long coutItineraire = unItineraire.getCout();
+    				long coutTotal = coutItineraire + TEN_MINUTES;
+    				Horaire horaireArrivee = calculerHeureArrivee(heureDerniereLivraison, coutTotal);
+    				livArrivee.setHeureArrivee(horaireArrivee);
+    				livArrivee.setEstDansFenetre(true);
+    			}
     		}
     		compteur++;
     	}
@@ -571,15 +604,15 @@ public class DemandeDeLivraison extends Observable{
     	
     	// Traitement de la fin de la tournee, depuis la derniere livraison
     	// jusqu'a l'entrepot de depart
-//    	Livraison derniereLivraison = listeLivraisons.getLast();
-//    	Livraison premiereLivraison = listeLivraisons.getFirst();
-//    	
-//    	int depart = getKeyByValue(mapLivraisons, derniereLivraison);
-//    	int arrivee = getKeyByValue(mapLivraisons, premiereLivraison);
-//    	int coutItineraire = couts[depart][arrivee];
-//    	List<Troncon> troncons = derniereLivraison.rechercherTroncons(correspondancePlan,premiereLivraison);
-//    	Itineraire itineraire = new Itineraire(coutItineraire, troncons, derniereLivraison, premiereLivraison);
-//    	itinerairesEnOrdre.add(itineraire);
+    	Livraison derniereLivraison = listeLivraisons.getLast();
+    	Livraison premiereLivraison = listeLivraisons.getFirst();
+    	
+    	int depart = getKeyByValue(mapLivraisons, derniereLivraison);
+    	int arrivee = getKeyByValue(mapLivraisons, premiereLivraison);
+    	int coutItineraire = couts[depart][arrivee];
+    	List<Troncon> troncons = derniereLivraison.rechercherTroncons(correspondancePlan,premiereLivraison);
+    	Itineraire itineraire = new Itineraire(coutItineraire, troncons, derniereLivraison, premiereLivraison);
+    	itinerairesEnOrdre.add(itineraire);
     	
     	return itinerairesEnOrdre;
     }

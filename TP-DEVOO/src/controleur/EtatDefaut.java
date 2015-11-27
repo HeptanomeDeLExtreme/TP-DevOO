@@ -7,6 +7,7 @@ import modele.DemandeDeLivraison;
 import modele.Intersection;
 import modele.Livraison;
 import modele.Plan;
+import modele.Tournee;
 
 import vue.FenetreIHM;
 
@@ -50,12 +51,6 @@ public class EtatDefaut implements Etat {
         // TODO implement here
     }
 
-    /**
-     * @param demandeDeLivraison
-     */
-    public void genererFeuilleRoute(DemandeDeLivraison demandeDeLivraison) {
-        // TODO implement here
-    }
 
     /**
      * @param listeCommande
@@ -90,7 +85,7 @@ public class EtatDefaut implements Etat {
      * @param fenetre 
      * @param listeDeCommande
      */
-    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p) {
+    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl) {
 
     }
 
@@ -98,6 +93,12 @@ public class EtatDefaut implements Etat {
 	@Override
 	public void clicDroit(FenetreIHM fenetre, Point p) {
 		fenetre.afficheMessage("Clic droit, c'est bien mais ça ne sert à rien :) ");
+	}
+
+	@Override
+	public void genererFeuilleRoute(FenetreIHM fenetre, Tournee tournee) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

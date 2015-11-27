@@ -6,6 +6,7 @@ import java.util.*;
 import modele.DemandeDeLivraison;
 import modele.Livraison;
 import modele.Plan;
+import modele.Tournee;
 
 import vue.FenetreIHM;
 
@@ -38,9 +39,9 @@ public interface Etat {
     public void ajouterLivraison(FenetreIHM fenetre);
 
     /**
-     * @param demandeDeLivraison
+     * @param tournee
      */
-    public void genererFeuilleRoute(DemandeDeLivraison demandeDeLivraison);
+    public void genererFeuilleRoute(FenetreIHM fenetre, Tournee tournee);
 
     /**
      * @param listeCommande
@@ -69,6 +70,6 @@ public interface Etat {
      */
     public void clicDroit(FenetreIHM fenetre, Point p);
 
-	public void clicGauche(FenetreIHM fenetre, Plan plan, Point p);
+	public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl);
 
 }

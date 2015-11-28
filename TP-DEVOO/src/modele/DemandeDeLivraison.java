@@ -248,7 +248,7 @@ public class DemandeDeLivraison extends Observable{
     	Set<Intersection> mesinters = plan.getIntersections();
     	Intersection intercible = new Intersection();
     	for (Intersection inter : mesinters){
-    		if (inter.getId()== 53){
+    		if (inter.getId()== 0){
     			intercible = inter;
     			intersectiontrouvee=true;
     		}
@@ -274,10 +274,10 @@ public class DemandeDeLivraison extends Observable{
     		}
     	}
     	
-    	tournee.modifierTournee(livraisonSuivante, livraisonSuivante2);
+    	//tournee.modifierTournee(livraisonSuivante, livraisonSuivante2);
     	
     	//tournee.supprimeLivraison(livraisonSuivante);
-    	//tournee.ajouteLivraison(livraisonSuivante, intercible);
+    	tournee.ajouteLivraison(livraisonSuivante, intercible);
     	
 
     

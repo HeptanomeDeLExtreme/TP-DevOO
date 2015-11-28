@@ -27,7 +27,7 @@ public class Tournee extends Observable {
      * @param livraisonsEnOrdre 
      * @param livraisonsEnOrdre
      */
-    public void charge(Map<Intersection, Integer> correspondancePlan, DemandeDeLivraison ddl, Livraison entrepot, int coutTotal, List<Livraison> livraisonsEnOrdre, List<Itineraire> itinerairesEnOrdre) {
+    public void charge(Map<Integer, Intersection> correspondancePlan, DemandeDeLivraison ddl, Livraison entrepot, int coutTotal, List<Livraison> livraisonsEnOrdre, List<Itineraire> itinerairesEnOrdre) {
     	this.demandeDeLivraison = ddl;
     	this.entrepot = entrepot;
     	this.coutTotal = coutTotal;

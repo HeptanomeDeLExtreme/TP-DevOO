@@ -209,6 +209,19 @@ public class DemandeDeLivraison extends Observable{
         // TODO implement here
     }
 
+    // A EFFACER
+    public Intersection getKeyByValue(Map<Intersection, Integer> map, Integer value) {
+    	Intersection resultat = null;
+    	Set<Intersection> setIntersection = map.keySet();
+    	for(Intersection uneInter : setIntersection) {
+    		if (value == map.get(uneInter)) {
+    			resultat =  uneInter;
+    		}
+    	}
+    	return resultat;
+    }
+    // A EFFACER
+    
     /**
      * @param plan
      */
@@ -220,7 +233,7 @@ public class DemandeDeLivraison extends Observable{
     	
     	// Calcul des plus courts chemins a partir d'un livraison sur tout le plan
     	calculDesPlusCourtsChemins(plan, graphePondere);
-
+    	
 //    	System.out.println("Map de correspondance entre sommets graphe plan et intersection :");
 //    	System.out.println(graphePondere.mapCorrespondance);
     	
@@ -230,7 +243,7 @@ public class DemandeDeLivraison extends Observable{
 //    	System.out.println(mapLivraisons);
 		
     	// Generation des arcs du graphe de livraisons
-    	int couts[][] = genererTableauArcs(graphePondere.getMapCorrespondance(),mapLivraisons);
+    	int couts[][] = genererTableauArcs(graphePondere.getMapCorrespondance(), mapLivraisons);
     	    	
 //    	System.out.println("Tableau de cout : " + couts);
     	// Generation du graphe de livraisons
@@ -244,10 +257,10 @@ public class DemandeDeLivraison extends Observable{
     	livraisonsEnOrdre = recupererLivraisonsEnOrdre(graphe, mapLivraisons);
     	
 //    	System.out.println("");
-    	for(Livraison uneLiv : livraisonsEnOrdre) {
+    	//for(Livraison uneLiv : livraisonsEnOrdre) {
 //    		System.out.println("Livraison : "+uneLiv);
 //    		System.out.println(uneLiv.getFenetre());
-    	}
+    	//}
 //    	System.out.println("");
     	
     	// Récupérer l'ordre des itinéraires entre les livraisons.
@@ -255,9 +268,11 @@ public class DemandeDeLivraison extends Observable{
     	itinerairesEnOrdre = recupererItinerairesEnOrdre(graphePondere.getMapCorrespondance(),livraisonsEnOrdre, mapLivraisons,couts);
     	
 //    	System.out.println("");
-    	for(Itineraire iti : itinerairesEnOrdre){
+//    	for(Itineraire iti : itinerairesEnOrdre){
 //    		System.out.println("Itineraire : "+iti);
-    	}
+//    		System.out.println("Troncons de l'itinéraire");
+//    		System.out.println(iti.getTroncons());
+//    	}
 //    	System.out.println("");
     	
     	// Créer la tournée
@@ -485,7 +500,7 @@ public class DemandeDeLivraison extends Observable{
      * 
      * @see correspondanceLivraisons
      */
-    protected int[][] genererTableauArcs(Map<Intersection, Integer> correspondancePlan, Map<Integer,Livraison> map){
+    protected int[][] genererTableauArcs(Map<Integer, Intersection> map2, Map<Integer,Livraison> map){
 //    	System.out.println("NbLivraisons : "+nbLivraisons);
     	int tableauArcs[][]= new int[nbLivraisons][nbLivraisons];
     	
@@ -505,7 +520,7 @@ public class DemandeDeLivraison extends Observable{
     		Integer numSommetArrive = getKeyByValue(map, livraisonArrivee);
 //    		System.out.println(numSommetArrive+" "+numSommetEntrepot);
     		tableauArcs[numSommetEntrepot][numSommetArrive] = 
-    				entrepot.rechercherCout(correspondancePlan, livraisonArrivee);
+    				entrepot.rechercherCout(map2, livraisonArrivee);
     	}
     	
     	// Pour chaque fenetre, recuperation des livraisons de la fenetre
@@ -528,7 +543,7 @@ public class DemandeDeLivraison extends Observable{
     				if(livraisonDestActuelle.getId() != livraisonSourceActuelle.getId()){
     					Integer integerSource = getKeyByValue(map,livraisonSourceActuelle);
     					Integer integerDest = getKeyByValue(map, livraisonDestActuelle);
-    					tableauArcs[integerSource][integerDest] = livraisonSourceActuelle.rechercherCout(correspondancePlan,livraisonDestActuelle);					
+    					tableauArcs[integerSource][integerDest] = livraisonSourceActuelle.rechercherCout(map2,livraisonDestActuelle);					
     				}
     			}
     			
@@ -537,7 +552,7 @@ public class DemandeDeLivraison extends Observable{
     			for(Livraison livraisonDestSuivante : livraisonsFSuivante){
     				Integer integerSource = getKeyByValue(map,livraisonSourceActuelle);
     				Integer integerDest = getKeyByValue(map, livraisonDestSuivante);
-    				tableauArcs[integerSource][integerDest] = livraisonSourceActuelle.rechercherCout(correspondancePlan,livraisonDestSuivante);
+    				tableauArcs[integerSource][integerDest] = livraisonSourceActuelle.rechercherCout(map2,livraisonDestSuivante);
     			}
     		}
     	}
@@ -554,7 +569,7 @@ public class DemandeDeLivraison extends Observable{
 				if(livraisonDestActuelle.getId() != livraisonSourceActuelle.getId()){
 					Integer integerSource = getKeyByValue(map,livraisonSourceActuelle);
 					Integer integerDest = getKeyByValue(map, livraisonDestActuelle);
-					tableauArcs[integerSource][integerDest] = livraisonSourceActuelle.rechercherCout(correspondancePlan,
+					tableauArcs[integerSource][integerDest] = livraisonSourceActuelle.rechercherCout(map2,
 							livraisonDestActuelle);					
 				}
 			}
@@ -566,7 +581,7 @@ public class DemandeDeLivraison extends Observable{
     		if(livraisonSourceActuelle.getId() != entrepot.getId()){
     			Integer integerSource = getKeyByValue(map,livraisonSourceActuelle);
     			Integer integerEntrepot = getKeyByValue(map,entrepot);
-    			tableauArcs[integerSource][integerEntrepot] = livraisonSourceActuelle.rechercherCout(correspondancePlan,
+    			tableauArcs[integerSource][integerEntrepot] = livraisonSourceActuelle.rechercherCout(map2,
     					entrepot);
     		}
     	}
@@ -616,7 +631,7 @@ public class DemandeDeLivraison extends Observable{
     
     /**
      * Permet de recuperer les itineraires entre chaque livraison.
-     * @param correspondancePlan 
+     * @param map 
      * 
      * @param listeLivraisons
      * 	La liste des livraisons ordonnes apres l'appel a TSP.
@@ -628,7 +643,7 @@ public class DemandeDeLivraison extends Observable{
      * @return
      * 	Liste d'itinéraires en fonction de la liste de livraisons.
      */
-    private List<Itineraire> recupererItinerairesEnOrdre(Map<Intersection, Integer> correspondancePlan, LinkedList<Livraison> listeLivraisons, 
+    private List<Itineraire> recupererItinerairesEnOrdre(Map<Integer, Intersection> map, LinkedList<Livraison> listeLivraisons, 
     		Map<Integer, Livraison> mapLivraisons, int[][] couts){
  
     	List<Itineraire> itinerairesEnOrdre = new LinkedList<Itineraire>();
@@ -644,7 +659,7 @@ public class DemandeDeLivraison extends Observable{
     		int depart = getKeyByValue(mapLivraisons, livraisonActuelle);
     		int arrivee = getKeyByValue(mapLivraisons, livraisonSuivante);
     		int coutItineraire = couts[depart][arrivee];
-    		List <Troncon> troncons = livraisonActuelle.rechercherTroncons(correspondancePlan,livraisonSuivante);
+    		List <Troncon> troncons = livraisonActuelle.rechercherTroncons(map,livraisonSuivante);
     		
     		Itineraire itineraire = new Itineraire(coutItineraire, troncons, livraisonActuelle, livraisonSuivante);
     		
@@ -659,7 +674,7 @@ public class DemandeDeLivraison extends Observable{
     	int depart = getKeyByValue(mapLivraisons, derniereLivraison);
     	int arrivee = getKeyByValue(mapLivraisons, premiereLivraison);
     	int coutItineraire = couts[depart][arrivee];
-    	List<Troncon> troncons = derniereLivraison.rechercherTroncons(correspondancePlan,premiereLivraison);
+    	List<Troncon> troncons = derniereLivraison.rechercherTroncons(map,premiereLivraison);
     	Itineraire itineraire = new Itineraire(coutItineraire, troncons, derniereLivraison, premiereLivraison);
     	itinerairesEnOrdre.add(itineraire);
     	

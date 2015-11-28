@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="modele.Livraison"/>
+<fullyQualifiedTypeName name="controleur.EtatDeuxLivraisonSelectionnee"/>
+<fullyQualifiedTypeName name="controleur.EtatLivraisonPrecedenteSelectionnee"/>
+<fullyQualifiedTypeName name="modele.DemandeDeLivraison"/>
+<fullyQualifiedTypeName name="java.awt.Point"/>
+<fullyQualifiedTypeName name="modele.FenetreTemporelle"/>
+<fullyQualifiedTypeName name="controleur.EtatLivraisonsSelectionnees"/>
+<fullyQualifiedTypeName name="controleur.EtatIntersectionSelectionnee"/>
+<fullyQualifiedTypeName name="javax.swing.JSpinner.ListEditor"/>
+<fullyQualifiedTypeName name="controleur.ListeCommande"/>
+<fullyQualifiedTypeName name="controleur.CommandeSuprime"/>
+<fullyQualifiedTypeName name="modele.Tournee"/>
+</qualifiedTypeNameHistroy>

@@ -7,6 +7,7 @@ import modele.DemandeDeLivraison;
 import modele.Intersection;
 import modele.Livraison;
 import modele.Plan;
+import modele.Tournee;
 
 import vue.FenetreIHM;
 
@@ -15,6 +16,8 @@ import vue.FenetreIHM;
  */
 public class EtatIntersectionSelectionnee extends EtatDefaut {
 
+	
+	protected Intersection inter;
     /**
      * Default constructor
      */
@@ -42,7 +45,16 @@ public class EtatIntersectionSelectionnee extends EtatDefaut {
     	}
     	else{
     		Controleur.setEtatCourant(Controleur.etatLivraisonPrecedenteSelectionnee);
+    		Controleur.etatLivraisonPrecedenteSelectionnee.init(this.inter,liv);
     	}
     }
 
+	@Override
+	public void ajouterLivraison(Tournee tournee, ListeCommande ldc) {
+				
+	}
+
+	public void setIntersection(Intersection inter) {
+		this.inter = inter;
+	}
 }

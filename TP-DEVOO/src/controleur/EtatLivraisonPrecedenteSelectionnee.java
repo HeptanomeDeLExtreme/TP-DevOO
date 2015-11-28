@@ -2,6 +2,10 @@ package controleur;
 
 import java.util.*;
 
+import modele.Intersection;
+import modele.Livraison;
+import modele.Tournee;
+
 import vue.FenetreIHM;
 
 /**
@@ -9,6 +13,10 @@ import vue.FenetreIHM;
  */
 public class EtatLivraisonPrecedenteSelectionnee extends EtatDefaut {
 
+	
+	protected Intersection inter;
+	protected Livraison liv;
+	
     /**
      * Default constructor
      */
@@ -19,11 +27,14 @@ public class EtatLivraisonPrecedenteSelectionnee extends EtatDefaut {
     	return "Etat livraison precedente selectionne";
     }
 
-    /**
-     * @param fenetre
-     */
-    public void ajouterLivraison(FenetreIHM fenetre) {
-        Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
-    }
+	@Override
+	public void ajouterLivraison(Tournee tournee, ListeCommande ldc) {
+		ldc.ajoute(new CommandeAjout(tournee,this.liv,this.inter));	
+	}
+
+	public void init(Intersection inter, Livraison liv) {
+		this.inter = inter;
+		this.liv = liv;
+	}
 
 }

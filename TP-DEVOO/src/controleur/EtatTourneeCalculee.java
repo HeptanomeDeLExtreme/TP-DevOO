@@ -129,12 +129,16 @@ public class EtatTourneeCalculee extends EtatDefaut {
     	
     	if(liv == null){
     		Controleur.setEtatCourant(Controleur.etatIntersectionSelectionnee);
+    		Controleur.etatIntersectionSelectionnee.setIntersection(inter);
     		fenetre.afficheMessage(Controleur.etatCourant.toString());
     	}
     	else{
     		Controleur.setEtatCourant(Controleur.etatLivraisonsSelectionnees);
+    		Controleur.etatLivraisonsSelectionnees.setLivraison(liv);
     		fenetre.afficheMessage(Controleur.etatCourant.toString());
     	}
     }
-    	
+    
+    
+  	
 }

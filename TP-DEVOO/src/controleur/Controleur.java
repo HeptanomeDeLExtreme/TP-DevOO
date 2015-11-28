@@ -147,7 +147,7 @@ public class Controleur {
      * 
      */
     public void ajouterLivraison() {
-        this.etatCourant.ajouterLivraison(fenetre);
+        this.etatCourant.ajouterLivraison(tournee, listeCommandes);
     }
 
     /**
@@ -164,8 +164,7 @@ public class Controleur {
      * 
      */
     public void supprimeLivraison() {
-    	Livraison livraison = null;
-        this.etatCourant.supprimeLivraison(livraison);
+        this.etatCourant.supprimeLivraison(tournee, listeCommandes);
     }
     
     

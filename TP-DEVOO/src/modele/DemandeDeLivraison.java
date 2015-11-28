@@ -213,7 +213,10 @@ public class DemandeDeLivraison extends Observable{
      * @param plan
      */
     public void calculerTournee(Plan plan) {
+    	
     	GraphePondere graphePondere = new GraphePondere(plan);
+    	
+    	this.tournee.setGraphePondere(graphePondere);
     	
     	// Calcul des plus courts chemins a partir d'un livraison sur tout le plan
     	calculDesPlusCourtsChemins(plan, graphePondere);

@@ -148,7 +148,7 @@ public class Tournee extends Observable {
     		coutLivraisonToSuivant = itiLivraisonToSuivant.getCout();
     		
     		coutPrecedentToSuivant = livraisonPrecedente.rechercherCout(graphePondere.getMapCorrespondance(), livraisonSuivante);
-			List <Troncon> tronconsPrecedentToSuivant = livraison.rechercherTroncons(graphePondere.getMapCorrespondance(), livraisonSuivante);
+			List <Troncon> tronconsPrecedentToSuivant = livraisonPrecedente.rechercherTroncons(graphePondere.getMapCorrespondance(), livraisonSuivante);
 			Itineraire itiPrecedentToSuivant = new Itineraire(coutPrecedentToSuivant, tronconsPrecedentToSuivant, livraisonPrecedente, livraisonSuivante);
 			
 			System.out.println("Génération de l'itinéraire " + itiPrecedentToSuivant.getDepart().getAdresse().getId() + " à " + itiPrecedentToSuivant.getArrivee().getAdresse().getId());
@@ -304,4 +304,14 @@ public class Tournee extends Observable {
 	public void setGraphePondere(GraphePondere graphePondere) {
 		this.graphePondere = graphePondere;
 	}
+
+	public List<Livraison> getLivraisonsEnOrdre() {
+		return livraisonsEnOrdre;
+	}
+
+	public void setLivraisonsEnOrdre(List<Livraison> livraisonsEnOrdre) {
+		this.livraisonsEnOrdre = livraisonsEnOrdre;
+	}
+	
+	
 }

@@ -268,6 +268,38 @@ public class DemandeDeLivraison extends Observable{
     	majHorairesDesLivraisons(itinerairesEnOrdre);
 
     	this.tournee.changementEffectue();
+    	
+    	
+    	// Tests manuels D'ajouter /Modifier/supprimer
+    	Set<Intersection> mesinters = plan.getIntersections();
+    	Intersection intercible = new Intersection();
+    	for (Intersection inter : mesinters){
+    		//Donner ici l'iD de l'intersection
+    		if (inter.getId()== 6){
+    			intercible = inter;
+    			
+    		}
+    		
+    	}
+    	Livraison livraisonSuivante = new Livraison();
+    	for (Livraison livSuivante : tournee.getLivraisonsEnOrdre()){
+    		//Donner ici l'iD de la livraison
+    		if(livSuivante.getAdresse().getId() == 37){
+    			livraisonSuivante =livSuivante;
+    		}
+    	}
+    	
+    	Livraison livraisonSuivante2 = new Livraison();
+    	for (Livraison livSuivante : tournee.getLivraisonsEnOrdre()){
+    		//Donner ici l'iD de la livraison
+    		if(livSuivante.getAdresse().getId() == 42){
+    			livraisonSuivante2 =livSuivante;
+    		}
+    	}
+    	
+    	//tournee.modifierTournee(livraisonSuivante, livraisonSuivante2);
+    	tournee.supprimeLivraison(livraisonSuivante);
+    	//tournee.ajouteLivraison(livraisonSuivante, intercible);
 
     }
 

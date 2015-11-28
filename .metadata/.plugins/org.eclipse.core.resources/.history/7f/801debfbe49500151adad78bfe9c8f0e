@@ -52,7 +52,7 @@ public class Horaire {
 	
 	@Override
 	public String toString(){
-		String s = " "+this.heure + "h " + this.minute+ "m " + this.seconde+"s";
+		String s = " h " + this.heure + " m " + this.minute+ " s " + this.seconde;
 		return s;
 	}
 

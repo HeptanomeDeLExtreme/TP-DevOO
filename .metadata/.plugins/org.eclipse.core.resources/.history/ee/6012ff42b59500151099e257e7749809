@@ -37,7 +37,7 @@ public class VueGraphique extends JPanel implements Observer {
 	private DemandeDeLivraison demandeDeLivraison;
 	private Plan plan;
 	
-	public static final float correcteurEchelle = (float) 0.20;
+	public static final float correcteurEchelle = (float) 0.10;
 	
 	public static final Color couleurEntrepot = Color.BLUE;
 	public static final Color couleurIntersection = Color.LIGHT_GRAY;

@@ -48,6 +48,9 @@ public class Livraison {
 		this.client = client;
 		this.adresse = adresse;
 		this.fenetre = fenetre;
+		this.heureArrivee = null;
+		this.heureLivraison = null;
+		this.estDansFenetre = null;
 	}
 
 	/**
@@ -61,6 +64,11 @@ public class Livraison {
     protected Horaire heureArrivee;
 
     /**
+     * 
+     */
+    protected Horaire heureLivraison;
+
+	/**
      * 
      */
     protected Boolean estDansFenetre;
@@ -112,6 +120,14 @@ public class Livraison {
      * 
      */
     protected int[] tableauD;
+    
+    public Horaire getHeureLivraison() {
+		return heureLivraison;
+	}
+
+	public void setHeureLivraison(Horaire heureLivraison) {
+		this.heureLivraison = heureLivraison;
+	}
     
     @Override
     public String toString(){

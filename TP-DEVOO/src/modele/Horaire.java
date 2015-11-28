@@ -109,16 +109,49 @@ public class Horaire {
         return finalHor;
     }
     
+    /**
+     * @param heureDebut
+     * @param heureFin
+     * @return
+     */
     public boolean isInFenetreTemporelle(Horaire heureDebut, Horaire heureFin) {
     	int duree = (int) this.horaireToDuree();
+    	//System.out.println("Durée en seconde de l'horaire de livraison :" + duree);
     	int dureeDepart = (int) heureDebut.horaireToDuree();
+    	//System.out.println("Durée eb seconde de l'horaire de début de fenetre : " + dureeDepart);
     	int dureeArrivee = (int) heureFin.horaireToDuree();
+    	//System.out.println("Durée en seconde de l'horaire de fin de fenêtre : " + dureeArrivee);
     	boolean resultat = false;
+    	
+    	boolean dureeInferieureADureeArrivee = (duree <= dureeArrivee);
+    	boolean dureeSuperieureADureeDepart = (dureeDepart <= duree);
+    	boolean dureeDansLafenetre = ((dureeDepart <= duree) && (duree <= dureeArrivee));
+    	
+    	//System.out.println("Durée inférieure à la durée d'arrivée ? " + dureeInferieureADureeArrivee);
+    	//System.out.println("Durée supérieure à la durée de départ ? : " + dureeSuperieureADureeDepart);
+    	//System.out.println("Durée comprise dans la fenêtre de temps ? " + dureeDansLafenetre);
     	
     	if( (dureeDepart <= duree) && (duree <= dureeArrivee) ) {
     		resultat = true;
     	}
     	return resultat;
     }
+
+	/**
+	 * @param heureDebut
+	 * @return
+	 */
+	public boolean isInferieurA(Horaire heureDebut) {
+		float duree1 = this.horaireToDuree();
+		//System.out.println("nombre de secondes de la livraison : " + duree1);
+		float duree2 = heureDebut.horaireToDuree();
+		//System.out.println("nombre de secondes de l'horaire de début de la fenetre de livraison : " + duree2);
+		boolean resultat = false;
+		if(duree1 <= duree2) {
+			//System.out.println("Héhé, on peut faire la livraison pile à l'heure du début de la fenêtre ;)");
+			resultat = true;
+		}
+		return resultat;
+	}
 
 }

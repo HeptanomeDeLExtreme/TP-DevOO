@@ -151,9 +151,9 @@ public class DemandeDeLivraison extends Observable{
     		nbLivraisons = 0;
     	
     		for (FenetreTemporelle fenetre : fenetres) {
-    			System.out.println("Fenetre : "+fenetre);
+    			//System.out.println("Fenetre : "+fenetre);
     			Set<Livraison> livraisonsFActuelle = fenetre.getLivraisons();
-    			System.out.println("Nombre de livraisons : "+livraisonsFActuelle.size());
+    			//System.out.println("Nombre de livraisons : "+livraisonsFActuelle.size());
     			nbLivraisons += livraisonsFActuelle.size();
     		}
     		
@@ -163,7 +163,7 @@ public class DemandeDeLivraison extends Observable{
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
 			// TODO Auto-generated catch block
-			System.out.println("Exception constructeur livraisons");			
+			//System.out.println("Exception constructeur livraisons");			
 //			System.out.println(e.getMessage());
 //			e.printStackTrace();
 		}
@@ -262,68 +262,115 @@ public class DemandeDeLivraison extends Observable{
     	this.tournee.charge(graphePondere.getMapCorrespondance(),this, entrepot, coutTotalSolution, livraisonsEnOrdre, itinerairesEnOrdre);
 
     	// Mise à jour des données concernant le moment où la livraison s'effectue
-    	int compteur = 0;
-		Horaire heureDerniereLivraison = new Horaire();
-		FenetreTemporelle fenetreDerniereLivraison = new FenetreTemporelle();
-		Livraison entrepot = null;
-    	for(Itineraire unItineraire : itinerairesEnOrdre) {
-    		// Entrepot -> 1ère livraison
-    		if(compteur == 0) {
-    			entrepot = unItineraire.getDepart();
-    			Livraison livraison1 = unItineraire.getArrivee();
-    			FenetreTemporelle fenetreLivraison1 = livraison1.getFenetre();
-    			int coutItineraire = unItineraire.getCout();
-    			Horaire horaireArrivee = calculerHeureArrivee(fenetreLivraison1.getHeureDebut(), coutItineraire);
-    			boolean isInFenetre = isHeureDansFenetreTemporelle(horaireArrivee, fenetreLivraison1.getHeureDebut(), fenetreLivraison1.getHeureFin());
-    			
-    			livraison1.setHeureArrivee(horaireArrivee);
-    			livraison1.setEstDansFenetre(isInFenetre);
-    			heureDerniereLivraison = horaireArrivee;
-    			fenetreDerniereLivraison = fenetreLivraison1;
-    		} else {
-    			int TEN_MINUTES = 10 * 60;
-    			
-    			Livraison livArrivee = unItineraire.getArrivee();
-    			FenetreTemporelle fenetreLivraison = livArrivee.getFenetre();
-    			
-    			if(livArrivee != entrepot){   			
-	    			if(fenetreLivraison != fenetreDerniereLivraison) {
-	    				heureDerniereLivraison = fenetreLivraison.getHeureDebut();	
-	    			}
-	    			
-	    			long coutItineraire = unItineraire.getCout();
-//	    			System.out.println("LIVRAISON DEBUT : " + unItineraire.getDepart());
-//	    			System.out.println("LIVRAISON ARRIVEE : " + unItineraire.getArrivee());
-//	    			System.out.println("COUT ITINERAIRE : " + coutItineraire);
-	    			long coutTotal = coutItineraire + TEN_MINUTES;
-//	    			System.out.println("Heure passer parametre : " + heureDerniereLivraison);
-//	    			System.out.println("cout total passé en paramètre : " + coutTotal);
-	    			Horaire horaireArrivee = calculerHeureArrivee(heureDerniereLivraison, coutTotal);
-//	    			System.out.println("Horaire en sortie : " + horaireArrivee);
-	    			boolean isInFenetre = isHeureDansFenetreTemporelle(horaireArrivee, fenetreLivraison.getHeureDebut(), fenetreLivraison.getHeureFin());
-	    			
-	    			livArrivee.setHeureArrivee(horaireArrivee);
-	    			livArrivee.setEstDansFenetre(isInFenetre);
-	    			    			
-	    			heureDerniereLivraison = horaireArrivee;
-	    			fenetreDerniereLivraison = fenetreLivraison;
-    			}
-    			else{
-    				long coutItineraire = unItineraire.getCout();
-    				long coutTotal = coutItineraire + TEN_MINUTES;
-    				Horaire horaireArrivee = calculerHeureArrivee(heureDerniereLivraison, coutTotal);
-    				livArrivee.setHeureArrivee(horaireArrivee);
-    				livArrivee.setEstDansFenetre(true);
-    			}
-    		}
-    		compteur++;
-    	}
+    	majHorairesDesLivraisons(itinerairesEnOrdre);
 
     	this.tournee.changementEffectue();
 
     }
 
     /**
+     * @param itinerairesEnOrdre
+     */
+    private void majHorairesDesLivraisons(List<Itineraire> itinerairesEnOrdre) {
+    	int compteur = 0;
+    	int coutTotal = 0;
+    	int TEN_MINUTES = 10 * 60;
+    	Horaire TEN_MINUTES_HORAIRE = new Horaire(TEN_MINUTES);
+    	FenetreTemporelle fenetre = null;
+    	FenetreTemporelle fenetrePrecedente = null;
+    	Horaire heureArrivee = null;
+    	Horaire heureLivraison = null;
+    	boolean estDansFenetre = false;
+		
+    	for(Itineraire unItineraire : itinerairesEnOrdre) {
+    		//System.out.println("Compteur : " + compteur);
+    		
+    		Livraison livraisonDepart = unItineraire.getDepart();
+    		//System.out.println("Livraison de départ : " + livraisonDepart);
+    		Livraison livraisonArrivee = unItineraire.getArrivee();
+    		//System.out.println("Livraison d'arrivée : " + livraisonArrivee);
+    		int coutItineraire = unItineraire.getCout();
+    		//System.out.println("Coût de l'itinéraire : " + coutItineraire);
+    		
+    		if(compteur == 0) {
+    			// 1er itinéraire : contient comme livraison de départ l'entrepôt.
+    			//System.out.println("1er itinéraire !");
+    			fenetre = livraisonArrivee.getFenetre();
+    			coutTotal = coutItineraire;
+    			livraisonDepart.setHeureArrivee(fenetre.getHeureDebut());
+    			//System.out.println("Cout total pour cet itinéraire : " + coutTotal);
+    		} else if(compteur == (itinerairesEnOrdre.size() - 1)) {
+    			//System.out.println("Dernier itinéraire !");
+    			// Dernier itinéraire : contient comme livraison d'arrivée l'entrepôt
+    			coutTotal = coutItineraire + TEN_MINUTES;
+    			//System.out.println("Cout total pour cet itinéraire : " + coutTotal);
+    		} else { 
+    			//System.out.println("Itinéraire normal !");
+    			// Le reste des itinéraires
+    			fenetre = livraisonArrivee.getFenetre();
+    			coutTotal = coutItineraire + TEN_MINUTES;
+    			//System.out.println("Cout total pour cet itinéraire : " + coutTotal);
+    		}
+    		
+    		Horaire horaireCoutTotal = new Horaire(coutTotal);
+    		//System.out.println("Horaire du coup total : " + horaireCoutTotal);
+    		
+    		if(compteur == 0) {
+    			heureArrivee = livraisonDepart.getHeureArrivee().additionnerHoraire(horaireCoutTotal);
+    		} else {
+    			heureArrivee = livraisonDepart.getHeureLivraison().additionnerHoraire(horaireCoutTotal);
+    		}
+    		
+    		//System.out.println("Heure d'arrivée pour la prochaine livraison : ");
+    		//System.out.println(heureArrivee);
+    		
+    		// Calcul de l'heure de livraison
+    		if(fenetrePrecedente != fenetre) {
+    			//System.out.println("Ma fenêtre est différente de la fenêtre précédente !");
+    			// Le reste des itinéraires
+    			if(heureArrivee.isInferieurA(fenetre.getHeureDebut())) {
+    				heureLivraison = fenetre.getHeureDebut();
+    			} else {
+    				heureLivraison = heureArrivee;
+    			}
+    		} else {
+    			//System.out.println("Ma fenetre est la même que la précédente !");
+    			heureLivraison = heureArrivee;
+    		}
+    		
+    		if(compteur == 0) {
+    			//System.out.println("Attention, je modifie l'heure de livraison parce que j'en suis au premier itinéraire !");
+    			heureLivraison = heureArrivee;
+    		} else if(compteur == (itinerairesEnOrdre.size() - 1)) {
+    			//System.out.println("Attention, je modifie l'heure de livraison parce que j'en suis au dernier itinéraire !");
+    			heureLivraison = null;
+    		}
+    		
+    		// Savoir si l'heure de livraison est dans la fenêtre
+    		if(compteur == (itinerairesEnOrdre.size() - 1)) {
+    			//System.out.println("On s'en fiche de l'heure de livraison de l'entrepot");
+    		} else {
+    			//System.out.println("L'heure de livraison de la prochaine livraison est-elle dans la fenêtre ? :");
+    			estDansFenetre = heureLivraison.isInFenetreTemporelle(fenetre.getHeureDebut(), fenetre.getHeureFin());
+    			livraisonArrivee.setEstDansFenetre(estDansFenetre);
+    		}
+    		
+    		livraisonArrivee.setHeureArrivee(heureArrivee);
+    		livraisonArrivee.setHeureLivraison(heureLivraison);
+    		System.out.println("");
+    		System.out.println("----------");
+    		System.out.println("Pour la livraison : " + livraisonArrivee);
+    		System.out.println("Fenêtre de la livraison : " + fenetre);
+    		System.out.println("Heure d'arrivée sur le point de livraison : " + heureArrivee);
+    		System.out.println("Heure de livraison sur le point de livraison : " + heureLivraison);
+    		System.out.println("----------");
+    		
+    		fenetrePrecedente = fenetre;
+    		compteur++;
+    	}
+    }
+
+	/**
      * @param heureDebut
      * @param coutItineraire
      * 	En seconde.

@@ -50,7 +50,7 @@ public class Livraison {
 		this.fenetre = fenetre;
 		this.heureArrivee = null;
 		this.heureLivraison = null;
-		this.estDansFenetre = false;
+		this.estDansFenetre = true;
 	}
 	
 	

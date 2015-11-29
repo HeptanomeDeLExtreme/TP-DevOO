@@ -137,7 +137,6 @@ public class Controleur {
      */
     public void calculerTournee() {
         this.etatCourant.calculerTournee(fenetre, plan, demandeDeLivraison);
-        this.setEtatCourant(etatTourneeCalculee);
     }
 
     
@@ -148,8 +147,7 @@ public class Controleur {
      * 
      */
     public void ajouterLivraison() {
-        this.etatCourant.ajouterLivraison(fenetre);
-        this.setEtatCourant(etatTourneeCalculee);
+        this.etatCourant.ajouterLivraison(tournee, listeCommandes);
     }
 
     /**
@@ -159,7 +157,6 @@ public class Controleur {
     	Livraison livraison1 = null;
     	Livraison livraison2 = null;
         this.etatCourant.modifierLivraison(livraison1, livraison2);
-        this.setEtatCourant(etatTourneeCalculee);
     }
     
 
@@ -167,9 +164,7 @@ public class Controleur {
      * 
      */
     public void supprimeLivraison() {
-    	Livraison livraison = null;
-        this.etatCourant.supprimeLivraison(livraison);
-        this.setEtatCourant(etatTourneeCalculee);
+        this.etatCourant.supprimeLivraison(tournee, listeCommandes);
     }
     
     

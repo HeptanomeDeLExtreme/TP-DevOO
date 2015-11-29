@@ -1,8 +1,13 @@
 package controleur;
 
+import java.awt.Point;
 import java.util.*;
 
+import modele.DemandeDeLivraison;
+import modele.Intersection;
 import modele.Livraison;
+import modele.Plan;
+import modele.Tournee;
 
 import vue.FenetreIHM;
 
@@ -11,12 +16,22 @@ import vue.FenetreIHM;
  */
 public class EtatLivraisonsSelectionnees extends EtatDefaut {
 
+	protected Livraison liv;
     /**
      * Default constructor
      */
     public EtatLivraisonsSelectionnees() {
+    	this.liv = null;
     }
 
+    public String toString(){
+    	return "Etat livraison selectionnée";
+    }
+    
+    public void setLivraison(Livraison liv){
+    	this.liv = liv;
+    }
+    
     /**
      * @param fenetre 
      * @param listeDeCommande
@@ -28,8 +43,21 @@ public class EtatLivraisonsSelectionnees extends EtatDefaut {
     /**
      * @param livraison
      */
-    public void supprimerLivraison(Livraison livraison) {
-        // TODO implement here
+    public void supprimeLivraison(Tournee tournee, ListeCommande list) {
+    	list.ajoute(new CommandeSuprime(tournee, liv));
+        Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
+    }
+    
+    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl){
+    	Livraison liv = ddl.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
+    	Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
+    	
+    	if(liv == null){
+    		Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
+    	}
+    	else{
+    		Controleur.setEtatCourant(Controleur.etatDeuxLivraisonSelectionnee);
+    	}
     }
 
 }

@@ -2,6 +2,7 @@ package controleur;
 
 import java.util.*;
 
+import modele.Intersection;
 import modele.Livraison;
 import modele.Tournee;
 
@@ -10,31 +11,27 @@ import modele.Tournee;
  */
 public class CommandeAjout implements Commande {
 
+	protected Tournee tournee;
+	protected Livraison liv;
+	protected Intersection inter;
     /**
      * Default constructor
+     * @param inter 
+     * @param liv 
+     * @param tournee2 
      */
-    public CommandeAjout() {
+    public CommandeAjout(Tournee tournee, Livraison liv, Intersection inter) {
+    	this.tournee = tournee;
+    	this.liv = liv;
+    	this.inter = inter;
     }
 
-    /**
-     * 
-     */
-    protected Tournee tournee;
-
-    /**
-     * @param tournee 
-     * @param livraison 
-     * @param livraisonAvant
-     */
-    public void CommandeAjout(Tournee tournee, Livraison livraison, Livraison livraisonAvant) {
-        // TODO implement here
-    }
-
+ 
     /**
      * 
      */
     public void doCommande() {
-        // TODO implement here
+        this.tournee.ajouteLivraison(this.liv, this.inter);
     }
 
     /**

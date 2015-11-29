@@ -3,6 +3,8 @@ package controleur;
 import java.awt.Point;
 import java.util.*;
 
+import javax.swing.JSpinner.ListEditor;
+
 import modele.DemandeDeLivraison;
 import modele.Intersection;
 import modele.Livraison;
@@ -45,14 +47,6 @@ public class EtatDefaut implements Etat {
     }
 
     /**
-     * @param fenetre
-     */
-    public void ajouterLivraison(FenetreIHM fenetre) {
-        // TODO implement here
-    }
-
-
-    /**
      * @param listeCommande
      */
     public void undo(ListeCommande listeCommande) {
@@ -75,13 +69,6 @@ public class EtatDefaut implements Etat {
     }
 
     /**
-     * @param livraison
-     */
-    public void supprimeLivraison(Livraison livraison) {
-        // TODO implement here
-    }
-
-    /**
      * @param fenetre 
      * @param listeDeCommande
      */
@@ -100,5 +87,19 @@ public class EtatDefaut implements Etat {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void supprimeLivraison(Tournee tournee, ListeCommande listeCommandes) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void ajouterLivraison(Tournee tournee, ListeCommande ldc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 
 }

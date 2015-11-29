@@ -127,8 +127,18 @@ public class EtatTourneeCalculee extends EtatDefaut {
     	Livraison liv = ddl.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
     	Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
     	
-    	System.out.println(liv);
-    	System.out.println(inter);
+    	if(liv == null){
+    		Controleur.setEtatCourant(Controleur.etatIntersectionSelectionnee);
+    		Controleur.etatIntersectionSelectionnee.setIntersection(inter);
+    		fenetre.afficheMessage(Controleur.etatCourant.toString());
+    	}
+    	else{
+    		Controleur.setEtatCourant(Controleur.etatLivraisonsSelectionnees);
+    		Controleur.etatLivraisonsSelectionnees.setLivraison(liv);
+    		fenetre.afficheMessage(Controleur.etatCourant.toString());
+    	}
     }
-    	
+    
+    
+  	
 }

@@ -9,6 +9,18 @@ public class GraphePondere {
 	 public GraphePondere(){
 	 }
 	 
+	    // A EFFACER
+	    public Integer getKeyByValue(Map<Integer, Intersection> map, Intersection value) {
+	    	Integer resultat = null;
+	    	for(Integer compteur = 0; compteur < map.size(); compteur++) {
+	    		if (value == map.get(compteur)) {
+	    			resultat =  compteur;
+	    		}
+	    	}
+	    	return resultat;
+	    }
+	    // A EFFACER
+	 
 	 /**
 	  * Genere un Graphe a partir d'un plan passe en parametre.
 	  * 
@@ -17,9 +29,8 @@ public class GraphePondere {
 	 public GraphePondere(Plan plan) {
 	
 		 Set<Intersection> setIntersections =plan.getIntersections();
-		 System.out.println("Intersections du plan : " + setIntersections);
 		 this.nbNoeuds = setIntersections.size();
-		 System.out.println("Nombre de noeuds dans le graphe : " + nbNoeuds);
+//		 System.out.println("Nombre de noeuds dans le graphe : " + nbNoeuds);
 		 
 		 int[][]couts= new int[nbNoeuds][nbNoeuds];
 		 for(int i = 0;i<nbNoeuds;i++){
@@ -30,20 +41,40 @@ public class GraphePondere {
 		 
 		 Integer numeroIntersection = 0;
 		 // Attribution d'un numéro à toutes les intersections
-		 Map<Intersection, Integer> mapIntersections = new HashMap<Intersection, Integer>();
+		 Map<Integer, Intersection> mapIntersections = new HashMap<Integer, Intersection>();
 		 for(Intersection intersection : setIntersections){
-			 mapIntersections.put(intersection,numeroIntersection);
+			 System.out.println("Intersection qui va être mise : " + intersection);
+			 mapIntersections.put(numeroIntersection, intersection);
+			 System.out.println("Numéro intersection : " + numeroIntersection);
 			 numeroIntersection++;
 		 }
+		 
+		System.out.println("[REGARDER MAPINTERSECTION AVANT ASSIGNA ATTRIBUT] Tableau de correspondancePlan : ");
+		Integer compteur = 0;
+		for(Intersection intersection : setIntersections) {
+			System.out.println("sommet/compteur : " + compteur);
+			Integer resultat = getKeyByValue(mapIntersections, intersection);
+			System.out.println("Intersection : " + resultat);
+			System.out.println("La map contient elle la clé ? : " + mapIntersections.containsKey(compteur));
+			compteur++;
+		}
+
 		 this.mapCorrespondance = mapIntersections;
 		 
-		 System.out.println(setIntersections.size());
-		 System.out.println("MAP : "+mapCorrespondance.size());
+//		 int compteur = 0;
+//		 for(Intersection inter : setIntersections) {
+//			 System.out.println("Intersection : " + inter);
+//			 System.out.println("Sommet : " + compteur);
+//			 compteur++;
+//		 }
+		 
+//		 System.out.println(setIntersections.size());
+//		 System.out.println("MAP : "+mapCorrespondance.size());
 		 
 		 //Récupération des intersections voisines de chaque intersection et du cout associé
 		 for (Intersection intersection : setIntersections){
 			 
-			 Integer origin_Integer = mapIntersections.get(intersection);
+			 Integer origin_Integer = getKeyByValue(mapIntersections, intersection);
 			 int origin = origin_Integer.intValue();
 			 
 			 Map<Intersection,Integer> intersectionsVoisines = intersection.getIntersectionsVoisines();
@@ -52,7 +83,7 @@ public class GraphePondere {
 			 for (Map.Entry<Intersection,Integer> entry : intersectionsVoisines.entrySet()) {
 				    Intersection voisin = entry.getKey();
 				    Integer cout_Integer = entry.getValue();
-				    Integer dest_Integer= mapIntersections.get(voisin);
+				    Integer dest_Integer= getKeyByValue(mapIntersections, voisin);
 				    
 				    int dest = dest_Integer.intValue();
 				    int cout = cout_Integer.intValue();
@@ -75,11 +106,11 @@ public class GraphePondere {
 		 return toRet;
 	 }
 	 
-	 public Map<Intersection, Integer> getMapCorrespondance() {
+	 public Map<Integer, Intersection> getMapCorrespondance() {
 		return mapCorrespondance;
 	}
 
-	public void setMapCorrespondance(Map<Intersection, Integer> mapCorrespondance) {
+	public void setMapCorrespondance(Map<Integer, Intersection> mapCorrespondance) {
 		this.mapCorrespondance = mapCorrespondance;
 	}
 
@@ -112,7 +143,7 @@ public class GraphePondere {
 	 /**
 	 * 
 	 */
-	protected Map<Intersection, Integer> mapCorrespondance;
+	protected Map<Integer, Intersection> mapCorrespondance;
 	 
 	 /**
 	  * 

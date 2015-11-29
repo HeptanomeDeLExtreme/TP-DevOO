@@ -14,13 +14,17 @@ public class EtatDeuxLivraisonSelectionnee extends EtatDefaut {
      */
     public EtatDeuxLivraisonSelectionnee() {
     }
+    
+    public String toString(){
+    	return "Etat deux livraisons selectionnés ";
+    }
 
     /**
      * @param livraison1 
      * @param livraison2
      */
     public void modifierLivraison(Livraison livraison1, Livraison livraison2) {
-        // TODO implement here
+        Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
     }
 
 }

@@ -36,7 +36,7 @@ public interface Etat {
     /**
      * @param fenetre
      */
-    public void ajouterLivraison(FenetreIHM fenetre);
+    public void ajouterLivraison(Tournee tournee, ListeCommande ldc);
 
     /**
      * @param tournee
@@ -60,9 +60,10 @@ public interface Etat {
     public void modifierLivraison(Livraison livraison1, Livraison livraison2);
 
     /**
+     * @param listeCommandes 
      * @param livraison
      */
-    public void supprimeLivraison(Livraison livraison);
+    public void supprimeLivraison(Tournee tournee, ListeCommande listeCommandes);
 
     /**
      * @param fenetre 

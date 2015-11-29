@@ -81,6 +81,7 @@ public class EtatLivraisonChargee extends EtatDefaut {
     public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison) {
         demandeDeLivraison.calculerTournee(plan);
         Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
+        fenetre.afficheMessage(Controleur.etatCourant.toString());
     }
     
     public void genererFeuilleRoute(FenetreIHM fenetre, Tournee tournee) {

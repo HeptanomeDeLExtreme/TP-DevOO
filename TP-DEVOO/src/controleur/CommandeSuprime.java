@@ -10,30 +10,27 @@ import modele.Tournee;
  */
 public class CommandeSuprime implements Commande {
 
-    /**
-     * Default constructor
-     */
-    public CommandeSuprime() {
-    }
 
     /**
      * 
      */
     protected Tournee tournee;
+    protected Livraison liv;
 
     /**
      * @param tournee 
      * @param livraison
      */
-    public void CommandeSuprime(Tournee tournee, Livraison livraison) {
-        // TODO implement here
+    public CommandeSuprime(Tournee tournee, Livraison livraison) {
+        this.tournee = tournee;
+        this.liv = livraison;
     }
 
     /**
      * 
      */
     public void doCommande() {
-        // TODO implement here
+        this.tournee.supprimeLivraison(this.liv);
     }
 
     /**

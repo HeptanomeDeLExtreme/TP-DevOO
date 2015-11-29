@@ -16,13 +16,7 @@ import xml.ExceptionXML;
  */
 public class Plan extends Observable{
 
-    /**
-     * @param fichier
-     */
-    public void Plan(String fichier) {
-        // TODO implement here
-    }
-    
+
     public Plan(Set<Intersection> listeInter) {
 		this.intersections = listeInter;
 	}
@@ -34,17 +28,7 @@ public class Plan extends Observable{
     public void nettoiePlan(){
     	intersections = new HashSet<Intersection>();
     }
-   
-    /**
-     * 
-     */
-    protected Set<Intersection> intersections;
-
-    /**
-     * 
-     */
-    protected Plan singleton;
- 
+    
     /**
      * @param fichier
      */
@@ -90,19 +74,6 @@ public class Plan extends Observable{
     		return null;
     	}
     		
-    }    
-    
-    public Intersection cherche(Point p, float echelleX, float echelleY){
-    	if(intersections != null){
-    	Iterator<Intersection> it = intersections.iterator();
-			while (it.hasNext()){
-				Intersection inter = it.next();
-				if (inter.contient(p,echelleX,echelleY)){
-					return inter;
-				}
-			}
-    	}
-		return null;
     }
     
     /**
@@ -139,6 +110,49 @@ public class Plan extends Observable{
     	}
     	return max;
     }
+    
+    public Intersection cherche(Point p, float echelleX, float echelleY){
+    	if(intersections != null){
+    	Iterator<Intersection> it = intersections.iterator();
+			while (it.hasNext()){
+				Intersection inter = it.next();
+				if (inter.contient(p,echelleX,echelleY)){
+					return inter;
+				}
+			}
+    	}
+		return null;
+    }
+    
+    public void changementEffectue(){
+        setChanged(); 
+        notifyObservers();
+    }
+    
+    /**
+     * 
+     */
+    protected Set<Intersection> intersections;
+
+    /**
+     * 
+     */
+    protected Plan singleton;
+
+    /**
+     * @param fichier
+     */
+    public void Plan(String fichier) {
+        // TODO implement here
+    }
+
+	public Plan getSingleton() {
+		return singleton;
+	}
+
+	public void setSingleton(Plan singleton) {
+		this.singleton = singleton;
+	}
 
 	public void setIntersections(Set<Intersection> intersections) {
 		this.intersections = intersections;

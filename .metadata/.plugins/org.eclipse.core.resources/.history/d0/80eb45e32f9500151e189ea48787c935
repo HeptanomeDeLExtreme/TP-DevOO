@@ -1,0 +1,43 @@
+package controleur;
+
+import java.util.*;
+
+import modele.Intersection;
+import modele.Livraison;
+import modele.Tournee;
+
+/**
+ * 
+ */
+public class CommandeAjout implements Commande {
+
+    /**
+     * Default constructor
+     * @param inter 
+     * @param liv 
+     * @param tournee2 
+     */
+    public CommandeAjout(Tournee tournee2, Livraison liv, Intersection inter) {
+    }
+
+    /**
+     * 
+     */
+    protected Tournee tournee;
+
+ 
+    /**
+     * 
+     */
+    public void doCommande() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void undoCommande() {
+        // TODO implement here
+    }
+
+}

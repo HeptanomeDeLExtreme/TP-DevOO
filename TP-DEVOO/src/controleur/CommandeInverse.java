@@ -1,0 +1,25 @@
+package controleur;
+
+
+public class CommandeInverse implements Commande{
+	private Commande cde;
+	
+	/**
+	 * Cree la commande inverse a la commande cde (de sorte que cde.doCde corresponde a this.undoCde, et vice-versa) 
+	 * @param cde
+	 */
+	public CommandeInverse(Commande cde){
+		this.cde = cde;
+	}
+
+	@Override
+	public void doCommande() {
+		cde.undoCommande();
+	}
+
+	@Override
+	public void undoCommande() {
+		cde.doCommande();
+	}
+
+}

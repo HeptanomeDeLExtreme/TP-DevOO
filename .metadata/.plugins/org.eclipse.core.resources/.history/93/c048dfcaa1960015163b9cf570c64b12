@@ -277,7 +277,7 @@ public class Livraison {
 		for(Integer intInter : listeEntierIntersection){
 //			System.out.println("int de l'intersection à chercher : " + intInter);
 			Intersection inter = map.get(intInter);
-//			System.out.println("Intersection retournée : " + inter);
+			System.out.println("Intersection retournée : " + inter);
 			listeIntersection.add(inter);
 		}
 //		System.out.println("Liste des intersections par lequelles il faut passer pour effectuer" +

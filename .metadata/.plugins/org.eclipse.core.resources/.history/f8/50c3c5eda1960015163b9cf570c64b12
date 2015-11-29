@@ -683,9 +683,9 @@ public class DemandeDeLivraison extends Observable{
     	int depart = getKeyByValue(mapLivraisons, derniereLivraison);
     	int arrivee = getKeyByValue(mapLivraisons, premiereLivraison);
     	int coutItineraire = couts[depart][arrivee];
-//    	System.out.println("Depart : "+premiereLivraison);
-//    	System.out.println("Arrivee : "+derniereLivraison);
-//    	System.out.println();
+    	System.out.println("Depart : "+premiereLivraison);
+    	System.out.println("Arrivee : "+derniereLivraison);
+    	System.out.println();
     	List<Troncon> troncons = derniereLivraison.rechercherTroncons(map,premiereLivraison);
     	Itineraire itineraire = new Itineraire(coutItineraire, troncons, derniereLivraison, premiereLivraison);
     	itinerairesEnOrdre.add(itineraire);

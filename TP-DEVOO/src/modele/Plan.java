@@ -146,8 +146,4 @@ public class Plan extends Observable{
         // TODO implement here
     }
 
-	public void setIntersections(Set<Intersection> intersections) {
-		this.intersections = intersections;
-	}
-
 }

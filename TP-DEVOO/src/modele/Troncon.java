@@ -93,4 +93,11 @@ public class Troncon {
     	return (l/v);
     }
     
+/**
+ * @return the longueur
+ */
+public Float getLongueur() {
+	return longueur;
+}
+    
 }

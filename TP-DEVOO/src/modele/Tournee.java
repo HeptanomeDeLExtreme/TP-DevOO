@@ -13,6 +13,7 @@ public class Tournee extends Observable {
 
 	private List<Livraison> livraisonsEnOrdre;
 
+	private GraphePondere graphePondere;
 
 	/**
      * Default constructor
@@ -26,12 +27,11 @@ public class Tournee extends Observable {
      * @param livraisonsEnOrdre 
      * @param livraisonsEnOrdre
      */
-    public void charge(Map<Intersection, Integer> correspondancePlan, DemandeDeLivraison ddl, Livraison entrepot, int coutTotal, List<Livraison> livraisonsEnOrdre, List<Itineraire> itinerairesEnOrdre) {
+    public void charge(Map<Integer, Intersection> correspondancePlan, DemandeDeLivraison ddl, Livraison entrepot, int coutTotal, List<Livraison> livraisonsEnOrdre, List<Itineraire> itinerairesEnOrdre) {
     	this.demandeDeLivraison = ddl;
     	this.entrepot = entrepot;
     	this.coutTotal = coutTotal;
     	this.livraisonsEnOrdre = livraisonsEnOrdre;
-    	
     	this.itineraires = itinerairesEnOrdre;
 
     	for(Itineraire itineraire : itinerairesEnOrdre){
@@ -40,15 +40,12 @@ public class Tournee extends Observable {
     		List<Troncon> listeTroncon = depart.rechercherTroncons(correspondancePlan,arrivee);
     	}
     	
-    	this.changementEffectue();
     }
     
     /**
      * 
      */
     protected Float duree;
-    
-    protected GraphePondere graphePondere;
 
     /**
      * 
@@ -65,15 +62,7 @@ public class Tournee extends Observable {
      */
     protected List<Itineraire> itineraires;
 
-
-    /**
-     * @param livraison1 
-     * @param livraison2
-     */
     protected void modifierTournee(Livraison livraison1, Livraison livraison2) {
-    	
-    	
-    	
     	
     	System.out.println("DEBUT DE MODIFIER");
     	System.out.println("Itineraires avant modif");
@@ -115,7 +104,7 @@ public class Tournee extends Observable {
     /**
      * @param livraison
      */
-    protected void supprimeLivraison(Livraison livraison) {
+    public void supprimeLivraison(Livraison livraison) {
         // 
     	Livraison livraisonPrecedente = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison) - 1 );
     	System.out.println(" Livraison Précedente = " + livraisonPrecedente.getAdresse().getId());
@@ -174,53 +163,25 @@ public class Tournee extends Observable {
 			
     		coutTotal = coutTotal - coutLivraisonToSuivant - coutPrecedentToLivraison + coutPrecedentToSuivant ;
     		
+    		
+    		
     		charge(graphePondere.getMapCorrespondance(), demandeDeLivraison,entrepot, coutTotal,livraisonsEnOrdre, itineraires );
     		
+    		this.demandeDeLivraison.supprimeLivraison(livraison);
     		System.out.println("Affichage des nouveaux itineraires");
 			for (Itineraire it : itineraires)
 			{
 			
 				System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
 			}
-    
+			this.changementEffectue();
     	}
     	
-    
-    	
-    	
-    	
-    	
-    
-    
-	public List<Itineraire> getItineraires() {
-		return itineraires;
-	}
-	
-	public void setItineraires(List<Itineraire> itineraires) {
-		this.itineraires = itineraires;
-	}
-
-	public List<Livraison> getLivraisonsEnOrdre() {
-		return livraisonsEnOrdre;
-	}
-
-	public void setLivraisonsEnOrdre(List<Livraison> livraisonsEnOrdre) {
-		this.livraisonsEnOrdre = livraisonsEnOrdre;
-	}
-
-	public GraphePondere getGraphePondere() {
-		return graphePondere;
-	}
-
-	public void setGraphePondere(GraphePondere graphepondere) {
-		this.graphePondere = graphepondere;
-	}
-
-	/**
+    /**
      * @param livraisonAvant 
      * @param livraison
      */
-    protected void ajouteLivraison(Livraison livraisonSuivante, Intersection intersectionCible) {
+    public void ajouteLivraison(Livraison livraisonSuivante, Intersection intersectionCible) {
         // TODO implement here
     	//Récupération d'un ID non attribue
     	
@@ -298,6 +259,11 @@ public class Tournee extends Observable {
     	
     	charge(graphePondere.getMapCorrespondance(), demandeDeLivraison,entrepot, coutTotal,livraisonsEnOrdre, itineraires );
     }
+    
+    public List<Itineraire> getItineraires() {
+		return itineraires;
+	}
+
 
     /**
      * @param preTournee
@@ -318,7 +284,10 @@ public class Tournee extends Observable {
         notifyObservers();
     }
 
-	
+	public void setItineraires(List<Itineraire> itineraires) {
+		this.itineraires = itineraires;
+	}
+
     public String toString(){
     	String toRet="";
     	for(Itineraire iti : itineraires){
@@ -333,5 +302,9 @@ public class Tournee extends Observable {
 
 	public float getDuree() {
 		return 10; // TODO
+	}
+
+	public void setGraphePondere(GraphePondere graphePondere) {
+		this.graphePondere = graphePondere;
 	}
 }

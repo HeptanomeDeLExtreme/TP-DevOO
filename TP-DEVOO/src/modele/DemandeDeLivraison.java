@@ -197,8 +197,18 @@ public class DemandeDeLivraison extends Observable{
     /**
      * @param livraison
      */
-    protected void supprimeLivraison(Livraison livraison) {
-        // TODO implement here
+    public void supprimeLivraison(Livraison livraison) {
+        
+    	for (FenetreTemporelle fenetre  : this.fenetres)
+		{
+    		Set<Livraison> livraisonsFenetres = fenetre.getLivraisons();
+    		Iterator<Livraison> it = livraisonsFenetres.iterator();
+			while (it.hasNext()){
+				if (livraison.equals((it.next()))){
+					fenetre.supprimeLivraison(livraison);
+				}
+			}
+		}
     }
 
     /**

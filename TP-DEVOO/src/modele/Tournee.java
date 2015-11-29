@@ -162,8 +162,9 @@ public class Tournee extends Observable {
 //			System.out.println("Changement effectué");
 			
     		coutTotal = coutTotal - coutLivraisonToSuivant - coutPrecedentToLivraison + coutPrecedentToSuivant ;
-    		
+    		this.demandeDeLivraison.supprimeLivraison(livraison);
     		charge(graphePondere.getMapCorrespondance(), demandeDeLivraison,entrepot, coutTotal,livraisonsEnOrdre, itineraires );
+    		
     		
 //    		System.out.println("Affichage des nouveaux itineraires");
 			for (Itineraire it : itineraires)

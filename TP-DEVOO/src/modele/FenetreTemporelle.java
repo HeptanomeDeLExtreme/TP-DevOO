@@ -46,8 +46,9 @@ public class FenetreTemporelle {
     /**
      * @param livraison
      */
-    protected void supprimeLivraison(Livraison livraison) {
+    public void supprimeLivraison(Livraison livraison) {
         // TODO implement here
+    	this.livraisons.remove(livraison);
     }
 
     /**

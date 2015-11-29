@@ -329,7 +329,7 @@ public class DemandeDeLivraison extends Observable{
     	
     	//tournee.modifierTournee(livraisonSuivante, livraisonSuivante2);
     	//tournee.supprimeLivraison(livraisonSuivante);
-    	tournee.ajouteLivraison(livraisonSuivante, intercible);
+    	//tournee.ajouteLivraison(livraisonSuivante, intercible);
 
     }
 

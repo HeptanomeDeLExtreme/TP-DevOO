@@ -10,6 +10,7 @@ import modele.DemandeDeLivraison;
 import modele.Intersection;
 import modele.Itineraire;
 import modele.Livraison;
+import modele.Modele;
 import modele.Plan;
 import modele.Tournee;
 import modele.Troncon;
@@ -63,38 +64,23 @@ public class Controleur {
      */
     protected FenetreIHM fenetre;
 
-    /**
-     * 
-     */
-    protected Plan plan;
+    protected Modele modele;
 
     /**
      * 
      */
-    protected DemandeDeLivraison demandeDeLivraison;
-
-    /**
-     * 
-     */
-    
-    // A ENLEVER
-    protected Tournee tournee;
-    // FIN A ENLEVER
     /**
      * Default constructor
      */
     public Controleur() {
-    	this.plan = new Plan();
-    	
-    	this.tournee = new Tournee();
-    	
-    	this.demandeDeLivraison = new DemandeDeLivraison(this.tournee);
-    	
+  	
     	this.listeCommandes = new ListeCommande();
     	
     	etatCourant = etatInit;
     	
-    	fenetre = new FenetreIHM(demandeDeLivraison, tournee, this, plan);
+    	modele = new Modele();
+    	
+    	fenetre = new FenetreIHM(modele, this);
     }
     
     public void afficheMessageIHM(String s){
@@ -120,23 +106,24 @@ public class Controleur {
     // NOYAU MINIMAL
     
 	public void ouvrirPlan() {
-		this.etatCourant.ouvrirPlan(this.plan);	
-		this.plan.changementEffectue();
+		this.etatCourant.ouvrirPlan(modele.getPlan());
+		this.modele.changementEffectue();
 	}
 	
     /**
      * 
      */
     public void importerLivraison() {
-        this.etatCourant.importerLivraison(fenetre,demandeDeLivraison,plan);
-        this.demandeDeLivraison.changementEffectue();
+        this.etatCourant.importerLivraison(fenetre,modele.getDemandeDeLivraison(),modele.getPlan());
+        this.modele.changementEffectue();
     }
 
     /**
      * 
      */
     public void calculerTournee() {
-        this.etatCourant.calculerTournee(fenetre, plan, demandeDeLivraison);
+        this.etatCourant.calculerTournee(fenetre,modele.getPlan(),modele.getDemandeDeLivraison());
+        this.modele.changementEffectue();
     }
 
     
@@ -147,7 +134,7 @@ public class Controleur {
      * 
      */
     public void ajouterLivraison() {
-        this.etatCourant.ajouterLivraison(tournee, listeCommandes);
+        this.etatCourant.ajouterLivraison(modele.getTournee(), listeCommandes);
     }
 
     /**
@@ -164,7 +151,7 @@ public class Controleur {
      * 
      */
     public void supprimeLivraison() {
-        this.etatCourant.supprimeLivraison(tournee, listeCommandes);
+        this.etatCourant.supprimeLivraison(modele.getTournee(), listeCommandes);
     }
     
     
@@ -175,7 +162,7 @@ public class Controleur {
      * 
      */
     public void genererFeuilleRoute() {
-    	this.etatCourant.genererFeuilleRoute(this.fenetre, this.tournee);
+    	this.etatCourant.genererFeuilleRoute(this.fenetre, modele.getTournee());
     }
 
     /**
@@ -187,15 +174,15 @@ public class Controleur {
     // GESTION SOURIS
     
     public void clicGauche(Point p) {
-        this.etatCourant.clicGauche(fenetre,plan,p,demandeDeLivraison);
+        this.etatCourant.clicGauche(fenetre,modele.getPlan(),p,modele.getDemandeDeLivraison());
     }
 
 	public int getPlanLargeur() {
-		return this.plan.getLargeur();
+		return this.modele.getPlan().getLargeur();
 	}
 
 	public int getPlanHauteur() {
-		return this.plan.getHauteur();
+		return this.modele.getPlan().getHauteur();
 	}
 
 	public void clicDroit(Point p) {

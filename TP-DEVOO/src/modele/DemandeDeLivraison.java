@@ -18,7 +18,7 @@ import xml.ExceptionXML;
 /**
  * 
  */
-public class DemandeDeLivraison extends Observable{
+public class DemandeDeLivraison{
 
 	/**
      * La tournee qui correspond a la demande de livraisons. Vide lors de la 
@@ -138,11 +138,6 @@ public class DemandeDeLivraison extends Observable{
 		this.nbLivraisons = nbLivraisons;
 	}
 
-    public void changementEffectue(){
-        setChanged(); 
-        notifyObservers();
-    }
-    
 	public void chargerLivraison(Plan plan){
     	try {
     		fenetres = new ArrayList<FenetreTemporelle>();
@@ -294,8 +289,6 @@ public class DemandeDeLivraison extends Observable{
 
     	// Mise à jour des données concernant le moment où la livraison s'effectue
     	majHorairesDesLivraisons(itinerairesEnOrdre);
-
-    	this.tournee.changementEffectue();
 
     }
 

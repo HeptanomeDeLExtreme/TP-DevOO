@@ -14,7 +14,7 @@ import xml.ExceptionXML;
 /**
  * 
  */
-public class Plan extends Observable{
+public class Plan{
 
 
     public Plan(Set<Intersection> listeInter) {
@@ -123,11 +123,7 @@ public class Plan extends Observable{
     	}
 		return null;
     }
-    
-    public void changementEffectue(){
-        setChanged(); 
-        notifyObservers();
-    }
+
     
     /**
      * 

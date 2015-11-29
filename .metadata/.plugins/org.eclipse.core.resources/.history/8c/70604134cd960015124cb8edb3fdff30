@@ -1,0 +1,35 @@
+package modele;
+
+public class Modele {
+	
+	protected Tournee tournee;
+	protected DemandeDeLivraison demandeDeLivraison;
+	protected Plan plan;
+	
+	public Modele(){
+		this.tournee = new Tournee();
+		this.demandeDeLivraison = new DemandeDeLivraison(this.tournee);
+		this.plan = new Plan();
+	}
+
+	public Tournee getTournee() {
+		return tournee;
+	}
+
+	public DemandeDeLivraison getDemandeDeLivraison() {
+		return demandeDeLivraison;
+	}
+
+	public Plan getPlan() {
+		return plan;
+	}
+
+	public void changementEffectuePlan() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	
+
+}

@@ -18,6 +18,7 @@ import javax.swing.JScrollPane;
 
 import modele.DemandeDeLivraison;
 import modele.Intersection;
+import modele.Modele;
 import modele.Plan;
 import modele.Tournee;
 
@@ -59,7 +60,7 @@ public class FenetreIHM extends JFrame{
     /**
      * Default constructor
      */
-    public FenetreIHM(DemandeDeLivraison demandeDeLivraison, Tournee tournee, Controleur controleur, Plan plan) {
+    public FenetreIHM(Modele modele, Controleur controleur) {
     	
 		this.controleur = controleur;
 		
@@ -68,8 +69,8 @@ public class FenetreIHM extends JFrame{
 		cadreMessages = new JLabel();
 		cadreMessages.setBorder(BorderFactory.createTitledBorder("Messages..."));
 		getContentPane().add(cadreMessages);
-		vueTextuelle = new VueTextuelle(plan,tournee,this);
-		vueGraphique = new VueGraphique(demandeDeLivraison,tournee,plan,this);
+		vueTextuelle = new VueTextuelle(modele,this);
+		vueGraphique = new VueGraphique(modele,this);
 		ecouteurSouris = new EcouteurSouris(controleur,vueGraphique,this);
 		ecouteurClavier = new EcouteurClavier(controleur);
 		addKeyListener(ecouteurClavier);
@@ -79,8 +80,8 @@ public class FenetreIHM extends JFrame{
 
     }
 
-    
-    public void setEchelleX(float echelleX) {
+
+	public void setEchelleX(float echelleX) {
 		this.echelleX = echelleX;
 	}
 

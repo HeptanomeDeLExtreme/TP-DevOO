@@ -7,7 +7,7 @@ import java.util.*;
 /**
  * 
  */
-public class Tournee extends Observable {
+public class Tournee{
 
     private int coutTotal;
 
@@ -172,7 +172,6 @@ public class Tournee extends Observable {
 			
 //				System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
 			}
-			this.changementEffectue();
     	}
     	
     /**
@@ -277,10 +276,6 @@ public class Tournee extends Observable {
         // TODO implement here
     }
     
-    public void changementEffectue(){
-        setChanged(); 
-        notifyObservers();
-    }
 
 	public void setItineraires(List<Itineraire> itineraires) {
 		this.itineraires = itineraires;

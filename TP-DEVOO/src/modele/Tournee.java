@@ -106,10 +106,16 @@ public class Tournee extends Observable {
      */
     public void supprimeLivraison(Livraison livraison) {
         // 
+    	System.out.println("Vous essayez de supprimer" + livraison.getAdresse().getId());
+    	System.out.println("Livraisons dans l'ordre");
+    	for (Livraison livraisonOrdre : livraisonsEnOrdre){
+    		System.out.println(livraisonOrdre.getAdresse().getId());
+    	}
     	Livraison livraisonPrecedente = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison) - 1 );
 //    	System.out.println(" Livraison Précedente = " + livraisonPrecedente.getAdresse().getId());
     	Livraison livraisonSuivante = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison) +1 );
 //    	System.out.println(" Livraison Suivante = " + livraisonSuivante.getAdresse().getId());
+    	livraisonsEnOrdre.remove(livraison);
     	
     	int coutPrecedentToLivraison = 0;
     	int coutLivraisonToSuivant = 0;
@@ -124,7 +130,7 @@ public class Tournee extends Observable {
     	
     	Itineraire itiPrecedentToLivraison = new Itineraire();
     	Itineraire itiLivraisonToSuivant = new Itineraire();
-    	livraisonsEnOrdre.remove(livraison);
+    	//livraisonsEnOrdre.remove(livraison);
     	
 //    	System.out.println("Mise à jour des livraisons");
     	for (Livraison liv :livraisonsEnOrdre)
@@ -162,9 +168,9 @@ public class Tournee extends Observable {
 //			System.out.println("Changement effectué");
 			
     		coutTotal = coutTotal - coutLivraisonToSuivant - coutPrecedentToLivraison + coutPrecedentToSuivant ;
-    		this.demandeDeLivraison.supprimeLivraison(livraison);
-    		charge(graphePondere.getMapCorrespondance(), demandeDeLivraison,entrepot, coutTotal,livraisonsEnOrdre, itineraires );
     		
+    		charge(graphePondere.getMapCorrespondance(), demandeDeLivraison,entrepot, coutTotal,livraisonsEnOrdre, itineraires );
+    		this.demandeDeLivraison.supprimeLivraison(livraison);
     		
 //    		System.out.println("Affichage des nouveaux itineraires");
 			for (Itineraire it : itineraires)

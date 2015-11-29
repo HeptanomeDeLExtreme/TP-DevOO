@@ -202,14 +202,17 @@ public class DemandeDeLivraison extends Observable{
     	for (FenetreTemporelle fenetre  : this.fenetres)
 		{
     		Set<Livraison> livraisonsFenetres = fenetre.getLivraisons();
-    		Iterator<Livraison> it = livraisonsFenetres.iterator();
-			while (it.hasNext()){
-				if (livraison.equals((it.next()))){
-					fenetre.supprimeLivraison(livraison);
-				}
+    		List<Livraison> listLivraisonsFenetre = new ArrayList<Livraison>(livraisonsFenetres);
+    			
+    			if (listLivraisonsFenetre.contains(livraison)){
+    				fenetre.supprimeLivraison(livraison);
+    				break;
+    			}
+    			
+			
 			}
-		}
-    }
+	}
+    
 
     /**
      * @param livraisonAvant 
@@ -638,6 +641,7 @@ public class DemandeDeLivraison extends Observable{
 //    		System.out.println(livraison);
         	livraisonsEnOrdre.add(livraison);
     	}
+    	livraisonsEnOrdre.addLast(entrepot);
     	
 		return livraisonsEnOrdre;
 	}
@@ -685,7 +689,7 @@ public class DemandeDeLivraison extends Observable{
     		itinerairesEnOrdre.add(itineraire);
     	}
     	
-    	// Traitement de la fin de la tournee, depuis la derniere livraison
+    	/*// Traitement de la fin de la tournee, depuis la derniere livraison
     	// jusqu'a l'entrepot de depart
     	Livraison derniereLivraison = listeLivraisons.getLast();
     	Livraison premiereLivraison = listeLivraisons.getFirst();
@@ -698,7 +702,7 @@ public class DemandeDeLivraison extends Observable{
 //    	System.out.println();
     	List<Troncon> troncons = derniereLivraison.rechercherTroncons(map,premiereLivraison);
     	Itineraire itineraire = new Itineraire(coutItineraire, troncons, derniereLivraison, premiereLivraison);
-    	itinerairesEnOrdre.add(itineraire);
+    	itinerairesEnOrdre.add(itineraire);*/
     	
     	return itinerairesEnOrdre;
     }

@@ -257,10 +257,10 @@ public class DemandeDeLivraison extends Observable{
     	livraisonsEnOrdre = recupererLivraisonsEnOrdre(graphe, mapLivraisons);
     	
 //    	System.out.println("");
-    	//for(Livraison uneLiv : livraisonsEnOrdre) {
+//    	for(Livraison uneLiv : livraisonsEnOrdre) {
 //    		System.out.println("Livraison : "+uneLiv);
 //    		System.out.println(uneLiv.getFenetre());
-    	//}
+//    	}
 //    	System.out.println("");
     	
     	// Récupérer l'ordre des itinéraires entre les livraisons.
@@ -270,8 +270,11 @@ public class DemandeDeLivraison extends Observable{
 //    	System.out.println("");
 //    	for(Itineraire iti : itinerairesEnOrdre){
 //    		System.out.println("Itineraire : "+iti);
-//    		System.out.println("Troncons de l'itinéraire");
-//    		System.out.println(iti.getTroncons());
+//    		List<Troncon> listTronc = iti.getTroncons();
+//    		for(Troncon tronc : listTronc){
+//    			System.out.println(tronc);
+//    		}
+//    		System.out.println();
 //    	}
 //    	System.out.println("");
     	
@@ -375,13 +378,13 @@ public class DemandeDeLivraison extends Observable{
     		
     		livraisonArrivee.setHeureArrivee(heureArrivee);
     		livraisonArrivee.setHeureLivraison(heureLivraison);
-    		System.out.println("");
-    		System.out.println("----------");
-    		System.out.println("Pour la livraison : " + livraisonArrivee);
-    		System.out.println("Fenêtre de la livraison : " + fenetre);
-    		System.out.println("Heure d'arrivée sur le point de livraison : " + heureArrivee);
-    		System.out.println("Heure de livraison sur le point de livraison : " + heureLivraison);
-    		System.out.println("----------");
+//    		System.out.println("");
+//    		System.out.println("----------");
+//    		System.out.println("Pour la livraison : " + livraisonArrivee);
+//    		System.out.println("Fenêtre de la livraison : " + fenetre);
+//    		System.out.println("Heure d'arrivée sur le point de livraison : " + heureArrivee);
+//    		System.out.println("Heure de livraison sur le point de livraison : " + heureLivraison);
+//    		System.out.println("----------");
     		
     		fenetrePrecedente = fenetre;
     		compteur++;
@@ -659,10 +662,16 @@ public class DemandeDeLivraison extends Observable{
     		int depart = getKeyByValue(mapLivraisons, livraisonActuelle);
     		int arrivee = getKeyByValue(mapLivraisons, livraisonSuivante);
     		int coutItineraire = couts[depart][arrivee];
+        	System.out.println("Depart : "+livraisonActuelle);
     		List <Troncon> troncons = livraisonActuelle.rechercherTroncons(map,livraisonSuivante);
-    		
+    		for(Troncon tronc : troncons)
+    		{
+    			System.out.println(tronc);
+    		}
+    		System.out.println("Arrivee : "+livraisonSuivante);
+        	System.out.println();
     		Itineraire itineraire = new Itineraire(coutItineraire, troncons, livraisonActuelle, livraisonSuivante);
-    		
+    		       	
     		itinerairesEnOrdre.add(itineraire);
     	}
     	
@@ -674,6 +683,9 @@ public class DemandeDeLivraison extends Observable{
     	int depart = getKeyByValue(mapLivraisons, derniereLivraison);
     	int arrivee = getKeyByValue(mapLivraisons, premiereLivraison);
     	int coutItineraire = couts[depart][arrivee];
+    	System.out.println("Depart : "+premiereLivraison);
+    	System.out.println("Arrivee : "+derniereLivraison);
+    	System.out.println();
     	List<Troncon> troncons = derniereLivraison.rechercherTroncons(map,premiereLivraison);
     	Itineraire itineraire = new Itineraire(coutItineraire, troncons, derniereLivraison, premiereLivraison);
     	itinerairesEnOrdre.add(itineraire);

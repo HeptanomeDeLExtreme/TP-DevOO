@@ -71,12 +71,13 @@ public class VueTextuelle extends JScrollPane implements Observer{
 		    		// Depart 
 		    		Livraison depart = itineraire.getDepart();
 		    		Intersection interDepart = depart.getAdresse();
-		    		html +="Partir de x = "+interDepart.getX()+" y = "+interDepart.getY()+"<br>";
+		    		html +="Partir de x = "+interDepart.getX()+" y = "+interDepart.getY()+" id = "+interDepart.getId()+"<br>";
 		    		
 		    		// Troncons
 		    		List<Troncon> listeTroncon = itineraire.getTroncons();
 		    		for(Troncon tronc : listeTroncon){
 		    			html += "Passer par "+tronc.getNomDeRue()+"<br>";
+		    			html += "debug : "+tronc.getOrigine() + "<br>"+tronc.getDestination()+"<br>";
 		    		}
 		    		
 		    		// Arrivee

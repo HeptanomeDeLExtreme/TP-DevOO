@@ -311,4 +311,14 @@ public class Tournee extends Observable {
 	public void setGraphePondere(GraphePondere graphePondere) {
 		this.graphePondere = graphePondere;
 	}
+
+	public List<Livraison> getLivraisonsEnOrdre() {
+		return livraisonsEnOrdre;
+	}
+
+	public void setLivraisonsEnOrdre(List<Livraison> livraisonsEnOrdre) {
+		this.livraisonsEnOrdre = livraisonsEnOrdre;
+	}
+	
+	
 }

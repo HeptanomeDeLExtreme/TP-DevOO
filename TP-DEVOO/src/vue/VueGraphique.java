@@ -37,7 +37,7 @@ public class VueGraphique extends JPanel implements Observer {
 	private DemandeDeLivraison demandeDeLivraison;
 	private Plan plan;
 	
-	public static final float correcteurEchelle = (float) 0.20;
+	public static final float correcteurEchelle = (float) 0.95;
 	
 	public static final Color couleurEntrepot = Color.BLUE;
 	public static final Color couleurIntersection = Color.LIGHT_GRAY;
@@ -87,7 +87,7 @@ public class VueGraphique extends JPanel implements Observer {
 			int largeurPlan = this.plan.getLargeur();
 			int largeurVG = largeurEcran - fenetre.getLargeurVueTextuelle();
 			this.echelleX = (float)(largeurVG) / (float)largeurPlan;
-			this.echelleX -= correcteurEchelle;
+			this.echelleX *= correcteurEchelle;
 			this.fenetre.setEchelleX(echelleX);
 			
 			// Calcul de l'echelle en y
@@ -95,7 +95,7 @@ public class VueGraphique extends JPanel implements Observer {
 			int hauteurPlan = this.plan.getHauteur();
 			int hauteurVG = hauteurEcran - fenetre.getHauteurCadreMessages();
 			this.echelleY = (float)(hauteurVG) / (float)hauteurPlan ;
-			this.echelleY -= correcteurEchelle;
+			this.echelleY *= correcteurEchelle;
 			this.fenetre.setEchelleY(echelleY);
 			
 			for(Intersection inter : listInter){
@@ -130,7 +130,7 @@ public class VueGraphique extends JPanel implements Observer {
 			}
 			List<FenetreTemporelle> listeFenetre = this.demandeDeLivraison.getFenetres();
 			if(listeFenetre != null){
-				g.setColor(Color.GREEN);
+				g.setColor(couleurLivraison);
 				for(FenetreTemporelle fenetre : listeFenetre){
 					Set<Livraison> livraisons = fenetre.getLivraisons();
 					if(livraisons != null){

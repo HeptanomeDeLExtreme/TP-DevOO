@@ -156,7 +156,6 @@ public class Controleur {
      */
     public void modifierLivraison() {
         this.etatCourant.modifierLivraison(tournee, listeCommandes);
-        this.tournee.changementEffectue();
     }
     
 
@@ -165,7 +164,6 @@ public class Controleur {
      */
     public void supprimeLivraison() {
         this.etatCourant.supprimeLivraison(tournee, listeCommandes);
-        this.tournee.changementEffectue();
     }
     
     

@@ -62,7 +62,7 @@ public class Tournee extends Observable {
      */
     protected List<Itineraire> itineraires;
 
-    public void modifierTournee(Livraison livraison1, Livraison livraison2) {
+    protected void modifierTournee(Livraison livraison1, Livraison livraison2) {
     	
 //    	System.out.println("DEBUT DE MODIFIER");
 //    	System.out.println("Itineraires avant modif");

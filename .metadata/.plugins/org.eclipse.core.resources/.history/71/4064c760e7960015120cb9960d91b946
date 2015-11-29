@@ -56,7 +56,7 @@ public class EtatLivraisonsSelectionnees extends EtatDefaut {
     		Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
     	}
     	else{
-    		Controleur.etatDeuxLivraisonSelectionnee.setLiv1(liv);
+    		Controleur.etatDeuxLivraisonSelectionnee.setLiv1(liv1);
     		Controleur.etatDeuxLivraisonSelectionnee.setLiv2(liv2);
     		Controleur.setEtatCourant(Controleur.etatDeuxLivraisonSelectionnee);
     	}

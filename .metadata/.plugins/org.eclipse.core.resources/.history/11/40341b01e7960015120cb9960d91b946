@@ -61,6 +61,14 @@ public class EtatDefaut implements Etat {
     }
 
     /**
+     * @param livraison1 
+     * @param livraison2
+     */
+    public void modifierLivraison(Livraison livraison1, Livraison livraison2) {
+        // TODO implement here
+    }
+
+    /**
      * @param fenetre 
      * @param listeDeCommande
      */

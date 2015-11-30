@@ -61,14 +61,6 @@ public class EtatDefaut implements Etat {
     }
 
     /**
-     * @param livraison1 
-     * @param livraison2
-     */
-    public void modifierLivraison(Livraison livraison1, Livraison livraison2) {
-        // TODO implement here
-    }
-
-    /**
      * @param fenetre 
      * @param listeDeCommande
      */
@@ -96,6 +88,12 @@ public class EtatDefaut implements Etat {
 
 	@Override
 	public void ajouterLivraison(Tournee tournee, ListeCommande ldc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void modifierLivraison(Tournee tournee, ListeCommande listeCommandes) {
 		// TODO Auto-generated method stub
 		
 	}

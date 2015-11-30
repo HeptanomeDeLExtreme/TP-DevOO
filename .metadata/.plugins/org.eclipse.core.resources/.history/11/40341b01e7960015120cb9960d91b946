@@ -1,0 +1,111 @@
+package controleur;
+
+import java.awt.Point;
+import java.util.*;
+
+import javax.swing.JSpinner.ListEditor;
+
+import modele.DemandeDeLivraison;
+import modele.Intersection;
+import modele.Livraison;
+import modele.Plan;
+import modele.Tournee;
+
+import vue.FenetreIHM;
+
+/**
+ * 
+ */
+public class EtatDefaut implements Etat {
+
+    /**
+     * Default constructor
+     */
+    public EtatDefaut() {
+    }
+
+    /**
+     * @param fenetre
+     */
+    public void ouvrirPlan(Plan plan) {
+        // TODO implement here
+    }
+
+    /**
+     * @param fenetre
+     */
+    public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan) {
+        // TODO implement here
+    }
+
+    /**
+     * @param plan 
+     * @param demandeDeLivraison
+     */
+    public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison) {
+        // TODO implement here
+    }
+
+    /**
+     * @param listeCommande
+     */
+    public void undo(ListeCommande listeCommande) {
+        // TODO implement here
+    }
+
+    /**
+     * @param listeCommande
+     */
+    public void redo(ListeCommande listeCommande) {
+        // TODO implement here
+    }
+
+    /**
+     * @param livraison1 
+     * @param livraison2
+     */
+    public void modifierLivraison(Livraison livraison1, Livraison livraison2) {
+        // TODO implement here
+    }
+
+    /**
+     * @param fenetre 
+     * @param listeDeCommande
+     */
+    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl) {
+
+    }
+
+
+	@Override
+	public void clicDroit(FenetreIHM fenetre, Point p) {
+		fenetre.afficheMessage("Clic droit, c'est bien mais ça ne sert à rien :) ");
+	}
+
+	@Override
+	public void genererFeuilleRoute(FenetreIHM fenetre, Tournee tournee) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void supprimeLivraison(Tournee tournee, ListeCommande listeCommandes) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void ajouterLivraison(Tournee tournee, ListeCommande ldc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void modifierLivraison(Tournee tournee, ListeCommande listeCommandes) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+}

@@ -54,10 +54,10 @@ public interface Etat {
     public void redo(ListeCommande listeCommande);
 
     /**
-     * @param livraison1 
-     * @param livraison2
+     * @param tournee 
+     * @param listeCommandes
      */
-    public void modifierLivraison(Livraison livraison1, Livraison livraison2);
+    public void modifierLivraison(Tournee tournee, ListeCommande listeCommandes);
 
     /**
      * @param listeCommandes 

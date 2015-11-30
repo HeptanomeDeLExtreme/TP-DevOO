@@ -1,0 +1,14 @@
+package modele;
+
+public class Modele {
+
+	protected Tournee tournee;
+	protected DemandeDeLivraison demandeDeLivraison;
+	protected Plan plan;
+	
+	public Modele() extends Observable{
+		this.plan = new Plan();
+		this.tournee = new Tournee();
+		this.demandeDeLivraison = new DemandeDeLivraison(this.tournee);
+	}
+}

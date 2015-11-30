@@ -3,19 +3,37 @@ package controleur;
 import java.util.*;
 
 import modele.Livraison;
+import modele.Tournee;
 
 /**
  * 
  */
 public class EtatDeuxLivraisonSelectionnee extends EtatDefaut {
 
+	protected Livraison liv1;
+	protected Livraison liv2;
+	
     /**
      * Default constructor
      */
     public EtatDeuxLivraisonSelectionnee() {
     }
     
-    public String toString(){
+    
+    
+    public void setLiv1(Livraison liv1) {
+		this.liv1 = liv1;
+	}
+
+
+
+	public void setLiv2(Livraison liv2) {
+		this.liv2 = liv2;
+	}
+
+
+
+	public String toString(){
     	return "Etat deux livraisons selectionnés ";
     }
 
@@ -23,7 +41,8 @@ public class EtatDeuxLivraisonSelectionnee extends EtatDefaut {
      * @param livraison1 
      * @param livraison2
      */
-    public void modifierLivraison(Livraison livraison1, Livraison livraison2) {
+    public void modifierLivraison(Tournee tournee, ListeCommande listeCommandes) {
+    	tournee.modifierTournee(liv1, liv2);
         Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
     }
 

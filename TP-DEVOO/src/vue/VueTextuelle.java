@@ -11,6 +11,7 @@ import modele.FenetreTemporelle;
 import modele.Intersection;
 import modele.Itineraire;
 import modele.Livraison;
+import modele.Modele;
 import modele.Plan;
 import modele.Tournee;
 import modele.Troncon;
@@ -21,9 +22,8 @@ import modele.Troncon;
 public class VueTextuelle extends JScrollPane implements Observer{
 
 	private String text;
-	private Tournee tournee;
+	private Modele modele;
 	private FenetreIHM fenetre;
-	private Plan plan;
 	private JLabel label;
 
     /**
@@ -31,13 +31,11 @@ public class VueTextuelle extends JScrollPane implements Observer{
      * @param tournee 
      * @param fenetreIHM
      */
-    public VueTextuelle(Plan plan, Tournee tournee, FenetreIHM fenetreIHM) {
+    public VueTextuelle(Modele modele, FenetreIHM fenetreIHM) {
     	super();
     	this.fenetre = fenetreIHM;
-    	this.tournee = tournee;
-    	this.tournee.addObserver(this);
-    	this.plan = plan;
-    	this.plan.addObserver(this);
+    	this.modele = modele;
+    	this.modele.addObserver(this);
 		setBorder(BorderFactory.createTitledBorder("Tournée :"));
 //		this.setVerticalTextPosition(TOP);
 //		this.setVerticalAlignment(TOP);
@@ -64,8 +62,10 @@ public class VueTextuelle extends JScrollPane implements Observer{
     public void update(Observable observable, Object objet) {
     	String html = "<html>";
     	
+    	Tournee tournee = modele.getTournee();
+    	
     	if(tournee != null){
-	    	List<Itineraire> listeItineraire = this.tournee.getItineraires();
+	    	List<Itineraire> listeItineraire = tournee.getItineraires();
 	    	if(listeItineraire != null){
 		    	for(Itineraire itineraire : listeItineraire){
 		    		// Depart 

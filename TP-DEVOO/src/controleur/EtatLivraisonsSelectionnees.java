@@ -49,13 +49,15 @@ public class EtatLivraisonsSelectionnees extends EtatDefaut {
     }
     
     public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl){
-    	Livraison liv = ddl.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
+    	Livraison liv2 = ddl.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
     	Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
     	
-    	if(liv == null){
+    	if(liv2 == null){
     		Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
     	}
     	else{
+    		Controleur.etatDeuxLivraisonSelectionnee.setLiv1(liv);
+    		Controleur.etatDeuxLivraisonSelectionnee.setLiv2(liv2);
     		Controleur.setEtatCourant(Controleur.etatDeuxLivraisonSelectionnee);
     	}
     }

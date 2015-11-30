@@ -73,17 +73,39 @@ public class Tournee extends Observable {
     	
     	for (Livraison liv : livraisonsEnOrdre)
     		{
-//    		System.out.println(liv.getAdresse().getId());
+    		System.out.println(liv.getAdresse().getId());
     		}
     	
     	Livraison livraisonSuivante1 = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison1)+1);
     	Livraison livraisonSuivante2 = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison2)+1);
     	
     	supprimeLivraison(livraison1);
+    	System.out.println("Suppr liv1 ok");
     	supprimeLivraison(livraison2);
+    	System.out.println("Suppr liv2 ok");
     	
-    	ajouteLivraison(livraisonSuivante2, livraison1.getAdresse());
-    	ajouteLivraison(livraisonSuivante1, livraison2.getAdresse());
+    	// Gestion des cas où on veut intervertir deux intersections à la suite
+    	if (livraisonSuivante1.equals(livraison2)){
+    		ajouteLivraison(livraisonSuivante2, livraison1.getAdresse());
+    		System.out.println("Réajout liv2 ok");
+    		ajouteLivraison(livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraisonSuivante2)-1), livraison2.getAdresse());
+    		System.out.println("Réajout liv1 ok");}
+    	
+    	else if (livraisonSuivante2.equals(livraison1)){
+    		ajouteLivraison(livraisonSuivante1, livraison2.getAdresse());
+        	System.out.println("Réajout liv1 ok");
+        	ajouteLivraison(livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraisonSuivante1)-1), livraison1.getAdresse());
+        	System.out.println("Réajout liv2 ok");}
+    	
+    	else {
+    		ajouteLivraison(livraisonSuivante2, livraison1.getAdresse());
+    		System.out.println("Réajout liv2 ok");
+    		ajouteLivraison(livraisonSuivante1, livraison2.getAdresse());
+    		System.out.println("Réajout liv1 ok");}
+    		
+    	
+    	
+    	
     	
     	charge(graphePondere.getMapCorrespondance(), demandeDeLivraison,entrepot, coutTotal,livraisonsEnOrdre, itineraires );
     	
@@ -106,11 +128,11 @@ public class Tournee extends Observable {
      */
     public void supprimeLivraison(Livraison livraison) {
         // 
-    	System.out.println("Vous essayez de supprimer" + livraison.getAdresse().getId());
-    	System.out.println("Livraisons dans l'ordre");
-    	for (Livraison livraisonOrdre : livraisonsEnOrdre){
-    		System.out.println(livraisonOrdre.getAdresse().getId());
-    	}
+    	//System.out.println("Vous essayez de supprimer" + livraison.getAdresse().getId());
+    	//System.out.println("Livraisons dans l'ordre");
+    	//for (Livraison livraisonOrdre : livraisonsEnOrdre){
+    		//System.out.println(livraisonOrdre.getAdresse().getId());
+    	//}
     	Livraison livraisonPrecedente = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison) - 1 );
 //    	System.out.println(" Livraison Précedente = " + livraisonPrecedente.getAdresse().getId());
     	Livraison livraisonSuivante = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison) +1 );

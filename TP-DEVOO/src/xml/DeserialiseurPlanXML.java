@@ -3,10 +3,16 @@ package xml;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
 
 import modele.Plan;
 import modele.Intersection;
@@ -36,16 +42,41 @@ public class DeserialiseurPlanXML {
 		File xml = OuvreurDeFichierXML.getInstance().ouvre(true);
 			
 		DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-		
-		Document document = docBuilder.parse(xml);
-		document.getDocumentElement().normalize();
-		
-		Element racine = document.getDocumentElement();
-		
-		if (racine.getNodeName().equals("Reseau")) {
-			construireAPartirDeDOMXML(racine, plan);
-		} else
-			throw new ExceptionXML("Document non conforme");
+		if (validateAgainstXSD(new FileInputStream(xml), new FileInputStream(new File("src/xml/XSDPlan.xsd")))){
+        	Document document = docBuilder.parse(xml);
+        	document.getDocumentElement().normalize();
+        	Element racine = document.getDocumentElement();
+            construireAPartirDeDOMXML(racine, plan);
+            
+        }
+		else{
+            	throw new ExceptionXML("Document non conforme");
+		}
+	}
+	
+	/**
+	 * Ouvre un fichier xml passé en parametre et cree plan a partir du contenu du fichier
+	 * 
+	 * @param Plan plan
+	 * @param File xml
+	 * @throws ParserConfigurationException
+	 * @throws SAXException
+	 * @throws IOException
+	 * @throws ExceptionXML
+	 */
+	public static void charger(Plan plan, File xml) throws ParserConfigurationException, SAXException, IOException, ExceptionXML {
+
+		DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+		if (validateAgainstXSD(new FileInputStream(xml), new FileInputStream(new File("src/xml/XSDPlan.xsd")))){
+        	Document document = docBuilder.parse(xml);
+        	document.getDocumentElement().normalize();
+        	Element racine = document.getDocumentElement();
+            construireAPartirDeDOMXML(racine, plan);
+            
+        }
+		else{
+            	throw new ExceptionXML("Document non conforme");
+		}
 	}
 
 	/**
@@ -115,11 +146,31 @@ public class DeserialiseurPlanXML {
 		Float vitesse = Float.parseFloat(tronconXML.getAttribute("vitesse").replace(",", "."));
 		Float longueur = Float.parseFloat(tronconXML.getAttribute("longueur").replace(",", "."));
 		Integer idDestination = Integer.parseInt(tronconXML.getAttribute("idNoeudDestination"));
+		if(idDestination == origine.getId()){
+			throw new ExceptionXML("Document non conforme : Un tronçon ne peut avoir la même intersection comme origine et destination.");
+		}
 		Intersection destination = plan.recupererIntersectionParId(idDestination);
 		Troncon troncon = new Troncon(nomRue, vitesse, longueur, origine, destination);
 		origine.ajouteTronconSortant(troncon);
 		destination.ajouteTronconEntrant(troncon);
 		return troncon;
+	}
+	
+	private static boolean validateAgainstXSD(InputStream xml, InputStream xsd) throws ExceptionXML
+	{
+	    try
+	    {
+	        SchemaFactory factory = 
+	            SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+	        Schema schema = factory.newSchema(new StreamSource(xsd));
+	        Validator validator = schema.newValidator();
+	        validator.validate(new StreamSource(xml));
+	        return true;
+	    }
+	    catch(Exception ex)
+	    {
+	    	throw new ExceptionXML("Document non conforme : " + ex.getMessage());
+	    }
 	}
 
 }

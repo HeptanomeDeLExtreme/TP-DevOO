@@ -61,10 +61,8 @@ public class VueTextuelle extends JScrollPane implements Observer{
     public void update(Observable observable, Object objet) {
     	String html = "<html>";
     	
-    	Tournee tournee = modele.getTournee();
-    	
     	if(tournee != null){
-	    	List<Itineraire> listeItineraire = tournee.getItineraires();
+	    	List<Itineraire> listeItineraire = this.tournee.getItineraires();
 	    	if(listeItineraire != null){
 		    	for(Itineraire itineraire : listeItineraire){
 		    		// Depart 

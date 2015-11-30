@@ -686,9 +686,10 @@ public class DemandeDeLivraison extends Observable{
     		Livraison livraison = mapLivraisons.get(numeroSommet);
 //    		System.out.println(livraison);
         	livraisonsEnOrdre.add(livraison);
-    	}
+    	}    	
     	livraisonsEnOrdre.addLast(entrepot);
     	
+    	livraisonsEnOrdre.getLast().setFenetre(fenetres.get(fenetres.size()-1));
 		return livraisonsEnOrdre;
 	}
     

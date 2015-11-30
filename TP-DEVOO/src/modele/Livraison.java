@@ -21,6 +21,19 @@ public class Livraison {
 		return resultat;
 	}
 
+	public void Copy(Livraison toCopy) {
+		
+		this.id = toCopy.id;
+		this.heureArrivee = toCopy.heureArrivee;
+		this.heureLivraison = toCopy.heureLivraison;
+		this.estDansFenetre = toCopy.estDansFenetre;
+		this.adresse = toCopy.adresse;
+		this.fenetre = toCopy.fenetre;
+		this.client = toCopy.client;
+		this.tableauPi = toCopy.tableauPi;
+		this.tableauD = toCopy.tableauD;
+	}
+
 	/**
      * Default constructor
      */

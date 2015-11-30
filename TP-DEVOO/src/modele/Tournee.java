@@ -234,7 +234,7 @@ public class Tournee extends Observable {
     	
     	Livraison livraisonPrecedente = new Livraison();
     	//Cas où on veut ajouter à la fin, soit avant le retour à l'entrepot.
-    	if (livraison.getAdresse().getId()==14){
+    	if (livraisonSuivante.equals(entrepot)){
     		livraisonPrecedente = livraisonsEnOrdre.get(livraisonsEnOrdre.size()-2);
     	}
     	else

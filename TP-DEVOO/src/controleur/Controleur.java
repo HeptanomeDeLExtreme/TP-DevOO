@@ -134,6 +134,7 @@ public class Controleur {
     public void ajouterLivraison() {
         this.etatCourant.ajouterLivraison(this.modele.getTournee(), listeCommandes);
         this.modele.changementEffectue();
+        this.setEtatCourant(etatTourneeCalculee);
     }
 
     /**
@@ -142,6 +143,7 @@ public class Controleur {
     public void modifierLivraison() {
         this.etatCourant.modifierLivraison(this.modele.getTournee(), listeCommandes);
         this.modele.changementEffectue();
+        this.setEtatCourant(etatTourneeCalculee);
     }
     
 
@@ -151,6 +153,7 @@ public class Controleur {
     public void supprimeLivraison() {
         this.etatCourant.supprimeLivraison(this.modele.getTournee(), listeCommandes);
         this.modele.changementEffectue();
+        this.setEtatCourant(etatTourneeCalculee);
     }
     
     

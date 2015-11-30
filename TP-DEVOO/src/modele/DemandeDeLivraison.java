@@ -218,8 +218,23 @@ public class DemandeDeLivraison extends Observable{
      * @param livraisonAvant 
      * @param livraison
      */
-    protected void ajouteLivraison(Livraison livraisonAvant, Livraison livraison) {
+    public void ajouteLivraison(Livraison livraisonSuivante, Livraison livraison) {
         // TODO implement here
+    	{
+            
+        	for (FenetreTemporelle fenetre  : this.fenetres)
+    		{
+        		Set<Livraison> livraisonsFenetres = fenetre.getLivraisons();
+        		List<Livraison> listLivraisonsFenetre = new ArrayList<Livraison>(livraisonsFenetres);
+        			
+        			if (listLivraisonsFenetre.contains(livraisonSuivante)){
+        				fenetre.ajouteLivraison(livraison);
+        				break;
+        			}
+        			
+    			
+    			}
+    	}
     }
 
     // A EFFACER
@@ -336,7 +351,7 @@ public class DemandeDeLivraison extends Observable{
     /**
      * @param itinerairesEnOrdre
      */
-    private void majHorairesDesLivraisons(List<Itineraire> itinerairesEnOrdre) {
+    public void majHorairesDesLivraisons(List<Itineraire> itinerairesEnOrdre) {
     	int compteur = 0;
     	int coutTotal = 0;
     	int TEN_MINUTES = 10 * 60;

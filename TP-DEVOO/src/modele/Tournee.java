@@ -171,7 +171,7 @@ public class Tournee extends Observable {
     		
     		charge(graphePondere.getMapCorrespondance(), demandeDeLivraison,entrepot, coutTotal,livraisonsEnOrdre, itineraires );
     		this.demandeDeLivraison.supprimeLivraison(livraison);
-    		
+    		this.demandeDeLivraison.majHorairesDesLivraisons(itineraires);
 //    		System.out.println("Affichage des nouveaux itineraires");
 			for (Itineraire it : itineraires)
 			{
@@ -260,7 +260,8 @@ public class Tournee extends Observable {
     	}
     	
     	coutTotal = coutTotal - coutASoustraire + coutLivraisonToSuivant + coutPrecedentToLivraison;
-    	
+    	this.demandeDeLivraison.ajouteLivraison(livraisonSuivante, livraison);
+    	this.demandeDeLivraison.majHorairesDesLivraisons(itineraires);
     	charge(graphePondere.getMapCorrespondance(), demandeDeLivraison,entrepot, coutTotal,livraisonsEnOrdre, itineraires );
     }
     

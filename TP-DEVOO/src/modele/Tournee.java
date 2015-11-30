@@ -71,10 +71,7 @@ public class Tournee extends Observable {
 //    		System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
     	}
     	
-    	for (Livraison liv : livraisonsEnOrdre)
-    		{
-    		System.out.println(liv.getAdresse().getId());
-    		}
+    	
     	
     	Livraison livraisonSuivante1 = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison1)+1);
     	Livraison livraisonSuivante2 = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison2)+1);
@@ -83,6 +80,11 @@ public class Tournee extends Observable {
     	System.out.println("Suppr liv1 ok");
     	supprimeLivraison(livraison2);
     	System.out.println("Suppr liv2 ok");
+    	
+    	for (Livraison liv : livraisonsEnOrdre)
+		{
+		System.out.println(liv.getAdresse().getId());
+		}
     	
     	// Gestion des cas où on veut intervertir deux intersections à la suite
     	if (livraisonSuivante1.equals(livraison2)){
@@ -96,13 +98,13 @@ public class Tournee extends Observable {
         	System.out.println("Réajout liv1 ok");
         	ajouteLivraison(livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraisonSuivante1)-1), livraison1.getAdresse());
         	System.out.println("Réajout liv2 ok");}
-    	
-    	else {
+    
+    	else{
+ 
     		ajouteLivraison(livraisonSuivante2, livraison1.getAdresse());
     		System.out.println("Réajout liv2 ok");
     		ajouteLivraison(livraisonSuivante1, livraison2.getAdresse());
     		System.out.println("Réajout liv1 ok");}
-    		
     	
     	
     	
@@ -229,7 +231,16 @@ public class Tournee extends Observable {
     	livraison.calculerPlusCourtsChemins(graphePondere);
     	
     	livraisonsEnOrdre.add(livraisonsEnOrdre.indexOf (livraisonSuivante),livraison);
-    	Livraison livraisonPrecedente = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison)-1);
+    	
+    	Livraison livraisonPrecedente = new Livraison();
+    	//Cas où on veut ajouter à la fin, soit avant le retour à l'entrepot.
+    	if (livraison.getAdresse().getId()==14){
+    		livraisonPrecedente = livraisonsEnOrdre.get(livraisonsEnOrdre.size()-2);
+    	}
+    	else
+    	{
+    		livraisonPrecedente = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison)-1);
+    	}
 //    	System.out.println("Affichage des nouvelles livraisons");
     	for(Livraison liv: livraisonsEnOrdre)
     	{

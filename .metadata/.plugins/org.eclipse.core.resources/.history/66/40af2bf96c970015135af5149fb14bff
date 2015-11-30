@@ -34,7 +34,6 @@ public class VueTextuelle extends JScrollPane implements Observer{
     public VueTextuelle(Modele modele, FenetreIHM fenetreIHM) {
     	super();
     	this.fenetre = fenetreIHM;
-    	this.modele = modele;
     	this.modele.addObserver(this);
 		setBorder(BorderFactory.createTitledBorder("Tournée :"));
 //		this.setVerticalTextPosition(TOP);

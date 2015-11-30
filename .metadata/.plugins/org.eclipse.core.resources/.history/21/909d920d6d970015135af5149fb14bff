@@ -105,7 +105,7 @@ public class Controleur {
     
 	public void ouvrirPlan() {
 		this.etatCourant.ouvrirPlan(this.modele.getPlan());	
-		this.modele.changementEffectue();
+		this.modele.getPlan().changementEffectue();
 	}
 	
     /**
@@ -121,7 +121,6 @@ public class Controleur {
      */
     public void calculerTournee() {
         this.etatCourant.calculerTournee(fenetre, this.modele.getPlan(), this.modele.getDemandeDeLivraison());
-        this.modele.changementEffectue();
     }
 
     

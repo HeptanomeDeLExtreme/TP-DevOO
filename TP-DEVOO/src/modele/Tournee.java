@@ -62,6 +62,17 @@ public class Tournee extends Observable {
      */
     protected List<Itineraire> itineraires;
 
+    public void nettoyer(){
+    	this.duree = (float) -1;
+    	this.coutTotal = -1;
+    	if(demandeDeLivraison != null){
+    		this.demandeDeLivraison.nettoieDemandeDeLivraison();
+    	}
+    	this.entrepot = null;
+    	this.itineraires = null;
+    	this.livraisonsEnOrdre = null;
+    }
+    
     public void modifierTournee(Livraison livraison1, Livraison livraison2) {
     	
 //    	System.out.println("DEBUT DE MODIFIER");

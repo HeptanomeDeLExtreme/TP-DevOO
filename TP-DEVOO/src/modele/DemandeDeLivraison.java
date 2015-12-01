@@ -75,6 +75,7 @@ public class DemandeDeLivraison extends Observable{
      */
     public void nettoieDemandeDeLivraison(){
     	fenetres = new ArrayList<FenetreTemporelle>();
+    	this.entrepot = null;
     	int nbLivraisons = 0;
     	this.tsp = new TSP1();
     }

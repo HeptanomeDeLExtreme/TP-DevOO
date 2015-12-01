@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
 
+import javax.swing.JOptionPane;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
@@ -14,6 +15,7 @@ import modele.DemandeDeLivraison;
 import modele.FenetreTemporelle;
 import modele.Intersection;
 import modele.Livraison;
+import modele.Modele;
 import modele.Plan;
 import modele.Tournee;
 
@@ -64,23 +66,42 @@ public class EtatTourneeCalculee extends EtatDefaut {
     /**
      * @param fenetre
      */
-    public void ouvrirPlan(Plan plan) {
-    	try {
-    		plan.nettoiePlan();
+    public void ouvrirPlan(Modele modele) {
+    	Plan plan = modele.getPlan();
+       	try {
+			plan.nettoiePlan();
+        	if(modele.getDemandeDeLivraison() != null){
+        		modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
+        	}
+        	modele.getTournee().nettoyer();
     		DeserialiseurPlanXML.charger(plan);
     		Controleur.setEtatCourant(Controleur.etatPlanCharge);
+    		JOptionPane.showMessageDialog(null, "Plan chargé correctement !", "Info",
+                    JOptionPane.INFORMATION_MESSAGE);
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
-			System.out.println("Exception constructeur plan");			
+			System.out.println("Exception constructeur plan");	
+			System.out.println(e.getMessage());
+			JOptionPane.showMessageDialog(null, e.toString(), "Error",
+                    JOptionPane.ERROR_MESSAGE);
+			plan.nettoiePlan();
+        	if(modele.getDemandeDeLivraison() != null){
+        		modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
+        	}
+        	modele.getTournee().nettoyer();
+			Controleur.setEtatCourant(Controleur.etatInit);
 		}
     }
 
     /**
      * @param fenetre
      */
-    public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan){
+    public void importerLivraison(FenetreIHM fenetre,Modele modele, Plan plan){
+    	DemandeDeLivraison demandeDeLivraison = modele.getDemandeDeLivraison();
     	try {
-    		demandeDeLivraison.nettoieDemandeDeLivraison();
+        	if(modele.getDemandeDeLivraison() != null){
+        		modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
+        	}
     		DeserialiseurDemandeDeLivraisonXML.charger(demandeDeLivraison,plan);
     		
     		int nbLivraisons = 0;
@@ -94,9 +115,20 @@ public class EtatTourneeCalculee extends EtatDefaut {
     		nbLivraisons++;
     		demandeDeLivraison.setNbLivraisons(nbLivraisons);
             Controleur.setEtatCourant(Controleur.etatLivraisonChargee);
+            JOptionPane.showMessageDialog(null, "Demande de livraison chargée correctement !", "Info",
+                    JOptionPane.INFORMATION_MESSAGE);
+        	modele.getTournee().nettoyer();
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
-			System.out.println("Exception constructeur livraisons");			
+			System.out.println("Exception constructeur livraisons");
+			System.out.println(e.getMessage());
+			JOptionPane.showMessageDialog(null, e.toString(), "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        	if(modele.getDemandeDeLivraison() != null){
+        		modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
+        	}
+        	modele.getTournee().nettoyer();
+			Controleur.setEtatCourant(Controleur.etatPlanCharge);
 		}
     }
 
@@ -105,7 +137,8 @@ public class EtatTourneeCalculee extends EtatDefaut {
      * @param demandeDeLivraison
      */
     public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison) {
-        demandeDeLivraison.calculerTournee(plan);
+    	JOptionPane.showMessageDialog(null, "Tournee déja calculée  !", "Info",
+                JOptionPane.INFORMATION_MESSAGE);
     }
     
     /**
@@ -114,12 +147,12 @@ public class EtatTourneeCalculee extends EtatDefaut {
     public void genererFeuilleRoute(FenetreIHM fenetre, Tournee tournee) {
         try {
 			GenerateurFeuilleDeRoute.genererFeuilleDeRoute(tournee);
-		} catch (FileNotFoundException e) {
+			JOptionPane.showMessageDialog(null, "Feuille de route générée !", "Info",
+                    JOptionPane.INFORMATION_MESSAGE);
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Erreur lors de la génération !", "Error",
+                    JOptionPane.ERROR_MESSAGE);
 		}
     }
 
@@ -130,12 +163,10 @@ public class EtatTourneeCalculee extends EtatDefaut {
     	if(liv != null){
     		Controleur.setEtatCourant(Controleur.etatLivraisonsSelectionnees);
     		Controleur.etatLivraisonsSelectionnees.setLivraison(liv);
-    		fenetre.afficheMessage(Controleur.etatCourant.toString());
     	}
     	else if(inter != null){
     		Controleur.setEtatCourant(Controleur.etatIntersectionSelectionnee);
     		Controleur.etatIntersectionSelectionnee.setIntersection(inter);
-    		fenetre.afficheMessage(Controleur.etatCourant.toString());
     	}
     }
     

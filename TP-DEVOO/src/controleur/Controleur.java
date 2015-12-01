@@ -104,7 +104,7 @@ public class Controleur {
     // NOYAU MINIMAL
     
 	public void ouvrirPlan() {
-		this.etatCourant.ouvrirPlan(this.modele.getPlan());	
+		this.etatCourant.ouvrirPlan(this.modele);	
 		this.modele.changementEffectue();
 	}
 	
@@ -112,7 +112,7 @@ public class Controleur {
      * 
      */
     public void importerLivraison() {
-        this.etatCourant.importerLivraison(fenetre,this.modele.getDemandeDeLivraison(),this.modele.getPlan());
+        this.etatCourant.importerLivraison(fenetre,this.modele, this.modele.getPlan());
         this.modele.changementEffectue();
     }
 
@@ -120,7 +120,7 @@ public class Controleur {
      * 
      */
     public void calculerTournee() {
-        this.etatCourant.calculerTournee(fenetre, this.modele.getPlan(), this.modele.getDemandeDeLivraison());
+        this.etatCourant.calculerTournee(modele, fenetre);
         this.modele.changementEffectue();
     }
 
@@ -132,18 +132,16 @@ public class Controleur {
      * 
      */
     public void ajouterLivraison() {
-        this.etatCourant.ajouterLivraison(this.modele.getTournee(), listeCommandes);
+        this.etatCourant.ajouterLivraison(this.modele, listeCommandes);
         this.modele.changementEffectue();
-        this.setEtatCourant(etatTourneeCalculee);
     }
 
     /**
      * 
      */
     public void modifierLivraison() {
-        this.etatCourant.modifierLivraison(this.modele.getTournee(), listeCommandes);
+        this.etatCourant.modifierLivraison(this.modele, listeCommandes);
         this.modele.changementEffectue();
-        this.setEtatCourant(etatTourneeCalculee);
     }
     
 
@@ -151,9 +149,8 @@ public class Controleur {
      * 
      */
     public void supprimeLivraison() {
-        this.etatCourant.supprimeLivraison(this.modele.getTournee(), listeCommandes);
+        this.etatCourant.supprimeLivraison(this.modele, listeCommandes);
         this.modele.changementEffectue();
-        this.setEtatCourant(etatTourneeCalculee);
     }
     
     
@@ -179,14 +176,6 @@ public class Controleur {
         this.etatCourant.clicGauche(fenetre,this.modele.getPlan(),p,this.modele.getDemandeDeLivraison());
     }
 
-	public int getPlanLargeur() {
-		return this.modele.getPlan().getLargeur();
-	}
-
-	public int getPlanHauteur() {
-		return this.modele.getPlan().getHauteur();
-	}
-
 	public void clicDroit(Point p) {
 		this.etatCourant.clicDroit(fenetre,p);		
 	}
@@ -208,7 +197,32 @@ public class Controleur {
 			case KeyEvent.VK_G:
 				this.genererFeuilleRoute();
 				break;
+			case KeyEvent.VK_U:
+				this.undo();
+				break;
+			case KeyEvent.VK_R:
+				this.redo();
+				break;
+			case KeyEvent.VK_A:
+				this.ajouterLivraison();
+				break;
+			case KeyEvent.VK_S:
+				this.supprimeLivraison();
+				break;
+			case KeyEvent.VK_M:
+				this.modifierLivraison();
+				break;
 		}
 	}
+	
+	// CARACTERISTIQUE DU PLAN
+	public int getPlanLargeur() {
+		return this.modele.getPlan().getLargeur();
+	}
+
+	public int getPlanHauteur() {
+		return this.modele.getPlan().getHauteur();
+	}
+
 
 }

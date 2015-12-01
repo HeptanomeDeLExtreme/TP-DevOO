@@ -8,6 +8,7 @@ import javax.swing.JSpinner.ListEditor;
 import modele.DemandeDeLivraison;
 import modele.Intersection;
 import modele.Livraison;
+import modele.Modele;
 import modele.Plan;
 import modele.Tournee;
 
@@ -27,14 +28,14 @@ public class EtatDefaut implements Etat {
     /**
      * @param fenetre
      */
-    public void ouvrirPlan(Plan plan) {
+    public void ouvrirPlan(Modele modele) {
         // TODO implement here
     }
 
     /**
      * @param fenetre
      */
-    public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan) {
+    public void importerLivraison(FenetreIHM fenetre,Modele modele, Plan plan) {
         // TODO implement here
     }
 
@@ -42,7 +43,7 @@ public class EtatDefaut implements Etat {
      * @param plan 
      * @param demandeDeLivraison
      */
-    public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison) {
+    public void calculerTournee(Modele modele, FenetreIHM fenetre) {
         // TODO implement here
     }
 
@@ -81,19 +82,19 @@ public class EtatDefaut implements Etat {
 	}
 
 	@Override
-	public void supprimeLivraison(Tournee tournee, ListeCommande listeCommandes) {
+	public void supprimeLivraison(Modele modele, ListeCommande listeCommandes) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void ajouterLivraison(Tournee tournee, ListeCommande ldc) {
+	public void ajouterLivraison(Modele modele, ListeCommande ldc) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void modifierLivraison(Tournee tournee, ListeCommande listeCommandes) {
+	public void modifierLivraison(Modele modele, ListeCommande listeCommandes) {
 		// TODO Auto-generated method stub
 		
 	}

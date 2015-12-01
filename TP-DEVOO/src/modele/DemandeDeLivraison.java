@@ -306,14 +306,25 @@ public class DemandeDeLivraison extends Observable{
 //    		System.out.println();
 //    	}
 //    	System.out.println("");
-    	
-    	// Créer la tournée
-    	int coutTotalSolution = tsp.getCoutSolution();
-    	this.tournee.charge(graphePondere.getMapCorrespondance(),this, entrepot, coutTotalSolution, livraisonsEnOrdre, itinerairesEnOrdre);
 
     	// Mise à jour des données concernant le moment où la livraison s'effectue
     	majHorairesDesLivraisons(itinerairesEnOrdre);
-
+    	
+    	// Calcul du cout de la tournée + durée de la tournée
+    	int coutTotalSolution = tsp.getCoutSolution();
+    	int nbLivSansEntrepot = getNbLivraisons() - 1;
+    	coutTotalSolution += (10 * 60) * nbLivSansEntrepot;
+    	
+    	Horaire heureDepartEntrepotDebutTournee = new Horaire(8, 0, 0);
+    	Horaire heureArriveeEntrepotFinTournee = livraisonsEnOrdre.getLast().getHeureArrivee();
+    	//System.out.println("heure de départ tournée : " + heureDepartEntrepotDebutTournee);
+    	//System.out.println("heure fin tournée : " + heureArriveeEntrepotFinTournee);
+    	Horaire tempsTournee = heureArriveeEntrepotFinTournee.soustraireHoraire(heureDepartEntrepotDebutTournee);
+    	//System.out.println("Temps de la tournée : " + tempsTournee);
+    	
+    	// Créer la tournée
+    	this.tournee.charge(graphePondere.getMapCorrespondance(),this, entrepot, coutTotalSolution, livraisonsEnOrdre, itinerairesEnOrdre);
+    	this.tournee.setDuree(tempsTournee);
     	this.tournee.changementEffectue();
     	
     	// Tests manuels D'ajouter /Modifier/supprimer

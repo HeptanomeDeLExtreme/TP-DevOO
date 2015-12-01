@@ -109,6 +109,19 @@ public class Horaire {
         return finalHor;
     }
     
+    public Horaire soustraireHoraire(Horaire hor) {
+    	//System.out.println("Horaire à soustraire : " + hor);
+    	float duree1 = this.horaireToDuree();
+    	//System.out.println("Durée du this : " + duree1);
+    	float duree2 = hor.horaireToDuree();
+    	//System.out.println("Durée à soustraire : " + duree2);
+    	float duree = duree1 - duree2;
+    	//System.out.println("Durée finale : " + duree);
+    	Horaire finalHor = new Horaire(duree);
+    	//System.out.println("Horaire final : " + finalHor);
+    	return finalHor;
+    }
+    
     /**
      * @param heureDebut
      * @param heureFin

@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.io.IOException;
 import java.util.*;
 
+import javax.swing.JOptionPane;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
@@ -43,9 +44,16 @@ public class EtatPlanCharge extends EtatDefaut {
     		plan.nettoiePlan();
     		DeserialiseurPlanXML.charger(plan);
     		Controleur.setEtatCourant(Controleur.etatPlanCharge);
+    		JOptionPane.showMessageDialog(null, "Plan chargé correctement !", "Info",
+                    JOptionPane.INFORMATION_MESSAGE);
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
-			System.out.println("Exception constructeur plan");			
+			System.out.println("Exception constructeur plan");	
+			System.out.println(e.getMessage());
+			JOptionPane.showMessageDialog(null, e.toString(), "Error",
+                    JOptionPane.ERROR_MESSAGE);
+			plan.nettoiePlan();
+			Controleur.setEtatCourant(Controleur.etatInit);
 		}
     }
 
@@ -68,9 +76,16 @@ public class EtatPlanCharge extends EtatDefaut {
     		nbLivraisons++;
     		demandeDeLivraison.setNbLivraisons(nbLivraisons);
             Controleur.setEtatCourant(Controleur.etatLivraisonChargee);
+            JOptionPane.showMessageDialog(null, "Demande de livraison chargée correctement !", "Info",
+                    JOptionPane.INFORMATION_MESSAGE);
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
-			System.out.println("Exception constructeur livraisons");			
+			System.out.println("Exception constructeur livraisons");
+			System.out.println(e.getMessage());
+			JOptionPane.showMessageDialog(null, e.toString(), "Error",
+                    JOptionPane.ERROR_MESSAGE);
+			demandeDeLivraison.nettoieDemandeDeLivraison();
+			Controleur.setEtatCourant(Controleur.etatPlanCharge);
 		}
     }
     

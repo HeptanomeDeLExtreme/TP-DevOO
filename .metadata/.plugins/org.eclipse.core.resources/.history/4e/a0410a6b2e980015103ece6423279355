@@ -10,27 +10,30 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 import modele.DemandeDeLivraison;
+import modele.FenetreTemporelle;
 import modele.Intersection;
+import modele.Livraison;
 import modele.Plan;
 import modele.Tournee;
 
 import vue.FenetreIHM;
+import xml.DeserialiseurDemandeDeLivraisonXML;
 import xml.DeserialiseurPlanXML;
 import xml.ExceptionXML;
 
 /**
  * 
  */
-public class EtatInit extends EtatDefaut {
+public class EtatPlanCharge extends EtatDefaut {
 
     /**
      * Default constructor
      */
-    public EtatInit() {
+    public EtatPlanCharge() {
     }
 
     public String toString(){
-    	return "Etat Init";
+    	return "Etat Plan Chargé";
     }
     
     /**
@@ -41,8 +44,6 @@ public class EtatInit extends EtatDefaut {
     		plan.nettoiePlan();
     		DeserialiseurPlanXML.charger(plan);
     		Controleur.setEtatCourant(Controleur.etatPlanCharge);
-    		JOptionPane.showMessageDialog(null, "Plan chargé correctement !", "Info",
-                    JOptionPane.INFORMATION_MESSAGE);
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
 			System.out.println("Exception constructeur plan");	
@@ -53,13 +54,37 @@ public class EtatInit extends EtatDefaut {
 			Controleur.setEtatCourant(Controleur.etatInit);
 		}
     }
-    
+
+    /**
+     * @param fenetre
+     */
     public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan) {
-        fenetre.afficheMessage("Veuillez charger un plan !");
+    	try {
+    		demandeDeLivraison.nettoieDemandeDeLivraison();
+    		DeserialiseurDemandeDeLivraisonXML.charger(demandeDeLivraison,plan);
+    		
+    		int nbLivraisons = 0;
+        	List<FenetreTemporelle> fenetres = demandeDeLivraison.getFenetres();
+        	
+    		for (FenetreTemporelle petitFenetre : fenetres) {
+    			Set<Livraison> livraisonsFActuelle = petitFenetre.getLivraisons();
+    			nbLivraisons += livraisonsFActuelle.size();
+    		}
+    		// Ajout de l'entrepot
+    		nbLivraisons++;
+    		demandeDeLivraison.setNbLivraisons(nbLivraisons);
+            Controleur.setEtatCourant(Controleur.etatLivraisonChargee);
+		} catch (ParserConfigurationException | SAXException | IOException
+				| ExceptionXML e) {
+			System.out.println("Exception constructeur livraisons");
+			System.out.println(e.getMessage());
+			demandeDeLivraison.nettoieDemandeDeLivraison();
+			Controleur.setEtatCourant(Controleur.etatPlanCharge);
+		}
     }
     
     public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison) {
-        fenetre.afficheMessage("Veuillez charger un plan puis une livraison !");
+        fenetre.afficheMessage("Veuillez charger une livraison !");
     }
     
     public void genererFeuilleRoute(FenetreIHM fenetre, Tournee tournee) {
@@ -67,7 +92,13 @@ public class EtatInit extends EtatDefaut {
     }
     
     public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl){
-    	fenetre.afficheMessage("Aucun plan chargé !");
+        Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
+        if(inter != null){
+	        fenetre.afficheMessage(inter.toString());
+        }
+        else{
+        	fenetre.afficheMessage("Pas d'intersection ici !");
+        }
     }
 
 }

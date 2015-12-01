@@ -176,14 +176,6 @@ public class Controleur {
         this.etatCourant.clicGauche(fenetre,this.modele.getPlan(),p,this.modele.getDemandeDeLivraison());
     }
 
-	public int getPlanLargeur() {
-		return this.modele.getPlan().getLargeur();
-	}
-
-	public int getPlanHauteur() {
-		return this.modele.getPlan().getHauteur();
-	}
-
 	public void clicDroit(Point p) {
 		this.etatCourant.clicDroit(fenetre,p);		
 	}
@@ -207,5 +199,16 @@ public class Controleur {
 				break;
 		}
 	}
+	
+	// CARACTERTISTIQUE DU PLAN
+	
+	public int getPlanLargeur() {
+		return this.modele.getPlan().getLargeur();
+	}
+
+	public int getPlanHauteur() {
+		return this.modele.getPlan().getHauteur();
+	}
+
 
 }

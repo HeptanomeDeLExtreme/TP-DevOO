@@ -10,6 +10,7 @@ import modele.DemandeDeLivraison;
 import modele.Intersection;
 import modele.Itineraire;
 import modele.Livraison;
+import modele.Modele;
 import modele.Plan;
 import modele.Tournee;
 import modele.Troncon;
@@ -22,10 +23,22 @@ import xml.GenerateurFeuilleDeRoute;
  */
 public class Controleur {
 
+	// INIT
 	public static final EtatInit etatInit = new EtatInit();
+	
+	// NOYAU MINIMAL
 	public static final EtatPlanCharge etatPlanCharge = new EtatPlanCharge();
 	public static final EtatLivraisonChargee etatLivraisonChargee = new EtatLivraisonChargee();
 	public static final EtatTourneeCalculee etatTourneeCalculee = new EtatTourneeCalculee();
+	
+	// MODIFICATION TOURNEE
+	public static final EtatDeuxLivraisonSelectionnee etatDeuxLivraisonSelectionnee = new EtatDeuxLivraisonSelectionnee();
+	public static final EtatIntersectionSelectionnee etatIntersectionSelectionnee = new EtatIntersectionSelectionnee();
+	public static final EtatLivraisonPrecedenteSelectionnee etatLivraisonPrecedenteSelectionnee = new EtatLivraisonPrecedenteSelectionnee();
+	public static final EtatLivraisonsSelectionnees etatLivraisonsSelectionnees = new EtatLivraisonsSelectionnees();
+	
+	
+	
 	
 	/**
 	 * Change l'etat courant du controleur
@@ -54,124 +67,121 @@ public class Controleur {
     /**
      * 
      */
-    protected Plan plan;
-
-    /**
-     * 
-     */
-    protected DemandeDeLivraison demandeDeLivraison;
-
-    /**
-     * 
-     */
+    protected Modele modele;
     
-    // A ENLEVER
-    protected Tournee tournee;
-    // FIN A ENLEVER
-    /**
-     * Default constructor
+     /** Default constructor
      */
     public Controleur() {
-    	this.plan = new Plan();
-    	
-    	this.tournee = new Tournee();
-    	
-    	this.demandeDeLivraison = new DemandeDeLivraison(this.tournee);
+    	this.modele = new Modele();
     	
     	this.listeCommandes = new ListeCommande();
     	
     	etatCourant = etatInit;
     	
-    	fenetre = new FenetreIHM(demandeDeLivraison, tournee, this, plan);
+    	fenetre = new FenetreIHM(modele, this);
     }
     
     public void afficheMessageIHM(String s){
     	this.fenetre.afficheMessage(s);
     }
     
-    protected void undo() {
+    
+    // UNDO REDO 
+    
+    public void undo() {
         this.etatCourant.undo(listeCommandes);
     }
 
     /**
      * 
      */
-    protected void redo() {
+    public void redo() {
         this.etatCourant.redo(listeCommandes);
     }
 
+    
+    
+    // NOYAU MINIMAL
+    
+	public void ouvrirPlan() {
+		this.etatCourant.ouvrirPlan(this.modele.getPlan());	
+		this.modele.changementEffectue();
+	}
+	
     /**
      * 
      */
     public void importerLivraison() {
-        this.etatCourant.importerLivraison(fenetre,demandeDeLivraison,plan);
-        this.demandeDeLivraison.changementEffectue();
+        this.etatCourant.importerLivraison(fenetre,this.modele.getDemandeDeLivraison(),this.modele.getPlan());
+        this.modele.changementEffectue();
     }
 
     /**
      * 
      */
     public void calculerTournee() {
-        this.etatCourant.calculerTournee(fenetre, plan, demandeDeLivraison);
-        this.setEtatCourant(etatTourneeCalculee);
+        this.etatCourant.calculerTournee(fenetre, this.modele.getPlan(), this.modele.getDemandeDeLivraison());
+        this.modele.changementEffectue();
+    }
+
+    
+    
+    // MODIFICATION TOURNEE
+    
+    /**
+     * 
+     */
+    public void ajouterLivraison() {
+        this.etatCourant.ajouterLivraison(this.modele.getTournee(), listeCommandes);
+        this.modele.changementEffectue();
     }
 
     /**
      * 
      */
-    protected void ajouterLivraison() {
-        this.etatCourant.ajouterLivraison(fenetre);
+    public void modifierLivraison() {
+        this.etatCourant.modifierLivraison(this.modele.getTournee(), listeCommandes);
+        this.modele.changementEffectue();
     }
+    
 
+    /**
+     * 
+     */
+    public void supprimeLivraison() {
+        this.etatCourant.supprimeLivraison(this.modele.getTournee(), listeCommandes);
+        this.modele.changementEffectue();
+    }
+    
+    
+    
+    // GENERATION FEUILLE DE ROUTE
+    
     /**
      * 
      */
     public void genererFeuilleRoute() {
-    	this.etatCourant.genererFeuilleRoute(this.fenetre, this.tournee);
+    	this.etatCourant.genererFeuilleRoute(this.fenetre, this.modele.getTournee());
     }
 
     /**
      * 
      */
-    protected void modifierLivraison() {
-    	Livraison livraison1 = null;
-    	Livraison livraison2 = null;
-        this.etatCourant.modifierLivraison(livraison1, livraison2);
-    }
-
-    /**
-     * 
-     */
-    protected void supprimeLivraison() {
-    	Livraison livraison = null;
-        this.etatCourant.supprimeLivraison(livraison);
-    }
-
-    /**
-     * 
-     */
+    
+    
+    
+    // GESTION SOURIS
+    
     public void clicGauche(Point p) {
-        this.etatCourant.clicGauche(fenetre,plan,p);
+        this.etatCourant.clicGauche(fenetre,this.modele.getPlan(),p,this.modele.getDemandeDeLivraison());
     }
-
-	public int getPlanLargeur() {
-		return this.plan.getLargeur();
-	}
-
-	public int getPlanHauteur() {
-		return this.plan.getHauteur();
-	}
-
-	public void ouvrirPlan() {
-		this.etatCourant.ouvrirPlan(this.plan);	
-		this.plan.changementEffectue();
-	}
-
-
 
 	public void clicDroit(Point p) {
 		this.etatCourant.clicDroit(fenetre,p);		
 	}
+	
+	
+	// GESTION CLAVIER
 	
 	public void caractereSaisi(int keyCode) {
 		switch(keyCode){

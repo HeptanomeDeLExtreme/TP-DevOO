@@ -41,8 +41,6 @@ public class EtatInit extends EtatDefaut {
     		plan.nettoiePlan();
     		DeserialiseurPlanXML.charger(plan);
     		Controleur.setEtatCourant(Controleur.etatPlanCharge);
-    		JOptionPane.showMessageDialog(null, "Plan chargé correctement !", "Info",
-                    JOptionPane.INFORMATION_MESSAGE);
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
 			System.out.println("Exception constructeur plan");	

@@ -132,10 +132,12 @@ public class EtatTourneeCalculee extends EtatDefaut {
 			GenerateurFeuilleDeRoute.genererFeuilleDeRoute(tournee);
 			JOptionPane.showMessageDialog(null, "Feuille de route générée !", "Info",
                     JOptionPane.INFORMATION_MESSAGE);
-		} catch (Exception e) {
+		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			JOptionPane.showMessageDialog(null, "Erreur lors de la génération !", "Error",
-                    JOptionPane.ERROR_MESSAGE);
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
     }
 

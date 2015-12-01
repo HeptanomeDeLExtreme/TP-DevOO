@@ -242,7 +242,7 @@ public class Tournee extends Observable {
     	
    
     
-    public void setDuree(Horaire duree) {
+    public void setDuree(Heure duree) {
 		this.duree = duree;
 	}
 
@@ -381,8 +381,8 @@ public class Tournee extends Observable {
     	return toRet;
     }
 
-	public Horaire getDuree() {
-		return duree;
+	public float getDuree() {
+		return 10; // TODO
 	}
 
 	public void setGraphePondere(GraphePondere graphePondere) {

@@ -8,7 +8,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import modele.FenetreTemporelle;
-import modele.Horaire;
 import modele.Intersection;
 import modele.Itineraire;
 import modele.Livraison;
@@ -102,7 +101,6 @@ public class VueTextuelle extends JScrollPane implements Observer{
 		    			html +="Fenetre : "+arrivee.getFenetre().getHeureDebut()+" "+arrivee.getFenetre().getHeureFin()+"<br><br>";
 		    		}
 		    	}
-		    	html += "Temps de tournée : "+new Horaire(tournee.getCoutTotal()) + "<br>";
 		    	html += "Temps total : "+tournee.getDuree()+"<br><br>";
 		        
 		    	this.setText(html);

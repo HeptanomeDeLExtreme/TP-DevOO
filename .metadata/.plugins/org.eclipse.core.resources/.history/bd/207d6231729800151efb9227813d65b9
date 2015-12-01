@@ -61,7 +61,7 @@ public class Tournee extends Observable {
     /**
      * 
      */
-    protected Horaire duree;
+    protected Float duree;
 
     /**
      * 
@@ -81,7 +81,7 @@ public class Tournee extends Observable {
 	private boolean retard;
 
     public void nettoyer(){
-//    	this.duree = (float) -1;
+    	this.duree = (float) -1;
     	this.coutTotal = -1;
     	if(demandeDeLivraison != null){
     		this.demandeDeLivraison.nettoieDemandeDeLivraison();
@@ -240,15 +240,7 @@ public class Tournee extends Observable {
 			this.changementEffectue();
     	}
     	
-   
-    
-    public void setDuree(Horaire duree) {
-		this.duree = duree;
-	}
-
-
-
-	/**
+    /**
      * @param livraisonAvant 
      * @param livraison
      */
@@ -381,8 +373,8 @@ public class Tournee extends Observable {
     	return toRet;
     }
 
-	public Horaire getDuree() {
-		return duree;
+	public float getDuree() {
+		return 10; // TODO
 	}
 
 	public void setGraphePondere(GraphePondere graphePondere) {

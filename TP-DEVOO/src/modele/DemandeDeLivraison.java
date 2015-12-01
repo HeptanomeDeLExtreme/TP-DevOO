@@ -693,7 +693,21 @@ public class DemandeDeLivraison extends Observable{
     	}    	
     	livraisonsEnOrdre.addLast(entrepot);
     	
+    	List<Integer> listeIDLivraisons = new ArrayList<Integer>();
+    	
+    	ListIterator<Livraison> itr = livraisonsEnOrdre.listIterator();
+    	
+    	while (itr.hasNext()){
+    		Livraison livraisontoID = itr.next();
+    		listeIDLivraisons.add(livraisontoID.getId());
+    	}
+    	
+    	Object max = Collections.max(listeIDLivraisons);
+    	int id_max  = (Integer) max;
+    	id_max++;
+    	livraisonsEnOrdre.getLast().setId(id_max);
     	livraisonsEnOrdre.getLast().setFenetre(fenetres.get(fenetres.size()-1));
+    	livraisonsEnOrdre.getLast().setEstDansFenetre(true);
 		return livraisonsEnOrdre;
 	}
     

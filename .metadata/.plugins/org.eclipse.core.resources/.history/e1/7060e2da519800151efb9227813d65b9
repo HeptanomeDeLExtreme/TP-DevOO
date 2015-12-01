@@ -95,7 +95,6 @@ public class VueTextuelle extends JScrollPane implements Observer{
 		    			html +="Fenetre : "+arrivee.getFenetre().getHeureDebut()+" "+arrivee.getFenetre().getHeureFin()+"<br><br>";
 		    		}
 		    	}
-		    	html += "Temps total : "+tournee.getDuree()+"<br><br>";
 		        
 		    	this.setText(html);
 	    	}

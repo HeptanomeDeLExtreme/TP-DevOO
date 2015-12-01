@@ -14,9 +14,9 @@ public class Livraison {
 //    	boolean id = (this.id == obj.id);
 //    	boolean client = (this.client == obj.client);
     	boolean adresse = (this.adresse == obj.adresse);
-    	boolean fenetre = (this.fenetre == obj.fenetre);
+//    	boolean fenetre = (this.fenetre == obj.fenetre);
 		
-    	if( adresse && fenetre ) {
+    	if( adresse && fenetre  ) {
 			resultat = true;
 		}
 		return resultat;

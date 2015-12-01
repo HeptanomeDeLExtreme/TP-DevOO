@@ -16,7 +16,10 @@ public class Livraison {
     	boolean adresse = (this.adresse == obj.adresse);
     	boolean fenetre = (this.fenetre == obj.fenetre);
 		
-    	if( adresse && fenetre ) {
+    	System.out.println("Adresse : " + adresse);
+    	System.out.println("Fenetre : " + fenetre);
+    	
+    	if( adresse && fenetre  ) {
 			resultat = true;
 		}
 		return resultat;

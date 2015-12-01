@@ -434,9 +434,6 @@ public class DemandeDeLivraison extends Observable{
     			//System.out.println("L'heure de livraison de la prochaine livraison est-elle dans la fenêtre ? :");
     			estDansFenetre = heureLivraison.isInFenetreTemporelle(fenetre.getHeureDebut(), fenetre.getHeureFin());
     			livraisonArrivee.setEstDansFenetre(estDansFenetre);
-    			if(estDansFenetre == false){
-    				this.tournee.setRetard(true);
-    			}
     		}
     		
     		livraisonArrivee.setHeureArrivee(heureArrivee);

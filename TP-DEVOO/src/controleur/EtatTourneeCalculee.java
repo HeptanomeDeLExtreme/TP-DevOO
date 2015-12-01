@@ -127,7 +127,7 @@ public class EtatTourneeCalculee extends EtatDefaut {
      * @param plan 
      * @param demandeDeLivraison
      */
-    public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison) {
+    public void calculerTournee(Modele modele, FenetreIHM fenetre) {
     	JOptionPane.showMessageDialog(null, "Tournee déja calculée  !", "Info",
                 JOptionPane.INFORMATION_MESSAGE);
     }

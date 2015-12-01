@@ -25,16 +25,16 @@ import xml.ExceptionXML;
 /**
  * 
  */
-public class EtatLivraisonChargee extends EtatDefaut {
+public class EtatPlanCharge extends EtatDefaut {
 
     /**
      * Default constructor
      */
-    public EtatLivraisonChargee() {
+    public EtatPlanCharge() {
     }
 
     public String toString(){
-    	return "Etat Livraison Chargée";
+    	return "Etat Plan Chargé";
     }
     
     /**
@@ -47,7 +47,6 @@ public class EtatLivraisonChargee extends EtatDefaut {
     		JOptionPane.showMessageDialog(null, "Plan chargé correctement !", "Info",
                     JOptionPane.INFORMATION_MESSAGE);
     		modele.setPlan(plan);
-    		Controleur.setEtatCourant(Controleur.etatPlanCharge);
     		if(modele.getDemandeDeLivraison() != null){
     			modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
     		}
@@ -66,7 +65,7 @@ public class EtatLivraisonChargee extends EtatDefaut {
     /**
      * @param fenetre
      */
-    public void importerLivraison(FenetreIHM fenetre,Modele modele, Plan plan){
+    public void importerLivraison(FenetreIHM fenetre,Modele modele, Plan plan) {
     	Tournee tournee = new Tournee();
     	DemandeDeLivraison demandeDeLivraison = new DemandeDeLivraison(tournee);
     	
@@ -96,25 +95,9 @@ public class EtatLivraisonChargee extends EtatDefaut {
                     JOptionPane.ERROR_MESSAGE);
 		}
     }
-
-    /**
-     * @param plan 
-     * @param demandeDeLivraison
-     */
-    public void calculerTournee(Modele modele, FenetreIHM fenetre) {
-    	Plan plan = modele.getPlan();
-    	DemandeDeLivraison demandeDeLivraison = modele.getDemandeDeLivraison();
-        demandeDeLivraison.calculerTournee(plan);
-        Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
-        if(modele.getTournee().isRetard() == true){
-        	JOptionPane.showMessageDialog(null, "Tournee calculée avec retard  !", "Attention",
-	                JOptionPane.WARNING_MESSAGE);
-        }
-        else{
-	    	JOptionPane.showMessageDialog(null, "Tournee calculée  !", "Info",
-	                JOptionPane.INFORMATION_MESSAGE);
-        }
-    	
+    
+    public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison) {
+        fenetre.afficheMessage("Veuillez charger une livraison !");
     }
     
     public void genererFeuilleRoute(FenetreIHM fenetre, Tournee tournee) {

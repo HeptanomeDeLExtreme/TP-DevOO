@@ -1,7 +1,9 @@
 package controleur;
 
 import java.awt.Point;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 import javax.swing.JOptionPane;
@@ -21,22 +23,46 @@ import vue.FenetreIHM;
 import xml.DeserialiseurDemandeDeLivraisonXML;
 import xml.DeserialiseurPlanXML;
 import xml.ExceptionXML;
+import xml.GenerateurFeuilleDeRoute;
 
 /**
  * 
  */
-public class EtatLivraisonChargee extends EtatDefaut {
+public class EtatTourneeCalculee extends EtatDefaut {
 
     /**
      * Default constructor
      */
-    public EtatLivraisonChargee() {
+    public EtatTourneeCalculee() {
     }
 
+    
     public String toString(){
-    	return "Etat Livraison Chargée";
+    	return "Etat Tournée Calculée";
     }
     
+    /**
+     * @param listeDeCommande
+     */
+    public void undo(ListeCommande listeDeCommande) {
+        listeDeCommande.undo();
+    }
+
+    /**
+     * @param listeDeCommande
+     */
+    public void redo(ListeCommande listeDeCommande) {
+        listeDeCommande.redo();
+    }
+
+    /**
+     * @param fenetre 
+     * @param listeDeCommande
+     */
+    public void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
+        // TODO implement here
+    }
+
     /**
      * @param fenetre
      */
@@ -101,34 +127,40 @@ public class EtatLivraisonChargee extends EtatDefaut {
      * @param plan 
      * @param demandeDeLivraison
      */
-    public void calculerTournee(Modele modele, FenetreIHM fenetre) {
-    	Plan plan = modele.getPlan();
-    	DemandeDeLivraison demandeDeLivraison = modele.getDemandeDeLivraison();
-        demandeDeLivraison.calculerTournee(plan);
-        Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
-        if(modele.getTournee().isRetard() == true){
-        	JOptionPane.showMessageDialog(null, "Tournee calculée avec retard  !", "Attention",
-	                JOptionPane.WARNING_MESSAGE);
-        }
-        else{
-	    	JOptionPane.showMessageDialog(null, "Tournee calculée  !", "Info",
-	                JOptionPane.INFORMATION_MESSAGE);
-        }
-    	
+    public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison) {
+    	JOptionPane.showMessageDialog(null, "Tournee déja calculée  !", "Info",
+                JOptionPane.INFORMATION_MESSAGE);
     }
     
+    /**
+     * @param demandeDeLivraison
+     */
     public void genererFeuilleRoute(FenetreIHM fenetre, Tournee tournee) {
-    	fenetre.afficheMessage("Veuillez effectuer le calcul de la tournée !");
-    }
-    
-    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl){
-        Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
-        if(inter != null){
-	        fenetre.afficheMessage(inter.toString());
-        }
-        else{
-        	fenetre.afficheMessage("Pas d'intersection ici !");
-        }
+        try {
+			GenerateurFeuilleDeRoute.genererFeuilleDeRoute(tournee);
+			JOptionPane.showMessageDialog(null, "Feuille de route générée !", "Info",
+                    JOptionPane.INFORMATION_MESSAGE);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "Erreur lors de la génération !", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+		}
     }
 
+    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl){
+    	Livraison liv = ddl.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
+    	Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
+    	
+    	if(liv != null){
+    		Controleur.setEtatCourant(Controleur.etatLivraisonsSelectionnees);
+    		Controleur.etatLivraisonsSelectionnees.setLivraison(liv);
+    	}
+    	else if(inter != null){
+    		Controleur.setEtatCourant(Controleur.etatIntersectionSelectionnee);
+    		Controleur.etatIntersectionSelectionnee.setIntersection(inter);
+    	}
+    }
+    
+    
+  	
 }

@@ -65,7 +65,7 @@ public class EtatInit extends EtatDefaut {
         fenetre.afficheMessage("Veuillez charger un plan !");
     }
     
-    public void calculerTournee(Modele modele, FenetreIHM fenetre) {
+    public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison) {
         fenetre.afficheMessage("Veuillez charger un plan puis une livraison !");
     }
     

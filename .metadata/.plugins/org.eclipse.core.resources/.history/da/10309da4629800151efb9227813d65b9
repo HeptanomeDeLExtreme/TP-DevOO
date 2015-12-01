@@ -20,19 +20,12 @@ public class Tournee extends Observable {
      */
     public Tournee() {
     	this.coutTotal = -1;
-    	this.retard = false;
     }
     
     
 
     public int getCoutTotal() {
 		return coutTotal;
-	}
-
-    
-
-	public boolean isRetard() {
-		return retard;
 	}
 
 
@@ -77,8 +70,6 @@ public class Tournee extends Observable {
      * 
      */
     protected List<Itineraire> itineraires;
-
-	private boolean retard;
 
     public void nettoyer(){
     	this.duree = (float) -1;
@@ -387,12 +378,6 @@ public class Tournee extends Observable {
 
 	public void setLivraisonsEnOrdre(List<Livraison> livraisonsEnOrdre) {
 		this.livraisonsEnOrdre = livraisonsEnOrdre;
-	}
-
-
-
-	public void setRetard(boolean b) {
-		this.retard = b;
 	}
 	
 	

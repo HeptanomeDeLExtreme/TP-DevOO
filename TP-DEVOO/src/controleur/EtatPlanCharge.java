@@ -96,7 +96,7 @@ public class EtatPlanCharge extends EtatDefaut {
 		}
     }
     
-    public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison) {
+    public void calculerTournee(Modele modele, FenetreIHM fenetre) {
         fenetre.afficheMessage("Veuillez charger une livraison !");
     }
     

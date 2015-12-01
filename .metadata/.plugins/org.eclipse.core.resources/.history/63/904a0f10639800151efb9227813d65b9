@@ -29,12 +29,6 @@ public class Tournee extends Observable {
 		return coutTotal;
 	}
 
-    
-
-	public boolean isRetard() {
-		return retard;
-	}
-
 
 
 	/**

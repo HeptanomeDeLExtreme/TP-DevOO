@@ -107,7 +107,7 @@ public class EtatLivraisonChargee extends EtatDefaut {
         demandeDeLivraison.calculerTournee(plan);
         Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
         if(modele.getTournee().isRetard() == true){
-        	JOptionPane.showMessageDialog(null, "Tournee calculée avec retard  !", "Attention",
+        	JOptionPane.showMessageDialog(null, "Tournee calculée avec retard  !", "Info",
 	                JOptionPane.WARNING_MESSAGE);
         }
         else{

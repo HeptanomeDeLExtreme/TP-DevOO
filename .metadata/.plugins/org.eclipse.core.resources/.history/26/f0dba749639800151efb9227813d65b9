@@ -120,7 +120,7 @@ public class Controleur {
      * 
      */
     public void calculerTournee() {
-        this.etatCourant.calculerTournee(modele, fenetre);
+        this.etatCourant.calculerTournee(fenetre, this.modele.getPlan(), this.modele.getDemandeDeLivraison());
         this.modele.changementEffectue();
     }
 

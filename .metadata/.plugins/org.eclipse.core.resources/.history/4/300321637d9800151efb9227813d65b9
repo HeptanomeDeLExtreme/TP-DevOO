@@ -39,7 +39,7 @@ public class EtatDeuxLivraisonSelectionnee extends EtatDefaut {
 	}
 
     public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl){
-    	Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
+    	Controleur.setEtatCourant(Controleur.EtatTourneeCalculee)
     }
 
 	public String toString(){

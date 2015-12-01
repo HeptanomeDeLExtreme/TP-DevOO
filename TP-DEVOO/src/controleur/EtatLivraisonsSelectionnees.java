@@ -51,7 +51,6 @@ public class EtatLivraisonsSelectionnees extends EtatDefaut {
     
     public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl){
     	Livraison liv2 = ddl.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
-    	Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
     	
     	if(liv2 != null){
     		Controleur.etatDeuxLivraisonSelectionnee.setLiv1(liv);

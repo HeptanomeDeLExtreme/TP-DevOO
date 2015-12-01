@@ -31,6 +31,7 @@ public class EtatLivraisonPrecedenteSelectionnee extends EtatDefaut {
 	@Override
 	public void ajouterLivraison(Modele modele, ListeCommande ldc) {
 		ldc.ajoute(new CommandeAjout(modele,this.liv,this.inter));	
+		Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
 	}
 
 	public void init(Intersection inter, Livraison liv) {

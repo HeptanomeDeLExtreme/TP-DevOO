@@ -28,14 +28,14 @@ public class EtatDefaut implements Etat {
     /**
      * @param fenetre
      */
-    public void ouvrirPlan(Plan plan) {
+    public void ouvrirPlan(Modele modele) {
         // TODO implement here
     }
 
     /**
      * @param fenetre
      */
-    public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan) {
+    public void importerLivraison(FenetreIHM fenetre,Modele modele, Plan plan) {
         // TODO implement here
     }
 
@@ -43,7 +43,7 @@ public class EtatDefaut implements Etat {
      * @param plan 
      * @param demandeDeLivraison
      */
-    public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison) {
+    public void calculerTournee(Modele modele, FenetreIHM fenetre) {
         // TODO implement here
     }
 

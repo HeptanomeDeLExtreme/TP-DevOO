@@ -75,6 +75,7 @@ public class DemandeDeLivraison extends Observable{
      */
     public void nettoieDemandeDeLivraison(){
     	fenetres = new ArrayList<FenetreTemporelle>();
+    	this.entrepot = null;
     	int nbLivraisons = 0;
     	this.tsp = new TSP1();
     }
@@ -306,41 +307,52 @@ public class DemandeDeLivraison extends Observable{
 //    	}
 //    	System.out.println("");
     	
-    	// Créer la tournée
-    	int coutTotalSolution = tsp.getCoutSolution();
-    	this.tournee.charge(graphePondere.getMapCorrespondance(),this, entrepot, coutTotalSolution, livraisonsEnOrdre, itinerairesEnOrdre);
-
     	// Mise à jour des données concernant le moment où la livraison s'effectue
-    	majHorairesDesLivraisons(itinerairesEnOrdre);
-
-    	this.tournee.changementEffectue();
+        majHorairesDesLivraisons(itinerairesEnOrdre);
+        
+        // Calcul du cout de la tournée + durée de la tournée
+        int coutTotalSolution = tsp.getCoutSolution();
+        int nbLivSansEntrepot = getNbLivraisons() - 1;
+        coutTotalSolution += (10 * 60) * nbLivSansEntrepot;
+        
+        Horaire heureDepartEntrepotDebutTournee = new Horaire(8, 0, 0);
+        Horaire heureArriveeEntrepotFinTournee = livraisonsEnOrdre.getLast().getHeureArrivee();
+        //System.out.println("heure de départ tournée : " + heureDepartEntrepotDebutTournee);
+        //System.out.println("heure fin tournée : " + heureArriveeEntrepotFinTournee);
+        Horaire tempsTournee = heureArriveeEntrepotFinTournee.soustraireHoraire(heureDepartEntrepotDebutTournee);
+        //System.out.println("Temps de la tournée : " + tempsTournee);
+        
+        // Créer la tournée
+        this.tournee.charge(graphePondere.getMapCorrespondance(),this, entrepot, coutTotalSolution, livraisonsEnOrdre, itinerairesEnOrdre);
+        System.out.println(tempsTournee);
+        this.tournee.setDuree(tempsTournee);
     	
     	// Tests manuels D'ajouter /Modifier/supprimer
-    	Set<Intersection> mesinters = plan.getIntersections();
-    	Intersection intercible = new Intersection();
-    	for (Intersection inter : mesinters){
-    		//Donner ici l'iD de l'intersection
-    		if (inter.getId()== 33){
-    			intercible = inter;
-    			
-    		}
-    		
-    	}
-    	Livraison livraisonSuivante = new Livraison();
-    	for (Livraison livSuivante : tournee.getLivraisonsEnOrdre()){
-    		//Donner ici l'iD de la livraison
-    		if(livSuivante.getAdresse().getId() == 34){
-    			livraisonSuivante =livSuivante;
-    		}
-    	}
-    	
-    	Livraison livraisonSuivante2 = new Livraison();
-    	for (Livraison livSuivante : tournee.getLivraisonsEnOrdre()){
-    		//Donner ici l'iD de la livraison
-    		if(livSuivante.getAdresse().getId() == 42){
-    			livraisonSuivante2 =livSuivante;
-    		}
-    	}
+//    	Set<Intersection> mesinters = plan.getIntersections();
+//    	Intersection intercible = new Intersection();
+//    	for (Intersection inter : mesinters){
+//    		//Donner ici l'iD de l'intersection
+//    		if (inter.getId()== 33){
+//    			intercible = inter;
+//    			
+//    		}
+//    		
+//    	}
+//    	Livraison livraisonSuivante = new Livraison();
+//    	for (Livraison livSuivante : tournee.getLivraisonsEnOrdre()){
+//    		//Donner ici l'iD de la livraison
+//    		if(livSuivante.getAdresse().getId() == 34){
+//    			livraisonSuivante =livSuivante;
+//    		}
+//    	}
+//    	
+//    	Livraison livraisonSuivante2 = new Livraison();
+//    	for (Livraison livSuivante : tournee.getLivraisonsEnOrdre()){
+//    		//Donner ici l'iD de la livraison
+//    		if(livSuivante.getAdresse().getId() == 42){
+//    			livraisonSuivante2 =livSuivante;
+//    		}
+//    	}
     	
     	//tournee.modifierTournee(livraisonSuivante, livraisonSuivante2);
     	//tournee.supprimeLivraison(livraisonSuivante);
@@ -433,6 +445,9 @@ public class DemandeDeLivraison extends Observable{
     			//System.out.println("L'heure de livraison de la prochaine livraison est-elle dans la fenêtre ? :");
     			estDansFenetre = heureLivraison.isInFenetreTemporelle(fenetre.getHeureDebut(), fenetre.getHeureFin());
     			livraisonArrivee.setEstDansFenetre(estDansFenetre);
+    			if(estDansFenetre == false){
+    				this.tournee.setRetard(true);
+    			}
     		}
     		
     		livraisonArrivee.setHeureArrivee(heureArrivee);

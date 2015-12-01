@@ -19,21 +19,20 @@ public interface Etat {
     /**
      * @param plan
      */ 
-    public void ouvrirPlan(Plan plan);
+    public void ouvrirPlan(Modele modele);
 
     /**
      * @param fenetre
      * @param plan 
      * @param demandeDeLivraison 
      */
-    public void importerLivraison(FenetreIHM fenetre, DemandeDeLivraison demandeDeLivraison, Plan plan);
+    public void importerLivraison(FenetreIHM fenetre,Modele modele, Plan plan);
 
     /**
      * @param plan 
      * @param demandeDeLivraison
      */
-    public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison);
-
+    public void calculerTournee(Modele modele, FenetreIHM fenetre);
     /**
      * @param fenetre
      */

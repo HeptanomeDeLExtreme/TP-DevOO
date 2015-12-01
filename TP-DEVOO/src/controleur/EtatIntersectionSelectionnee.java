@@ -48,6 +48,9 @@ public class EtatIntersectionSelectionnee extends EtatDefaut {
     		Controleur.setEtatCourant(Controleur.etatLivraisonPrecedenteSelectionnee);
     		Controleur.etatLivraisonPrecedenteSelectionnee.init(this.inter,liv);
     	}
+    	else{
+    		Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
+    	}
     }
 
 	@Override

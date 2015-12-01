@@ -40,7 +40,6 @@ public class DeserialiseurPlanXML {
 	 */
 	public static void charger(Plan plan) throws ParserConfigurationException, SAXException, IOException, ExceptionXML {
 		File xml = OuvreurDeFichierXML.getInstance().ouvre(true);
-			
 		DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 		if (validateAgainstXSD(new FileInputStream(xml), new FileInputStream(new File("src/xml/XSDPlan.xsd")))){
         	Document document = docBuilder.parse(xml);

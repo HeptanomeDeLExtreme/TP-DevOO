@@ -19,9 +19,25 @@ public class Tournee extends Observable {
      * Default constructor
      */
     public Tournee() {
+    	this.coutTotal = -1;
+    	this.retard = false;
     }
+    
+    
 
-    /**
+    public int getCoutTotal() {
+		return coutTotal;
+	}
+
+    
+
+	public boolean isRetard() {
+		return retard;
+	}
+
+
+
+	/**
      * @param correspondancePlan 
      * @param coutTotal
      * @param livraisonsEnOrdre 
@@ -45,7 +61,7 @@ public class Tournee extends Observable {
     /**
      * 
      */
-    protected Float duree;
+    protected Horaire duree;
 
     /**
      * 
@@ -62,6 +78,19 @@ public class Tournee extends Observable {
      */
     protected List<Itineraire> itineraires;
 
+	private boolean retard;
+
+    public void nettoyer(){
+//    	this.duree = (float) -1;
+    	this.coutTotal = -1;
+    	if(demandeDeLivraison != null){
+    		this.demandeDeLivraison.nettoieDemandeDeLivraison();
+    	}
+    	this.entrepot = null;
+    	this.itineraires = null;
+    	this.livraisonsEnOrdre = null;
+    }
+    
     public void modifierTournee(Livraison livraison1, Livraison livraison2) {
     	
 //    	System.out.println("DEBUT DE MODIFIER");
@@ -224,7 +253,15 @@ public class Tournee extends Observable {
 			this.changementEffectue();
     	}
     	
-    /**
+   
+    
+    public void setDuree(Horaire duree) {
+		this.duree = duree;
+	}
+
+
+
+	/**
      * @param livraisonAvant 
      * @param livraison
      */
@@ -361,8 +398,8 @@ public class Tournee extends Observable {
     	return toRet;
     }
 
-	public float getDuree() {
-		return 10; // TODO
+	public Horaire getDuree() {
+		return duree;
 	}
 
 	public void setGraphePondere(GraphePondere graphePondere) {
@@ -375,6 +412,12 @@ public class Tournee extends Observable {
 
 	public void setLivraisonsEnOrdre(List<Livraison> livraisonsEnOrdre) {
 		this.livraisonsEnOrdre = livraisonsEnOrdre;
+	}
+
+
+
+	public void setRetard(boolean b) {
+		this.retard = b;
 	}
 	
 	

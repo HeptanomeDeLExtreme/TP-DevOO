@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.io.IOException;
 import java.util.*;
 
+import javax.swing.JOptionPane;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
@@ -12,6 +13,7 @@ import modele.DemandeDeLivraison;
 import modele.FenetreTemporelle;
 import modele.Intersection;
 import modele.Livraison;
+import modele.Modele;
 import modele.Plan;
 import modele.Tournee;
 
@@ -38,23 +40,36 @@ public class EtatPlanCharge extends EtatDefaut {
     /**
      * @param fenetre
      */
-    public void ouvrirPlan(Plan plan) {
+    public void ouvrirPlan(Modele modele) {
+    	Plan plan = new Plan();
     	try {
-    		plan.nettoiePlan();
     		DeserialiseurPlanXML.charger(plan);
-    		Controleur.setEtatCourant(Controleur.etatPlanCharge);
+    		JOptionPane.showMessageDialog(null, "Plan chargé correctement !", "Info",
+                    JOptionPane.INFORMATION_MESSAGE);
+    		modele.setPlan(plan);
+    		if(modele.getDemandeDeLivraison() != null){
+    			modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
+    		}
+    		if(modele.getTournee() != null){
+    			modele.getTournee().nettoyer();
+    		}
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
-			System.out.println("Exception constructeur plan");			
+			System.out.println("Exception constructeur plan");	
+			System.out.println(e.getMessage());
+			JOptionPane.showMessageDialog(null, e.toString(), "Error",
+                    JOptionPane.ERROR_MESSAGE);
 		}
     }
 
     /**
      * @param fenetre
      */
-    public void importerLivraison(FenetreIHM fenetre,DemandeDeLivraison demandeDeLivraison, Plan plan) {
+    public void importerLivraison(FenetreIHM fenetre,Modele modele, Plan plan) {
+    	Tournee tournee = new Tournee();
+    	DemandeDeLivraison demandeDeLivraison = new DemandeDeLivraison(tournee);
+    	
     	try {
-    		demandeDeLivraison.nettoieDemandeDeLivraison();
     		DeserialiseurDemandeDeLivraisonXML.charger(demandeDeLivraison,plan);
     		
     		int nbLivraisons = 0;
@@ -68,13 +83,20 @@ public class EtatPlanCharge extends EtatDefaut {
     		nbLivraisons++;
     		demandeDeLivraison.setNbLivraisons(nbLivraisons);
             Controleur.setEtatCourant(Controleur.etatLivraisonChargee);
+            modele.setTournee(tournee);
+            modele.setDemandeDeLivraison(demandeDeLivraison);
+            JOptionPane.showMessageDialog(null, "Demande de livraison chargée correctement !", "Info",
+                    JOptionPane.INFORMATION_MESSAGE);
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
-			System.out.println("Exception constructeur livraisons");			
+			System.out.println("Exception constructeur livraisons");
+			System.out.println(e.getMessage());
+			JOptionPane.showMessageDialog(null, e.toString(), "Error",
+                    JOptionPane.ERROR_MESSAGE);
 		}
     }
     
-    public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison) {
+    public void calculerTournee(Modele modele, FenetreIHM fenetre) {
         fenetre.afficheMessage("Veuillez charger une livraison !");
     }
     

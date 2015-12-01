@@ -168,6 +168,7 @@ public class VueGraphique extends JPanel implements Observer {
 			        	y2+=5;
 			        	
 			        	// Lien entre les deux
+			        	g.setColor(couleurLivraison);
 			        	g.drawLine(x1,y1,x2,y2);
 			        	
 			        	// Bout de la fleche

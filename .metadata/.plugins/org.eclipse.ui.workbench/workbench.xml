@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="16" version="2.0">
+<workbench progressCount="14" version="2.0">
 <workbenchAdvisor/>
 <window height="743" maximized="true" width="1024" x="0" y="0">
 <fastViewData fastViewLocation="1024"/>
@@ -11,14 +11,14 @@
 <coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="134" y="30"/>
 <coolItem id="additions" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.debug.ui.launch.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="144" y="30"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="56" y="30"/>
 <coolItem id="org.eclipse.debug.ui.main.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="82" y="30"/>
-<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="116" y="30"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="56" y="30"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="64" y="30"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="214" y="30"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
@@ -27,36 +27,10 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-<part id="1"/>
-<part id="2"/>
-<part id="3"/>
-<part id="4"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandeAjout.java" partName="CommandeAjout.java" path="/home/nico/Documents/INSA/TP-DevOO/TP-DEVOO/src/controleur/CommandeAjout.java" title="CommandeAjout.java" tooltip="TP-DEVOO/src/controleur/CommandeAjout.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP-DEVOO/src/controleur/CommandeAjout.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="730" selectionTopPixel="198"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandeSuprime.java" partName="CommandeSuprime.java" path="/home/nico/Documents/INSA/TP-DevOO/TP-DEVOO/src/controleur/CommandeSuprime.java" title="CommandeSuprime.java" tooltip="TP-DEVOO/src/controleur/CommandeSuprime.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP-DEVOO/src/controleur/CommandeSuprime.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="915" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandeModifie.java" partName="CommandeModifie.java" path="/home/nico/Documents/INSA/TP-DevOO/TP-DEVOO/src/controleur/CommandeModifie.java" title="CommandeModifie.java" tooltip="TP-DEVOO/src/controleur/CommandeModifie.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP-DEVOO/src/controleur/CommandeModifie.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="347" selectionTopPixel="78"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Tournee.java" partName="Tournee.java" path="/home/nico/Documents/INSA/TP-DevOO/TP-DEVOO/src/modele/Tournee.java" title="Tournee.java" tooltip="TP-DEVOO/src/modele/Tournee.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP-DEVOO/src/modele/Tournee.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4833" selectionTopPixel="927"/>
-</editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Livraison.java" partName="Livraison.java" path="/home/nico/Documents/INSA/TP-DevOO/TP-DEVOO/src/modele/Livraison.java" title="Livraison.java" tooltip="TP-DEVOO/src/modele/Livraison.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP-DEVOO/src/modele/Livraison.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="402" selectionTopPixel="0"/>
-</editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
@@ -69,7 +43,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.ui.resourcePerspective">
+<perspectives activePart="org.eclipse.ui.navigator.ProjectExplorer" activePerspective="org.eclipse.ui.resourcePerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.ui.internal.ide.application.ResourcePerspective" id="org.eclipse.ui.resourcePerspective" label="Resource"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -101,11 +75,15 @@
 <hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <view id="org.eclipse.ui.navigator.ProjectExplorer"/>
-<view id="org.eclipse.ui.console.ConsoleView"/>
 <fastViewBars>
 <fastViewBar fastViewLocation="16384" id="bottomLeft" orientation="512" selectedTabId="org.eclipse.ui.views.ContentOutline" style="0">
 <fastViews>
 <view id="org.eclipse.ui.views.ContentOutline" ratio="0.3"/>
+</fastViews>
+</fastViewBar>
+<fastViewBar fastViewLocation="1024" id="org.eclipse.ui.internal.ViewStack@5baade52" orientation="256" selectedTabId="org.eclipse.ui.console.ConsoleView" style="0">
+<fastViews>
+<view id="org.eclipse.ui.console.ConsoleView" ratio="0.41339868"/>
 </fastViews>
 </fastViewBar>
 </fastViewBars>
@@ -140,6 +118,7 @@
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@5baade52" ratio="0.67487687" ratioLeft="411" ratioRight="198" relationship="4" relative="org.eclipse.ui.editorss">
 <folder appearance="2" expanded="2">
+<page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
@@ -149,16 +128,8 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@40fcc066" ratio="0.88933873" ratioLeft="659" ratioRight="82" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
-</folder>
-</info>
 <info folder="true" part="bottomLeft" ratio="0.4992126" ratioLeft="317" ratioRight="318" relationship="4" relative="topLeft">
-<folder appearance="2" expanded="2">
+<folder appearance="2" expanded="0">
 <page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
 <page content="org.eclipse.ant.ui.views.AntView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
@@ -169,169 +140,7 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory>
-<editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DEVOO/src/controleur/CommandeSuprime.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DEVOO/src/controleur/EtatLivraisonsSelectionnees.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DEVOO/src/controleur/EtatDeuxLivraisonSelectionnee.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DEVOO/src/controleur/CommandeModifie.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DEVOO/src/modele/Modele.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DEVOO/src/modele/Tournee.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DEVOO/src/controleur/CommandeAjout.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DEVOO/src/modele/Tournee.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DEVOO/src/modele/Livraison.java"/>
-</editors>
-<item historyLabel="CommandeModifie.java" index="3">
-<position info="not_deleted" x="666" y="0"/>
-</item>
-<item historyLabel="EtatDeuxLivraisonSelectionnee.java" index="2">
-<position info="not_deleted" x="783" y="0"/>
-</item>
-<item historyLabel="CommandeModifie.java" index="3">
-<position info="not_deleted" x="666" y="0"/>
-</item>
-<item historyLabel="EtatDeuxLivraisonSelectionnee.java" index="2">
-<position info="not_deleted" x="783" y="0"/>
-</item>
-<item historyLabel="EtatDeuxLivraisonSelectionnee.java" index="2">
-<position info="not_deleted" x="786" y="0"/>
-</item>
-<item historyLabel="EtatDeuxLivraisonSelectionnee.java" index="2">
-<position info="not_deleted" x="396" y="0"/>
-</item>
-<item historyLabel="CommandeModifie.java" index="3">
-<position info="not_deleted" x="497" y="0"/>
-</item>
-<item historyLabel="EtatDeuxLivraisonSelectionnee.java" index="2">
-<position info="not_deleted" x="396" y="0"/>
-</item>
-<item historyLabel="EtatLivraisonsSelectionnees.java" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="EtatDeuxLivraisonSelectionnee.java" index="2">
-<position info="not_deleted" x="783" y="0"/>
-</item>
-<item historyLabel="EtatLivraisonsSelectionnees.java" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="CommandeModifie.java" index="3">
-<position info="not_deleted" x="738" y="0"/>
-</item>
-<item historyLabel="Modele.java" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="CommandeModifie.java" index="3">
-<position info="not_deleted" x="738" y="0"/>
-</item>
-<item historyLabel="CommandeModifie.java" index="3">
-<position info="not_deleted" x="838" y="0"/>
-</item>
-<item historyLabel="CommandeModifie.java" index="3">
-<position info="not_deleted" x="718" y="8"/>
-</item>
-<item historyLabel="Modele.java" index="4">
-<position info="not_deleted" x="861" y="6"/>
-</item>
-<item historyLabel="Modele.java" index="4">
-<position info="not_deleted" x="953" y="1"/>
-</item>
-<item historyLabel="Modele.java" index="4">
-<position info="not_deleted" x="988" y="0"/>
-</item>
-<item historyLabel="CommandeModifie.java" index="3">
-<position info="not_deleted" x="452" y="0"/>
-</item>
-<item historyLabel="Modele.java" index="4">
-<position info="not_deleted" x="988" y="0"/>
-</item>
-<item historyLabel="CommandeModifie.java" index="3">
-<position info="not_deleted" x="452" y="0"/>
-</item>
-<item historyLabel="EtatDeuxLivraisonSelectionnee.java" index="2">
-<position info="not_deleted" x="783" y="0"/>
-</item>
-<item historyLabel="Modele.java" index="4">
-<position info="not_deleted" x="988" y="0"/>
-</item>
-<item historyLabel="CommandeSuprime.java" index="0">
-<position info="not_deleted" x="491" y="0"/>
-</item>
-<item historyLabel="Tournee.java" index="5">
-<position info="not_deleted" x="8226" y="0"/>
-</item>
-<item historyLabel="CommandeSuprime.java" index="0">
-<position/>
-</item>
-<item historyLabel="CommandeAjout.java" index="6">
-<position info="not_deleted" x="730" y="0"/>
-</item>
-<item historyLabel="CommandeSuprime.java" index="0">
-<position/>
-</item>
-<item historyLabel="CommandeSuprime.java" index="0">
-<position info="not_deleted" x="766" y="0"/>
-</item>
-<item historyLabel="CommandeSuprime.java" index="0">
-<position info="not_deleted" x="715" y="0"/>
-</item>
-<item historyLabel="Tournee.java" index="7">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Livraison.java" index="8">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Tournee.java" index="7">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Livraison.java" index="8">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Tournee.java" index="7">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Livraison.java" index="8">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Tournee.java" index="7">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Livraison.java" index="8">
-<position/>
-</item>
-<item historyLabel="Tournee.java" index="7">
-<position info="not_deleted" x="4796" y="0"/>
-</item>
-<item historyLabel="CommandeModifie.java" index="3">
-<position info="not_deleted" x="347" y="0"/>
-</item>
-<item historyLabel="CommandeSuprime.java" index="0">
-<position info="not_deleted" x="715" y="0"/>
-</item>
-<item historyLabel="CommandeSuprime.java" index="0">
-<position info="not_deleted" x="898" y="0"/>
-</item>
-<item historyLabel="Livraison.java" index="8">
-<position info="not_deleted" x="426" y="0"/>
-</item>
-<item historyLabel="Tournee.java" index="7">
-<position info="not_deleted" x="4315" y="102"/>
-</item>
-<item historyLabel="Tournee.java" index="7">
-<position info="not_deleted" x="4311" y="0"/>
-</item>
-<item historyLabel="CommandeSuprime.java" index="0">
-<position info="not_deleted" x="915" y="0"/>
-</item>
-<item historyLabel="Livraison.java" index="8">
-<position info="not_deleted" x="403" y="0"/>
-</item>
-<item historyLabel="Tournee.java" index="7">
-<position info="not_deleted" x="4833" y="0"/>
-</item>
-<item active="true" historyLabel="Livraison.java" index="8">
-<position info="not_deleted" x="403" y="0"/>
-</item>
-</navigationHistory>
+<navigationHistory/>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
@@ -339,6 +148,7 @@
 <trimLayout>
 <trimArea IMemento.internal.id="16384">
 <trimItem IMemento.internal.id="bottomLeft"/>
+<trimItem IMemento.internal.id="topLeft"/>
 </trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
@@ -348,37 +158,24 @@
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@5baade52"/>
-<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@40fcc066"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Livraison.java" tooltip="TP-DEVOO/src/modele/Livraison.java">
-<persistable path="/TP-DEVOO/src/modele/Livraison.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Tournee.java" tooltip="TP-DEVOO/src/modele/Tournee.java">
-<persistable path="/TP-DEVOO/src/modele/Tournee.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EtatLivraisonsSelectionnees.java" tooltip="TP-DEVOO/src/controleur/EtatLivraisonsSelectionnees.java">
-<persistable path="/TP-DEVOO/src/controleur/EtatLivraisonsSelectionnees.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandeModifie.java" tooltip="TP-DEVOO/src/controleur/CommandeModifie.java">
-<persistable path="/TP-DEVOO/src/controleur/CommandeModifie.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EtatLivraisonPrecedenteSelectionnee.java" tooltip="TP-DEVOO/src/controleur/EtatLivraisonPrecedenteSelectionnee.java">
-<persistable path="/TP-DEVOO/src/controleur/EtatLivraisonPrecedenteSelectionnee.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EtatDeuxLivraisonSelectionnee.java" tooltip="TP-DEVOO/src/controleur/EtatDeuxLivraisonSelectionnee.java">
-<persistable path="/TP-DEVOO/src/controleur/EtatDeuxLivraisonSelectionnee.java"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EtatTourneeCalculee.java" tooltip="TP-DEVOO/src/controleur/EtatTourneeCalculee.java">
 <persistable path="/TP-DEVOO/src/controleur/EtatTourneeCalculee.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EtatDefaut.java" tooltip="TP-DEVOO/src/controleur/EtatDefaut.java">
-<persistable path="/TP-DEVOO/src/controleur/EtatDefaut.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Castor.java" tooltip="TP-DEVOO/src/Castor/Castor.java">
+<persistable path="/TP-DEVOO/src/Castor/Castor.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Etat.java" tooltip="TP-DEVOO/src/controleur/Etat.java">
-<persistable path="/TP-DEVOO/src/controleur/Etat.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="VueTextuelle.java" tooltip="TP-DEVOO/src/vue/VueTextuelle.java">
+<persistable path="/TP-DEVOO/src/vue/VueTextuelle.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="VueGraphique.java" tooltip="TP-DEVOO/src/vue/VueGraphique.java">
+<persistable path="/TP-DEVOO/src/vue/VueGraphique.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FenetreIHM.java" tooltip="TP-DEVOO/src/vue/FenetreIHM.java">
+<persistable path="/TP-DEVOO/src/vue/FenetreIHM.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Controleur.java" tooltip="TP-DEVOO/src/controleur/Controleur.java">
 <persistable path="/TP-DEVOO/src/controleur/Controleur.java"/>
@@ -386,17 +183,29 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Modele.java" tooltip="TP-DEVOO/src/modele/Modele.java">
 <persistable path="/TP-DEVOO/src/modele/Modele.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandeSuprime.java" tooltip="TP-DEVOO/src/controleur/CommandeSuprime.java">
-<persistable path="/TP-DEVOO/src/controleur/CommandeSuprime.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DeserialiseurDemandeDeLivraisonXML.java" tooltip="TP-DEVOO/src/xml/DeserialiseurDemandeDeLivraisonXML.java">
+<persistable path="/TP-DEVOO/src/xml/DeserialiseurDemandeDeLivraisonXML.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EtatIntersectionSelectionnee.java" tooltip="TP-DEVOO/src/controleur/EtatIntersectionSelectionnee.java">
-<persistable path="/TP-DEVOO/src/controleur/EtatIntersectionSelectionnee.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DeserialiseurPlanXML.java" tooltip="TP-DEVOO/src/xml/DeserialiseurPlanXML.java">
+<persistable path="/TP-DEVOO/src/xml/DeserialiseurPlanXML.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EtatLivraisonChargee.java" tooltip="TP-DEVOO/src/controleur/EtatLivraisonChargee.java">
-<persistable path="/TP-DEVOO/src/controleur/EtatLivraisonChargee.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EtatLivraisonsSelectionnees.java" tooltip="TP-DEVOO/src/controleur/EtatLivraisonsSelectionnees.java">
+<persistable path="/TP-DEVOO/src/controleur/EtatLivraisonsSelectionnees.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EtatPlanCharge.java" tooltip="TP-DEVOO/src/controleur/EtatPlanCharge.java">
-<persistable path="/TP-DEVOO/src/controleur/EtatPlanCharge.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Tournee.java" tooltip="TP-DEVOO/src/modele/Tournee.java">
+<persistable path="/TP-DEVOO/src/modele/Tournee.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EtatDeuxLivraisonSelectionnee.java" tooltip="TP-DEVOO/src/controleur/EtatDeuxLivraisonSelectionnee.java">
+<persistable path="/TP-DEVOO/src/controleur/EtatDeuxLivraisonSelectionnee.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EtatDefaut.java" tooltip="TP-DEVOO/src/controleur/EtatDefaut.java">
+<persistable path="/TP-DEVOO/src/controleur/EtatDefaut.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Etat.java" tooltip="TP-DEVOO/src/controleur/Etat.java">
+<persistable path="/TP-DEVOO/src/controleur/Etat.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Livraison.java" tooltip="TP-DEVOO/src/modele/Livraison.java">
+<persistable path="/TP-DEVOO/src/modele/Livraison.java"/>
 </file>
 </mruList>
 </workbench>

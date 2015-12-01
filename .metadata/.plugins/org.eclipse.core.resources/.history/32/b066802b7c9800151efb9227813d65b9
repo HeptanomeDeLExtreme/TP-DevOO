@@ -181,7 +181,6 @@ public class Tournee extends Observable {
     	 *  FIN TEST NICO
     	 */
 
-    	System.out.println(livraisonsEnOrdre.indexOf(livraison));
     	Livraison livraisonPrecedente = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison) - 1 );
 //    	System.out.println(" Livraison Précedente = " + livraisonPrecedente.getAdresse().getId());
     	Livraison livraisonSuivante = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison) +1 );

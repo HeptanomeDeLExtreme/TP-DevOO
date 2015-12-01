@@ -16,7 +16,7 @@ public class Livraison {
     	boolean adresse = (this.adresse == obj.adresse);
     	boolean fenetre = (this.fenetre == obj.fenetre);
 		
-    	if( adresse && fenetre ) {
+    	if( adresse && fenetre  ) {
 			resultat = true;
 		}
 		return resultat;

@@ -118,14 +118,31 @@ public class Tournee extends Observable {
     		if (livraisonSuivante2.equals(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1)))
     		{
     		// Cas à gérer
-    			supprimeLivraison(livraison1);
-    			supprimeLivraison(livraison2);
-    			System.out.println("ID à modifier = " + livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1).getId());
 
-    			ajouteLivraison(livraisonSuivante2,livraison1.getAdresse());
-    			ajouteLivraison(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1), livraison2.getAdresse());
+    			System.out.println("ID à modifier = " + livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1).getId());
+    			supprimeLivraison(livraison1);
+    	    	System.out.println("Suppr liv1 ok");
+    	    	supprimeLivraison(livraison2);
+    	    	System.out.println("Suppr liv2 ok");
     			
-    		}
+        		System.out.println("Réajout liv2 ok");
+        		System.out.println(entrepot);
+        		
+        		
+        		Livraison KARL = livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1);
+        		System.out.println("MANGE MERDE = " + KARL.getAdresse().getId());
+        		System.out.println("On part de " + livraison1.getAdresse().getId());
+        		ajouteLivraison(KARL,livraison1.getAdresse());
+        		System.out.println("Nouvelles livraisons en ordre");
+        		for (Livraison liv : livraisonsEnOrdre)
+        		{
+        		System.out.println(liv.getAdresse().getId());
+        		}
+        		ajouteLivraison(livraisonsEnOrdre.get((livraisonsEnOrdre.size()-2)), livraison2.getAdresse());
+        		
+    			System.out.println("Réajout liv1 ok");}
+    			
+    		
     		
     		else{
     			supprimeLivraison(livraison1);
@@ -308,7 +325,14 @@ public class Tournee extends Observable {
     	Livraison livraison = new Livraison(id_max,philippe, intersectionCible,livraisonSuivante.getFenetre() );
     	livraison.calculerPlusCourtsChemins(graphePondere);
     	
-    	livraisonsEnOrdre.add(livraisonsEnOrdre.indexOf (livraisonSuivante),livraison);
+    	if (livraisonSuivante.equals(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1)))
+    	{
+    		System.out.println("NIQUE LUI SA MERE	");
+    		livraisonsEnOrdre.add(livraisonsEnOrdre.size()-1, livraison);
+    	}
+    
+    	else{
+    	livraisonsEnOrdre.add(livraisonsEnOrdre.indexOf (livraisonSuivante),livraison);}
     	
     	Livraison livraisonPrecedente = new Livraison();
     	//Cas où on veut ajouter à la fin, soit avant le retour à l'entrepot.

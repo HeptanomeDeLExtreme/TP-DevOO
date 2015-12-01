@@ -45,7 +45,7 @@ public class DemandeDeLivraison extends Observable{
 	}
 
 	/**
-     * La livraison de depart et d'arrivee de la tournee.
+     * La livraison de depart  de la tournee.
      */
     protected Livraison entrepot;
 

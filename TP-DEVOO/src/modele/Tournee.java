@@ -135,6 +135,12 @@ public class Tournee extends Observable {
     	//for (Livraison livraisonOrdre : livraisonsEnOrdre){
     		//System.out.println(livraisonOrdre.getAdresse().getId());
     	//}
+    	
+    	System.out.println("KV");
+    	for(Livraison liv : livraisonsEnOrdre){
+    		System.out.println(liv);
+    	}
+    	System.out.println("KF");
     	Livraison livraisonPrecedente = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison) - 1 );
 //    	System.out.println(" Livraison Précedente = " + livraisonPrecedente.getAdresse().getId());
     	Livraison livraisonSuivante = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison) +1 );

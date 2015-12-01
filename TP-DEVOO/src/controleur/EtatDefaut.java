@@ -8,6 +8,7 @@ import javax.swing.JSpinner.ListEditor;
 import modele.DemandeDeLivraison;
 import modele.Intersection;
 import modele.Livraison;
+import modele.Modele;
 import modele.Plan;
 import modele.Tournee;
 
@@ -81,19 +82,19 @@ public class EtatDefaut implements Etat {
 	}
 
 	@Override
-	public void supprimeLivraison(Tournee tournee, ListeCommande listeCommandes) {
+	public void supprimeLivraison(Modele modele, ListeCommande listeCommandes) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void ajouterLivraison(Tournee tournee, ListeCommande ldc) {
+	public void ajouterLivraison(Modele modele, ListeCommande ldc) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void modifierLivraison(Tournee tournee, ListeCommande listeCommandes) {
+	public void modifierLivraison(Modele modele, ListeCommande listeCommandes) {
 		// TODO Auto-generated method stub
 		
 	}

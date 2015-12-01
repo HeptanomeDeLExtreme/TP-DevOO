@@ -43,14 +43,14 @@ public class EtatTourneeCalculee extends EtatDefaut {
      * @param listeDeCommande
      */
     public void undo(ListeCommande listeDeCommande) {
-        // TODO implement here
+        listeDeCommande.undo();
     }
 
     /**
      * @param listeDeCommande
      */
     public void redo(ListeCommande listeDeCommande) {
-        // TODO implement here
+        listeDeCommande.redo();
     }
 
     /**
@@ -127,14 +127,14 @@ public class EtatTourneeCalculee extends EtatDefaut {
     	Livraison liv = ddl.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
     	Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
     	
-    	if(liv == null){
-    		Controleur.setEtatCourant(Controleur.etatIntersectionSelectionnee);
-    		Controleur.etatIntersectionSelectionnee.setIntersection(inter);
-    		fenetre.afficheMessage(Controleur.etatCourant.toString());
-    	}
-    	else{
+    	if(liv != null){
     		Controleur.setEtatCourant(Controleur.etatLivraisonsSelectionnees);
     		Controleur.etatLivraisonsSelectionnees.setLivraison(liv);
+    		fenetre.afficheMessage(Controleur.etatCourant.toString());
+    	}
+    	else if(inter != null){
+    		Controleur.setEtatCourant(Controleur.etatIntersectionSelectionnee);
+    		Controleur.etatIntersectionSelectionnee.setIntersection(inter);
     		fenetre.afficheMessage(Controleur.etatCourant.toString());
     	}
     }

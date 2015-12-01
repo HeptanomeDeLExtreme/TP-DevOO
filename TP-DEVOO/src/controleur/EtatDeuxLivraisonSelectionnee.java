@@ -3,6 +3,7 @@ package controleur;
 import java.util.*;
 
 import modele.Livraison;
+import modele.Modele;
 import modele.Tournee;
 
 /**
@@ -41,8 +42,8 @@ public class EtatDeuxLivraisonSelectionnee extends EtatDefaut {
      * @param livraison1 
      * @param livraison2
      */
-    public void modifierLivraison(Tournee tournee, ListeCommande listeCommandes) {
-    	tournee.modifierTournee(liv1, liv2);
+    public void modifierLivraison(Modele modele, ListeCommande listeCommandes) {
+    	listeCommandes.ajoute(new CommandeModifie(modele,liv1,liv2));
         Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
     }
 

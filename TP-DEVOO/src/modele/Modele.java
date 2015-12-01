@@ -30,4 +30,19 @@ public class Modele extends Observable{
 		setChanged();
 		notifyObservers();
 	}
+
+	public void ajouteLivraison(Livraison liv, Intersection inter) {
+		this.tournee.ajouteLivraison(liv, inter);	
+		this.changementEffectue();
+	}
+
+	public void supprimeLivraison(Livraison liv) {
+		this.tournee.supprimeLivraison(liv);
+		this.changementEffectue();
+	}
+
+	public void modifier(Livraison liv1, Livraison liv2) {
+		this.tournee.modifierTournee(liv1, liv2);
+		this.changementEffectue();
+	}
 }

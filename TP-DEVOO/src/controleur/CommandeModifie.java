@@ -3,6 +3,7 @@ package controleur;
 import java.util.*;
 
 import modele.Livraison;
+import modele.Modele;
 import modele.Tournee;
 
 /**
@@ -10,6 +11,10 @@ import modele.Tournee;
  */
 public class CommandeModifie implements Commande {
 
+	protected Livraison liv1;
+	protected Livraison liv2;
+	protected Modele modele;
+	
     /**
      * Default constructor
      */
@@ -26,22 +31,24 @@ public class CommandeModifie implements Commande {
      * @param livraison1 
      * @param livraison2
      */
-    public void CommandeModifie(Tournee tournee, Livraison livraison1, Livraison livraison2) {
-        // TODO implement here
+    public CommandeModifie(Modele modele, Livraison l1, Livraison l2) {
+        this.modele = modele;
+        this.liv1 = l1;
+        this.liv2 = l2;
     }
 
     /**
      * 
      */
     public void doCommande() {
-        // TODO implement here
+        this.modele.modifier(liv1,liv2);
     }
 
     /**
      * 
      */
     public void undoCommande() {
-        // TODO implement here
+    	this.modele.modifier(liv2,liv1);
     }
 
 }

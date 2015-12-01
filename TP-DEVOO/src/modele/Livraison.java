@@ -11,11 +11,11 @@ public class Livraison {
 
 	public boolean equals(Livraison obj) {
     	boolean resultat = false;
-    	boolean id = (this.id == obj.id);
-    	boolean client = (this.client == obj.client);
+//    	boolean id = (this.id == obj.id);
+//    	boolean client = (this.client == obj.client);
     	boolean adresse = (this.adresse == obj.adresse);
     	boolean fenetre = (this.fenetre == obj.fenetre);
-		if( id && client && adresse && fenetre ) {
+		if( adresse && fenetre  ) {
 			resultat = true;
 		}
 		return resultat;

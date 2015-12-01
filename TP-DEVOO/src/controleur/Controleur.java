@@ -132,7 +132,7 @@ public class Controleur {
      * 
      */
     public void ajouterLivraison() {
-        this.etatCourant.ajouterLivraison(this.modele.getTournee(), listeCommandes);
+        this.etatCourant.ajouterLivraison(this.modele, listeCommandes);
         this.modele.changementEffectue();
         this.setEtatCourant(etatTourneeCalculee);
     }
@@ -141,7 +141,7 @@ public class Controleur {
      * 
      */
     public void modifierLivraison() {
-        this.etatCourant.modifierLivraison(this.modele.getTournee(), listeCommandes);
+        this.etatCourant.modifierLivraison(this.modele, listeCommandes);
         this.modele.changementEffectue();
         this.setEtatCourant(etatTourneeCalculee);
     }
@@ -151,7 +151,7 @@ public class Controleur {
      * 
      */
     public void supprimeLivraison() {
-        this.etatCourant.supprimeLivraison(this.modele.getTournee(), listeCommandes);
+        this.etatCourant.supprimeLivraison(this.modele, listeCommandes);
         this.modele.changementEffectue();
         this.setEtatCourant(etatTourneeCalculee);
     }
@@ -207,6 +207,21 @@ public class Controleur {
 				break;
 			case KeyEvent.VK_G:
 				this.genererFeuilleRoute();
+				break;
+			case KeyEvent.VK_U:
+				this.undo();
+				break;
+			case KeyEvent.VK_R:
+				this.redo();
+				break;
+			case KeyEvent.VK_A:
+				this.ajouterLivraison();
+				break;
+			case KeyEvent.VK_S:
+				this.supprimeLivraison();
+				break;
+			case KeyEvent.VK_M:
+				this.modifierLivraison();
 				break;
 		}
 	}

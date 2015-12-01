@@ -11,7 +11,10 @@
 <fullyQualifiedTypeName name="controleur.ListeCommande"/>
 <fullyQualifiedTypeName name="controleur.CommandeSuprime"/>
 <fullyQualifiedTypeName name="modele.Tournee"/>
-<fullyQualifiedTypeName name="modele.Modele"/>
 <fullyQualifiedTypeName name="java.util.Observable"/>
 <fullyQualifiedTypeName name="modele.DemandeDeLivraison"/>
+<fullyQualifiedTypeName name="java.awt.event.KeyEvent"/>
+<fullyQualifiedTypeName name="modele.Intersection"/>
+<fullyQualifiedTypeName name="modele.Modele"/>
+<fullyQualifiedTypeName name="controleur.CommandeModifie"/>
 </qualifiedTypeNameHistroy>

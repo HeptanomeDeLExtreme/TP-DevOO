@@ -4,6 +4,7 @@ import java.util.*;
 
 import modele.Intersection;
 import modele.Livraison;
+import modele.Modele;
 import modele.Tournee;
 
 import vue.FenetreIHM;
@@ -28,8 +29,8 @@ public class EtatLivraisonPrecedenteSelectionnee extends EtatDefaut {
     }
 
 	@Override
-	public void ajouterLivraison(Tournee tournee, ListeCommande ldc) {
-		ldc.ajoute(new CommandeAjout(tournee,this.liv,this.inter));	
+	public void ajouterLivraison(Modele modele, ListeCommande ldc) {
+		ldc.ajoute(new CommandeAjout(modele,this.liv,this.inter));	
 	}
 
 	public void init(Intersection inter, Livraison liv) {

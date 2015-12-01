@@ -5,6 +5,7 @@ import java.util.*;
 
 import modele.DemandeDeLivraison;
 import modele.Livraison;
+import modele.Modele;
 import modele.Plan;
 import modele.Tournee;
 
@@ -36,7 +37,7 @@ public interface Etat {
     /**
      * @param fenetre
      */
-    public void ajouterLivraison(Tournee tournee, ListeCommande ldc);
+    public void ajouterLivraison(Modele modele, ListeCommande ldc);
 
     /**
      * @param tournee
@@ -57,13 +58,13 @@ public interface Etat {
      * @param tournee 
      * @param listeCommandes
      */
-    public void modifierLivraison(Tournee tournee, ListeCommande listeCommandes);
+    public void modifierLivraison(Modele modele, ListeCommande listeCommandes);
 
     /**
      * @param listeCommandes 
      * @param livraison
      */
-    public void supprimeLivraison(Tournee tournee, ListeCommande listeCommandes);
+    public void supprimeLivraison(Modele modele, ListeCommande listeCommandes);
 
     /**
      * @param fenetre 

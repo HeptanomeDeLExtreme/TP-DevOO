@@ -6,6 +6,7 @@ import java.util.*;
 import modele.DemandeDeLivraison;
 import modele.Intersection;
 import modele.Livraison;
+import modele.Modele;
 import modele.Plan;
 import modele.Tournee;
 
@@ -43,14 +44,14 @@ public class EtatIntersectionSelectionnee extends EtatDefaut {
     	if(liv == null){
     		Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
     	}
-    	else{
+    	else if(inter != null){
     		Controleur.setEtatCourant(Controleur.etatLivraisonPrecedenteSelectionnee);
     		Controleur.etatLivraisonPrecedenteSelectionnee.init(this.inter,liv);
     	}
     }
 
 	@Override
-	public void ajouterLivraison(Tournee tournee, ListeCommande ldc) {
+	public void ajouterLivraison(Modele modele, ListeCommande ldc) {
 				
 	}
 

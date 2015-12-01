@@ -4,6 +4,7 @@ import java.util.*;
 
 import modele.Intersection;
 import modele.Livraison;
+import modele.Modele;
 import modele.Tournee;
 
 /**
@@ -11,7 +12,7 @@ import modele.Tournee;
  */
 public class CommandeAjout implements Commande {
 
-	protected Tournee tournee;
+	protected Modele modele;
 	protected Livraison liv;
 	protected Intersection inter;
     /**
@@ -20,8 +21,8 @@ public class CommandeAjout implements Commande {
      * @param liv 
      * @param tournee2 
      */
-    public CommandeAjout(Tournee tournee, Livraison liv, Intersection inter) {
-    	this.tournee = tournee;
+    public CommandeAjout(Modele modele, Livraison liv, Intersection inter) {
+    	this.modele = modele;
     	this.liv = liv;
     	this.inter = inter;
     }
@@ -31,14 +32,17 @@ public class CommandeAjout implements Commande {
      * 
      */
     public void doCommande() {
-        this.tournee.ajouteLivraison(this.liv, this.inter);
+        this.modele.ajouteLivraison(this.liv, this.inter);
     }
 
     /**
      * 
      */
     public void undoCommande() {
-        // TODO implement here
+    	List<Livraison> listeLivraison = modele.getTournee().getLivraisonsEnOrdre();
+    	int index = listeLivraison.indexOf(this.liv);
+    	Livraison aSupprime = listeLivraison.get(index-1);
+        this.modele.supprimeLivraison(aSupprime);
     }
 
 }

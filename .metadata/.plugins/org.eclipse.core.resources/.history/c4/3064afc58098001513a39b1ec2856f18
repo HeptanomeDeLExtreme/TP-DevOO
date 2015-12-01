@@ -308,15 +308,7 @@ public class Tournee extends Observable {
     	Livraison livraison = new Livraison(id_max,philippe, intersectionCible,livraisonSuivante.getFenetre() );
     	livraison.calculerPlusCourtsChemins(graphePondere);
     	
-    	for(Livraison liv : livraisonsEnOrdre){
-    		System.out.println(liv +"  |  "+livraisonSuivante);
-    		if(liv.getAdresse().equals(livraisonSuivante.getAdresse())){
-    			livraisonSuivante = liv;
-    			System.out.println("oh");
-    		}
-    	}
-    	System.out.println();
-    	
+    	System.out.println("e"+livraisonSuivante);
     	livraisonsEnOrdre.add(livraisonsEnOrdre.indexOf (livraisonSuivante),livraison);
     	
     	Livraison livraisonPrecedente = new Livraison();

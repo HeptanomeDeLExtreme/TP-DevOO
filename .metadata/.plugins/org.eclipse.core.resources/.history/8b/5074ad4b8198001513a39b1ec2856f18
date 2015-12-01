@@ -312,7 +312,6 @@ public class Tournee extends Observable {
     		System.out.println(liv +"  |  "+livraisonSuivante);
     		if(liv.getAdresse().equals(livraisonSuivante.getAdresse())){
     			livraisonSuivante = liv;
-    			System.out.println("oh");
     		}
     	}
     	System.out.println();

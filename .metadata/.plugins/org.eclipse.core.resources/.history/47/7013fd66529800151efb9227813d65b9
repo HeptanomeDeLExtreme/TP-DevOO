@@ -67,25 +67,24 @@ public class EtatTourneeCalculee extends EtatDefaut {
      * @param fenetre
      */
     public void ouvrirPlan(Modele modele) {
-    	Plan plan = new Plan();
-    	try {
+    	Plan plan = modele.getPlan();
+       	try {
+			plan.nettoiePlan();
+        	if(modele.getDemandeDeLivraison() != null){
+        		modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
+        	}
+        	modele.getTournee().nettoyer();
     		DeserialiseurPlanXML.charger(plan);
+    		Controleur.setEtatCourant(Controleur.etatPlanCharge);
     		JOptionPane.showMessageDialog(null, "Plan chargé correctement !", "Info",
                     JOptionPane.INFORMATION_MESSAGE);
-    		modele.setPlan(plan);
-    		Controleur.setEtatCourant(Controleur.etatPlanCharge);
-    		if(modele.getDemandeDeLivraison() != null){
-    			modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
-    		}
-    		if(modele.getTournee() != null){
-    			modele.getTournee().nettoyer();
-    		}
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
 			System.out.println("Exception constructeur plan");	
 			System.out.println(e.getMessage());
 			JOptionPane.showMessageDialog(null, e.toString(), "Error",
                     JOptionPane.ERROR_MESSAGE);
+			Controleur.setEtatCourant(Controleur.etatInit);
 		}
     }
 
@@ -98,7 +97,6 @@ public class EtatTourneeCalculee extends EtatDefaut {
         	if(modele.getDemandeDeLivraison() != null){
         		modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
         	}
-        	modele.getTournee().nettoyer();
     		DeserialiseurDemandeDeLivraisonXML.charger(demandeDeLivraison,plan);
     		
     		int nbLivraisons = 0;
@@ -114,12 +112,18 @@ public class EtatTourneeCalculee extends EtatDefaut {
             Controleur.setEtatCourant(Controleur.etatLivraisonChargee);
             JOptionPane.showMessageDialog(null, "Demande de livraison chargée correctement !", "Info",
                     JOptionPane.INFORMATION_MESSAGE);
+        	modele.getTournee().nettoyer();
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
 			System.out.println("Exception constructeur livraisons");
 			System.out.println(e.getMessage());
 			JOptionPane.showMessageDialog(null, e.toString(), "Error",
                     JOptionPane.ERROR_MESSAGE);
+        	if(modele.getDemandeDeLivraison() != null){
+        		modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
+        	}
+        	modele.getTournee().nettoyer();
+			Controleur.setEtatCourant(Controleur.etatPlanCharge);
 		}
     }
 

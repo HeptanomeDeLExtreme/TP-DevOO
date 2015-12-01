@@ -38,8 +38,7 @@ public class EtatInit extends EtatDefaut {
      * @param fenetre
      */
     public void ouvrirPlan(Modele modele) {
-    	Plan plan = modele.getPlan(); 	
-    	
+    	Plan plan = modele.getPlan();
     	try {
     		plan.nettoiePlan();
         	if(modele.getDemandeDeLivraison() != null){

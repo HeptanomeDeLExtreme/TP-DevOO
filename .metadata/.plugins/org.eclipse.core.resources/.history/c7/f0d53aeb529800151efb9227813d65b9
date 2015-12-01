@@ -45,8 +45,4 @@ public class Modele extends Observable{
 		this.tournee.modifierTournee(liv1, liv2);
 		this.changementEffectue();
 	}
-
-	public void setPlan(Plan copie) {
-		this.plan = copie;		
-	}
 }

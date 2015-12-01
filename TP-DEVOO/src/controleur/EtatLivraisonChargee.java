@@ -41,30 +41,25 @@ public class EtatLivraisonChargee extends EtatDefaut {
      * @param fenetre
      */
     public void ouvrirPlan(Modele modele) {
-    	Plan plan = modele.getPlan();
-    	plan.nettoiePlan();
-    	if(modele.getDemandeDeLivraison() != null){
-    		modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
-    	}
+    	Plan plan = new Plan();
     	try {
     		DeserialiseurPlanXML.charger(plan);
-    		Controleur.setEtatCourant(Controleur.etatPlanCharge);
     		JOptionPane.showMessageDialog(null, "Plan chargé correctement !", "Info",
                     JOptionPane.INFORMATION_MESSAGE);
-        	if(modele.getDemandeDeLivraison() != null){
-        		modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
-        	}
+    		modele.setPlan(plan);
+    		Controleur.setEtatCourant(Controleur.etatPlanCharge);
+    		if(modele.getDemandeDeLivraison() != null){
+    			modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
+    		}
+    		if(modele.getTournee() != null){
+    			modele.getTournee().nettoyer();
+    		}
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
 			System.out.println("Exception constructeur plan");	
 			System.out.println(e.getMessage());
 			JOptionPane.showMessageDialog(null, e.toString(), "Error",
                     JOptionPane.ERROR_MESSAGE);
-			plan.nettoiePlan();
-        	if(modele.getDemandeDeLivraison() != null){
-        		modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
-        	}
-			Controleur.setEtatCourant(Controleur.etatInit);
 		}
     }
 
@@ -98,10 +93,6 @@ public class EtatLivraisonChargee extends EtatDefaut {
 			System.out.println(e.getMessage());
 			JOptionPane.showMessageDialog(null, e.toString(), "Error",
                     JOptionPane.ERROR_MESSAGE);
-        	if(modele.getDemandeDeLivraison() != null){
-        		modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
-        	}
-			Controleur.setEtatCourant(Controleur.etatPlanCharge);
 		}
     }
 

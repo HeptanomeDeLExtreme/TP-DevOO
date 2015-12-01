@@ -38,7 +38,11 @@ public class EtatInit extends EtatDefaut {
      * @param fenetre
      */
     public void ouvrirPlan(Modele modele) {
-    	Plan plan = modele.getPlan(); 	
+    	Plan plan = modele.getPlan();
+    	
+    	Plan copie = null;
+    	Set<Intersection> interCopie = plan.getIntersections();
+    	
     	
     	try {
     		plan.nettoiePlan();

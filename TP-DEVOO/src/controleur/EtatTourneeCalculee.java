@@ -93,12 +93,10 @@ public class EtatTourneeCalculee extends EtatDefaut {
      * @param fenetre
      */
     public void importerLivraison(FenetreIHM fenetre,Modele modele, Plan plan){
-    	DemandeDeLivraison demandeDeLivraison = modele.getDemandeDeLivraison();
+    	Tournee tournee = new Tournee();
+    	DemandeDeLivraison demandeDeLivraison = new DemandeDeLivraison(tournee);
+    	
     	try {
-        	if(modele.getDemandeDeLivraison() != null){
-        		modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
-        	}
-        	modele.getTournee().nettoyer();
     		DeserialiseurDemandeDeLivraisonXML.charger(demandeDeLivraison,plan);
     		
     		int nbLivraisons = 0;
@@ -112,6 +110,8 @@ public class EtatTourneeCalculee extends EtatDefaut {
     		nbLivraisons++;
     		demandeDeLivraison.setNbLivraisons(nbLivraisons);
             Controleur.setEtatCourant(Controleur.etatLivraisonChargee);
+            modele.setTournee(tournee);
+            modele.setDemandeDeLivraison(demandeDeLivraison);
             JOptionPane.showMessageDialog(null, "Demande de livraison chargée correctement !", "Info",
                     JOptionPane.INFORMATION_MESSAGE);
 		} catch (ParserConfigurationException | SAXException | IOException

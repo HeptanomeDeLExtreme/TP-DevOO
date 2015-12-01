@@ -136,6 +136,20 @@ public class Tournee extends Observable {
     		//System.out.println(livraisonOrdre.getAdresse().getId());
     	//}
     	
+    	/*
+    	 *  TEST NICO
+    	 */
+    	
+    	for(Livraison liv : livraisonsEnOrdre){
+    		if (livraison.equals(liv)){
+    			livraison = liv;
+    		}
+    	}
+    	
+    	/*
+    	 *  FIN TEST NICO
+    	 */
+    	
     	System.out.println("KV");
     	for(Livraison liv : livraisonsEnOrdre){
     		System.out.println(liv);
@@ -152,25 +166,25 @@ public class Tournee extends Observable {
     	int coutPrecedentToSuivant = 0;
     	
 //    	System.out.println("Affichage des anciens itineraires");
-		for (Itineraire it : itineraires)
-		{
-		
+//		for (Itineraire it : itineraires)
+//		{
+//		
 //			System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
-		}
+//		}
     	
     	Itineraire itiPrecedentToLivraison = new Itineraire();
     	Itineraire itiLivraisonToSuivant = new Itineraire();
     	//livraisonsEnOrdre.remove(livraison);
     	
 //    	System.out.println("Mise à jour des livraisons");
-    	for (Livraison liv :livraisonsEnOrdre)
-    	{
+//    	for (Livraison liv :livraisonsEnOrdre)
+//    	{
 //    		System.out.println("Id =" + liv.getAdresse().getId() );
-    	}
+//    	}
     	
     	for (Itineraire it : itineraires)
     	{
-    		if (it.getArrivee() == livraison)
+    		if (it.getArrivee().equals(livraison))
     		{
 //    			System.out.println("HEUI on supprime precedentToLivraison");
     			coutPrecedentToLivraison = it.getCout();
@@ -204,10 +218,9 @@ public class Tournee extends Observable {
     		this.demandeDeLivraison.majHorairesDesLivraisons(itineraires);
 //    		System.out.println("Affichage des nouveaux itineraires");
 			for (Itineraire it : itineraires)
-			{
-			
+//			{			
 //				System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
-			}
+//			}
 			this.changementEffectue();
     	}
     	
@@ -232,7 +245,9 @@ public class Tournee extends Observable {
     	int id_max  = (Integer) max;
     	id_max++;
     	
+    	// Affectation d'un client fixe, à changer en cas d'évolution
     	Client philippe= new Client(24);
+    	
     	Livraison livraison = new Livraison(id_max,philippe, intersectionCible,livraisonSuivante.getFenetre() );
     	livraison.calculerPlusCourtsChemins(graphePondere);
     	
@@ -303,6 +318,8 @@ public class Tournee extends Observable {
     	this.demandeDeLivraison.majHorairesDesLivraisons(itineraires);
     	charge(graphePondere.getMapCorrespondance(), demandeDeLivraison,entrepot, coutTotal,livraisonsEnOrdre, itineraires );
     }
+    
+    
     
     public List<Itineraire> getItineraires() {
 		return itineraires;

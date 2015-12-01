@@ -15,23 +15,31 @@ public class Livraison {
 //    	boolean client = (this.client == obj.client);
     	boolean adresse = (this.adresse == obj.adresse);
     	boolean fenetre = (this.fenetre == obj.fenetre);
-		if( adresse && fenetre  ) {
+		
+    	System.out.println("Adresse : " + adresse);
+    	System.out.println("Fenetre : " + fenetre);
+    	
+    	if( adresse && fenetre  ) {
 			resultat = true;
 		}
 		return resultat;
 	}
 
-	public void Copy(Livraison toCopy) {
+	public Livraison nouvelleCopie() {
 		
-		this.id = toCopy.id;
-		this.heureArrivee = toCopy.heureArrivee;
-		this.heureLivraison = toCopy.heureLivraison;
-		this.estDansFenetre = toCopy.estDansFenetre;
-		this.adresse = toCopy.adresse;
-		this.fenetre = toCopy.fenetre;
-		this.client = toCopy.client;
-		this.tableauPi = toCopy.tableauPi;
-		this.tableauD = toCopy.tableauD;
+		Livraison nouvelleLivraison = new Livraison();
+		
+		nouvelleLivraison.id = this.id;
+		nouvelleLivraison.heureArrivee = this.heureArrivee;
+		nouvelleLivraison.heureLivraison = this.heureLivraison;
+		nouvelleLivraison.estDansFenetre = this.estDansFenetre;
+		nouvelleLivraison.adresse = this.adresse;
+		nouvelleLivraison.fenetre = this.fenetre;
+		nouvelleLivraison.client = this.client;
+		nouvelleLivraison.tableauPi = this.tableauPi;
+		nouvelleLivraison.tableauD = this.tableauD;
+		
+		return nouvelleLivraison;
 	}
 
 	/**

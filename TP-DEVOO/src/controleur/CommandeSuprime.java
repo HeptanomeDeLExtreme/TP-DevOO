@@ -18,7 +18,10 @@ public class CommandeSuprime implements Commande {
      */
     protected Modele modele;
     protected Livraison liv;
-    protected Livraison livraisonPrecedente;
+    protected Livraison livraisonSuivante;
+//    protected Livraison livraisonSauvee;
+    protected Intersection intersectionSauvee;
+    
 
     /**
      * @param tournee 
@@ -29,10 +32,12 @@ public class CommandeSuprime implements Commande {
         this.liv = livraison;
     	List<Livraison> listeLivraison = modele.getTournee().getLivraisonsEnOrdre();
     	int index = listeLivraison.indexOf(this.liv);
-    	this.livraisonPrecedente = listeLivraison.get(index-1);
+    	this.livraisonSuivante = listeLivraison.get(index+1);
+    	
+    	this.intersectionSauvee = livraison.getAdresse();
     	
 //    	System.out.println("ASUP : "+this.liv);
-//    	System.out.println("PREC : "+this.livraisonPrecedente);
+//    	System.out.println("PREC : "+this.livraisonSuivante);
 //    	System.out.println("INTER : "+this.liv.getAdresse());
     }
 
@@ -40,16 +45,20 @@ public class CommandeSuprime implements Commande {
      * 
      */
     public void doCommande() {
-    	System.out.println("TO SUP : "+this.liv);
+
+//    	this.livraisonSauvee = this.liv.nouvelleCopie();
         this.modele.supprimeLivraison(this.liv);
+                
+        System.out.println("Je supprime : " + this.liv);
     }
 
     /**
      * 
      */
     public void undoCommande() {
-    	Intersection inter = liv.getAdresse();
-        this.modele.ajouteLivraison(livraisonPrecedente, inter);
+//    	Intersection inter = liv.getAdresse();
+    	this.modele.ajouteLivraison(this.livraisonSuivante, this.intersectionSauvee);
+//      this.modele.ajouteLivraisonSpecifique(livraisonSauvee,livraisonSuivante);
     }
 
 }

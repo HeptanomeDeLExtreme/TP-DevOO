@@ -19,18 +19,9 @@ public class Tournee extends Observable {
      * Default constructor
      */
     public Tournee() {
-    	this.coutTotal = -1;
     }
-    
-    
 
-    public int getCoutTotal() {
-		return coutTotal;
-	}
-
-
-
-	/**
+    /**
      * @param correspondancePlan 
      * @param coutTotal
      * @param livraisonsEnOrdre 

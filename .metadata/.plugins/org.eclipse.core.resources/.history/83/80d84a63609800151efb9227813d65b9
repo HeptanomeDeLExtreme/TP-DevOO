@@ -64,8 +64,7 @@ public class VueTextuelle extends JScrollPane implements Observer{
     	
     	Tournee tournee = modele.getTournee();
     	
-    	if(tournee != null && tournee.getCoutTotal() != -1){
-        	Livraison entrepot = tournee.getLivraisonsEnOrdre().get(0);
+    	if(tournee != null){
 	    	List<Itineraire> listeItineraire = tournee.getItineraires();
 	    	if(listeItineraire != null){
 		    	for(Itineraire itineraire : listeItineraire){
@@ -77,14 +76,14 @@ public class VueTextuelle extends JScrollPane implements Observer{
 		    		// Troncons
 		    		List<Troncon> listeTroncon = itineraire.getTroncons();
 		    		for(Troncon tronc : listeTroncon){
-		    			html += "Prendre "+tronc.getNomDeRue()+ " sur "+tronc.getLongueur()+"m.<br>";
-//		    			html += "debug : "+tronc.getOrigine() + "<br>"+tronc.getDestination()+"<br>";
+		    			html += "Passer par "+tronc.getNomDeRue()+"<br>";
+		    			html += "debug : "+tronc.getOrigine() + "<br>"+tronc.getDestination()+"<br>";
 		    		}
 		    		
 		    		// Arrivee
 		    		Livraison arrivee = itineraire.getArrivee();
 		    		Intersection interArrivee = arrivee.getAdresse();
-		    		html +="Arriver à  x = "+interArrivee.getX()+" y = "+interArrivee.getY()+"<br>";
+		    		html +="Partir de x = "+interArrivee.getX()+" y = "+interArrivee.getY()+"<br>";
 		    		if(arrivee.getHeureArrivee() != null){
 		    			html +="Heure d'arivée estimée : "+arrivee.getHeureArrivee()+"<br>";
 		    		}
@@ -93,7 +92,7 @@ public class VueTextuelle extends JScrollPane implements Observer{
 		    		}
 		    		if(arrivee != entrepot){
 			    		if(! arrivee.getEstDansFenetre()){
-			    			html += "<FONT color=\"red\">"+"RETARD"+"</FONT><br>";
+			    			html += "<FONT color=\"red\">"+"RETARD"+"</FONT>";
 			    		}
 		    		}
 		    		FenetreTemporelle fenetreArrivee = arrivee.getFenetre();

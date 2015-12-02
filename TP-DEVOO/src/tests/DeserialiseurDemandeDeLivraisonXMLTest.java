@@ -433,7 +433,7 @@ public class DeserialiseurDemandeDeLivraisonXMLTest {
 		} catch (ExceptionXML e) {
 			assertThat(e.getMessage(), CoreMatchers.containsString("Valeur unique en double ["));
 			assertThat(e.getMessage(), CoreMatchers.containsString("] déclarée pour la contrainte d'identité de l'élément "));
-			assertThat(e.getMessage(), CoreMatchers.containsString("PlagesHoraires"));
+			assertThat(e.getMessage(), CoreMatchers.containsString("Plage"));
 		}
 	}
 	

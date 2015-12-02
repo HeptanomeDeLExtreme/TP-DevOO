@@ -139,15 +139,28 @@ public class Tournee extends Observable {
     			System.out.println("Réajout liv1 ok");}
     	
     	else if (livraisonSuivante2.equals(livraison1)){
-    		supprimeLivraison(livraison1);
-        	System.out.println("Suppr liv1 ok");
-        	supprimeLivraison(livraison2);
-        	System.out.println("Suppr liv2 ok");
-    		ajouteLivraison(livraisonSuivante1, livraison2.getAdresse());
-        	System.out.println("Réajout liv1 ok");
-        	ajouteLivraison(livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraisonSuivante1)-1), livraison1.getAdresse());
-        	System.out.println("Réajout liv2 ok");}
+    		
+    		if(livraisonSuivante1.equals(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1)))
+    		{
+    			supprimeLivraison(livraison2);
+    			ajouteLivraison(livraison1,livraison2.getAdresse());
+    			supprimeLivraison(livraison1);
+    			System.out.println("ID à modifier = " + livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1).getId());
+    			ajouteLivraison(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-2), livraison1.getAdresse());	
+    		}
+    		else{
+    			supprimeLivraison(livraison1);
+    			System.out.println("Suppr liv1 ok");
+    			supprimeLivraison(livraison2);
+    			System.out.println("Suppr liv2 ok");
+    			ajouteLivraison(livraisonSuivante1, livraison2.getAdresse());
+    			System.out.println("Réajout liv1 ok");
+    			ajouteLivraison(livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraisonSuivante1)-1), livraison1.getAdresse());
+    			System.out.println("Réajout liv2 ok");
+    			}
+    		}
     
+    	
     	else{
     		supprimeLivraison(livraison1);
         	System.out.println("Suppr liv1 ok");
@@ -271,7 +284,18 @@ public class Tournee extends Observable {
 //			{			
 //				System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
 //			}
-			this.changementEffectue();
+			
+			
+			System.out.println("Itineraires après suppression");
+			for (Itineraire its : itineraires)
+	    	{
+	   		System.out.println("Itineraire de " + its.getDepart().getAdresse().getId() + " à " + its.getArrivee().getAdresse().getId());
+	    	}
+			System.out.println("livraisons ");
+			for (Livraison liv : livraisonsEnOrdre)
+    		{
+    		System.out.println(liv.getAdresse().getId());
+    		}
     	}
     	
    

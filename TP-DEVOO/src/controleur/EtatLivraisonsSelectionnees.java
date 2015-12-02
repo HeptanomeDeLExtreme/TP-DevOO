@@ -6,6 +6,7 @@ import java.util.*;
 import modele.DemandeDeLivraison;
 import modele.Intersection;
 import modele.Livraison;
+import modele.Modele;
 import modele.Plan;
 import modele.Tournee;
 
@@ -43,20 +44,21 @@ public class EtatLivraisonsSelectionnees extends EtatDefaut {
     /**
      * @param livraison
      */
-    public void supprimeLivraison(Tournee tournee, ListeCommande list) {
-    	list.ajoute(new CommandeSuprime(tournee, liv));
+    public void supprimeLivraison(Modele modele, ListeCommande list) {
+    	list.ajoute(new CommandeSuprime(modele, liv));
         Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
     }
     
     public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl){
-    	Livraison liv = ddl.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
-    	Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
+    	Livraison liv2 = ddl.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
     	
-    	if(liv == null){
-    		Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
+    	if(liv2 != null){
+    		Controleur.etatDeuxLivraisonSelectionnee.setLiv1(liv);
+    		Controleur.etatDeuxLivraisonSelectionnee.setLiv2(liv2);
+    		Controleur.setEtatCourant(Controleur.etatDeuxLivraisonSelectionnee);
     	}
     	else{
-    		Controleur.setEtatCourant(Controleur.etatDeuxLivraisonSelectionnee);
+    		Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
     	}
     }
 

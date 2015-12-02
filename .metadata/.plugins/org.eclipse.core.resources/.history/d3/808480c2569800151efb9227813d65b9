@@ -1,0 +1,177 @@
+package xml;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
+
+import modele.Plan;
+import modele.Intersection;
+import modele.Troncon;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
+/**
+ * @author H4203
+ * 
+ */
+public class DeserialiseurPlanXML {
+	/**
+	 * Ouvre un fichier xml et cree plan a partir du contenu du fichier
+	 * 
+	 * @param plan
+	 * @throws ParserConfigurationException
+	 * @throws SAXException
+	 * @throws IOException
+	 * @throws ExceptionXML
+	 */
+	public static void charger(Plan plan2) throws ParserConfigurationException, SAXException, IOException, ExceptionXML {
+		File xml = OuvreurDeFichierXML.getInstance().ouvre(true);
+		Plan plan = new Plan(); 
+		DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+		if (validateAgainstXSD(new FileInputStream(xml), new FileInputStream(new File("src/xml/XSDPlan.xsd")))){
+        	Document document = docBuilder.parse(xml);
+        	document.getDocumentElement().normalize();
+        	Element racine = document.getDocumentElement();
+            construireAPartirDeDOMXML(racine, plan);
+            
+        }
+		else{
+            	throw new ExceptionXML("Document non conforme");
+		}
+		plan2 = plan;
+	}
+	
+	/**
+	 * Ouvre un fichier xml passé en parametre et cree plan a partir du contenu du fichier
+	 * 
+	 * @param Plan plan
+	 * @param File xml
+	 * @throws ParserConfigurationException
+	 * @throws SAXException
+	 * @throws IOException
+	 * @throws ExceptionXML
+	 */
+	public static void charger(Plan plan, File xml) throws ParserConfigurationException, SAXException, IOException, ExceptionXML {
+
+		DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+		if (validateAgainstXSD(new FileInputStream(xml), new FileInputStream(new File("src/xml/XSDPlan.xsd")))){
+        	Document document = docBuilder.parse(xml);
+        	document.getDocumentElement().normalize();
+        	Element racine = document.getDocumentElement();
+            construireAPartirDeDOMXML(racine, plan);
+            
+        }
+		else{
+            	throw new ExceptionXML("Document non conforme");
+		}
+	}
+
+	/**
+	 * Construit les intersections et les tronçons a partir du XML
+	 * 
+	 * @param noeudDOMRacine
+	 * @param plan
+	 * @throws ExceptionXML
+	 * @throws NumberFormatException
+	 */
+	private static void construireAPartirDeDOMXML(Element noeudDOMRacine, Plan plan)
+			throws ExceptionXML, NumberFormatException {
+		NodeList listeIntersections = noeudDOMRacine.getElementsByTagName("Noeud");
+		// 1er passage d'initialisation des intersections
+		for (int i = 0; i < listeIntersections.getLength(); i++) {
+			plan.ajoute(creerIntersection((Element) listeIntersections.item(i)));
+			
+		}
+		// 2e passage : creation des tronçons - les intersections doivent déjà avoir été créées
+		for (int i = 0; i < listeIntersections.getLength(); i++) {
+			creerTroncons((Element) listeIntersections.item(i), plan);
+		}
+	}
+
+	/**
+	 * Cree une Intersection à partir d'un Element, correspondant a un noeud DOM
+	 * 
+	 * @param elt
+	 * @return
+	 * @throws ExceptionXML
+	 */
+	private static Intersection creerIntersection(Element elt) throws ExceptionXML {
+	    Integer id = Integer.parseInt(elt.getAttribute("id"));
+		Integer x = Integer.parseInt(elt.getAttribute("x"));
+		Integer y = Integer.parseInt(elt.getAttribute("y"));
+		
+		return new Intersection(id, x, y);
+	}
+	
+	/**
+	 * Cree les Troncons à partir des Elements noeuds et du Plan
+	 * 
+	 * @param noeud
+	 * @param plan
+	 * @throws ExceptionXML
+	 */
+	private static void creerTroncons(Element noeud, Plan plan) throws ExceptionXML {
+		Integer idTronconEntrant = Integer.parseInt(noeud.getAttribute("id"));
+		Intersection origine = plan.recupererIntersectionParId(idTronconEntrant);
+		NodeList listeTronconsXML = noeud.getElementsByTagName("LeTronconSortant");
+		for (int i = 0; i < listeTronconsXML.getLength(); i++) {
+			creerTroncon((Element)listeTronconsXML.item(i), plan, origine);
+		}
+	}
+
+	/**
+	 * Cree un troncon
+	 * 
+	 * @param tronconXML
+	 * @param plan
+	 * @param origine
+	 * @return troncon
+	 * @throws ExceptionXML
+	 */
+	private static Troncon creerTroncon(Element tronconXML, Plan plan, Intersection origine) throws ExceptionXML {
+		String nomRue = tronconXML.getAttribute("nomRue"); 
+		Float vitesse = Float.parseFloat(tronconXML.getAttribute("vitesse").replace(",", "."));
+		Float longueur = Float.parseFloat(tronconXML.getAttribute("longueur").replace(",", "."));
+		Integer idDestination = Integer.parseInt(tronconXML.getAttribute("idNoeudDestination"));
+		if(idDestination == origine.getId()){
+			throw new ExceptionXML("Document non conforme : Un tronçon ne peut avoir la même intersection comme origine et destination.");
+		}
+		Intersection destination = plan.recupererIntersectionParId(idDestination);
+		Troncon troncon = new Troncon(nomRue, vitesse, longueur, origine, destination);
+		origine.ajouteTronconSortant(troncon);
+		destination.ajouteTronconEntrant(troncon);
+		return troncon;
+	}
+	
+	private static boolean validateAgainstXSD(InputStream xml, InputStream xsd) throws ExceptionXML
+	{
+	    try
+	    {
+	        SchemaFactory factory = 
+	            SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+	        Schema schema = factory.newSchema(new StreamSource(xsd));
+	        Validator validator = schema.newValidator();
+	        validator.validate(new StreamSource(xml));
+	        return true;
+	    }
+	    catch(Exception ex)
+	    {
+	    	throw new ExceptionXML("Document non conforme : " + ex.getMessage());
+	    }
+	}
+
+}

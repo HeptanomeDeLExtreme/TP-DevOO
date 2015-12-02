@@ -134,12 +134,13 @@ public class Plan extends Observable{
      */
     protected Set<Intersection> intersections;
 
-    /**
-     * 
-     */
-    protected Plan singleton;
+    
 
-    /**
+    public void setIntersections(Set<Intersection> intersections) {
+		this.intersections = intersections;
+	}
+
+	/**
      * @param fichier
      */
     public void Plan(String fichier) {

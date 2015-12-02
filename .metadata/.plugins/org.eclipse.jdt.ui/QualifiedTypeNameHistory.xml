@@ -3,7 +3,6 @@
 <fullyQualifiedTypeName name="modele.Livraison"/>
 <fullyQualifiedTypeName name="controleur.EtatDeuxLivraisonSelectionnee"/>
 <fullyQualifiedTypeName name="controleur.EtatLivraisonPrecedenteSelectionnee"/>
-<fullyQualifiedTypeName name="modele.DemandeDeLivraison"/>
 <fullyQualifiedTypeName name="java.awt.Point"/>
 <fullyQualifiedTypeName name="modele.FenetreTemporelle"/>
 <fullyQualifiedTypeName name="controleur.EtatLivraisonsSelectionnees"/>
@@ -12,4 +11,10 @@
 <fullyQualifiedTypeName name="controleur.ListeCommande"/>
 <fullyQualifiedTypeName name="controleur.CommandeSuprime"/>
 <fullyQualifiedTypeName name="modele.Tournee"/>
+<fullyQualifiedTypeName name="java.util.Observable"/>
+<fullyQualifiedTypeName name="modele.DemandeDeLivraison"/>
+<fullyQualifiedTypeName name="java.awt.event.KeyEvent"/>
+<fullyQualifiedTypeName name="modele.Intersection"/>
+<fullyQualifiedTypeName name="modele.Modele"/>
+<fullyQualifiedTypeName name="controleur.CommandeModifie"/>
 </qualifiedTypeNameHistroy>

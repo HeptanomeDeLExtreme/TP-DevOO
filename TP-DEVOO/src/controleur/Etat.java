@@ -5,6 +5,7 @@ import java.util.*;
 
 import modele.DemandeDeLivraison;
 import modele.Livraison;
+import modele.Modele;
 import modele.Plan;
 import modele.Tournee;
 
@@ -18,25 +19,24 @@ public interface Etat {
     /**
      * @param plan
      */ 
-    public void ouvrirPlan(Plan plan);
+    public void ouvrirPlan(Modele modele);
 
     /**
      * @param fenetre
      * @param plan 
      * @param demandeDeLivraison 
      */
-    public void importerLivraison(FenetreIHM fenetre, DemandeDeLivraison demandeDeLivraison, Plan plan);
+    public void importerLivraison(FenetreIHM fenetre,Modele modele, Plan plan);
 
     /**
      * @param plan 
      * @param demandeDeLivraison
      */
-    public void calculerTournee(FenetreIHM fenetre, Plan plan, DemandeDeLivraison demandeDeLivraison);
-
+    public void calculerTournee(Modele modele, FenetreIHM fenetre);
     /**
      * @param fenetre
      */
-    public void ajouterLivraison(Tournee tournee, ListeCommande ldc);
+    public void ajouterLivraison(Modele modele, ListeCommande ldc);
 
     /**
      * @param tournee
@@ -54,16 +54,16 @@ public interface Etat {
     public void redo(ListeCommande listeCommande);
 
     /**
-     * @param livraison1 
-     * @param livraison2
+     * @param tournee 
+     * @param listeCommandes
      */
-    public void modifierLivraison(Livraison livraison1, Livraison livraison2);
+    public void modifierLivraison(Modele modele, ListeCommande listeCommandes);
 
     /**
      * @param listeCommandes 
      * @param livraison
      */
-    public void supprimeLivraison(Tournee tournee, ListeCommande listeCommandes);
+    public void supprimeLivraison(Modele modele, ListeCommande listeCommandes);
 
     /**
      * @param fenetre 

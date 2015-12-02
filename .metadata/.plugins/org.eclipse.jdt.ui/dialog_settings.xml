@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<item value="filter_imports;" key="filters_last_used"/>
 	<item value="/home/nico/Bureau" key="org.eclipse.jdt.ui.lastextjar"/>
 	<section name="OptionalMessageDialog.hide.">
 		<item value="true" key="org.eclipse.jdt.ui.typecomment.deprecated"/>
@@ -10,6 +11,30 @@
 	</section>
 	<section name="BuildPathsPropertyPage">
 		<item value="2" key="pageIndex"/>
+	</section>
+	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
+		<item value="545" key="DIALOG_WIDTH"/>
+		<item value="0" key="DIALOG_Y_ORIGIN"/>
+		<item value="414" key="DIALOG_X_ORIGIN"/>
+		<item value="743" key="DIALOG_HEIGHT"/>
+		<item value="1|Noto Sans|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="JavaSearchPage">
+		<item value="false" key="CASE_SENSITIVE"/>
+		<item value="11" key="INCLUDE_MASK"/>
+		<item value="1" key="HISTORY_SIZE"/>
+		<section name="HISTORY0">
+			<item value="11" key="includeMask"/>
+			<item value="2" key="limitTo"/>
+			<item value="0" key="scope"/>
+			<item value="" key="javaElement"/>
+			<item value="----------" key="pattern"/>
+			<item value="0" key="matchLocations"/>
+			<item value="0" key="searchFor"/>
+			<item value="false" key="isCaseSensitive"/>
+			<list key="workingSets">
+			</list>
+		</section>
 	</section>
 	<section name="quick_assist_proposal_size">
 	</section>
@@ -24,5 +49,15 @@
 		<item value="406" key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_WIDTH"/>
 		<item value="376" key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_HEIGHT"/>
 		<item value="false" key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_USE_PERSISTED_LOCATION"/>
+	</section>
+	<section name="SourceActionDialog.methods">
+		<item value="1" key="VisibilityModifier"/>
+		<item value="false" key="Comments"/>
+		<item value="false" key="SynchronizedModifier"/>
+		<item value="false" key="FinalModifier"/>
+	</section>
+	<section name="AddGetterSetterDialog">
+		<item value="false" key="RemoveFinal"/>
+		<item value="false" key="SortOrdering"/>
 	</section>
 </section>

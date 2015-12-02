@@ -1,0 +1,31 @@
+package controleur;
+
+import java.util.*;
+
+import modele.Livraison;
+import modele.Tournee;
+
+/**
+ * 
+ */
+public class EtatDeuxLivraisonSelectionnee extends EtatDefaut {
+
+    /**
+     * Default constructor
+     */
+    public EtatDeuxLivraisonSelectionnee() {
+    }
+    
+    public String toString(){
+    	return "Etat deux livraisons selectionnés ";
+    }
+
+    /**
+     * @param livraison1 
+     * @param livraison2
+     */
+    public void modifierLivraison(Tournee tournee, ListeCommande listeCommandes) {
+        Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
+    }
+
+}

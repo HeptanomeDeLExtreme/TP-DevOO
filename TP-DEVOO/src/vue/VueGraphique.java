@@ -18,6 +18,7 @@ import modele.FenetreTemporelle;
 import modele.Intersection;
 import modele.Itineraire;
 import modele.Livraison;
+import modele.Modele;
 import modele.Plan;
 import modele.Tournee;
 import modele.Troncon;
@@ -32,12 +33,10 @@ public class VueGraphique extends JPanel implements Observer {
 	private int hauteurVue;
 	private int largeurVue;
 	private Graphics g;
-	private Tournee tournee;
+	private Modele modele;
 	private FenetreIHM fenetre;
-	private DemandeDeLivraison demandeDeLivraison;
-	private Plan plan;
 	
-	public static final float correcteurEchelle = (float) 0.20;
+	public static final float correcteurEchelle = (float) 0.95;
 	
 	public static final Color couleurEntrepot = Color.BLUE;
 	public static final Color couleurIntersection = Color.LIGHT_GRAY;
@@ -49,16 +48,12 @@ public class VueGraphique extends JPanel implements Observer {
      * @param tournee 
      * @param fenetreIHM
      */
-    public VueGraphique(DemandeDeLivraison demandeDeLivraison, Tournee tournee, Plan p, FenetreIHM fenetreIHM) {
+    public VueGraphique(Modele modele, FenetreIHM fenetreIHM) {
     	super();
-    	this.plan = p;
-    	this.plan.addObserver(this);
     	this.fenetre = fenetreIHM;
-    	this.demandeDeLivraison = demandeDeLivraison;
-    	this.demandeDeLivraison.addObserver(this);
-    	this.tournee = tournee;
-    	this.tournee.addObserver(this);
-		this.echelleX = (float) 1.0;
+    	this.modele = modele;
+    	this.modele.addObserver(this);
+;		this.echelleX = (float) 1.0;
 		this.echelleY = (float) 1.0;
 		setLayout(null);
 		setBackground(Color.DARK_GRAY);
@@ -68,6 +63,10 @@ public class VueGraphique extends JPanel implements Observer {
     }
 
 	public void paintComponent(Graphics g) {
+		
+		Plan plan = modele.getPlan();
+		Tournee tournee = modele.getTournee();
+		DemandeDeLivraison demandeDeLivraison = modele.getDemandeDeLivraison();
 		
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
@@ -84,18 +83,18 @@ public class VueGraphique extends JPanel implements Observer {
 			// Calcul de l'echelle en x
 			Rectangle screen = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 			int largeurEcran = screen.width;
-			int largeurPlan = this.plan.getLargeur();
+			int largeurPlan = plan.getLargeur();
 			int largeurVG = largeurEcran - fenetre.getLargeurVueTextuelle();
 			this.echelleX = (float)(largeurVG) / (float)largeurPlan;
-			this.echelleX -= correcteurEchelle;
+			this.echelleX *= correcteurEchelle;
 			this.fenetre.setEchelleX(echelleX);
 			
 			// Calcul de l'echelle en y
 			int hauteurEcran = screen.height;
-			int hauteurPlan = this.plan.getHauteur();
+			int hauteurPlan = plan.getHauteur();
 			int hauteurVG = hauteurEcran - fenetre.getHauteurCadreMessages();
 			this.echelleY = (float)(hauteurVG) / (float)hauteurPlan ;
-			this.echelleY -= correcteurEchelle;
+			this.echelleY *= correcteurEchelle;
 			this.fenetre.setEchelleY(echelleY);
 			
 			for(Intersection inter : listInter){
@@ -121,16 +120,16 @@ public class VueGraphique extends JPanel implements Observer {
 		
 			// DESSINE LA DEMANDE DE LIVRAISON
 			g.setColor(couleurEntrepot);
-			Livraison entrepot = this.demandeDeLivraison.getEntrepot();
+			Livraison entrepot = demandeDeLivraison.getEntrepot();
 			if(entrepot != null){
 				Intersection inter  = entrepot.getAdresse();
 				int x = (int) (inter.getX()*echelleX);
 				int y = (int) (inter.getY()*echelleY);
 				g.fillOval(x, y, 10, 10);
 			}
-			List<FenetreTemporelle> listeFenetre = this.demandeDeLivraison.getFenetres();
+			List<FenetreTemporelle> listeFenetre = demandeDeLivraison.getFenetres();
 			if(listeFenetre != null){
-				g.setColor(Color.GREEN);
+				g.setColor(couleurLivraison);
 				for(FenetreTemporelle fenetre : listeFenetre){
 					Set<Livraison> livraisons = fenetre.getLivraisons();
 					if(livraisons != null){
@@ -145,7 +144,7 @@ public class VueGraphique extends JPanel implements Observer {
 			}
 			
 			// DESSINE LA TOURNEE
-			List<Itineraire> listeItineraire = this.tournee.getItineraires();
+			List<Itineraire> listeItineraire = tournee.getItineraires();
 			if(listeItineraire != null){
 				
 				
@@ -169,6 +168,7 @@ public class VueGraphique extends JPanel implements Observer {
 			        	y2+=5;
 			        	
 			        	// Lien entre les deux
+			        	g.setColor(couleurLivraison);
 			        	g.drawLine(x1,y1,x2,y2);
 			        	
 			        	// Bout de la fleche
@@ -178,7 +178,7 @@ public class VueGraphique extends JPanel implements Observer {
 					
 					// Depart
 					Livraison arrivee = itineraire.getArrivee();
-					if(arrivee != this.demandeDeLivraison.getEntrepot()){
+					if(arrivee != demandeDeLivraison.getEntrepot()){
 						Intersection inter = arrivee.getAdresse();
 						int x = (int) (inter.getX()*echelleX);
 						int y = (int) (inter.getY()*echelleY);

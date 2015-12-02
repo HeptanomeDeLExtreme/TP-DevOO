@@ -430,7 +430,6 @@ public class Tournee extends Observable {
     	coutTotal = coutTotal - coutASoustraire + coutLivraisonToSuivant + coutPrecedentToLivraison;
     	this.demandeDeLivraison.ajouteLivraison(livraisonSuivante, livraison);
     	this.demandeDeLivraison.majHorairesDesLivraisons(itineraires);
-    	this.demandeDeLivraison.majCoutTournee();
     	charge(graphePondere.getMapCorrespondance(), demandeDeLivraison,entrepot, coutTotal,livraisonsEnOrdre, itineraires );
     	return livraison;
     }

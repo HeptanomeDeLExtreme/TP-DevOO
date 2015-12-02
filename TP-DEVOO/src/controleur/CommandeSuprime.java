@@ -47,6 +47,11 @@ public class CommandeSuprime implements Commande {
     public void doCommande() {
 
 //    	this.livraisonSauvee = this.liv.nouvelleCopie();
+    	
+    	List<Livraison> listeLivraison = modele.getTournee().getLivraisonsEnOrdre();
+    	int index = listeLivraison.indexOf(this.liv);
+    	this.livraisonSuivante = listeLivraison.get(index-1);
+    	
         this.modele.supprimeLivraison(this.liv);
                 
 //        System.out.println("Je supprime : " + this.liv);
@@ -57,6 +62,7 @@ public class CommandeSuprime implements Commande {
      */
     public void undoCommande() {
 //    	Intersection inter = liv.getAdresse();
+    	System.out.println("LS : "+this.livraisonSuivante);
     	this.modele.ajouteLivraison(this.livraisonSuivante, this.intersectionSauvee);
 //      this.modele.ajouteLivraisonSpecifique(livraisonSauvee,livraisonSuivante);
     }

@@ -85,7 +85,7 @@ public class VueTextuelle extends JScrollPane implements Observer{
 		    		// Arrivee
 		    		Livraison arrivee = itineraire.getArrivee();
 		    		Intersection interArrivee = arrivee.getAdresse();
-		    		html +="Arriver à  x = "+interArrivee.getX()+" y = "+interArrivee.getY()+"<br>";
+		    		html +="Arriver à  x = "+interArrivee.getX()+" y = "+interArrivee.getY()+" id = "+interArrivee.getId()+"<br>";
 		    		if(arrivee.getHeureArrivee() != null){
 		    			html +="Heure d'arivée estimée : "+arrivee.getHeureArrivee()+"<br>";
 		    		}

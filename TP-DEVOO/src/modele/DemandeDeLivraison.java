@@ -324,40 +324,26 @@ public class DemandeDeLivraison extends Observable{
         
         // Créer la tournée
         this.tournee.charge(graphePondere.getMapCorrespondance(),this, entrepot, coutTotalSolution, livraisonsEnOrdre, itinerairesEnOrdre);
-        System.out.println(tempsTournee);
         this.tournee.setDuree(tempsTournee);
-    	
-    	// Tests manuels D'ajouter /Modifier/supprimer
-//    	Set<Intersection> mesinters = plan.getIntersections();
-//    	Intersection intercible = new Intersection();
-//    	for (Intersection inter : mesinters){
-//    		//Donner ici l'iD de l'intersection
-//    		if (inter.getId()== 33){
-//    			intercible = inter;
-//    			
-//    		}
-//    		
-//    	}
-//    	Livraison livraisonSuivante = new Livraison();
-//    	for (Livraison livSuivante : tournee.getLivraisonsEnOrdre()){
-//    		//Donner ici l'iD de la livraison
-//    		if(livSuivante.getAdresse().getId() == 34){
-//    			livraisonSuivante =livSuivante;
-//    		}
-//    	}
-//    	
-//    	Livraison livraisonSuivante2 = new Livraison();
-//    	for (Livraison livSuivante : tournee.getLivraisonsEnOrdre()){
-//    		//Donner ici l'iD de la livraison
-//    		if(livSuivante.getAdresse().getId() == 42){
-//    			livraisonSuivante2 =livSuivante;
-//    		}
-//    	}
-    	
-    	//tournee.modifierTournee(livraisonSuivante, livraisonSuivante2);
-    	//tournee.supprimeLivraison(livraisonSuivante);
-    	//tournee.ajouteLivraison(livraisonSuivante, intercible);
-
+    }
+    
+    public void majCoutTournee(){
+    	// Calcul du cout de la tournée + durée de la tournée
+        int coutTotalSolution = tsp.getCoutSolution();
+        int nbLivSansEntrepot = getNbLivraisons() - 1;
+        coutTotalSolution += (10 * 60) * nbLivSansEntrepot;
+        
+        Horaire heureDepartEntrepotDebutTournee = new Horaire(8, 0, 0);
+        List<Livraison> livEnOrdre = this.tournee.getLivraisonsEnOrdre();
+        Horaire heureArriveeEntrepotFinTournee = livEnOrdre.get(livEnOrdre.size()-1).getHeureArrivee();
+        //System.out.println("heure de départ tournée : " + heureDepartEntrepotDebutTournee);
+        //System.out.println("heure fin tournée : " + heureArriveeEntrepotFinTournee);
+        Horaire tempsTournee = heureArriveeEntrepotFinTournee.soustraireHoraire(heureDepartEntrepotDebutTournee);
+        //System.out.println("Temps de la tournée : " + tempsTournee);
+        
+        // Créer la tournée
+        this.tournee.setCoutTotal(coutTotalSolution);
+        this.tournee.setDuree(tempsTournee);
     }
 
     /**
@@ -373,7 +359,6 @@ public class DemandeDeLivraison extends Observable{
     	Horaire heureArrivee = null;
     	Horaire heureLivraison = null;
     	boolean estDansFenetre = false;
-		
     	for(Itineraire unItineraire : itinerairesEnOrdre) {
     		//System.out.println("Compteur : " + compteur);
     		
@@ -406,7 +391,7 @@ public class DemandeDeLivraison extends Observable{
     		
     		Horaire horaireCoutTotal = new Horaire(coutTotal);
     		//System.out.println("Horaire du coup total : " + horaireCoutTotal);
-    		
+    		System.out.println("ZOB : "+livraisonDepart);
     		if(compteur == 0) {
     			heureArrivee = livraisonDepart.getHeureArrivee().additionnerHoraire(horaireCoutTotal);
     		} else {

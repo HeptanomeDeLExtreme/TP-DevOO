@@ -14,9 +14,9 @@ public class Livraison {
 //    	boolean id = (this.id == obj.id);
 //    	boolean client = (this.client == obj.client);
     	boolean adresse = (this.adresse == obj.adresse);
-    	boolean fenetre = (this.fenetre == obj.fenetre);
+//    	boolean fenetre = (this.fenetre == obj.fenetre);
 		
-    	if( adresse && fenetre ) {
+    	if( adresse  ) {
 			resultat = true;
 		}
 		return resultat;
@@ -151,7 +151,7 @@ public class Livraison {
     
     @Override
     public String toString(){
-    	String s = "id = " + this.id.toString() + " adresse = " + this.adresse.toString();
+    	String s = "id = " + this.id.toString() + " adresse = " + this.adresse.toString()+" fenetre : "+this.heureLivraison+" "+this.fenetre;
     	return s;
     }
 
@@ -351,13 +351,9 @@ public class Livraison {
 //		System.out.println(numeroSommet);
 		int [][]piEtD = Dijkstra.dijkstra(graphe, numeroSommet);
 		tableauD = piEtD[0];
-		for(int i = 0; i < tableauD.length; i++) {
-			int resultat = tableauD[i];
-		}
+
 		tableauPi = piEtD[1];
-		for(int i = 0; i < tableauPi.length; i++) {
-			int resultat = tableauPi[i];
-		}
+
 		// TEST
 	}
 }

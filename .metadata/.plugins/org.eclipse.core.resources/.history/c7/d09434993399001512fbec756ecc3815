@@ -336,15 +336,14 @@ public class DemandeDeLivraison extends Observable{
         Horaire heureDepartEntrepotDebutTournee = new Horaire(8, 0, 0);
         List<Livraison> livEnOrdre = this.tournee.getLivraisonsEnOrdre();
         Horaire heureArriveeEntrepotFinTournee = livEnOrdre.get(livEnOrdre.size()-1).getHeureArrivee();
-        System.out.println("heure de départ tournée : " + heureDepartEntrepotDebutTournee);
-        System.out.println("heure fin tournée : " + heureArriveeEntrepotFinTournee);
+        //System.out.println("heure de départ tournée : " + heureDepartEntrepotDebutTournee);
+        //System.out.println("heure fin tournée : " + heureArriveeEntrepotFinTournee);
         Horaire tempsTournee = heureArriveeEntrepotFinTournee.soustraireHoraire(heureDepartEntrepotDebutTournee);
-        System.out.println("Temps de la tournée : " + tempsTournee);
+        //System.out.println("Temps de la tournée : " + tempsTournee);
         
         // Créer la tournée
         this.tournee.setCoutTotal(coutTotalSolution);
         this.tournee.setDuree(tempsTournee);
-        System.out.println(this.tournee.getDuree());
     }
 
     /**

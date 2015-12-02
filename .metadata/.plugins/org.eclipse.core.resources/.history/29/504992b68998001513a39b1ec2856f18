@@ -57,7 +57,6 @@ public class CommandeSuprime implements Commande {
      */
     public void undoCommande() {
 //    	Intersection inter = liv.getAdresse();
-    	System.out.println("LS : "+this.livraisonSuivante);
     	this.modele.ajouteLivraison(this.livraisonSuivante, this.intersectionSauvee);
 //      this.modele.ajouteLivraisonSpecifique(livraisonSauvee,livraisonSuivante);
     }

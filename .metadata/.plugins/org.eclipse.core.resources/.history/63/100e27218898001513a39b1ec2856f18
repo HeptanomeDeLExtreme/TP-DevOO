@@ -372,6 +372,7 @@ public class DemandeDeLivraison extends Observable{
     	Horaire heureArrivee = null;
     	Horaire heureLivraison = null;
     	boolean estDansFenetre = false;
+		
     	for(Itineraire unItineraire : itinerairesEnOrdre) {
     		//System.out.println("Compteur : " + compteur);
     		
@@ -404,7 +405,7 @@ public class DemandeDeLivraison extends Observable{
     		
     		Horaire horaireCoutTotal = new Horaire(coutTotal);
     		//System.out.println("Horaire du coup total : " + horaireCoutTotal);
-    		System.out.println("ZOB : "+livraisonDepart);
+    		
     		if(compteur == 0) {
     			heureArrivee = livraisonDepart.getHeureArrivee().additionnerHoraire(horaireCoutTotal);
     		} else {

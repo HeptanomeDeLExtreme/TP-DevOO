@@ -151,7 +151,13 @@ public class Livraison {
     
     @Override
     public String toString(){
-    	String s = "id = " + this.id.toString() + " adresse = " + this.adresse.toString()+" fenetre : "+this.heureLivraison+" "+this.fenetre;
+    	String s = "id = " + this.id.toString() + " adresse = " + this.adresse.toString();
+    	if(fenetre == null){
+    		s += "fenetre null";
+    	}
+    	else{
+    		s+="fenetre ok";
+    	}
     	return s;
     }
 

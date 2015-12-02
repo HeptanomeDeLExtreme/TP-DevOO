@@ -289,15 +289,9 @@ public class Tournee extends Observable {
         // TODO implement here
     	//Récupération d'un ID non attribue
     	
-    	livraisonSuivante.setFenetre(demandeDeLivraison.getFenetres().get(demandeDeLivraison.getFenetres().size()-1));
-    	livraisonSuivante.setEstDansFenetre(true);
-    	livraisonSuivante.setHeureLivraison(new Horaire(19*60*60));
-    	
     	List<Integer> listeIDLivraisons = new ArrayList<Integer>();
     	
     	ListIterator<Livraison> itr = livraisonsEnOrdre.listIterator();
-    	
-    	this.demandeDeLivraison.majHorairesDesLivraisons(itineraires);
     	
     	while (itr.hasNext()){
     		Livraison livraisontoID = itr.next();
@@ -313,17 +307,16 @@ public class Tournee extends Observable {
     	
     	Livraison livraison = new Livraison(id_max,philippe, intersectionCible,livraisonSuivante.getFenetre() );
     	livraison.calculerPlusCourtsChemins(graphePondere);
-    	livraison.setHeureLivraison(new Horaire(19*60*60));
-    	System.out.println("T : "+livraison);
     	
-    	if (livraisonSuivante.equals(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1)))
-    	{
-    		System.out.println("NIQUE LUI SA MERE	");
-    		livraisonsEnOrdre.add(livraisonsEnOrdre.size()-1, livraison);
+    	for(Livraison liv : livraisonsEnOrdre){
+    		System.out.println(liv+" "+livraison);
+    		if(liv.getAdresse().equals(livraisonSuivante.getAdresse())){
+    			livraisonSuivante = liv;
+    		}
     	}
-    
-    	else{
-    	livraisonsEnOrdre.add(livraisonsEnOrdre.indexOf (livraisonSuivante),livraison);}
+    	System.out.println();
+    	
+    	livraisonsEnOrdre.add(livraisonsEnOrdre.indexOf (livraisonSuivante),livraison);
     	
     	Livraison livraisonPrecedente = new Livraison();
     	//Cas où on veut ajouter à la fin, soit avant le retour à l'entrepot.

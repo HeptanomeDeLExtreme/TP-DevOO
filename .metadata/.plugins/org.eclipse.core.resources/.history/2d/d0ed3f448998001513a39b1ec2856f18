@@ -61,9 +61,9 @@ public class FenetreTemporelle {
     @Override
     public String toString(){
     	String s = " heureDeb = "+this.heureDebut.toString()+" heureFin = "+this.heureFin.toString();
-//    	for (Livraison l : livraisons){
-//    		s+=l.toString();
-//    	}
+    	for (Livraison l : livraisons){
+    		s+=l.toString();
+    	}
     	return s;
     }
 

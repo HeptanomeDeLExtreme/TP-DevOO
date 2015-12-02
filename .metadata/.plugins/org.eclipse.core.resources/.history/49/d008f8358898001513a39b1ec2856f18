@@ -404,7 +404,8 @@ public class DemandeDeLivraison extends Observable{
     		
     		Horaire horaireCoutTotal = new Horaire(coutTotal);
     		//System.out.println("Horaire du coup total : " + horaireCoutTotal);
-    		System.out.println("ZOB : "+livraisonDepart);
+    		System.out.println("CTT : "+livraisonDepart);
+
     		if(compteur == 0) {
     			heureArrivee = livraisonDepart.getHeureArrivee().additionnerHoraire(horaireCoutTotal);
     		} else {

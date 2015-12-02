@@ -18,6 +18,8 @@ public class Livraison {
 		
     	if( adresse  ) {
 			resultat = true;
+			System.out.println("equ");
+
 		}
 		return resultat;
 	}
@@ -151,7 +153,7 @@ public class Livraison {
     
     @Override
     public String toString(){
-    	String s = "id = " + this.id.toString() + " adresse = " + this.adresse.toString()+" fenetre : "+this.heureLivraison+" "+this.fenetre;
+    	String s = "id = " + this.id.toString() + " adresse = " + this.adresse.toString();
     	return s;
     }
 

@@ -344,7 +344,7 @@ public class DemandeDeLivraison extends Observable{
         // Créer la tournée
         this.tournee.setCoutTotal(coutTotalSolution);
         this.tournee.setDuree(tempsTournee);
-//        System.out.println(this.tournee.getDuree());
+        System.out.println(this.tournee.getDuree());
     }
 
     /**

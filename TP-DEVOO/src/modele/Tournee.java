@@ -119,11 +119,12 @@ public class Tournee extends Observable {
     		{
     		// Cas à gérer
     			supprimeLivraison(livraison1);
+    			ajouteLivraison(livraison2,livraison1.getAdresse());
     			supprimeLivraison(livraison2);
     			System.out.println("ID à modifier = " + livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1).getId());
 
-    			ajouteLivraison(livraisonSuivante2,livraison1.getAdresse());
-    			ajouteLivraison(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1), livraison2.getAdresse());
+    			
+    			ajouteLivraison(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-2), livraison2.getAdresse());
     			
     		}
     		
@@ -171,7 +172,7 @@ public class Tournee extends Observable {
 //    	System.out.println("Itineraires après modif");
     	for (Itineraire it : itineraires)
     	{
-//    		System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
+   		System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
     	}
     	
     }

@@ -351,9 +351,13 @@ public class Livraison {
 //		System.out.println(numeroSommet);
 		int [][]piEtD = Dijkstra.dijkstra(graphe, numeroSommet);
 		tableauD = piEtD[0];
-
+		for(int i = 0; i < tableauD.length; i++) {
+			int resultat = tableauD[i];
+		}
 		tableauPi = piEtD[1];
-
+		for(int i = 0; i < tableauPi.length; i++) {
+			int resultat = tableauPi[i];
+		}
 		// TEST
 	}
 }

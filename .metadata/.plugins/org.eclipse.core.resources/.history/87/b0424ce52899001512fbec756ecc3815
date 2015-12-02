@@ -334,8 +334,7 @@ public class DemandeDeLivraison extends Observable{
         coutTotalSolution += (10 * 60) * nbLivSansEntrepot;
         
         Horaire heureDepartEntrepotDebutTournee = new Horaire(8, 0, 0);
-        List<Livraison> livEnOrdre = this.tournee.getLivraisonsEnOrdre();
-        Horaire heureArriveeEntrepotFinTournee = livEnOrdre.get(livEnOrdre.size()-1).getHeureArrivee();
+        Horaire heureArriveeEntrepotFinTournee = livraisonsEnOrdre.getLast().getHeureArrivee();
         //System.out.println("heure de départ tournée : " + heureDepartEntrepotDebutTournee);
         //System.out.println("heure fin tournée : " + heureArriveeEntrepotFinTournee);
         Horaire tempsTournee = heureArriveeEntrepotFinTournee.soustraireHoraire(heureDepartEntrepotDebutTournee);

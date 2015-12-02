@@ -95,6 +95,16 @@ public class Tournee extends Observable {
     	
 //    	System.out.println("DEBUT DE MODIFIER");
 //    	System.out.println("Itineraires avant modif");
+    	
+    	for(Livraison liv : livraisonsEnOrdre){
+    		if(liv.equals(livraison1)){
+    			livraison1 = liv;
+    		}
+    		if(liv.equals(livraison2)){
+    			livraison2 = liv;
+    		}
+    	}
+    	
     	for (Itineraire it : itineraires)
     	{
 //    		System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());

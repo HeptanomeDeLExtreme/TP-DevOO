@@ -198,8 +198,6 @@ public class Tournee extends Observable {
    		System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
     	}
     	
-    	
-    	
     }
 
     /**
@@ -291,26 +289,23 @@ public class Tournee extends Observable {
     		charge(graphePondere.getMapCorrespondance(), demandeDeLivraison,entrepot, coutTotal,livraisonsEnOrdre, itineraires );
     		this.demandeDeLivraison.supprimeLivraison(livraison);
     		this.demandeDeLivraison.majHorairesDesLivraisons(itineraires);
-    		this.demandeDeLivraison.majCoutTournee();
-    		
 //    		System.out.println("Affichage des nouveaux itineraires");
-//			for (Itineraire it : itineraires)
+			for (Itineraire it : itineraires)
 //			{			
 //				System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
 //			}
 			
 			
-//			System.out.println("Itineraires après suppression");
-//			for (Itineraire its : itineraires)
-//	    	{
-//	   		System.out.println("Itineraire de " + its.getDepart().getAdresse().getId() + " à " + its.getArrivee().getAdresse().getId());
-//	    	}
-//			System.out.println("livraisons ");
-//			for (Livraison liv : livraisonsEnOrdre)
-//    		{
-//    		System.out.println(liv.getAdresse().getId());
-//    		}
-
+			System.out.println("Itineraires après suppression");
+			for (Itineraire its : itineraires)
+	    	{
+	   		System.out.println("Itineraire de " + its.getDepart().getAdresse().getId() + " à " + its.getArrivee().getAdresse().getId());
+	    	}
+			System.out.println("livraisons ");
+			for (Livraison liv : livraisonsEnOrdre)
+    		{
+    		System.out.println(liv.getAdresse().getId());
+    		}
     	}
     	
    
@@ -329,15 +324,9 @@ public class Tournee extends Observable {
         // TODO implement here
     	//Récupération d'un ID non attribue
     	
-    	
-    	
-    	
     	livraisonSuivante.setFenetre(demandeDeLivraison.getFenetres().get(demandeDeLivraison.getFenetres().size()-1));
     	livraisonSuivante.setEstDansFenetre(true);
     	livraisonSuivante.setHeureLivraison(new Horaire(19*60*60));
-    	
-    	
-    	
     	
     	List<Integer> listeIDLivraisons = new ArrayList<Integer>();
     	
@@ -499,12 +488,6 @@ public class Tournee extends Observable {
 
 	public void setRetard(boolean b) {
 		this.retard = b;
-	}
-
-
-
-	public void setCoutTotal(int coutTotalSolution) {
-		this.coutTotal = coutTotalSolution;
 	}
 	
 	

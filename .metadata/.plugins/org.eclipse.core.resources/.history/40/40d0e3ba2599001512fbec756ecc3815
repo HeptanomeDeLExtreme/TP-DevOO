@@ -289,10 +289,9 @@ public class Tournee extends Observable {
     		coutTotal = coutTotal - coutLivraisonToSuivant - coutPrecedentToLivraison + coutPrecedentToSuivant ;
     		
     		charge(graphePondere.getMapCorrespondance(), demandeDeLivraison,entrepot, coutTotal,livraisonsEnOrdre, itineraires );
+    		System.out.println("ROTI : "+livraisonPrecedente.getFenetre());
     		this.demandeDeLivraison.supprimeLivraison(livraison);
     		this.demandeDeLivraison.majHorairesDesLivraisons(itineraires);
-    		this.demandeDeLivraison.majCoutTournee();
-    		
 //    		System.out.println("Affichage des nouveaux itineraires");
 //			for (Itineraire it : itineraires)
 //			{			
@@ -310,6 +309,7 @@ public class Tournee extends Observable {
 //    		{
 //    		System.out.println(liv.getAdresse().getId());
 //    		}
+    		System.out.println("Testicle : "+livraisonPrecedente);
 
     	}
     	
@@ -329,15 +329,9 @@ public class Tournee extends Observable {
         // TODO implement here
     	//Récupération d'un ID non attribue
     	
-    	
-    	
-    	
     	livraisonSuivante.setFenetre(demandeDeLivraison.getFenetres().get(demandeDeLivraison.getFenetres().size()-1));
     	livraisonSuivante.setEstDansFenetre(true);
     	livraisonSuivante.setHeureLivraison(new Horaire(19*60*60));
-    	
-    	
-    	
     	
     	List<Integer> listeIDLivraisons = new ArrayList<Integer>();
     	
@@ -499,12 +493,6 @@ public class Tournee extends Observable {
 
 	public void setRetard(boolean b) {
 		this.retard = b;
-	}
-
-
-
-	public void setCoutTotal(int coutTotalSolution) {
-		this.coutTotal = coutTotalSolution;
 	}
 	
 	

@@ -291,7 +291,7 @@ public class Tournee extends Observable {
     		charge(graphePondere.getMapCorrespondance(), demandeDeLivraison,entrepot, coutTotal,livraisonsEnOrdre, itineraires );
     		this.demandeDeLivraison.supprimeLivraison(livraison);
     		this.demandeDeLivraison.majHorairesDesLivraisons(itineraires);
-    		this.demandeDeLivraison.majCoutTournee();
+    		
     		
 //    		System.out.println("Affichage des nouveaux itineraires");
 //			for (Itineraire it : itineraires)
@@ -499,12 +499,6 @@ public class Tournee extends Observable {
 
 	public void setRetard(boolean b) {
 		this.retard = b;
-	}
-
-
-
-	public void setCoutTotal(int coutTotalSolution) {
-		this.coutTotal = coutTotalSolution;
 	}
 	
 	

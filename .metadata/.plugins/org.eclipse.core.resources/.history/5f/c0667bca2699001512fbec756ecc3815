@@ -52,7 +52,9 @@ public class CommandeSuprime implements Commande {
     	int index = listeLivraison.indexOf(this.liv);
     	this.livraisonSuivante = listeLivraison.get(index-1);
     	
+    	System.out.println("DEG : "+this.liv);
         this.modele.supprimeLivraison(this.liv);
+        System.out.println("FUMIER : "+this.liv);
                 
 //        System.out.println("Je supprime : " + this.liv);
     }

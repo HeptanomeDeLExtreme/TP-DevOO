@@ -47,7 +47,8 @@ public class CommandeSuprime implements Commande {
      		this.entrepotSelectionne = false;
      	}
      	
-     	if(this.modele.getTournee().getLivraisonsEnOrdre().size()==3){
+     	System.out.println(this.modele.getTournee().getLivraisonsEnOrdre().size());
+     	if(this.modele.getTournee().getLivraisonsEnOrdre().size()==1){
 			int response = JOptionPane.showConfirmDialog(null, "Si vous supprimez la derniere livraison, des erreurs peuvent subvenir.", "Continuer",
 			JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if (response == JOptionPane.NO_OPTION) {

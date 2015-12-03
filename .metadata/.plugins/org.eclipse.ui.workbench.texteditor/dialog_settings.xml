@@ -3,23 +3,25 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="298" key="DIALOG_WIDTH"/>
 		<item value="41" key="DIALOG_Y_ORIGIN"/>
-		<item value="808" key="DIALOG_X_ORIGIN"/>
 		<item value="431" key="DIALOG_HEIGHT"/>
+		<item value="808" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Noto Sans|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="this.modele.getPlan()" key="selection"/>
+		<item value="entrepotSelectionne" key="selection"/>
 		<list key="findhistory">
+			<item value="commandeValide"/>
 			<item value="this."/>
 			<item value="this.plan"/>
 			<item value="graphePondere"/>
 		</list>
 		<list key="replacehistory">
+			<item value="entrepotSelectionne"/>
 			<item value="this.modele.getPlan()"/>
 		</list>
 	</section>

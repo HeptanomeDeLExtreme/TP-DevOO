@@ -5,50 +5,54 @@ import java.util.Map.Entry;
 
 
 /**
- * 
+ * Represente un point de livraison a desservir.
  */
 public class Livraison {
-/**
-	 * 
+	
+	/**
+	 * ID de la livraison
 	 */
 	protected Integer id;
 
 	/**
-	 * 
+	 * Heure d'arrivee au point de livraison
 	 */
 	protected Horaire heureArrivee;
 
 	/**
-	 * 
+	 * Heure de livraison
 	 */
 	protected Horaire heureLivraison;
 
 	/**
-	 * 
+	 * Definit si la livraison se trouve dans une fenetre
 	 */
 	protected Boolean estDansFenetre;
 
 	/**
-	 * 
+	 * Adresse de la livraison
 	 */
 	protected Intersection adresse;
-
+	
+	/**
+	 * Fenetre temporelle dans laquelle la livraison doit etre effectuee
+	 */
 	protected FenetreTemporelle fenetre;
 
 	/**
-	 * 
+	 * Client destinataire de la livraison
 	 */
 	protected Client client;
 
 	/**
-	 * 
+	 * Tableau des predecesseurs de l'intersection de la livraison 
 	 */
 	protected int[] tableauPi;
 
 
 
-/**
-	 * 
+	/**
+	 *  Tableau des couts associes aux predecesseurs de l'intersection de la livraison 
 	 */
 	protected int[] tableauD;
 

@@ -3,7 +3,7 @@ package modele;
 import java.util.Observable;
 
 public class Modele extends Observable{
-
+// TODO Java doc des methodes
 	protected Tournee tournee;
 	protected DemandeDeLivraison demandeDeLivraison;
 	protected Plan plan;
@@ -30,18 +30,19 @@ public class Modele extends Observable{
 		setChanged();
 		notifyObservers();
 	}
-
+	//TODO
 	public void ajouteLivraison(Livraison liv, Intersection inter) {
 		this.tournee.ajouteLivraison(liv, inter);	
 		this.changementEffectue();
 	}
 
-
+	//TODO
 	public void supprimeLivraison(Livraison liv) {
 		this.tournee.supprimeLivraison(liv);
 		this.changementEffectue();
 	}
-
+	
+	//TODO
 	public void modifier(Livraison liv1, Livraison liv2) {
 		this.tournee.modifierTournee(liv1, liv2);
 		this.changementEffectue();

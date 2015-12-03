@@ -16,7 +16,6 @@ import xml.DeserialiseurPlanXML;
 import xml.ExceptionXML;
 
 /**
- * 
  */
 public class DemandeDeLivraison extends Observable{
 
@@ -671,7 +670,6 @@ public class DemandeDeLivraison extends Observable{
     	return itinerairesEnOrdre;
     }
 
-}
     
     /**
      * Permet d'ajouter une livraison. Ne doit servir que lors de la création de la demande de livraison lors de l'ajout de l'entrepot

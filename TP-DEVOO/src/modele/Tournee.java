@@ -5,36 +5,48 @@ import java.util.*;
 
 
 /**
- * 
+ * Represente la tournee que le livreur devra effectuer.s
  */
 public class Tournee extends Observable {
-
+	
+	/**
+	 * Cout total de la tournee
+	 */
     private int coutTotal;
 
+    /**
+     * Liste ordonnee des livraisons dans la tournee
+     */
 	private List<Livraison> livraisonsEnOrdre;
 
+	/**
+	 * Graphe permettant de modeliser la tournee
+	 */
 	private GraphePondere graphePondere;
 
 	/**
-	 * 
+	 * Duree de la tournee
 	 */
 	protected Horaire duree;
 
 	/**
-	 * 
+	 * Demande de livraison associee a la tournee
 	 */
 	protected DemandeDeLivraison demandeDeLivraison;
 
 	/**
-	 * 
+	 * Entrepot de depart de la tournee
 	 */
 	protected Livraison entrepot;
 
 	/**
-	 * 
+	 * Itineraires constituant la tournee 
 	 */
 	protected List<Itineraire> itineraires;
 
+	/**
+	 * Indique si la tournee se fait avec ou sans retard.
+	 */
 	private boolean retard;
 
 	/**
@@ -142,13 +154,7 @@ public class Tournee extends Observable {
     	
     	FenetreTemporelle fenetre2 = livraison1.getFenetre();
     	FenetreTemporelle fenetre1 = livraison2.getFenetre();
-    	
-    	System.out.println("Fenetre Livraison 1" + fenetre1.getHeureDebut() + " - " + fenetre1.getHeureFin());
-    	System.out.println("Fenetre Livraison 2" + fenetre2.getHeureDebut() + " - " + fenetre2.getHeureFin());
-    	for (Livraison liv : livraisonsEnOrdre)
-		{
-		System.out.println(liv.getAdresse().getId());
-		}
+
     	
     	// Gestion des cas où on veut intervertir deux intersections à la suite
     	if (livraisonSuivante1.equals(livraison2)){
@@ -159,22 +165,16 @@ public class Tournee extends Observable {
     			supprimeLivraison(livraison1);
     			ajouteLivraison(livraison2,livraison1.getAdresse()).setFenetre(fenetre1);
     			supprimeLivraison(livraison2);
-    			System.out.println("ID à modifier = " + livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1).getId());
-
-    			
     			ajouteLivraison(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-2), livraison2.getAdresse()).setFenetre(fenetre2);
     			
     		}
-    		
-    		else{
+    		else
+    		{
     			supprimeLivraison(livraison1);
-    	    	System.out.println("Suppr liv1 ok");
     	    	supprimeLivraison(livraison2);
-    	    	System.out.println("Suppr liv2 ok");
     			ajouteLivraison(livraisonSuivante2, livraison1.getAdresse()).setFenetre(fenetre1);
-        		System.out.println("Réajout liv2 ok");
         		ajouteLivraison(livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraisonSuivante2)-1), livraison2.getAdresse()).setFenetre(fenetre2);}
-    			System.out.println("Réajout liv1 ok");}
+    		}
     	
     	else if (livraisonSuivante2.equals(livraison1)){
     		
@@ -183,48 +183,28 @@ public class Tournee extends Observable {
     			supprimeLivraison(livraison2);
     			ajouteLivraison(livraison1,livraison2.getAdresse()).setFenetre(fenetre2);
     			supprimeLivraison(livraison1);
-    			System.out.println("ID à modifier = " + livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1).getId());
     			ajouteLivraison(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-2), livraison1.getAdresse()).setFenetre(fenetre1);	
     		}
-    		else{
+    		else
+    		{
     			supprimeLivraison(livraison1);
-    			System.out.println("Suppr liv1 ok");
     			supprimeLivraison(livraison2);
-    			System.out.println("Suppr liv2 ok");
     			ajouteLivraison(livraisonSuivante1, livraison2.getAdresse()).setFenetre(fenetre2);
-    			System.out.println("Réajout liv1 ok");
     			ajouteLivraison(livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraisonSuivante1)-1), livraison1.getAdresse()).setFenetre(fenetre1);
-    			System.out.println("Réajout liv2 ok");
-    			}
+    		}
     		}
     	
     	else{
     		supprimeLivraison(livraison1);
-        	System.out.println("Suppr liv1 ok");
-        	
-        	System.out.println("Suppr liv2 ok");
     		ajouteLivraison(livraisonSuivante2, livraison1.getAdresse()).setFenetre(fenetre1);
     		supprimeLivraison(livraison2);
-    		System.out.println("Réajout liv2 ok");
     		ajouteLivraison(livraisonSuivante1, livraison2.getAdresse()).setFenetre(fenetre2);
-    		System.out.println("Réajout liv1 ok");}
+    		}
     	
     	
     	
     	
     	charge(graphePondere.getMapCorrespondance(), demandeDeLivraison,entrepot, coutTotal,livraisonsEnOrdre, itineraires );
-    	
-//    	System.out.println("Livraisons après modifs");
-    	for (Livraison liv : livraisonsEnOrdre)
-    		{
-//    		System.out.println(liv.getAdresse().getId());
-    		}
-    	
-//    	System.out.println("Itineraires après modif");
-    	for (Itineraire it : itineraires)
-    	{
-   		System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
-    	}
     	
     	
     	
@@ -293,21 +273,14 @@ public class Tournee extends Observable {
      * @param lintersectionCible Intersection sur laquelle on veut placer la livraison.
      */
     public Livraison ajouteLivraison(Livraison livraisonSuivante, Intersection intersectionCible) {
-          
-    	System.out.println("AFFICHAGE LIVs");
-    	System.out.println("toadd : "+livraisonSuivante);
+
     	for(Livraison liv : livraisonsEnOrdre){
-    		System.out.print(liv);
     		if(liv.equals(livraisonSuivante)){
     			livraisonSuivante = liv;
-    			System.out.println(" ok");
     		}
-    		else{
-    			System.out.println();
-    		}
+    		
     	}	
-    	System.out.println("toadd2 : "+livraisonSuivante);
-    	System.out.println("FIN AFFICHAGE LIVs");
+    	
     	
     	List<Integer> listeIDLivraisons = new ArrayList<Integer>();
     	
@@ -330,7 +303,6 @@ public class Tournee extends Observable {
     	
     	if (livraisonSuivante.equals(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1)))
     	{
-    		
     		livraisonsEnOrdre.add(livraisonsEnOrdre.size()-1, livraison);
     	}
     
@@ -424,13 +396,9 @@ public class Tournee extends Observable {
 		this.livraisonsEnOrdre = livraisonsEnOrdre;
 	}
 
-
-
 	public void setRetard(boolean b) {
 		this.retard = b;
 	}
-
-
 
 	public void setCoutTotal(int coutTotalSolution) {
 		this.coutTotal = coutTotalSolution;

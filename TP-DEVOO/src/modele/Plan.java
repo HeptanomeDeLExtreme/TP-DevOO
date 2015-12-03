@@ -12,12 +12,18 @@ import xml.DeserialiseurPlanXML;
 import xml.ExceptionXML;
 
 /**
- * 
+ * Represente le plan des routes que l'on peut parcourir.
  */
 public class Plan extends Observable{
 
 
-    public Plan(Set<Intersection> listeInter) {
+    /**
+	 * Intersections du plan
+	 */
+	protected Set<Intersection> intersections;
+
+
+	public Plan(Set<Intersection> listeInter) {
 		this.intersections = listeInter;
 	}
     
@@ -32,7 +38,7 @@ public class Plan extends Observable{
     /**
      * @param fichier
      */
-    //TODO
+    //TODO Javadoc
     public void chargerPlan() {
     	try {
     		intersections = new HashSet<Intersection>();
@@ -91,7 +97,7 @@ public class Plan extends Observable{
     public Set<Intersection> getIntersections(){
     	return this.intersections;
     }
-
+    //TODO Java Doc
     public int getLargeur(){
     	int max = 0;
     	for(Intersection inter : this.intersections){
@@ -101,7 +107,7 @@ public class Plan extends Observable{
     	}
     	return max;
     }
-    
+    //TODO Java Doc
     public int getHauteur(){
     	int max = 0;
     	for(Intersection inter : this.intersections){
@@ -112,6 +118,7 @@ public class Plan extends Observable{
     	return max;
     }
     
+    // TODO Java Doc
     public Intersection cherche(Point p, float echelleX, float echelleY){
     	if(intersections != null){
     	Iterator<Intersection> it = intersections.iterator();
@@ -130,16 +137,7 @@ public class Plan extends Observable{
         notifyObservers();
     }
     
-    /**
-     * 
-     */
-    protected Set<Intersection> intersections;
-
-    
-
     public void setIntersections(Set<Intersection> intersections) {
 		this.intersections = intersections;
 	}
-
-
 }

@@ -2,6 +2,10 @@ package modele;
 
 import java.util.*;
 
+/**
+ * Represente un chemin entre deux intersections
+ *
+ */
 public class Troncon {
 
     /**

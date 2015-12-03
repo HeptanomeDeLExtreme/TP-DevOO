@@ -2,14 +2,29 @@ package modele;
 import java.util.*;
 
 public class GraphePondere {
-	//TODO Renommer les methodes et attributs
+	
+	/**
+	  * Tableau contenant les couts des arcs entre chaque noeud.
+	  */
+	 protected int [][]  couts;
+
+	/**
+	  * Nombre de noeuds du graphe
+	  */
+	 protected int nbNoeuds;
+
+	/**
+	 * Association des noeuds a une valeur numerique.
+	 */
+	protected Map<Integer, Intersection> mapCorrespondance;
+
 	/**
 	 * Default Constructor
 	 */
 	 public GraphePondere(){
 	 }
 	 
-	    // A EFFACER
+	  
 	    public Integer getKeyByValue(Map<Integer, Intersection> map, Intersection value) {
 	    	Integer resultat = null;
 	    	for(Integer compteur = 0; compteur < map.size(); compteur++) {
@@ -19,7 +34,7 @@ public class GraphePondere {
 	    	}
 	    	return resultat;
 	    }
-	    // A EFFACER
+	   
 	 
 	 /**
 	  * Genere un Graphe a partir d'un plan passe en parametre.
@@ -83,22 +98,7 @@ public class GraphePondere {
 		 this.couts = couts;
 	 } 
 	 
-		/**
-	  * Tableau contenant les couts des arcs entre chaque noeud.
-	  */
-	 protected int [][]  couts;
-	 
-	 /**
-	  * Nombre de noeuds du graphe
-	  */
-	 protected int nbNoeuds;
-	 
-	 /**
-	 * Association des noeuds a une valeur numerique.
-	 */
-	protected Map<Integer, Intersection> mapCorrespondance;
-	 
-	 public String toString(){
+		public String toString(){
 		 String toRet = "";
 		 for(int i = 0; i< this.nbNoeuds;i++){
 			 for(int j = 0;j<this.nbNoeuds;j++){

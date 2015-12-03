@@ -6,8 +6,27 @@ import java.util.*;
  * 
  */
 public class Itineraire {
+	/**
+     * 
+     */
+    protected Integer cout;
+    
+    /**
+     * 
+     */
+    protected List<Troncon> troncons;
 
     /**
+	 * 
+	 */
+	protected Livraison depart;
+
+	/**
+	 * 
+	 */
+	protected Livraison arrivee;
+
+	/**
      * Default constructor
      */
     public Itineraire() {
@@ -38,10 +57,7 @@ public class Itineraire {
 
 
 
-	/**
-     * 
-     */
-    protected Integer cout;
+	
 
     public Integer getCout() {
 		return cout;
@@ -52,19 +68,6 @@ public class Itineraire {
 	}
 
 
-
-	/**
-     * 
-     */
-    protected List<Troncon> troncons;
-
-    /**
-     * 
-     */
-    protected Livraison depart;
-
-    
-    
     public Livraison getDepart() {
 		return depart;
 	}
@@ -80,11 +83,6 @@ public class Itineraire {
 	public void setArrivee(Livraison arrivee) {
 		this.arrivee = arrivee;
 	}
-
-	/**
-     * 
-     */
-    protected Livraison arrivee;
 
 	public List<Troncon> getTroncons() {
 		return troncons;

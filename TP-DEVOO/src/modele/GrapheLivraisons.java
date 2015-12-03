@@ -13,11 +13,6 @@ public class GrapheLivraisons implements tsp.Graphe{
     public GrapheLivraisons() {
     }
 
-    /**
-     * 
-     * @param nbSommets
-     * @param couts
-     */
     
     /**
      * 
@@ -48,15 +43,14 @@ public class GrapheLivraisons implements tsp.Graphe{
 		return nbSommets;
 	}
 
-    /**
-     * 
-     * @param i
-     * @param j
-     * @return
-     */
-	
-
+   
 	@Override
+	 /**
+     * Obtenir le cout d'un arcentre un noeud i et un noeud j
+     * @param i Noeud i
+     * @param j Noeud j
+     * @return Cout de l'arc
+     */
 	public int getCout(int i, int j) {
 		
 		 Integer int_i = new Integer(i);
@@ -66,6 +60,9 @@ public class GrapheLivraisons implements tsp.Graphe{
 	}
 
 	@Override
+	/**
+	 * 
+	 */
 	public boolean estArc(int i, int j) {
 		
 		Integer int_i = new Integer(i);

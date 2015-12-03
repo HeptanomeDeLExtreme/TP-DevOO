@@ -16,7 +16,7 @@ public class Client {
 	}
 
     /**
-     * 
+     * ID du client.
      */
     protected Integer id;
 

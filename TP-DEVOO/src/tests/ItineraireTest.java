@@ -54,7 +54,6 @@ public class ItineraireTest {
 		
 		itineraire = new Itineraire(4, troncons, depart, arrivee);
 		
-		
 	}
 
 	/**

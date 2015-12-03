@@ -75,9 +75,6 @@ public class HoraireTest {
 		assertEquals(resultat3.getMinute(), 57);
 		assertEquals(resultat3.getSeconde(), 37);
 		
-		
-		
-		
 	}
 	
 	/**

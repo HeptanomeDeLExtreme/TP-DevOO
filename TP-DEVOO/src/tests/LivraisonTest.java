@@ -52,8 +52,6 @@ public class LivraisonTest {
 	
 	Troncon troncon2;
 	
-	int[] tableauPi, tableauD;
-	
 	/**
 	 * @throws java.lang.Exception
 	 */

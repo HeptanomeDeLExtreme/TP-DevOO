@@ -11,11 +11,7 @@ public class Livraison {
 
 	public boolean equals(Livraison obj) {
     	boolean resultat = false;
-//    	boolean id = (this.id == obj.id);
-//    	boolean client = (this.client == obj.client);
-    	boolean adresse = (this.adresse == obj.adresse);
-//    	boolean fenetre = (this.fenetre == obj.fenetre);
-		
+    	boolean adresse = (this.adresse.equals(obj.getAdresse()));
     	if( adresse  ) {
 			resultat = true;
 		}
@@ -259,63 +255,33 @@ public class Livraison {
 	public List<Troncon> rechercherTroncons(Map<Integer, Intersection> map, Livraison livraisonDest)
 	{
 		
-//		System.out.println("----------");
-//		System.out.println("Recherche du tronçon :");
-		
 		// Recuperer l'int de destination
 		Intersection arrivee = livraisonDest.getAdresse();
-//		System.out.println("Intersection d'arrivée pour la recherche " + arrivee);
 		Integer intDestination = getKeyByValue(map, arrivee);
-//		System.out.println("Numéro de sommet lié à cette intersection : " + intDestination);
 		
 		// Recupere l'int de l'origine
 		Integer intOrigine = getKeyByValue(map, adresse);
-//		System.out.println("Intersection de depart : "+adresse);
-//		System.out.println("Numéro de sommet de l'intersection de la livraison : " + intOrigine);
 		
 		// Recherche de la liste des int des intersections
 		
-//		System.out.println("Affichage du tableau PI de la livraison d'origine : ");
-//		for(int i = 0; i < this.tableauPi.length; i++) {
-//			System.out.println(this.tableauPi[i]);
-//		}
-		
 		List<Integer> listeEntierIntersection = new LinkedList<Integer>();
 		calculPlusCourtCheminRecursif(intOrigine, intDestination, this.tableauPi, listeEntierIntersection);
-//		System.out.println("Liste des entiers représentant tous les sommets du graphe par lesquels il faut " +
-//				"passer pour effectuer le parcours entre les deux livraisons : " + listeEntierIntersection);
-		
-//		System.out.println("Affichage du tableau de correspondance entre les intersections du plan et les" +
-//				"sommets  du graphe du plan : ");
-//		for(Integer i = 0; i < map.size(); i++) {
-//			System.out.println("sommet/compteur : " + i);
-//			System.out.println("Intersection : " + map.get(i));
-//		}
 		
 		// Passage des int en intersections
 		List<Intersection> listeIntersection = new LinkedList<Intersection>();
 		for(Integer intInter : listeEntierIntersection){
-//			System.out.println("int de l'intersection à chercher : " + intInter);
 			Intersection inter = map.get(intInter);
-//			System.out.println("Intersection retournée : " + inter);
 			listeIntersection.add(inter);
 		}
-//		System.out.println("Liste des intersections par lequelles il faut passer pour effectuer" +
-//				"le parcours entre deux livraisons : " + listeIntersection);
-		
-		
 	
 		// Recherche des troncons
 		List<Troncon> tronconsOrdonnes = new LinkedList<>();
 		for(int i = 0 ; i<listeIntersection.size()-1;i++){
 			Intersection depart = listeIntersection.get(i);
 			Intersection dest = listeIntersection.get(i+1);
-//			System.out.println("Recherche d'un tronçon qui part de " + depart + " à " + dest);
 			Troncon tronc = depart.rechercherTroncon(dest);
-//			System.out.println("Troncon résultat : " + tronc);
 			tronconsOrdonnes.add(tronc);
 		}
-//		System.out.println("----------");
 		
 		return tronconsOrdonnes;
 	}

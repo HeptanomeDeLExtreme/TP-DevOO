@@ -71,4 +71,3 @@ public class EcouteurSouris extends MouseAdapter{
 		int y = Math.round((float)e.getX()/(float)vueGraphique.getEchelleX());
 		return new Point(y,x);
 	}
-}

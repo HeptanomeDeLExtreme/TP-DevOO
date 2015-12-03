@@ -21,17 +21,14 @@ public class EcouteurBoutons implements ActionListener {
     
 
     /**
-     * Le constructeur par defaut.
      * @param controleur Le controleur avec lequel interagir.
      */
     public EcouteurBoutons(Controleur controleur) {
         this.controleur = controleur;
     }
 
+
 	@Override
-	/**
-	 * Gere le cas des differents boutons.
-	 */
 	public void actionPerformed(ActionEvent e) {
 		System.out.println(e.getActionCommand());	
 		switch (e.getActionCommand()){

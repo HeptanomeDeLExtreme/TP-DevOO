@@ -80,7 +80,7 @@ public class VueGraphique extends JPanel implements Observer {
     /**
      * Constructeur par defaut.
      * @param modele Le modele avec lequel interagir. 
-     * @param fenetreIHM La fenetre de contenance.
+     * @param fenetreIHM
      */
     public VueGraphique(Modele modele, FenetreIHM fenetreIHM) {
     	super();
@@ -96,9 +96,6 @@ public class VueGraphique extends JPanel implements Observer {
 	
     }
 
-    /**
-     * Remplit la zone graphique avec les infos adéquates.
-     */
 	public void paintComponent(Graphics g) {
 		
 		Plan plan = modele.getPlan();
@@ -227,6 +224,18 @@ public class VueGraphique extends JPanel implements Observer {
 						}
 						g.fillOval(x, y, 10, 10);
 					}
+					// Arrivee
+//					Livraison depart = itineraire.getDepart();
+//					inter = arrivee.getAdresse();
+//					x = (int) (inter.getX()*echelleX);
+//					y = (int) (inter.getY()*echelleY);
+//					if(arrivee.getEstDansFenetre()){
+//						g.setColor(couleurLivraison);
+//					}
+//					else{
+//						g.setColor(couleurLivraisonRetard);
+//					}
+//					g.fillOval(x, y, 10, 10);
 
 				}
 			}
@@ -235,9 +244,6 @@ public class VueGraphique extends JPanel implements Observer {
 		this.g = g;
 	}
 	
-	/**
-	 * Dessine une fleche.
-	 */
     private void drawArrow(Graphics2D g2, double theta, double x0, double y0)
     {
     	int barb = 20;                   // barb length
@@ -259,7 +265,8 @@ public class VueGraphique extends JPanel implements Observer {
 	}
 
 	/**
-     * Met a jour la vue.
+     * @param observable 
+     * @param objet
      */
     public void update(Observable observable, Object obj) {
         repaint();

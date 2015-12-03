@@ -50,25 +50,27 @@ public class VueTextuelle extends JScrollPane implements Observer{
     	this.modele = modele;
     	this.modele.addObserver(this);
 		setBorder(BorderFactory.createTitledBorder("Tournée :"));
+//		this.setVerticalTextPosition(TOP);
+//		this.setVerticalAlignment(TOP);
+		
 		label = new JLabel();
 		this.setViewportView(label);
+		
 		fenetre.getContentPane().add(this);
+		
     }
     
     protected void setText(String s){
     	this.label.setText(s);
     }
     
-    /*
-     * Change le texte
-     * @param s le texte a mettre
-     */
     protected void changeText(String s){
     	this.setText(s);
     }
 
     /**
-     * Mettre a jour la vision de la tournee.
+     * @param observable 
+     * @param objet
      */
     public void update(Observable observable, Object objet) {
     	String html = "<html>";
@@ -89,6 +91,7 @@ public class VueTextuelle extends JScrollPane implements Observer{
 		    		List<Troncon> listeTroncon = itineraire.getTroncons();
 		    		for(Troncon tronc : listeTroncon){
 		    			html += "Prendre "+tronc.getNomDeRue()+ " sur "+tronc.getLongueur()+"m.<br>";
+//		    			html += "debug : "+tronc.getOrigine() + "<br>"+tronc.getDestination()+"<br>";
 		    		}
 		    		
 		    		// Arrivee
@@ -113,10 +116,14 @@ public class VueTextuelle extends JScrollPane implements Observer{
 		    	}
 		    	html += "Temps de tournée : "+new Horaire(tournee.getCoutTotal()) + "<br>";
 		    	html += "Temps total : "+tournee.getDuree()+"<br><br>";
+//		    	System.out.println("Je suis qu'un thug "+tournee.getCoutTotal());
 		        
 		    	this.setText(html);
 	    	}
     	}
     }
+
+
+
 
 }

@@ -140,10 +140,10 @@ public class FenetreIHM extends JFrame{
     	
     	// Construit le menu fichier
     	menuFichier = new JMenu("Fichier");
-    	chargerPlan = new JMenuItem(PLAN);
-    	chargerLivraison = new JMenuItem(LIVRAISON);
-    	calculTournee = new JMenuItem(TOURNEE);
-    	genererFeuilleRoute = new JMenuItem(FEUILLE);
+    	chargerPlan = new JMenuItem("ChargerPlan");
+    	chargerLivraison = new JMenuItem("ChargerLivraison");
+    	calculTournee = new JMenuItem("CalculTournee");
+    	genererFeuilleRoute = new JMenuItem("Generer Feuille de Route");
     	menuFichier.add(chargerPlan);
     	menuFichier.add(chargerLivraison);
     	menuFichier.add(calculTournee);
@@ -151,17 +151,17 @@ public class FenetreIHM extends JFrame{
     	
     	// Construit le menu modifier
     	menuModifier = new JMenu("Modifier");
-    	ajouterLivraison = new JMenuItem(AJOUTER);
-    	modifierLivraison = new JMenuItem(MODIFIER);
-    	supprimerLivraison = new JMenuItem(SUPPRIMER);
+    	ajouterLivraison = new JMenuItem("Ajouter Livraison");
+    	modifierLivraison = new JMenuItem("Modifier Livraison");
+    	supprimerLivraison = new JMenuItem("Supprimer Livraison");
     	menuModifier.add(ajouterLivraison);
     	menuModifier.add(modifierLivraison);
     	menuModifier.add(supprimerLivraison);
     	
     	// Construit le menu historique
     	menuHistorique = new JMenu("Historique");
-    	undo = new JMenuItem(UNDO);
-    	redo = new JMenuItem(REDO);
+    	undo = new JMenuItem("Undo");
+    	redo = new JMenuItem("Redo");
     	menuHistorique.add(undo);
     	menuHistorique.add(redo);
     	

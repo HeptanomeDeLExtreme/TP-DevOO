@@ -24,15 +24,46 @@ import modele.Tournee;
 
 import controleur.Controleur;
 /**
- * 
+ * Represente la fenetre utilisateur.
  */
 public class FenetreIHM extends JFrame{
 
+	
+	protected static final String REDO = "Redo (R)";
+	protected static final String UNDO = "Undo (U)";
+	
+	protected static final String AJOUTER = "Ajouter une livaison (A)";
+	protected static final String SUPPRIMER = "Supprimer une livraison (S)";
+	protected static final String MODIFIER = "Modifier deux livraisons (M)";
+	
+	protected static final String PLAN = "Charger un plan (P)";
+	protected static final String LIVRAISON = "Charger une demande de livraison (L)";
+	protected static final String TOURNEE = "Calculer une tournée (T)";
+	protected static final String FEUILLE = "Générer une feuille de route (G)";
+	
+	/**
+	 * L'ecouteur de boutons.
+	 */
     protected EcouteurBoutons ecouteurBoutons;
+    /**
+     * L'ecouteur de souris.
+     */
     protected EcouteurSouris ecouteurSouris;
+    /**
+     * L'ecouteur de clavier.
+     */
     protected EcouteurClavier ecouteurClavier;
+    /**
+     * La vue graphique associée.
+     */
     protected VueGraphique vueGraphique;
+    /**
+     * La vue textuelle associée.
+     */
     protected VueTextuelle vueTextuelle;
+    /**
+     * Le controleur avec lequel interagir.
+     */
     protected Controleur controleur;
     
 	private JMenuBar barreMenu;
@@ -54,11 +85,19 @@ public class FenetreIHM extends JFrame{
 	private final int hauteurCadreMessages = 100;
 	private final int largeurVueTextuelle = 400;
 	
+	/*
+	 * L'echelle sur l'axe des X
+	 */
 	private float echelleX;
+	/**
+	 * L'echelle sur l'axe des Y
+	 */
 	private float echelleY;
 	
     /**
-     * Default constructor
+     * Constructeur par defaut.
+     * @param modele Le modele represente
+     * @param controleur Le controleur avec lequel interagir.
      */
     public FenetreIHM(Modele modele, Controleur controleur) {
     	
@@ -117,7 +156,9 @@ public class FenetreIHM extends JFrame{
 	}
 
 
-
+	/**
+	 * Cree la barre des menus.
+	 */
 	private void creerMenu(){
     	// Crée l'écouteur de bouton
     	ecouteurBoutons =  new EcouteurBoutons(this.controleur);
@@ -127,28 +168,28 @@ public class FenetreIHM extends JFrame{
     	
     	// Construit le menu fichier
     	menuFichier = new JMenu("Fichier");
-    	chargerPlan = new JMenuItem("ChargerPlan");
-    	chargerLivraison = new JMenuItem("ChargerLivraison");
-    	genererFeuilleRoute = new JMenuItem("Generer Feuille de Route");
-    	calculTournee = new JMenuItem("CalculTournee");
+    	chargerPlan = new JMenuItem(PLAN);
+    	chargerLivraison = new JMenuItem(LIVRAISON);
+    	calculTournee = new JMenuItem(TOURNEE);
+    	genererFeuilleRoute = new JMenuItem(FEUILLE);
     	menuFichier.add(chargerPlan);
     	menuFichier.add(chargerLivraison);
-    	menuFichier.add(genererFeuilleRoute);
     	menuFichier.add(calculTournee);
+    	menuFichier.add(genererFeuilleRoute);
     	
     	// Construit le menu modifier
     	menuModifier = new JMenu("Modifier");
-    	ajouterLivraison = new JMenuItem("Ajouter Livraison");
-    	modifierLivraison = new JMenuItem("Modifier Livraison");
-    	supprimerLivraison = new JMenuItem("Supprimer Livraison");
+    	ajouterLivraison = new JMenuItem(AJOUTER);
+    	modifierLivraison = new JMenuItem(MODIFIER);
+    	supprimerLivraison = new JMenuItem(SUPPRIMER);
     	menuModifier.add(ajouterLivraison);
     	menuModifier.add(modifierLivraison);
     	menuModifier.add(supprimerLivraison);
     	
     	// Construit le menu historique
     	menuHistorique = new JMenu("Historique");
-    	undo = new JMenuItem("Undo");
-    	redo = new JMenuItem("Redo");
+    	undo = new JMenuItem(UNDO);
+    	redo = new JMenuItem(REDO);
     	menuHistorique.add(undo);
     	menuHistorique.add(redo);
     	
@@ -172,6 +213,9 @@ public class FenetreIHM extends JFrame{
     	this.setJMenuBar(barreMenu);
     }
     
+	/**
+	 * Calcul et met à jour la taille des différents elements graphiques.
+	 */
     private void setTailleFenetre() {
 		Rectangle screen = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 
@@ -181,7 +225,7 @@ public class FenetreIHM extends JFrame{
 		int hauteurVueG = hauteurFenetre-hauteurCadreMessages-barreMenu.getHeight();
 		int largeurVueG = largeurFenetre-largeurVueTextuelle;
 		
-		setSize(largeurFenetre, hauteurFenetre); // DEBUG
+		setSize(largeurFenetre, hauteurFenetre); 
 		cadreMessages.setSize(largeurFenetre,hauteurCadreMessages-50);
 		cadreMessages.setLocation(0,hauteurVueG);
 		vueGraphique.setLocation(0, 0);

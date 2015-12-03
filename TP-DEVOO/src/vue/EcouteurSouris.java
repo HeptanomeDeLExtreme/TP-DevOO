@@ -12,20 +12,31 @@ import modele.Plan;
 import controleur.Controleur;
 
 /**
- * 
+ * Gere les clics de souris.
  */
 public class EcouteurSouris extends MouseAdapter{
 
-    /**
-     * Default constructor
-     */
-    public EcouteurSouris() {
-    }
 
     /**
-     * @param controleur 
-     * @param vueGraphique 
-     * @param fenetreIHM
+	 * Le controleur avec lequel interagir.
+	 */
+	protected Controleur controleur;
+	
+	/**
+	 * La vue graphique sur laquelle les evenements ont lieu.
+	 */
+	protected VueGraphique vueGraphique;
+	
+	/**
+	 * La fenetre utilisateur qui contient la vue graphique.
+	 */
+	protected FenetreIHM fenetreIHM;
+	
+	/**
+     * Constructeur par defaut.
+     * @param controleur Le controleur avec lequel interagir.
+     * @param vueGraphique La vue graphique sur laquelle les evenements surviennent.
+     * @param fenetreIHM La fenetre utilisateur qui contient la vue graphique.
      */
     public EcouteurSouris(Controleur controleur, VueGraphique vueGraphique, FenetreIHM fenetreIHM) {
         this.controleur = controleur;
@@ -33,23 +44,10 @@ public class EcouteurSouris extends MouseAdapter{
         this.fenetreIHM = fenetreIHM;
     }
     
-    /**
-     * 
-     */
-    protected Controleur controleur;
-
-    /**
-     * 
-     */
-    protected VueGraphique vueGraphique;
-
-    /**
-     * 
-     */
-    protected FenetreIHM fenetreIHM;
-
-    
     @Override
+    /**
+     * Delegue selon le clic au controleur.
+     */
 	public void mouseClicked(MouseEvent evt) {
 		Point p = coordonnees(evt);
 		switch (evt.getButton()){
@@ -73,5 +71,4 @@ public class EcouteurSouris extends MouseAdapter{
 		int y = Math.round((float)e.getX()/(float)vueGraphique.getEchelleX());
 		return new Point(y,x);
 	}
-
 }

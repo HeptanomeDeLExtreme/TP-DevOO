@@ -19,27 +19,78 @@ import vue.FenetreIHM;
 import xml.GenerateurFeuilleDeRoute;
 
 /**
- * 
+ * Cette classe fait l'interface avec la Vue et le Modele. Modele MVC.
  */
 public class Controleur {
 
-	// INIT
+	/**
+	 * Instance de l'etat initial.
+	 */
 	public static final EtatInit etatInit = new EtatInit();
 	
-	// NOYAU MINIMAL
+	/**
+	 * Instance de l'etat plan charge/
+	 */
 	public static final EtatPlanCharge etatPlanCharge = new EtatPlanCharge();
+	/**
+	 * Instance de l'etat livraison chargee.
+	 */
 	public static final EtatLivraisonChargee etatLivraisonChargee = new EtatLivraisonChargee();
+	/**
+	 * Instance de l'etat tournee calculee.
+	 */
 	public static final EtatTourneeCalculee etatTourneeCalculee = new EtatTourneeCalculee();
 	
-	// MODIFICATION TOURNEE
+	/**
+	 * Instance de l'etat deux livraisons selectionnees.
+	 */
 	public static final EtatDeuxLivraisonSelectionnee etatDeuxLivraisonSelectionnee = new EtatDeuxLivraisonSelectionnee();
+	/**
+	 * Instance de l'etat intersection selectionnee.
+	 */
 	public static final EtatIntersectionSelectionnee etatIntersectionSelectionnee = new EtatIntersectionSelectionnee();
+	/**
+	 * Instance de l'etat livraison precedente selectionnee.
+	 */
 	public static final EtatLivraisonPrecedenteSelectionnee etatLivraisonPrecedenteSelectionnee = new EtatLivraisonPrecedenteSelectionnee();
+	/**
+	 * Instance de la livraison selectionnee.
+	 */
 	public static final EtatLivraisonsSelectionnees etatLivraisonsSelectionnees = new EtatLivraisonsSelectionnees();
 	
-	
-	
-	
+	 /**
+     * Represente l'etat courant
+     */
+    protected static Etat etatCourant;
+
+    /**
+     * Liste de commande de modications pour undo et redo
+     */
+    protected ListeCommande listeCommandes;
+
+    /**
+     * Represente la fenetre utilisateur
+     */
+    protected FenetreIHM fenetre;
+
+    /**
+     * Represente le modele
+     */
+    protected Modele modele;
+    
+    /** 
+     * Constructeur par défaut
+    */
+   public Controleur() {
+   	this.modele = new Modele();
+   	
+   	this.listeCommandes = new ListeCommande();
+   	
+   	etatCourant = etatInit;
+   	
+   	fenetre = new FenetreIHM(modele, this);
+   }
+    
 	/**
 	 * Change l'etat courant du controleur
 	 * @param etat le nouvel etat courant
@@ -48,52 +99,24 @@ public class Controleur {
 		etatCourant = etat;
 		System.out.println("Etat changé pour : "+etat);
 	}
-	
-    /**
-     * 
-     */
-    protected static Etat etatCourant;
-
-    /**
-     * 
-     */
-    protected ListeCommande listeCommandes;
-
-    /**
-     * 
-     */
-    protected FenetreIHM fenetre;
-
-    /**
-     * 
-     */
-    protected Modele modele;
     
-     /** Default constructor
+    /**
+     * Permet d'afficher un message dans la zone affectée dans la fenetre utilisateur.
+     * @param Le message a affiché.
      */
-    public Controleur() {
-    	this.modele = new Modele();
-    	
-    	this.listeCommandes = new ListeCommande();
-    	
-    	etatCourant = etatInit;
-    	
-    	fenetre = new FenetreIHM(modele, this);
-    }
-    
     public void afficheMessageIHM(String s){
     	this.fenetre.afficheMessage(s);
     }
     
-    
-    // UNDO REDO 
-    
+    /**
+     * Permet de faire un undo sur la liste des commandes.
+     */
     public void undo() {
         this.etatCourant.undo(listeCommandes);
     }
 
     /**
-     * 
+     * Permet de faire un redo sur la liste des commandes.
      */
     public void redo() {
         this.etatCourant.redo(listeCommandes);
@@ -101,15 +124,16 @@ public class Controleur {
 
     
     
-    // NOYAU MINIMAL
-    
+    /**
+     * Permet de charger un plan.
+     */
 	public void ouvrirPlan() {
 		this.etatCourant.ouvrirPlan(this.modele);	
 		this.modele.changementEffectue();
 	}
 	
     /**
-     * 
+     * Permet de charger la livraison.
      */
     public void importerLivraison() {
         this.etatCourant.importerLivraison(fenetre,this.modele, this.modele.getPlan());
@@ -117,19 +141,16 @@ public class Controleur {
     }
 
     /**
-     * 
+     * Permet de calculer la tournee.
      */
     public void calculerTournee() {
         this.etatCourant.calculerTournee(modele, fenetre);
         this.modele.changementEffectue();
     }
 
-    
-    
-    // MODIFICATION TOURNEE
-    
+       
     /**
-     * 
+     * Permet d'ajouter une livraison.
      */
     public void ajouterLivraison() {
         this.etatCourant.ajouterLivraison(this.modele, listeCommandes);
@@ -137,52 +158,48 @@ public class Controleur {
     }
 
     /**
-     * 
+     * Permet de modifier une livraison.
      */
     public void modifierLivraison() {
         this.etatCourant.modifierLivraison(this.modele, listeCommandes);
         this.modele.changementEffectue();
     }
-    
 
     /**
-     * 
+     * Permet de supprimer une livraison.
      */
     public void supprimeLivraison() {
         this.etatCourant.supprimeLivraison(this.modele, listeCommandes);
         this.modele.changementEffectue();
     }
     
-    
-    
-    // GENERATION FEUILLE DE ROUTE
-    
     /**
-     * 
+     * Permet de generer une feuille de route.
      */
     public void genererFeuilleRoute() {
     	this.etatCourant.genererFeuilleRoute(this.fenetre, this.modele.getTournee());
     }
 
     /**
-     * 
+     * Permet de gerer le clic gauche.
+     *  @param Le point sur lequel on a clique.
      */
-    
-    
-    
-    // GESTION SOURIS
-    
     public void clicGauche(Point p) {
         this.etatCourant.clicGauche(fenetre,this.modele.getPlan(),p,this.modele.getDemandeDeLivraison());
     }
 
+    /**
+     * 
+     * @param Le point sur lequel on a clique.
+     */
 	public void clicDroit(Point p) {
 		this.etatCourant.clicDroit(fenetre,p);		
 	}
 	
-	
-	// GESTION CLAVIER
-	
+	/**
+	 * Permet de gerer la saisie clavier.
+	 * @param Le caractere appuyé.
+	 */
 	public void caractereSaisi(int keyCode) {
 		switch(keyCode){
 			case KeyEvent.VK_P:
@@ -215,11 +232,18 @@ public class Controleur {
 		}
 	}
 	
-	// CARACTERISTIQUE DU PLAN
+	/**
+	 * Retourne la largeur du plan.
+	 * @return La largeur du plan.
+	 */
 	public int getPlanLargeur() {
 		return this.modele.getPlan().getLargeur();
 	}
 
+	/**
+	 * Retourne la hauteur du plan.
+	 * @return La hauteur du plan.
+	 */
 	public int getPlanHauteur() {
 		return this.modele.getPlan().getHauteur();
 	}

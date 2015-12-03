@@ -17,6 +17,7 @@ import javax.swing.filechooser.FileFilter;
 
 import modele.Horaire;
 import modele.Itineraire;
+import modele.Livraison;
 import modele.Tournee;
 import modele.Troncon;
 
@@ -36,8 +37,9 @@ public class GenerateurFeuilleDeRoute {
 	 * @return execCode : code d'execution, 0 si succes, -1 si echec 
 	 * @throws UnsupportedEncodingException 
 	 * @throws FileNotFoundException 
+	 * @throws ExceptionXML 
 	 */
-	public static int genererFeuilleDeRoute(Tournee tournee) throws FileNotFoundException, UnsupportedEncodingException{
+	public static int genererFeuilleDeRoute(Tournee tournee) throws FileNotFoundException, UnsupportedEncodingException, ExceptionXML{
 		String nomFichier = "";
 		
 		 String sb = "TEST CONTENT";
@@ -50,6 +52,9 @@ public class GenerateurFeuilleDeRoute {
 	        } catch (Exception ex) {
 	            ex.printStackTrace();
 	        }
+	    }
+	    else{
+	    	throw new ExceptionXML("Pas de fichier selectionné !");
 	    }
 	    
 	    if(nomFichier == ""){
@@ -76,6 +81,10 @@ public class GenerateurFeuilleDeRoute {
 			for(Troncon tr : troncons){
 				writer.println("Prenez la rue " + tr.getNomDeRue() + " sur " + tr.getLongueur() + " mètres.");
 			}
+			Livraison arrivee = iti.getArrivee();
+			writer.println("Heure d'arivée estimée : "+arrivee.getHeureArrivee());
+			writer.println("Heure de livraison estimée : "+arrivee.getHeureLivraison());
+			writer.println("Fenetre : "+arrivee.getFenetre());
 			writer.println("");
 		}
 		

@@ -23,13 +23,10 @@ import xml.DeserialiseurPlanXML;
 import xml.ExceptionXML;
 
 /**
- * 
+ * Represente le comportement dans l'etat livraison chargee.
  */
 public class EtatLivraisonChargee extends EtatDefaut {
 
-    /**
-     * Default constructor
-     */
     public EtatLivraisonChargee() {
     }
 
@@ -37,9 +34,6 @@ public class EtatLivraisonChargee extends EtatDefaut {
     	return "Etat Livraison Chargée";
     }
     
-    /**
-     * @param fenetre
-     */
     public void ouvrirPlan(Modele modele) {
     	Plan plan = new Plan();
     	try {
@@ -63,9 +57,6 @@ public class EtatLivraisonChargee extends EtatDefaut {
 		}
     }
 
-    /**
-     * @param fenetre
-     */
     public void importerLivraison(FenetreIHM fenetre,Modele modele, Plan plan){
     	Tournee tournee = new Tournee();
     	DemandeDeLivraison demandeDeLivraison = new DemandeDeLivraison(tournee);
@@ -97,10 +88,6 @@ public class EtatLivraisonChargee extends EtatDefaut {
 		}
     }
 
-    /**
-     * @param plan 
-     * @param demandeDeLivraison
-     */
     public void calculerTournee(Modele modele, FenetreIHM fenetre) {
     	Plan plan = modele.getPlan();
     	DemandeDeLivraison demandeDeLivraison = modele.getDemandeDeLivraison();

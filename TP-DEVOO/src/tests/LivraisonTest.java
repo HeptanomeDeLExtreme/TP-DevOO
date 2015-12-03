@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Set;
 
 import modele.Client;
+import modele.Dijkstra;
 import modele.FenetreTemporelle;
 import modele.GraphePondere;
 import modele.Horaire;
@@ -50,6 +51,8 @@ public class LivraisonTest {
 	Troncon troncon1;
 	
 	Troncon troncon2;
+	
+	int[] tableauPi, tableauD;
 	
 	/**
 	 * @throws java.lang.Exception
@@ -196,7 +199,42 @@ public class LivraisonTest {
 	 */
 	@Test
 	public void testCalculerPlusCourtsChemins() {
-
+		Set<Intersection> intersections = new HashSet<Intersection>();
+		intersections.add(adresse);
+		intersections.add(destination1);
+		intersections.add(destination2);
+		Plan plan = new Plan(intersections);
+		GraphePondere graphePondere = new GraphePondere(plan);
+		Map<Integer, Intersection> mapCorrespondancePlan = graphePondere.getMapCorrespondance();
+		
+		int[] clefs = new int[6];
+		clefs[0] = getKeyByValue(mapCorrespondancePlan, adresse);
+		clefs[1] = getKeyByValue(mapCorrespondancePlan, destination1);
+		clefs[2] = getKeyByValue(mapCorrespondancePlan, destination2);
+		
+		int[][] resultat = Dijkstra.dijkstra(graphePondere, clefs[0]);
+		int[] dist = resultat[0];
+		int[] pred = resultat[1];
+		
+		
+		
+		Assert.assertEquals(dist[clefs[0]], 0);
+		Assert.assertEquals(pred[clefs[0]], -1);
+		Assert.assertEquals(pred[clefs[1]], clefs[0]);
+		Assert.assertEquals(dist[clefs[1]], 4);
+		Assert.assertEquals(pred[clefs[2]], clefs[0]);
+		Assert.assertEquals(dist[clefs[2]], 4);
+		
+	}
+	
+	public Integer getKeyByValue(Map<Integer, Intersection> map, Intersection value) {
+		Integer resultat = null;
+		for (Integer compteur = 0; compteur < map.size(); compteur++) {
+			if (value == map.get(compteur)) {
+				resultat = compteur;
+			}
+		}
+		return resultat;
 	}
 
 }

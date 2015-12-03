@@ -18,19 +18,31 @@ import modele.Tournee;
 import modele.Troncon;
 
 /**
- * 
+ * Represente la vue textuelle de la tournee.
  */
 public class VueTextuelle extends JScrollPane implements Observer{
 
+	/**
+	 * Le contenu de la zone de texte.
+	 */
 	private String text;
+	/**
+	 * Le modele represente.
+	 */
 	private Modele modele;
+	/*
+	 * La fenetre de contenance.
+	 */
 	private FenetreIHM fenetre;
+	/*
+	 * Le label d'ecriture.
+	 */
 	private JLabel label;
 
     /**
-     * @param plan 
-     * @param tournee 
-     * @param fenetreIHM
+     * Constructeur par defaut.
+     * @param modele Le modele represente. 
+     * @param fenetreIHM La fenetre de contenance.
      */
     public VueTextuelle(Modele modele, FenetreIHM fenetreIHM) {
     	super();
@@ -38,27 +50,25 @@ public class VueTextuelle extends JScrollPane implements Observer{
     	this.modele = modele;
     	this.modele.addObserver(this);
 		setBorder(BorderFactory.createTitledBorder("Tournée :"));
-//		this.setVerticalTextPosition(TOP);
-//		this.setVerticalAlignment(TOP);
-		
 		label = new JLabel();
 		this.setViewportView(label);
-		
 		fenetre.getContentPane().add(this);
-		
     }
     
     protected void setText(String s){
     	this.label.setText(s);
     }
     
+    /*
+     * Change le texte
+     * @param s le texte a mettre
+     */
     protected void changeText(String s){
     	this.setText(s);
     }
 
     /**
-     * @param observable 
-     * @param objet
+     * Mettre a jour la vision de la tournee.
      */
     public void update(Observable observable, Object objet) {
     	String html = "<html>";
@@ -79,7 +89,6 @@ public class VueTextuelle extends JScrollPane implements Observer{
 		    		List<Troncon> listeTroncon = itineraire.getTroncons();
 		    		for(Troncon tronc : listeTroncon){
 		    			html += "Prendre "+tronc.getNomDeRue()+ " sur "+tronc.getLongueur()+"m.<br>";
-//		    			html += "debug : "+tronc.getOrigine() + "<br>"+tronc.getDestination()+"<br>";
 		    		}
 		    		
 		    		// Arrivee
@@ -104,14 +113,10 @@ public class VueTextuelle extends JScrollPane implements Observer{
 		    	}
 		    	html += "Temps de tournée : "+new Horaire(tournee.getCoutTotal()) + "<br>";
 		    	html += "Temps total : "+tournee.getDuree()+"<br><br>";
-//		    	System.out.println("Je suis qu'un thug "+tournee.getCoutTotal());
 		        
 		    	this.setText(html);
 	    	}
     	}
     }
-
-
-
 
 }

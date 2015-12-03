@@ -13,14 +13,15 @@ import modele.Tournee;
 import vue.FenetreIHM;
 
 /**
- * 
+ * Represente le comportement dans l'etat livraison selectionnee.
  */
 public class EtatLivraisonsSelectionnees extends EtatDefaut {
 
+	/*
+	 * La livraison que l'on a selectionnée.
+	 */
 	protected Livraison liv;
-    /**
-     * Default constructor
-     */
+
     public EtatLivraisonsSelectionnees() {
     	this.liv = null;
     }
@@ -33,17 +34,10 @@ public class EtatLivraisonsSelectionnees extends EtatDefaut {
     	this.liv = liv;
     }
     
-    /**
-     * @param fenetre 
-     * @param listeDeCommande
-     */
     public void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
         // TODO implement here
     }
 
-    /**
-     * @param livraison
-     */
     public void supprimeLivraison(Modele modele, ListeCommande list) {
     	list.ajoute(new CommandeSuprime(modele, liv));
         Controleur.setEtatCourant(Controleur.etatTourneeCalculee);

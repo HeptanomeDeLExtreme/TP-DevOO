@@ -20,13 +20,10 @@ import xml.DeserialiseurPlanXML;
 import xml.ExceptionXML;
 
 /**
- * 
+ * Represente le comportement dans l'etat initial.
  */
 public class EtatInit extends EtatDefaut {
 
-    /**
-     * Default constructor
-     */
     public EtatInit() {
     }
 
@@ -34,9 +31,6 @@ public class EtatInit extends EtatDefaut {
     	return "Etat Init";
     }
     
-    /**
-     * @param fenetre
-     */
     public void ouvrirPlan(Modele modele) {
     	Plan plan = modele.getPlan(); 	
     	

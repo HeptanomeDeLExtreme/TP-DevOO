@@ -8,19 +8,31 @@ import modele.Modele;
 import modele.Tournee;
 
 /**
- * 
+ * Cette classe permet de gerer le undo/redo de l'ajout de livraison.
  */
 public class CommandeAjout implements Commande {
 
+	/**
+	 * Represente le modele.
+	 */
 	protected Modele modele;
+	/**
+	 * Represente la livraison avant laquelle ajouter.
+	 */
 	protected Livraison liv;
+	/**
+	 * Represente l'intersection surlaquelle ajouter.
+	 */
 	protected Intersection inter;
+	/**
+	 * Represente la livraison qui a ete cree;
+	 */
 	protected Livraison livraisonCree;
     /**
      * Default constructor
-     * @param inter 
-     * @param liv 
-     * @param tournee2 
+     * @param inter L'intersection sur laquelle ajouter.
+     * @param liv La livraison avant laquelle ajouter.
+     * @param modele Le modele a modifier. 
      */
     public CommandeAjout(Modele modele, Livraison liv, Intersection inter) {
     	this.modele = modele;
@@ -30,25 +42,18 @@ public class CommandeAjout implements Commande {
 
  
     /**
-     * 
+     * Fait la commande.
      */
     public void doCommande() {
-//    	System.out.println("UBUT : "+this.livraisonCree);
         this.livraisonCree = this.modele.getTournee().ajouteLivraison(this.liv, this.inter);
         this.modele.changementEffectue();
-//        System.out.println("UBUT2 : "+this.livraisonCree);
     }
 
     /**
-     * 
+     * Annule la commande.
      */
     public void undoCommande() {
-//    	List<Livraison> listeLivraison = modele.getTournee().getLivraisonsEnOrdre();
-//    	int index = listeLivraison.indexOf(this.liv);
-//    	Livraison aSupprime = listeLivraison.get(index-1);
-//    	System.out.println("TUBU : "+this.livraisonCree);
         this.modele.supprimeLivraison(this.livraisonCree);
-//        System.out.println("TUBU2 : "+this.livraisonCree);
     }
 
 }

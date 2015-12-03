@@ -10,42 +10,40 @@ import javax.swing.JMenuItem;
 import controleur.Controleur;
 
 /**
- * 
+ * Represente l'ecouteur de boutons.
  */
 public class EcouteurBoutons implements ActionListener {
 
     /**
-     * 
+     * Le controleur avec lequel interagir.
      */
     protected Controleur controleur;
     
-    /**
-     * Default constructor
-     */
-    public EcouteurBoutons() {
-    }
 
     /**
-     * @param controleur
+     * Le constructeur par defaut.
+     * @param controleur Le controleur avec lequel interagir.
      */
     public EcouteurBoutons(Controleur controleur) {
         this.controleur = controleur;
     }
 
-
 	@Override
+	/**
+	 * Gere le cas des differents boutons.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		System.out.println(e.getActionCommand());	
 		switch (e.getActionCommand()){
-		case "ChargerPlan": controleur.ouvrirPlan(); break;
-		case "ChargerLivraison" : controleur.importerLivraison(); break;
-		case "CalculTournee" : controleur.calculerTournee(); break;
-		case "Generer Feuille de Route" : controleur.genererFeuilleRoute(); break;
-		case "Ajouter Livraison" : controleur.ajouterLivraison(); break;
-		case "Modifier Livraison": controleur.modifierLivraison(); break;
-		case "Supprimer Livraison": controleur.supprimeLivraison(); break;
-		case "Undo": controleur.undo(); break;
-		case "Redo": controleur.redo(); break;
+		case FenetreIHM.PLAN: controleur.ouvrirPlan(); break;
+		case FenetreIHM.LIVRAISON : controleur.importerLivraison(); break;
+		case FenetreIHM.TOURNEE : controleur.calculerTournee(); break;
+		case FenetreIHM.FEUILLE : controleur.genererFeuilleRoute(); break;
+		case FenetreIHM.AJOUTER : controleur.ajouterLivraison(); break;
+		case FenetreIHM.MODIFIER : controleur.modifierLivraison(); break;
+		case FenetreIHM.SUPPRIMER : controleur.supprimeLivraison(); break;
+		case FenetreIHM.UNDO : controleur.undo(); break;
+		case FenetreIHM.REDO : controleur.redo(); break;
 		}
 	}
 

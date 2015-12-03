@@ -26,46 +26,29 @@ import xml.ExceptionXML;
 import xml.GenerateurFeuilleDeRoute;
 
 /**
- * 
+ * Represente le comportement dans l'etat tournee calculee.
  */
 public class EtatTourneeCalculee extends EtatDefaut {
 
-    /**
-     * Default constructor
-     */
     public EtatTourneeCalculee() {
     }
-
     
     public String toString(){
     	return "Etat Tournée Calculée";
     }
     
-    /**
-     * @param listeDeCommande
-     */
     public void undo(ListeCommande listeDeCommande) {
         listeDeCommande.undo();
     }
 
-    /**
-     * @param listeDeCommande
-     */
     public void redo(ListeCommande listeDeCommande) {
         listeDeCommande.redo();
     }
 
-    /**
-     * @param fenetre 
-     * @param listeDeCommande
-     */
     public void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
         // TODO implement here
     }
 
-    /**
-     * @param fenetre
-     */
     public void ouvrirPlan(Modele modele) {
     	Plan plan = new Plan();
     	try {
@@ -89,9 +72,6 @@ public class EtatTourneeCalculee extends EtatDefaut {
 		}
     }
 
-    /**
-     * @param fenetre
-     */
     public void importerLivraison(FenetreIHM fenetre,Modele modele, Plan plan){
     	Tournee tournee = new Tournee();
     	DemandeDeLivraison demandeDeLivraison = new DemandeDeLivraison(tournee);
@@ -123,18 +103,11 @@ public class EtatTourneeCalculee extends EtatDefaut {
 		}
     }
 
-    /**
-     * @param plan 
-     * @param demandeDeLivraison
-     */
     public void calculerTournee(Modele modele, FenetreIHM fenetre) {
     	JOptionPane.showMessageDialog(null, "Tournee déja calculée  !", "Info",
                 JOptionPane.INFORMATION_MESSAGE);
     }
     
-    /**
-     * @param demandeDeLivraison
-     */
     public void genererFeuilleRoute(FenetreIHM fenetre, Tournee tournee) {
         try {
 			GenerateurFeuilleDeRoute.genererFeuilleDeRoute(tournee);

@@ -26,15 +26,15 @@ public class CommandeModifie implements Commande {
 
 	
     /**
-     * Constructeur par defaut.
+     * Default constructor
      */
     public CommandeModifie() {
     }
 
     /**
-     * @param modele Le modele a modifier. 
-     * @param livraison1 La premiere livraison a intervertir.
-     * @param livraison2 La deuxieme livraison a intervertir.
+     * @param tournee 
+     * @param livraison1 
+     * @param livraison2
      */
     public CommandeModifie(Modele modele, Livraison l1, Livraison l2) {
         this.modele = modele;
@@ -43,14 +43,14 @@ public class CommandeModifie implements Commande {
     }
 
     /**
-     * Fait la commande.
+     * 
      */
     public void doCommande() {
         this.modele.modifier(liv1,liv2);
     }
 
     /**
-     * Annule la commande.
+     * 
      */
     public void undoCommande() {
     	this.modele.modifier(liv2,liv1);

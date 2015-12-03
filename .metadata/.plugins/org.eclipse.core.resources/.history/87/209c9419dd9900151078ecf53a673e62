@@ -58,39 +58,7 @@ public class Controleur {
 	 */
 	public static final EtatLivraisonsSelectionnees etatLivraisonsSelectionnees = new EtatLivraisonsSelectionnees();
 	
-	 /**
-     * Represente l'etat courant
-     */
-    protected static Etat etatCourant;
-
-    /**
-     * Liste de commande de modications pour undo et redo
-     */
-    protected ListeCommande listeCommandes;
-
-    /**
-     * Represente la fenetre utilisateur
-     */
-    protected FenetreIHM fenetre;
-
-    /**
-     * Represente le modele
-     */
-    protected Modele modele;
-    
-    /** 
-     * Constructeur par défaut
-    */
-   public Controleur() {
-   	this.modele = new Modele();
-   	
-   	this.listeCommandes = new ListeCommande();
-   	
-   	etatCourant = etatInit;
-   	
-   	fenetre = new FenetreIHM(modele, this);
-   }
-    
+	
 	/**
 	 * Change l'etat courant du controleur
 	 * @param etat le nouvel etat courant
@@ -99,6 +67,20 @@ public class Controleur {
 		etatCourant = etat;
 		System.out.println("Etat changé pour : "+etat);
 	}
+	
+    
+     /** 
+      * Constructeur par défaut
+     */
+    public Controleur() {
+    	this.modele = new Modele();
+    	
+    	this.listeCommandes = new ListeCommande();
+    	
+    	etatCourant = etatInit;
+    	
+    	fenetre = new FenetreIHM(modele, this);
+    }
     
     /**
      * Permet d'afficher un message dans la zone affectée dans la fenetre utilisateur.

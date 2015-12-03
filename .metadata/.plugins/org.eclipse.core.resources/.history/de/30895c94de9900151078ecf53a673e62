@@ -104,6 +104,7 @@ public class CommandeSuprime implements Commande {
     		this.modele.getTournee().modifierTournee(derniere, this.livraisonAjoutee);
     		
     		this.modele.getTournee().getLivraisonsEnOrdre().get(this.modele.getTournee().getLivraisonsEnOrdre().size()-2).setFenetre(fenetreTemp);
+    		System.out.println("On force la fenetre " + this.fenetreTemp.getHeureDebut() + " à " + this.fenetreTemp.getHeureFin());
     		
     		
     		this.modele.changementEffectue();

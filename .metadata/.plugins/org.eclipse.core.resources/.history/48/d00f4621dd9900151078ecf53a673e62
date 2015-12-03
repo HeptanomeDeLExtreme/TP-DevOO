@@ -99,6 +99,8 @@ public class Controleur {
 		etatCourant = etat;
 		System.out.println("Etat changé pour : "+etat);
 	}
+	
+    
     
     /**
      * Permet d'afficher un message dans la zone affectée dans la fenetre utilisateur.

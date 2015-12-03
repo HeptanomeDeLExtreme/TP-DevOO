@@ -78,19 +78,6 @@ public class Controleur {
      */
     protected Modele modele;
     
-    /** 
-     * Constructeur par défaut
-    */
-   public Controleur() {
-   	this.modele = new Modele();
-   	
-   	this.listeCommandes = new ListeCommande();
-   	
-   	etatCourant = etatInit;
-   	
-   	fenetre = new FenetreIHM(modele, this);
-   }
-    
 	/**
 	 * Change l'etat courant du controleur
 	 * @param etat le nouvel etat courant
@@ -99,6 +86,20 @@ public class Controleur {
 		etatCourant = etat;
 		System.out.println("Etat changé pour : "+etat);
 	}
+	
+    
+     /** 
+      * Constructeur par défaut
+     */
+    public Controleur() {
+    	this.modele = new Modele();
+    	
+    	this.listeCommandes = new ListeCommande();
+    	
+    	etatCourant = etatInit;
+    	
+    	fenetre = new FenetreIHM(modele, this);
+    }
     
     /**
      * Permet d'afficher un message dans la zone affectée dans la fenetre utilisateur.

@@ -42,7 +42,6 @@ public class CommandeSuprime implements Commande {
     protected Boolean commandeValide = true; 
 
     /**
-     * Constructeur par defaut.
      * @param modele Le modele a modifier. 
      * @param livraison La livraison a supprimer.
      */
@@ -65,10 +64,17 @@ public class CommandeSuprime implements Commande {
 				this.commandeValide = false;
 			}
      	}
+     	
+     	
+     	
+    	
+//    	System.out.println("ASUP : "+this.liv);
+//    	System.out.println("PREC : "+this.livraisonSuivante);
+//    	System.out.println("INTER : "+this.liv.getAdresse());
     }
 
     /**
-     * Fait la commande.
+     * 
      */
     public void doCommande() {
     	if(this.commandeValide){
@@ -83,7 +89,7 @@ public class CommandeSuprime implements Commande {
     }
 
     /**
-     * Annule la commande.
+     * 
      */
     public void undoCommande() {
     	if(!this.entrepotSelectionne){
@@ -104,6 +110,7 @@ public class CommandeSuprime implements Commande {
     		this.modele.getTournee().modifierTournee(derniere, this.livraisonAjoutee);
     		
     		this.modele.getTournee().getLivraisonsEnOrdre().get(this.modele.getTournee().getLivraisonsEnOrdre().size()-2).setFenetre(fenetreTemp);
+    		System.out.println("On force la fenetre " + this.fenetreTemp.getHeureDebut() + " à " + this.fenetreTemp.getHeureFin());
     		
     		
     		this.modele.changementEffectue();

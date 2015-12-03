@@ -58,7 +58,19 @@ public class Controleur {
 	 */
 	public static final EtatLivraisonsSelectionnees etatLivraisonsSelectionnees = new EtatLivraisonsSelectionnees();
 	
-	 /**
+	
+	
+	
+	/**
+	 * Change l'etat courant du controleur
+	 * @param etat le nouvel etat courant
+	 */
+	protected static void setEtatCourant(Etat etat){
+		etatCourant = etat;
+		System.out.println("Etat changé pour : "+etat);
+	}
+	
+    /**
      * Represente l'etat courant
      */
     protected static Etat etatCourant;
@@ -78,27 +90,18 @@ public class Controleur {
      */
     protected Modele modele;
     
-    /** 
-     * Constructeur par défaut
-    */
-   public Controleur() {
-   	this.modele = new Modele();
-   	
-   	this.listeCommandes = new ListeCommande();
-   	
-   	etatCourant = etatInit;
-   	
-   	fenetre = new FenetreIHM(modele, this);
-   }
-    
-	/**
-	 * Change l'etat courant du controleur
-	 * @param etat le nouvel etat courant
-	 */
-	protected static void setEtatCourant(Etat etat){
-		etatCourant = etat;
-		System.out.println("Etat changé pour : "+etat);
-	}
+     /** 
+      * Constructeur par défaut
+     */
+    public Controleur() {
+    	this.modele = new Modele();
+    	
+    	this.listeCommandes = new ListeCommande();
+    	
+    	etatCourant = etatInit;
+    	
+    	fenetre = new FenetreIHM(modele, this);
+    }
     
     /**
      * Permet d'afficher un message dans la zone affectée dans la fenetre utilisateur.
@@ -164,6 +167,7 @@ public class Controleur {
         this.etatCourant.modifierLivraison(this.modele, listeCommandes);
         this.modele.changementEffectue();
     }
+    
 
     /**
      * Permet de supprimer une livraison.
@@ -173,6 +177,7 @@ public class Controleur {
         this.modele.changementEffectue();
     }
     
+    
     /**
      * Permet de generer une feuille de route.
      */
@@ -181,25 +186,24 @@ public class Controleur {
     }
 
     /**
-     * Permet de gerer le clic gauche.
-     *  @param Le point sur lequel on a clique.
+     * 
      */
+    
+    
+    
+    // GESTION SOURIS
+    
     public void clicGauche(Point p) {
         this.etatCourant.clicGauche(fenetre,this.modele.getPlan(),p,this.modele.getDemandeDeLivraison());
     }
 
-    /**
-     * 
-     * @param Le point sur lequel on a clique.
-     */
 	public void clicDroit(Point p) {
 		this.etatCourant.clicDroit(fenetre,p);		
 	}
 	
-	/**
-	 * Permet de gerer la saisie clavier.
-	 * @param Le caractere appuyé.
-	 */
+	
+	// GESTION CLAVIER
+	
 	public void caractereSaisi(int keyCode) {
 		switch(keyCode){
 			case KeyEvent.VK_P:
@@ -232,18 +236,11 @@ public class Controleur {
 		}
 	}
 	
-	/**
-	 * Retourne la largeur du plan.
-	 * @return La largeur du plan.
-	 */
+	// CARACTERISTIQUE DU PLAN
 	public int getPlanLargeur() {
 		return this.modele.getPlan().getLargeur();
 	}
 
-	/**
-	 * Retourne la hauteur du plan.
-	 * @return La hauteur du plan.
-	 */
 	public int getPlanHauteur() {
 		return this.modele.getPlan().getHauteur();
 	}

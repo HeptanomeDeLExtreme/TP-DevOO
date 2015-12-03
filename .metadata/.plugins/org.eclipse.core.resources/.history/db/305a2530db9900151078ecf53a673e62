@@ -36,9 +36,8 @@ public class GenerateurFeuilleDeRoute {
 	 * @return execCode : code d'execution, 0 si succes, -1 si echec 
 	 * @throws UnsupportedEncodingException 
 	 * @throws FileNotFoundException 
-	 * @throws ExceptionXML 
 	 */
-	public static int genererFeuilleDeRoute(Tournee tournee) throws FileNotFoundException, UnsupportedEncodingException, ExceptionXML{
+	public static int genererFeuilleDeRoute(Tournee tournee) throws FileNotFoundException, UnsupportedEncodingException{
 		String nomFichier = "";
 		
 		 String sb = "TEST CONTENT";

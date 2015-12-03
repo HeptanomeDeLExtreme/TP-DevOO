@@ -29,17 +29,17 @@ import controleur.Controleur;
 public class FenetreIHM extends JFrame{
 
 	
-	protected static final String REDO = "Redo (R)";
-	protected static final String UNDO = "Undo (U)";
+	protected static final String REDO = "Redo (r)";
+	protected static final String UNDO = "Undo (u)";
 	
-	protected static final String AJOUTER = "Ajouter une livaison (A)";
-	protected static final String SUPPRIMER = "Supprimer une livraison (S)";
-	protected static final String MODIFIER = "Modifier deux livraisons (M)";
+	protected static final String AJOUTER = "Ajouter une livaison (a)";
+	protected static final String SUPPRIMER = "Supprimer une livraison (s)";
+	protected static final String MODIFIER = "Modifier deux livraisons (m)";
 	
-	protected static final String PLAN = "Charger un plan (P)";
-	protected static final String LIVRAISON = "Charger une demande de livraison (L)";
-	protected static final String TOURNEE = "Calculer une tournée (T)";
-	protected static final String FEUILLE = "Générer une feuille de route (G)";
+	protected static final String PLAN = "Undo";
+	protected static final String LIVRAISON = "Redo";
+	protected static final String TOURNEE = "Undo";
+	protected static final String FEUILLE = "Redo";
 	
     protected EcouteurBoutons ecouteurBoutons;
     protected EcouteurSouris ecouteurSouris;
@@ -140,10 +140,10 @@ public class FenetreIHM extends JFrame{
     	
     	// Construit le menu fichier
     	menuFichier = new JMenu("Fichier");
-    	chargerPlan = new JMenuItem(PLAN);
-    	chargerLivraison = new JMenuItem(LIVRAISON);
-    	calculTournee = new JMenuItem(TOURNEE);
-    	genererFeuilleRoute = new JMenuItem(FEUILLE);
+    	chargerPlan = new JMenuItem("ChargerPlan");
+    	chargerLivraison = new JMenuItem("ChargerLivraison");
+    	calculTournee = new JMenuItem("CalculTournee");
+    	genererFeuilleRoute = new JMenuItem("Generer Feuille de Route");
     	menuFichier.add(chargerPlan);
     	menuFichier.add(chargerLivraison);
     	menuFichier.add(calculTournee);
@@ -151,17 +151,17 @@ public class FenetreIHM extends JFrame{
     	
     	// Construit le menu modifier
     	menuModifier = new JMenu("Modifier");
-    	ajouterLivraison = new JMenuItem(AJOUTER);
-    	modifierLivraison = new JMenuItem(MODIFIER);
-    	supprimerLivraison = new JMenuItem(SUPPRIMER);
+    	ajouterLivraison = new JMenuItem("Ajouter Livraison");
+    	modifierLivraison = new JMenuItem("Modifier Livraison");
+    	supprimerLivraison = new JMenuItem("Supprimer Livraison");
     	menuModifier.add(ajouterLivraison);
     	menuModifier.add(modifierLivraison);
     	menuModifier.add(supprimerLivraison);
     	
     	// Construit le menu historique
     	menuHistorique = new JMenu("Historique");
-    	undo = new JMenuItem(UNDO);
-    	redo = new JMenuItem(REDO);
+    	undo = new JMenuItem("Undo");
+    	redo = new JMenuItem("Redo");
     	menuHistorique.add(undo);
     	menuHistorique.add(redo);
     	

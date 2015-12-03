@@ -130,7 +130,6 @@ public class Controleur {
 	public void ouvrirPlan() {
 		this.etatCourant.ouvrirPlan(this.modele);	
 		this.modele.changementEffectue();
-		this.fenetre.nettoieVueTextuelle();
 	}
 	
     /**
@@ -139,7 +138,6 @@ public class Controleur {
     public void importerLivraison() {
         this.etatCourant.importerLivraison(fenetre,this.modele, this.modele.getPlan());
         this.modele.changementEffectue();
-        this.fenetre.nettoieVueTextuelle();
     }
 
     /**

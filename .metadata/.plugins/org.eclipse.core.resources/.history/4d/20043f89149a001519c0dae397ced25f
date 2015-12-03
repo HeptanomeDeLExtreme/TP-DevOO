@@ -139,7 +139,6 @@ public class Controleur {
     public void importerLivraison() {
         this.etatCourant.importerLivraison(fenetre,this.modele, this.modele.getPlan());
         this.modele.changementEffectue();
-        this.fenetre.nettoieVueTextuelle();
     }
 
     /**

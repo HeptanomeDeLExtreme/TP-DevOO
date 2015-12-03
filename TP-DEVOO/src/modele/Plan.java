@@ -32,6 +32,7 @@ public class Plan extends Observable{
     /**
      * @param fichier
      */
+    //TODO
     public void chargerPlan() {
     	try {
     		intersections = new HashSet<Intersection>();
@@ -140,11 +141,5 @@ public class Plan extends Observable{
 		this.intersections = intersections;
 	}
 
-	/**
-     * @param fichier
-     */
-    public void Plan(String fichier) {
-        // TODO implement here
-    }
 
 }

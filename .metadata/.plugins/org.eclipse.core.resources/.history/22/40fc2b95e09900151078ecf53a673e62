@@ -53,21 +53,25 @@ public class EtatDefaut implements Etat {
 		fenetre.afficheMessage("Clic droit, c'est bien mais ça ne sert à rien :) ");
 	}
 
+	@Override
 	public void genererFeuilleRoute(FenetreIHM fenetre, Tournee tournee) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
 	public void supprimeLivraison(Modele modele, ListeCommande listeCommandes) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
 	public void ajouterLivraison(Modele modele, ListeCommande ldc) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
 	public void modifierLivraison(Modele modele, ListeCommande listeCommandes) {
 		// TODO Auto-generated method stub
 		

@@ -23,13 +23,10 @@ import xml.DeserialiseurPlanXML;
 import xml.ExceptionXML;
 
 /**
- * 
+ * Represente le comportement dans l'etat plan chargé.
  */
 public class EtatPlanCharge extends EtatDefaut {
 
-    /**
-     * Default constructor
-     */
     public EtatPlanCharge() {
     }
 
@@ -37,9 +34,6 @@ public class EtatPlanCharge extends EtatDefaut {
     	return "Etat Plan Chargé";
     }
     
-    /**
-     * @param fenetre
-     */
     public void ouvrirPlan(Modele modele) {
     	Plan plan = new Plan();
     	try {
@@ -62,9 +56,6 @@ public class EtatPlanCharge extends EtatDefaut {
 		}
     }
 
-    /**
-     * @param fenetre
-     */
     public void importerLivraison(FenetreIHM fenetre,Modele modele, Plan plan) {
     	Tournee tournee = new Tournee();
     	DemandeDeLivraison demandeDeLivraison = new DemandeDeLivraison(tournee);

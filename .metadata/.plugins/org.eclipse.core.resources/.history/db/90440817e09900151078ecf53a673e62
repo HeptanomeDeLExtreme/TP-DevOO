@@ -27,7 +27,7 @@ public interface Etat {
      * @param fenetre La fenetre ou afficher les eventuels messages.
      * @param modele Le modele dans lequel ouvrir la demande de livraison. 
      */
-    public void importerLivraison(FenetreIHM fenetre,Modele modele, Plan plan);
+    public void importerLivraison(FenetreIHM fenetre,Modele modele);
 
     /**
      * Calculer la tournee.
@@ -84,9 +84,7 @@ public interface Etat {
 
     /** Permet de gerer le clic gauche.
     * @param fenetre La fenetre dans lequel afficher le message.
-    * @param plan Le plan sur lequel on a cliqué.
     * @param p Le point ou l'on a cliqué.
-    * @param ddl La demande de livraison 
     */
 	public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl);
 

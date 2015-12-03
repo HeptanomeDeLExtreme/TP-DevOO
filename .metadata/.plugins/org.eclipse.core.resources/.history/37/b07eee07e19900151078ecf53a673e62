@@ -1,9 +1,7 @@
 package controleur;
 
 import java.awt.Point;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 import javax.swing.JOptionPane;
@@ -23,32 +21,25 @@ import vue.FenetreIHM;
 import xml.DeserialiseurDemandeDeLivraisonXML;
 import xml.DeserialiseurPlanXML;
 import xml.ExceptionXML;
-import xml.GenerateurFeuilleDeRoute;
 
 /**
- * Represente le comportement dans l'etat tournee calculee.
+ * 
  */
-public class EtatTourneeCalculee extends EtatDefaut {
+public class EtatLivraisonChargee extends EtatDefaut {
 
-    public EtatTourneeCalculee() {
+    /**
+     * Default constructor
+     */
+    public EtatLivraisonChargee() {
     }
-    
+
     public String toString(){
-    	return "Etat Tournée Calculée";
+    	return "Etat Livraison Chargée";
     }
     
-    public void undo(ListeCommande listeDeCommande) {
-        listeDeCommande.undo();
-    }
-
-    public void redo(ListeCommande listeDeCommande) {
-        listeDeCommande.redo();
-    }
-
-    public void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
-        // TODO implement here
-    }
-
+    /**
+     * @param fenetre
+     */
     public void ouvrirPlan(Modele modele) {
     	Plan plan = new Plan();
     	try {
@@ -72,6 +63,9 @@ public class EtatTourneeCalculee extends EtatDefaut {
 		}
     }
 
+    /**
+     * @param fenetre
+     */
     public void importerLivraison(FenetreIHM fenetre,Modele modele, Plan plan){
     	Tournee tournee = new Tournee();
     	DemandeDeLivraison demandeDeLivraison = new DemandeDeLivraison(tournee);
@@ -103,41 +97,38 @@ public class EtatTourneeCalculee extends EtatDefaut {
 		}
     }
 
+    /**
+     * @param plan 
+     * @param demandeDeLivraison
+     */
     public void calculerTournee(Modele modele, FenetreIHM fenetre) {
-    	JOptionPane.showMessageDialog(null, "Tournee déja calculée  !", "Info",
-                JOptionPane.INFORMATION_MESSAGE);
+    	Plan plan = modele.getPlan();
+    	DemandeDeLivraison demandeDeLivraison = modele.getDemandeDeLivraison();
+        demandeDeLivraison.calculerTournee(plan);
+        Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
+        if(modele.getTournee().isRetard() == true){
+        	JOptionPane.showMessageDialog(null, "Tournee calculée avec retard  !", "Attention",
+	                JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+	    	JOptionPane.showMessageDialog(null, "Tournee calculée  !", "Info",
+	                JOptionPane.INFORMATION_MESSAGE);
+        }
+    	
     }
     
     public void genererFeuilleRoute(FenetreIHM fenetre, Tournee tournee) {
-        try {
-			GenerateurFeuilleDeRoute.genererFeuilleDeRoute(tournee);
-			JOptionPane.showMessageDialog(null, "Feuille de route générée !", "Info",
-                    JOptionPane.INFORMATION_MESSAGE);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			JOptionPane.showMessageDialog(null, "Erreur lors de la génération !", "Error",
-                    JOptionPane.ERROR_MESSAGE);
-		}
+    	fenetre.afficheMessage("Veuillez effectuer le calcul de la tournée !");
+    }
+    
+    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl){
+        Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
+        if(inter != null){
+	        fenetre.afficheMessage("Intersection sélectionnée : " + inter.getId());
+        }
+        else{
+        	fenetre.afficheMessage("Pas d'intersection ici !");
+        }
     }
 
-    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl){
-    	Livraison liv = ddl.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
-    	Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
-    	
-    	fenetre.afficheMessage("Sélection vide");
-    	
-    	if(liv != null){
-    		Controleur.setEtatCourant(Controleur.etatLivraisonsSelectionnees);
-    		Controleur.etatLivraisonsSelectionnees.setLivraison(liv);
-        	fenetre.afficheMessage("Livraison sélectionnée : " + liv.getAdresse().getId());
-    	}
-    	else if(inter != null){
-    		Controleur.setEtatCourant(Controleur.etatIntersectionSelectionnee);
-    		Controleur.etatIntersectionSelectionnee.setIntersection(inter);
-        	fenetre.afficheMessage("Intersection sélectionnée : " + inter.getId());
-    	}
-    }
-    
-    
-  	
 }

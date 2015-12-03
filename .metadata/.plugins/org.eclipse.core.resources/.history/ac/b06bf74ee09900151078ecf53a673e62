@@ -27,7 +27,7 @@ public interface Etat {
      * @param fenetre La fenetre ou afficher les eventuels messages.
      * @param modele Le modele dans lequel ouvrir la demande de livraison. 
      */
-    public void importerLivraison(FenetreIHM fenetre,Modele modele, Plan plan);
+    public void importerLivraison(FenetreIHM fenetre,Modele modele);
 
     /**
      * Calculer la tournee.

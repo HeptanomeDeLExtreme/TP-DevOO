@@ -13,19 +13,17 @@ import modele.Tournee;
 import vue.FenetreIHM;
 
 /**
- * Represente le comportement dans l'etat livraison precedente selectionnee.
+ * 
  */
 public class EtatLivraisonPrecedenteSelectionnee extends EtatDefaut {
 
-	/**
-	 * L'intersection sur laquelle on a cliqué.
-	 */
+	
 	protected Intersection inter;
-	/**
-	 * La livraison precedente.
-	 */
 	protected Livraison liv;
 	
+    /**
+     * Default constructor
+     */
     public EtatLivraisonPrecedenteSelectionnee() {
     }
     
@@ -33,6 +31,7 @@ public class EtatLivraisonPrecedenteSelectionnee extends EtatDefaut {
     	return "Etat livraison precedente selectionne";
     }
 
+	@Override
 	public void ajouterLivraison(Modele modele, ListeCommande ldc) {
 		ldc.ajoute(new CommandeAjout(modele,this.liv,this.inter));	
 		Controleur.setEtatCourant(Controleur.etatTourneeCalculee);

@@ -13,15 +13,15 @@ import modele.Tournee;
 import vue.FenetreIHM;
 
 /**
- * Represente le comportement dans l'etat intersection selectionne.
+ * 
  */
 public class EtatIntersectionSelectionnee extends EtatDefaut {
 
-	/**
-	 * L'intersection selectionnee.
-	 */
+	
 	protected Intersection inter;
-
+    /**
+     * Default constructor
+     */
     public EtatIntersectionSelectionnee() {
     }
 
@@ -29,6 +29,10 @@ public class EtatIntersectionSelectionnee extends EtatDefaut {
     	return "Etat intersection selectionne";
     }
     
+    /**
+     * @param fenetre 
+     * @param listeDeCommande
+     */
     public void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
         // TODO implement here
     }
@@ -52,6 +56,7 @@ public class EtatIntersectionSelectionnee extends EtatDefaut {
     	}
     }
 
+	@Override
 	public void ajouterLivraison(Modele modele, ListeCommande ldc) {
 				
 	}

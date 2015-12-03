@@ -27,7 +27,7 @@ public interface Etat {
      * @param fenetre La fenetre ou afficher les eventuels messages.
      * @param modele Le modele dans lequel ouvrir la demande de livraison. 
      */
-    public void importerLivraison(FenetreIHM fenetre,Modele modele, Plan plan);
+    public void importerLivraison(FenetreIHM fenetre,Modele modele);
 
     /**
      * Calculer la tournee.
@@ -62,32 +62,23 @@ public interface Etat {
     public void redo(ListeCommande listeCommande);
 
     /**
-     * Modifier la livraison
-     * @param modele Le modele dans lequel intervertir les livraisons
-     * @param listeCommandes La liste dans lequel ajouter la commande.
+     * @param tournee 
+     * @param listeCommandes
      */
     public void modifierLivraison(Modele modele, ListeCommande listeCommandes);
 
     /**
-     * Supprimer la livraison.
-     * @param modele Le modele dans lequel supprimer la livraison.
-     * @param listeCommandes La liste dans lequel ajouter la suppression. 
+     * @param listeCommandes 
+     * @param livraison
      */
     public void supprimeLivraison(Modele modele, ListeCommande listeCommandes);
 
     /**
-     * Permet de gerer le clic droit.
-     * @param fenetre La fenetre dans lequel afficher le message.
-     * @param p Le point ou l'on a cliqué.
+     * @param fenetre 
+     * @param p
      */
     public void clicDroit(FenetreIHM fenetre, Point p);
 
-    /** Permet de gerer le clic gauche.
-    * @param fenetre La fenetre dans lequel afficher le message.
-    * @param plan Le plan sur lequel on a cliqué.
-    * @param p Le point ou l'on a cliqué.
-    * @param ddl La demande de livraison 
-    */
 	public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl);
 
 }

@@ -82,6 +82,7 @@ public class CommandeSuprime implements Commande {
 	    	this.modele.getDemandeDeLivraison().majCoutTournee();
 	    	this.modele.getDemandeDeLivraison().majHorairesDesLivraisons(this.modele.getTournee().getItineraires());
     	}
+    	System.out.println("Nico : "+this.livraisonAjoutee);
     }
 
     /**
@@ -106,7 +107,6 @@ public class CommandeSuprime implements Commande {
 
 	    		
 	    		this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(derniere,this.livraisonAjoutee.getAdresse());
-	    		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
 	    		System.out.println("OPHELIE4bis : "+this.livraisonAjoutee);
 
 	    		FenetreTemporelle fenetreDerniere=derniere.getFenetre();

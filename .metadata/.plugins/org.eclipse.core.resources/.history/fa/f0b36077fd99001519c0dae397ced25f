@@ -84,7 +84,6 @@ public class GenerateurFeuilleDeRoute {
 			Livraison arrivee = iti.getArrivee();
 			writer.println("Heure d'arivée estimée : "+arrivee.getHeureArrivee());
 			writer.println("Heure de livraison estimée : "+arrivee.getHeureLivraison());
-			writer.println("Fenetre : "+arrivee.getFenetre());
 			writer.println("");
 		}
 		

@@ -85,8 +85,6 @@ public class CommandeSuprime implements Commande {
     		this.modele.getTournee().modifierTournee(derniere, this.livraisonAjoutee);
     		this.modele.changementEffectue();
     	}
-    	this.modele.getDemandeDeLivraison().majHorairesDesLivraisons(this.modele.getTournee().getItineraires());
-    	this.modele.getDemandeDeLivraison().majCoutTournee();
     }
 
 }

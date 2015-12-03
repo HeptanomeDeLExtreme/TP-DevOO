@@ -2,7 +2,7 @@ package modele;
 import java.util.*;
 
 public class GraphePondere {
-	
+	//TODO Renommer les methodes et attributs
 	/**
 	 * Default Constructor
 	 */
@@ -83,6 +83,21 @@ public class GraphePondere {
 		 this.couts = couts;
 	 } 
 	 
+		/**
+	  * Tableau contenant les couts des arcs entre chaque noeud.
+	  */
+	 protected int [][]  couts;
+	 
+	 /**
+	  * Nombre de noeuds du graphe
+	  */
+	 protected int nbNoeuds;
+	 
+	 /**
+	 * Association des noeuds a une valeur numerique.
+	 */
+	protected Map<Integer, Intersection> mapCorrespondance;
+	 
 	 public String toString(){
 		 String toRet = "";
 		 for(int i = 0; i< this.nbNoeuds;i++){
@@ -117,20 +132,7 @@ public class GraphePondere {
 		this.nbNoeuds = nbNoeuds;
 	}
 
-	/**
-	  * 
-	  */
-	 protected int [][]  couts;
-	 
-	 /*
-	  * 
-	  */
-	 protected int nbNoeuds;
-	 
-	 /**
-	 * 
-	 */
-	protected Map<Integer, Intersection> mapCorrespondance;
+
 	 
 	 /**
 	  * 

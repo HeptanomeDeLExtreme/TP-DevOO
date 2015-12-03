@@ -9,24 +9,52 @@ import java.util.Map.Entry;
  */
 public class Livraison {
 /**
- * Verifie l'egalite entre deux objets Livraison
- * @param obj Livraison a comparer a la livraison appelant la methode
- * @return Resultat du test de l'egalite
- */
-	public boolean equals(Livraison obj) {
-    	boolean resultat = false;
-//    	boolean id = (this.id == obj.id);
-//    	boolean client = (this.client == obj.client);
-    	boolean adresse = (this.adresse == obj.adresse);
-//    	boolean fenetre = (this.fenetre == obj.fenetre);
-		
-    	if( adresse  ) {
-			resultat = true;
-		}
-		return resultat;
-	}
+	 * 
+	 */
+	protected Integer id;
 
 	/**
+	 * 
+	 */
+	protected Horaire heureArrivee;
+
+	/**
+	 * 
+	 */
+	protected Horaire heureLivraison;
+
+	/**
+	 * 
+	 */
+	protected Boolean estDansFenetre;
+
+	/**
+	 * 
+	 */
+	protected Intersection adresse;
+
+	protected FenetreTemporelle fenetre;
+
+	/**
+	 * 
+	 */
+	protected Client client;
+
+	/**
+	 * 
+	 */
+	protected int[] tableauPi;
+
+
+
+/**
+	 * 
+	 */
+	protected int[] tableauD;
+
+
+
+/**
      * Default constructor
      */
     public Livraison() {
@@ -61,45 +89,24 @@ public class Livraison {
 	
 
 	/**
-     * 
-     */
-    protected Integer id;
+	 * Verifie l'egalite entre deux objets Livraison
+	 * @param obj Livraison a comparer a la livraison appelant la methode
+	 * @return Resultat du test de l'egalite
+	 */
+		public boolean equals(Livraison obj) {
+	    	boolean resultat = false;
+	//    	boolean id = (this.id == obj.id);
+	//    	boolean client = (this.client == obj.client);
+	    	boolean adresse = (this.adresse == obj.adresse);
+	//    	boolean fenetre = (this.fenetre == obj.fenetre);
+			
+	    	if( adresse  ) {
+				resultat = true;
+			}
+			return resultat;
+		}
 
-    /**
-     * 
-     */
-    protected Horaire heureArrivee;
-
-    /**
-     * 
-     */
-    protected Horaire heureLivraison;
-
-	/**
-     * 
-     */
-    protected Boolean estDansFenetre;
-
-    /**
-     * 
-     */
-    protected Intersection adresse;
-    
-    protected FenetreTemporelle fenetre;
-
-    /**
-     * 
-     */
-    protected Client client;
-    
-    /**
-     * 
-     */
-    protected int[] tableauPi;
-    
-    
-    
-    public FenetreTemporelle getFenetre() {
+	public FenetreTemporelle getFenetre() {
 		return fenetre;
 	}
 
@@ -123,12 +130,7 @@ public class Livraison {
 		this.tableauD = tableauD;
 	}
 
-	/**
-     * 
-     */
-    protected int[] tableauD;
-    
-    public Horaire getHeureLivraison() {
+	public Horaire getHeureLivraison() {
 		return heureLivraison;
 	}
 

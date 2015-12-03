@@ -45,7 +45,7 @@ public class Dijkstra {
 		return new int[][] { dist, pred }; // (ignore pred[s]==0!)
 
 	}
-
+	//TODO JavaDoc
 	private static int calculSuivant(int[] dist, boolean[] v) {
 
 		int x = Integer.MAX_VALUE;

@@ -29,8 +29,9 @@ public class DemandeDeLivraison extends Observable{
      */
     protected Tournee tournee;
 
-    
+    //TODO Java Doc
     protected TSP1 tsp;
+    
     /**
      * Les fenetres listees dans le fichier XML de demande de livraisons.
      */
@@ -69,9 +70,9 @@ public class DemandeDeLivraison extends Observable{
     	int nbLivraisons = 0;
     	this.tsp = new TSP1();
     }
-    
+     // TODO
     /**
-     * 
+     *
      */
     public void nettoieDemandeDeLivraison(){
     	fenetres = new ArrayList<FenetreTemporelle>();
@@ -80,6 +81,7 @@ public class DemandeDeLivraison extends Observable{
     	this.tsp = new TSP1();
     }
     
+    //TODO
     public Livraison cherche(Point p, float echelleX, float echelleY){
    	
     	Set<Livraison> touteLivraison = new HashSet<Livraison>();
@@ -297,8 +299,8 @@ public class DemandeDeLivraison extends Observable{
 		tournee.setDuree(tempsTournee);
     }
 
-    /**
-     * @param itinerairesEnOrdre
+    /** Mets a jour les horaires d'arrivee a chaquez livraison.
+     * @param itinerairesEnOrdre Liste des itineraires a realiser en ordre.
      */
     public void majHorairesDesLivraisons(List<Itineraire> itinerairesEnOrdre) {
     	int compteur = 0;
@@ -669,13 +671,7 @@ public class DemandeDeLivraison extends Observable{
     	return itinerairesEnOrdre;
     }
 
-
-    /**
-     * 
-     */
-    protected void genereFeuilleDeRoute() {
-        // TODO implement here
-    }
+}
     
     /**
      * Permet d'ajouter une livraison. Ne doit servir que lors de la création de la demande de livraison lors de l'ajout de l'entrepot

@@ -8,17 +8,17 @@ import java.util.*;
 public class FenetreTemporelle {
 
 	/**
-     * 
-     */
+	 * Heure de debut de la Fenetre
+	 */
     protected Horaire heureDebut;
 
     /**
-     * 
+     * Heure de fin de la fenetre.
      */
     protected Horaire heureFin;
 
     /**
-     * 
+     * Livraisons a effectuer dans la fenetre temporelle.
      */
     protected Set<Livraison> livraisons;
 

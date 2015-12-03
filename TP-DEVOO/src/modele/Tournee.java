@@ -16,6 +16,28 @@ public class Tournee extends Observable {
 	private GraphePondere graphePondere;
 
 	/**
+	 * 
+	 */
+	protected Horaire duree;
+
+	/**
+	 * 
+	 */
+	protected DemandeDeLivraison demandeDeLivraison;
+
+	/**
+	 * 
+	 */
+	protected Livraison entrepot;
+
+	/**
+	 * 
+	 */
+	protected List<Itineraire> itineraires;
+
+	private boolean retard;
+
+	/**
      * Default constructor
      */
     public Tournee() {
@@ -35,8 +57,19 @@ public class Tournee extends Observable {
 		return retard;
 	}
 
+    
+    //TODO JavaDoc
+    public void nettoyer(){
 
-
+    	this.coutTotal = -1;
+    	if(demandeDeLivraison != null){
+    		this.demandeDeLivraison.nettoieDemandeDeLivraison();
+    	}
+    	this.entrepot = null;
+    	this.itineraires = null;
+    	this.livraisonsEnOrdre = null;
+    }
+    
 	/**
      * @param correspondancePlan 
      * @param coutTotal
@@ -57,41 +90,13 @@ public class Tournee extends Observable {
     	}
     	
     }
-    
-    /**
-     * 
-     */
-    protected Horaire duree;
-
-    /**
-     * 
-     */
-    protected DemandeDeLivraison demandeDeLivraison;
-
-    /**
-     * 
-     */
-    protected Livraison entrepot;
-
-    /**
-     * 
-     */
-    protected List<Itineraire> itineraires;
-
-	private boolean retard;
-
-    public void nettoyer(){
-
-    	this.coutTotal = -1;
-    	if(demandeDeLivraison != null){
-    		this.demandeDeLivraison.nettoieDemandeDeLivraison();
-    	}
-    	this.entrepot = null;
-    	this.itineraires = null;
-    	this.livraisonsEnOrdre = null;
-    }
         
     
+    /**
+     * Inverse deux livraisons dans l'ordre de la tournee
+     * @param livraison1
+     * @param livraison2
+     */
     public void modifierTournee(Livraison livraison1, Livraison livraison2) {
     	
 
@@ -116,6 +121,11 @@ public class Tournee extends Observable {
    	
     }
     
+    /**
+     * Inverse deux livraisons dans l'ordre de la tournee
+     * @param livraison1
+     * @param livraison2
+     */
     public void Inversion(Livraison livraison1, Livraison livraison2) {
     	    	
     	for(Livraison liv : livraisonsEnOrdre){
@@ -220,7 +230,7 @@ public class Tournee extends Observable {
     	
     }
 
-    /**
+    /**Supprime une livraison de la tournee
      * @param livraison
      */
     public void supprimeLivraison(Livraison livraison) {
@@ -277,9 +287,10 @@ public class Tournee extends Observable {
 
 
 
-	/**
-     * @param livraisonAvant 
-     * @param livraison
+	/** Ajoute une Livraison dans la tournee avant une autre livraison.
+	 * La livraison cree sera dans la meme fenetre que la livraison cible.
+     * @param livraisonSuivante Livraison avant laquelle on veut creer la livraison.
+     * @param lintersectionCible Intersection sur laquelle on veut placer la livraison.
      */
     public Livraison ajouteLivraison(Livraison livraisonSuivante, Intersection intersectionCible) {
           
@@ -375,20 +386,6 @@ public class Tournee extends Observable {
 		return itineraires;
 	}
 
-
-    /**
-     * @param preTournee
-     */
-    public Tournee(Map<FenetreTemporelle,List<Itineraire>> preTournee) {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    protected void genererFeuilleDeRoute() {
-        // TODO implement here
-    }
     
     public void changementEffectue(){
         setChanged(); 

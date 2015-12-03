@@ -81,8 +81,8 @@ public class CommandeSuprime implements Commande {
     		Livraison derniere = livEnOrdre.get(livEnOrdre.size()-2);
     		
     		this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(derniere,this.livraisonAjoutee.getAdresse());
-    		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
     		this.modele.getTournee().modifierTournee(derniere, this.livraisonAjoutee);
+    		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
     		this.modele.changementEffectue();
     	}
     	this.modele.getDemandeDeLivraison().majHorairesDesLivraisons(this.modele.getTournee().getItineraires());

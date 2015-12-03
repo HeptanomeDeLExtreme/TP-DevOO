@@ -10,28 +10,30 @@ import javax.swing.JMenuItem;
 import controleur.Controleur;
 
 /**
- * Represente l'ecouteur de boutons.
+ * 
  */
 public class EcouteurBoutons implements ActionListener {
 
     /**
-     * Le controleur avec lequel interagir.
+     * 
      */
     protected Controleur controleur;
     
+    /**
+     * Default constructor
+     */
+    public EcouteurBoutons() {
+    }
 
     /**
-     * Le constructeur par defaut.
-     * @param controleur Le controleur avec lequel interagir.
+     * @param controleur
      */
     public EcouteurBoutons(Controleur controleur) {
         this.controleur = controleur;
     }
 
+
 	@Override
-	/**
-	 * Gere le cas des differents boutons.
-	 */
 	public void actionPerformed(ActionEvent e) {
 		System.out.println(e.getActionCommand());	
 		switch (e.getActionCommand()){

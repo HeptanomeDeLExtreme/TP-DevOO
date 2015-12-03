@@ -119,4 +119,7 @@ public class VueTextuelle extends JScrollPane implements Observer{
     	}
     }
 
+
+
+
 }

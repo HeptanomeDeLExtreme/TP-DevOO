@@ -44,43 +44,21 @@ public class VueGraphique extends JPanel implements Observer {
 	 * La largeur de la vue.
 	 */
 	private int largeurVue;
-	/**
-	 * Composant graphics.
-	 */
 	private Graphics g;
-	/**
-	 * Le modele a representé dans la vue.
-	 */
 	private Modele modele;
-	/**
-	 * La fenetre d'appartenance.
-	 */
 	private FenetreIHM fenetre;
-	/**
-	 * L'indice de correction d'echelle pour un affichage correct.
-	 */
+	
 	public static final float correcteurEchelle = (float) 0.95;
-	/**
-	 * La couleur de l'entrepot.
-	 */
+	
 	public static final Color couleurEntrepot = Color.BLUE;
-	/**
-	 * La couleur d'une intersection.
-	 */
 	public static final Color couleurIntersection = Color.LIGHT_GRAY;
-	/**
-	 * La couleur d'une livraison.
-	 */
 	public static final Color couleurLivraison = Color.GREEN;
-	/**
-	 * La couleur d'une livraison en retard.
-	 */
 	public static final Color couleurLivraisonRetard = Color.RED;
 	
     /**
-     * Constructeur par defaut.
-     * @param modele Le modele avec lequel interagir. 
-     * @param fenetreIHM La fenetre de contenance.
+     * @param plan 
+     * @param tournee 
+     * @param fenetreIHM
      */
     public VueGraphique(Modele modele, FenetreIHM fenetreIHM) {
     	super();
@@ -96,9 +74,6 @@ public class VueGraphique extends JPanel implements Observer {
 	
     }
 
-    /**
-     * Remplit la zone graphique avec les infos adéquates.
-     */
 	public void paintComponent(Graphics g) {
 		
 		Plan plan = modele.getPlan();
@@ -227,6 +202,18 @@ public class VueGraphique extends JPanel implements Observer {
 						}
 						g.fillOval(x, y, 10, 10);
 					}
+					// Arrivee
+//					Livraison depart = itineraire.getDepart();
+//					inter = arrivee.getAdresse();
+//					x = (int) (inter.getX()*echelleX);
+//					y = (int) (inter.getY()*echelleY);
+//					if(arrivee.getEstDansFenetre()){
+//						g.setColor(couleurLivraison);
+//					}
+//					else{
+//						g.setColor(couleurLivraisonRetard);
+//					}
+//					g.fillOval(x, y, 10, 10);
 
 				}
 			}
@@ -235,9 +222,6 @@ public class VueGraphique extends JPanel implements Observer {
 		this.g = g;
 	}
 	
-	/**
-	 * Dessine une fleche.
-	 */
     private void drawArrow(Graphics2D g2, double theta, double x0, double y0)
     {
     	int barb = 20;                   // barb length
@@ -259,7 +243,8 @@ public class VueGraphique extends JPanel implements Observer {
 	}
 
 	/**
-     * Met a jour la vue.
+     * @param observable 
+     * @param objet
      */
     public void update(Observable observable, Object obj) {
         repaint();

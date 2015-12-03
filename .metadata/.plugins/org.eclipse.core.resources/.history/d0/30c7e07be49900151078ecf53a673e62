@@ -89,15 +89,10 @@ public class FenetreIHM extends JFrame{
 	 * L'echelle sur l'axe des X
 	 */
 	private float echelleX;
-	/**
-	 * L'echelle sur l'axe des Y
-	 */
 	private float echelleY;
 	
     /**
-     * Constructeur par defaut.
-     * @param modele Le modele represente
-     * @param controleur Le controleur avec lequel interagir.
+     * Default constructor
      */
     public FenetreIHM(Modele modele, Controleur controleur) {
     	
@@ -156,9 +151,7 @@ public class FenetreIHM extends JFrame{
 	}
 
 
-	/**
-	 * Cree la barre des menus.
-	 */
+
 	private void creerMenu(){
     	// Crée l'écouteur de bouton
     	ecouteurBoutons =  new EcouteurBoutons(this.controleur);
@@ -213,9 +206,6 @@ public class FenetreIHM extends JFrame{
     	this.setJMenuBar(barreMenu);
     }
     
-	/**
-	 * Calcul et met à jour la taille des différents elements graphiques.
-	 */
     private void setTailleFenetre() {
 		Rectangle screen = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 
@@ -225,7 +215,7 @@ public class FenetreIHM extends JFrame{
 		int hauteurVueG = hauteurFenetre-hauteurCadreMessages-barreMenu.getHeight();
 		int largeurVueG = largeurFenetre-largeurVueTextuelle;
 		
-		setSize(largeurFenetre, hauteurFenetre); 
+		setSize(largeurFenetre, hauteurFenetre); // DEBUG
 		cadreMessages.setSize(largeurFenetre,hauteurCadreMessages-50);
 		cadreMessages.setLocation(0,hauteurVueG);
 		vueGraphique.setLocation(0, 0);

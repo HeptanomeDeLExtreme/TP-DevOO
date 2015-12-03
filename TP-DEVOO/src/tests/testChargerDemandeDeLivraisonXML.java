@@ -1,5 +1,6 @@
 package tests;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,6 +13,7 @@ import xml.ExceptionXML;
 
 import modele.Client;
 import modele.DemandeDeLivraison;
+import modele.FenetreTemporelle;
 import modele.Intersection;
 import modele.Livraison;
 import modele.Plan;
@@ -19,7 +21,7 @@ import modele.Troncon;
 
 public class testChargerDemandeDeLivraisonXML {
 	
-	public static void main (String args[]){
+	public static void main (String args[]) throws ParserConfigurationException, SAXException, IOException, ExceptionXML{
     	Intersection i1 = new Intersection(97, 10, 10);
     	Intersection i2 = new Intersection(37,30,20);
     	Intersection i3 = new Intersection(23,50,80);
@@ -67,25 +69,12 @@ public class testChargerDemandeDeLivraisonXML {
     	listeInter.add(i7);
     	listeInter.add(i8);
     	listeInter.add(i9);
-//    	Plan plan = new Plan(listeInter);
-    	Plan plan = new Plan();
+    	Plan plan = new Plan(listeInter);
+    	//Plan plan = new Plan();
     	
     	DemandeDeLivraison demandeDeLivraison = new DemandeDeLivraison();
-    	try {
-			DeserialiseurDemandeDeLivraisonXML.charger(demandeDeLivraison, plan);
-		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExceptionXML e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    	demandeDeLivraison.setFenetres(new ArrayList<FenetreTemporelle>());
+    	DeserialiseurDemandeDeLivraisonXML.charger(demandeDeLivraison, plan);
     	
     	System.out.println(demandeDeLivraison.toString());
 	}

@@ -5,12 +5,16 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import modele.DemandeDeLivraison;
@@ -19,6 +23,7 @@ import modele.Intersection;
 import modele.Livraison;
 import modele.Plan;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,22 +47,7 @@ public class DeserialiseurDemandeDeLivraisonXMLTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		this.demandeDeLivraison = new DemandeDeLivraison();
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
-	}
-
-	/**
-	 * Test à effectuer avec le fichier livraison10*10-2.xml
-	 * Test method for {@link xml.DeserialiseurDemandeDeLivraisonXML#charger(modele.DemandeDeLivraison, modele.Plan)}.
-	 */
-	@Test
-	public void testChargerBase() {
+		DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
     	Intersection i1 = new Intersection(97, 10, 10);
     	Intersection i2 = new Intersection(37,30,20);
     	Intersection i3 = new Intersection(23,50,80);
@@ -81,10 +71,27 @@ public class DeserialiseurDemandeDeLivraisonXMLTest {
     	
     	this.plan=new Plan(listeInter);
     	this.demandeDeLivraison = new DemandeDeLivraison();
+    	demandeDeLivraison.setFenetres(new ArrayList<FenetreTemporelle>());
+	}
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	/**
+	 * Test method for {@link xml.DeserialiseurDemandeDeLivraisonXML#charger(modele.DemandeDeLivraison, modele.Plan)}.
+	 * @throws ExceptionXML 
+	 * @throws IOException 
+	 * @throws SAXException 
+	 * @throws ParserConfigurationException 
+	 */
+	@Test
+	public void testChargerBase() throws ParserConfigurationException, SAXException, IOException, ExceptionXML {
     	
-    	this.demandeDeLivraison.chargerLivraison(plan);
-		
-		testFile();
+		DeserialiseurDemandeDeLivraisonXML.charger(this.demandeDeLivraison, this.plan, new File("src/tests/files/livraisonTest.xml"));
 		
 		Livraison entrepot = this.demandeDeLivraison.getEntrepot();
 		assertEquals((int)entrepot.getAdresse().getId(), 14);
@@ -94,11 +101,9 @@ public class DeserialiseurDemandeDeLivraisonXMLTest {
 
 	}
 
-	private void testFile() {
-		// TODO Auto-generated method stub
-		
-	}
-	
+	/**
+	 * Teste le premier élément de la demande de livraison
+	 */
 	private void testPremierElement() {
 		
 		List<FenetreTemporelle> fenetres = this.demandeDeLivraison.getFenetres();
@@ -135,7 +140,10 @@ public class DeserialiseurDemandeDeLivraisonXMLTest {
 			}
 		}
 	}
-
+	
+	/**
+	 * Teste le dernier élément de la demande de livraison
+	 */
 	private void testDernierElement() {
 		
 		List<FenetreTemporelle> fenetres = this.demandeDeLivraison.getFenetres();
@@ -169,5 +177,323 @@ public class DeserialiseurDemandeDeLivraisonXMLTest {
 				assertTrue(false);
 			}
 		}		
+	}
+	
+	@Test
+	public void testErreurBalise() {
+		try {
+			DeserialiseurDemandeDeLivraisonXML.charger(this.demandeDeLivraison, this.plan, new File("src/tests/files/livraisonBaliseTest.xml"));
+			fail("Devrait avoir lancé XMLException");
+		} catch (ParserConfigurationException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (SAXException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (IOException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (ExceptionXML e) {
+			assertThat(e.getMessage(), CoreMatchers.containsString("Déclaration de l'élément '"));
+			assertThat(e.getMessage(), CoreMatchers.containsString("' introuvable."));
+		}
+		
+	}
+	
+	@Test
+	public void testErreurAttibuts() {
+		try {
+			DeserialiseurDemandeDeLivraisonXML.charger(this.demandeDeLivraison, this.plan, new File("src/tests/files/livraisonAttributTest.xml"));
+			fail("Devrait avoir lancé XMLException");
+		} catch (ParserConfigurationException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (SAXException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (IOException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (ExceptionXML e) {
+			assertThat(e.getMessage(), CoreMatchers.containsString("L'attribut '"));
+			assertThat(e.getMessage(), CoreMatchers.containsString("' n'est pas autorisé dans l'élément '"));
+			assertThat(e.getMessage(), CoreMatchers.containsString("'."));
+		}
+		
+	}
+	
+	@Test
+	public void testErreurEntrepotManquant() {
+		try {
+			DeserialiseurDemandeDeLivraisonXML.charger(this.demandeDeLivraison, this.plan, new File("src/tests/files/livraisonEntrepotTest.xml"));
+			fail("Devrait avoir lancé XMLException");
+		} catch (ParserConfigurationException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (SAXException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (IOException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (ExceptionXML e) {
+			assertThat(e.getMessage(), CoreMatchers.containsString("Contenu non valide trouvé à partir de l'élément 'PlagesHoraires'. L'une des valeurs '{Entrepot}' est attendue."));
+		}
+	}
+	
+	@Test
+	public void testErreurPlagesTrop() {
+		try {
+			DeserialiseurDemandeDeLivraisonXML.charger(this.demandeDeLivraison, this.plan, new File("src/tests/files/livraisonPlagesTropTest.xml"));
+			fail("Devrait avoir lancé XMLException");
+		} catch (ParserConfigurationException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (SAXException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (IOException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (ExceptionXML e) {
+			assertThat(e.getMessage(), CoreMatchers.containsString("Contenu non valide trouvé à partir de l'élément 'PlagesHoraires'. Aucun élément enfant n'est attendu à cet endroit."));
+		}
+	}
+	
+	@Test
+	public void testErreurPlagesManquante() {
+		try {
+			DeserialiseurDemandeDeLivraisonXML.charger(this.demandeDeLivraison, this.plan, new File("src/tests/files/livraisonPlagesManquanteTest.xml"));
+			fail("Devrait avoir lancé XMLException");
+		} catch (ParserConfigurationException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (SAXException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (IOException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (ExceptionXML e) {
+			assertThat(e.getMessage(), CoreMatchers.containsString("Le contenu de l'élément 'JourneeType' n'est pas complet. L'un des éléments '{PlagesHoraires}' est attendu."));
+		}
+	}
+	
+	@Test
+	public void testErreurPlageManquante() {
+		try {
+			DeserialiseurDemandeDeLivraisonXML.charger(this.demandeDeLivraison, this.plan, new File("src/tests/files/livraisonPlageManquanteTest.xml"));
+			fail("Devrait avoir lancé XMLException");
+		} catch (ParserConfigurationException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (SAXException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (IOException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (ExceptionXML e) {
+			assertThat(e.getMessage(), CoreMatchers.containsString("Le contenu de l'élément 'PlagesHoraires' n'est pas complet. L'un des éléments '{Plage}' est attendu."));
+
+		}
+	}
+	
+	@Test
+	public void testErreurLivraisonsTrop() {
+		try {
+			DeserialiseurDemandeDeLivraisonXML.charger(this.demandeDeLivraison, this.plan, new File("src/tests/files/livraisonLivraisonsTropTest.xml"));
+			fail("Devrait avoir lancé XMLException");
+		} catch (ParserConfigurationException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (SAXException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (IOException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (ExceptionXML e) {
+			assertThat(e.getMessage(), CoreMatchers.containsString("Contenu non valide trouvé à partir de l'élément 'Livraisons'. Aucun élément enfant n'est attendu à cet endroit."));
+		}
+	}
+	
+	@Test
+	public void testErreurLivraisonsManquante() {
+		try {
+			DeserialiseurDemandeDeLivraisonXML.charger(this.demandeDeLivraison, this.plan, new File("src/tests/files/livraisonLivraisonsManquanteTest.xml"));
+			fail("Devrait avoir lancé XMLException");
+		} catch (ParserConfigurationException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (SAXException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (IOException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (ExceptionXML e) {
+			assertThat(e.getMessage(), CoreMatchers.containsString("Le contenu de l'élément 'Plage' n'est pas complet. L'un des éléments '{Livraisons}' est attendu."));
+		}
+	}
+	
+	@Test
+	public void testErreurLivraisonManquante() {
+		try {
+			DeserialiseurDemandeDeLivraisonXML.charger(this.demandeDeLivraison, this.plan, new File("src/tests/files/livraisonLivraisonManquanteTest.xml"));
+			fail("Devrait avoir lancé XMLException");
+		} catch (ParserConfigurationException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (SAXException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (IOException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (ExceptionXML e) {
+			assertThat(e.getMessage(), CoreMatchers.containsString("Le contenu de l'élément 'Livraisons' n'est pas complet. L'un des éléments '{Livraison}' est attendu."));
+
+		}
+	}
+	
+	@Test
+	public void testUniciteId() {
+		try {
+			DeserialiseurDemandeDeLivraisonXML.charger(this.demandeDeLivraison, this.plan, new File("src/tests/files/livraisonUniciteIdTest.xml"));
+			fail("Devrait avoir lancé XMLException");
+		} catch (ParserConfigurationException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (SAXException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (IOException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (ExceptionXML e) {
+			assertThat(e.getMessage(), CoreMatchers.containsString("Valeur unique en double ["));
+			assertThat(e.getMessage(), CoreMatchers.containsString("] déclarée pour la contrainte d'identité de l'élément "));
+			assertThat(e.getMessage(), CoreMatchers.containsString("Livraisons"));
+		}
+	}
+	
+	@Test
+	public void testIntersectionAbsente() {
+		try {
+			DeserialiseurDemandeDeLivraisonXML.charger(this.demandeDeLivraison, this.plan, new File("src/tests/files/livraisonIntersectionTest.xml"));
+			fail("Devrait avoir lancé XMLException");
+		} catch (ParserConfigurationException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (SAXException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (IOException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (ExceptionXML e) {
+			assertThat(e.getMessage(), CoreMatchers.containsString("Toutes les livraisons de la demande de livraison doivent correspondre à une adresse du plan."));
+		}
+	}
+	
+	@Test
+	public void testIntersectionEntrepotAbsente() {
+		try {
+			DeserialiseurDemandeDeLivraisonXML.charger(this.demandeDeLivraison, this.plan, new File("src/tests/files/livraisonIntersectionEntrepotTest.xml"));
+			fail("Devrait avoir lancé XMLException");
+		} catch (ParserConfigurationException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (SAXException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (IOException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (ExceptionXML e) {
+			assertThat(e.getMessage(), CoreMatchers.containsString("L'entrepot de la demande de livraison n'est pas dans le plan."));
+		}
+	}
+	
+	@Test
+	public void testIntersectionEgales() {
+		try {
+			DeserialiseurDemandeDeLivraisonXML.charger(this.demandeDeLivraison, this.plan, new File("src/tests/files/livraisonAdresseTest.xml"));
+			fail("Devrait avoir lancé XMLException");
+		} catch (ParserConfigurationException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (SAXException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (IOException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (ExceptionXML e) {
+			assertThat(e.getMessage(), CoreMatchers.containsString("Valeur unique en double ["));
+			assertThat(e.getMessage(), CoreMatchers.containsString("] déclarée pour la contrainte d'identité de l'élément "));
+			assertThat(e.getMessage(), CoreMatchers.containsString("Plage"));
+		}
+	}
+	
+	@Test
+	public void testClientPositif() {
+		try {
+			DeserialiseurDemandeDeLivraisonXML.charger(this.demandeDeLivraison, this.plan, new File("src/tests/files/livraisonClientTest.xml"));
+			fail("Devrait avoir lancé XMLException");
+		} catch (ParserConfigurationException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (SAXException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (IOException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (ExceptionXML e) {
+			assertThat(e.getMessage(), CoreMatchers.containsString("La valeur '"));
+			assertThat(e.getMessage(), CoreMatchers.containsString("' n'est pas un facet valide par rapport à minInclusive '0' pour le type 'nonNegativeInteger'."));
+		}
+	}
+	
+	@Test
+	public void testIdPositif() {
+		try {
+			DeserialiseurDemandeDeLivraisonXML.charger(this.demandeDeLivraison, this.plan, new File("src/tests/files/livraisonIdTest.xml"));
+			fail("Devrait avoir lancé XMLException");
+		} catch (ParserConfigurationException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (SAXException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (IOException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (ExceptionXML e) {
+			assertThat(e.getMessage(), CoreMatchers.containsString("La valeur '"));
+			assertThat(e.getMessage(), CoreMatchers.containsString("' n'est pas un facet valide par rapport à minInclusive '1' pour le type 'positiveInteger'."));
+
+		}
+	}
+	
+	@Test
+	public void testCoherenceHeure() {
+		try {
+			DeserialiseurDemandeDeLivraisonXML.charger(this.demandeDeLivraison, this.plan, new File("src/tests/files/livraisonHeureTest.xml"));
+			fail("Devrait avoir lancé XMLException");
+		} catch (ParserConfigurationException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (SAXException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (IOException e) {
+			fail("Devrait avoir lancé XMLException");
+			e.printStackTrace();
+		} catch (ExceptionXML e) {
+			assertThat(e.getMessage(), CoreMatchers.containsString("La date de début de la fenêtre doit être strictement supérieure à la date de fin."));
+		}
 	}
 }

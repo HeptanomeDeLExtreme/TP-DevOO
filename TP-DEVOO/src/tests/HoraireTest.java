@@ -122,5 +122,4 @@ public class HoraireTest {
 		assertTrue(horaire.isInferieurA(new Horaire (8,30,0)));
 		assertTrue(!horaire.isInferieurA(new Horaire (7,30,0)));
 	}
-
 }

@@ -115,5 +115,4 @@ public class ItineraireTest {
 		assertTrue(itineraire.getDepart().getAdresse().equals(depart.getAdresse()));
 	
 	}
-
 }

@@ -58,8 +58,7 @@ public class CommandeSuprime implements Commande {
      		this.entrepotSelectionne = true;
      	}
      	
-//     	if(this.modele.getTournee().getLivraisonsEnOrdre().size()==3){
-     	if(livraison.equals(livEnOrdre.get(livEnOrdre.size()-2))){
+     	if(this.modele.getTournee().getLivraisonsEnOrdre().size()==3){
 			int response = JOptionPane.showConfirmDialog(null, "Si vous supprimez la derniere livraison, des erreurs peuvent subvenir.", "Continuer",
 			JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if (response == JOptionPane.NO_OPTION) {
@@ -111,7 +110,7 @@ public class CommandeSuprime implements Commande {
 
 	    		
 	    		this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(derniere,this.livraisonAjoutee.getAdresse());
-	    		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
+	    		this.modele.getTournee().getLivraisonsEnOrdre().get(this.modele.getTournee().getLivraisonsEnOrdre().size()-2).setFenetre(fenetreTemp);
 	    		System.out.println("OPHELIE4bis : "+this.livraisonAjoutee);
 
 	    		FenetreTemporelle fenetreDerniere=derniere.getFenetre();

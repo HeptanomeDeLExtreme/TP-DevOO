@@ -58,8 +58,7 @@ public class CommandeSuprime implements Commande {
      		this.entrepotSelectionne = true;
      	}
      	
-//     	if(this.modele.getTournee().getLivraisonsEnOrdre().size()==3){
-     	if(livraison.equals(livEnOrdre.get(livEnOrdre.size()-2))){
+     	if(this.modele.getTournee().getLivraisonsEnOrdre().size()==3){
 			int response = JOptionPane.showConfirmDialog(null, "Si vous supprimez la derniere livraison, des erreurs peuvent subvenir.", "Continuer",
 			JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if (response == JOptionPane.NO_OPTION) {
@@ -94,13 +93,9 @@ public class CommandeSuprime implements Commande {
 	    	if(!this.entrepotSelectionne){
 	    		System.out.println("OPHELIE1 : "+this.livraisonAjoutee);
 	    		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
-	    		System.out.println("OPHELIE2 : "+this.livraisonAjoutee);
 	   	    	this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(this.livraisonSuivante, this.livraisonAjoutee.getAdresse());
-	   	    	System.out.println("OPHELIE3 : "+this.livraisonAjoutee);
 	   	    	this.livraisonAjoutee.setFenetre(this.fenetreTemp);
-	   	    	System.out.println("OPHELIE4 : "+this.livraisonAjoutee);
 		    	this.modele.changementEffectue();
-		    	System.out.println("OPHELIE5 : "+this.livraisonAjoutee);
 	    	}
 	    	else{
 	    		System.out.println("OPHELIE1bis : "+this.livraisonAjoutee);

@@ -50,16 +50,6 @@ public class Horaire {
         this.seconde = sec;	
     }
     
-//    public Boolean equals(Horaire horaire2){
-//    	Boolean heure = (this.heure == horaire2.heure);
-//    	Boolean minutes = (this.minute == horaire2.minute);
-//    	Boolean seconde = (this.seconde == horaire2.seconde);
-//    	if(heure && minutes && seconde){
-//    		return true;
-//    	}
-//    	return false;
-//    }
-    
     public Horaire soustraireHoraire(Horaire hor) {
 
         float duree1 = this.horaireToDuree();

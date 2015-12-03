@@ -17,4 +17,7 @@
 <fullyQualifiedTypeName name="modele.Modele"/>
 <fullyQualifiedTypeName name="controleur.CommandeModifie"/>
 <fullyQualifiedTypeName name="modele.FenetreTemporelle"/>
+<fullyQualifiedTypeName name="vue.FenetreIHM"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="xml.ExceptionXML"/>
 </qualifiedTypeNameHistroy>

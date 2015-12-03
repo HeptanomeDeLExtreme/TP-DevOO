@@ -56,9 +56,11 @@ public class EtatLivraisonsSelectionnees extends EtatDefaut {
     		Controleur.etatDeuxLivraisonSelectionnee.setLiv1(liv);
     		Controleur.etatDeuxLivraisonSelectionnee.setLiv2(liv2);
     		Controleur.setEtatCourant(Controleur.etatDeuxLivraisonSelectionnee);
+    		fenetre.afficheMessage("Livraisons sélectionnées : " + liv.getAdresse().getId() + " et " + liv2.getAdresse().getId());
     	}
     	else{
     		Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
+    		fenetre.afficheMessage("Sélection vide");
     	}
     }
 

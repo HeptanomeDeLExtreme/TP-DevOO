@@ -151,13 +151,17 @@ public class EtatTourneeCalculee extends EtatDefaut {
     	Livraison liv = ddl.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
     	Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
     	
+    	fenetre.afficheMessage("Sélection vide");
+    	
     	if(liv != null){
     		Controleur.setEtatCourant(Controleur.etatLivraisonsSelectionnees);
     		Controleur.etatLivraisonsSelectionnees.setLivraison(liv);
+        	fenetre.afficheMessage("Livraison sélectionnée : " + liv.getAdresse().getId());
     	}
     	else if(inter != null){
     		Controleur.setEtatCourant(Controleur.etatIntersectionSelectionnee);
     		Controleur.etatIntersectionSelectionnee.setIntersection(inter);
+        	fenetre.afficheMessage("Intersection sélectionnée : " + inter.getId());
     	}
     }
     

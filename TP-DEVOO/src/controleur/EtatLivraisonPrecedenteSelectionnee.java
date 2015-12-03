@@ -44,6 +44,7 @@ public class EtatLivraisonPrecedenteSelectionnee extends EtatDefaut {
 
     public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl){
         Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
+        fenetre.afficheMessage("Sélection vide");
     }
     
 }

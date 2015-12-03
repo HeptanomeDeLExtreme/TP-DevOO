@@ -2,6 +2,9 @@ package controleur;
 
 import java.util.*;
 
+import javax.swing.JOptionPane;
+
+import modele.FenetreTemporelle;
 import modele.Intersection;
 import modele.Livraison;
 import modele.Modele;
@@ -17,10 +20,10 @@ public class CommandeSuprime implements Commande {
      * 
      */
     protected Modele modele;
-    protected Livraison liv;
+    protected Livraison livraisonAjoutee;
     protected Livraison livraisonSuivante;
-//    protected Livraison livraisonSauvee;
-    protected Intersection intersectionSauvee;
+    protected Boolean commandeValide = true;
+    protected FenetreTemporelle fenetreTemp;
     
 
     /**
@@ -29,12 +32,21 @@ public class CommandeSuprime implements Commande {
      */
     public CommandeSuprime(Modele modele, Livraison livraison) {
         this.modele = modele;
-        this.liv = livraison;
-    	List<Livraison> listeLivraison = modele.getTournee().getLivraisonsEnOrdre();
-    	int index = listeLivraison.indexOf(this.liv);
-    	this.livraisonSuivante = listeLivraison.get(index+1);
-    	
-    	this.intersectionSauvee = livraison.getAdresse();
+     	this.livraisonAjoutee = livraison;
+     	
+     	List<Livraison> livEnOrdre = this.modele.getTournee().getLivraisonsEnOrdre();
+     	this.livraisonSuivante = livEnOrdre.get(livEnOrdre.indexOf(this.livraisonAjoutee)+1);
+     	
+     	Livraison entrepot = livEnOrdre.get(0);
+     	if(this.livraisonSuivante.equals(entrepot)){
+//			int response = JOptionPane.showConfirmDialog(null, "Si vous supprimez la derniere livraison, des erreurs peuvent subvenir.", "Continuer",
+//			JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+//			if (response == JOptionPane.NO_OPTION) {
+//				this.commandeValide = false;
+//			}
+     		this.commandeValide = false;
+     	}
+     	
     	
 //    	System.out.println("ASUP : "+this.liv);
 //    	System.out.println("PREC : "+this.livraisonSuivante);
@@ -45,26 +57,36 @@ public class CommandeSuprime implements Commande {
      * 
      */
     public void doCommande() {
-
-//    	this.livraisonSauvee = this.liv.nouvelleCopie();
-    	
-    	List<Livraison> listeLivraison = modele.getTournee().getLivraisonsEnOrdre();
-    	int index = listeLivraison.indexOf(this.liv);
-    	this.livraisonSuivante = listeLivraison.get(index-1);
-    	
-        this.modele.supprimeLivraison(this.liv);
-                
-//        System.out.println("Je supprime : " + this.liv);
+    	if(this.commandeValide){
+    		this.modele.supprimeLivraison(this.livraisonAjoutee);
+    	}
+    	else{
+    		this.modele.supprimeLivraison(this.livraisonAjoutee);
+    	}
+    	fenetreTemp = this.livraisonAjoutee.getFenetre();
     }
 
     /**
      * 
      */
     public void undoCommande() {
-//    	Intersection inter = liv.getAdresse();
-    	System.out.println("LS : "+this.livraisonSuivante);
-    	this.modele.ajouteLivraison(this.livraisonSuivante, this.intersectionSauvee);
-//      this.modele.ajouteLivraisonSpecifique(livraisonSauvee,livraisonSuivante);
+    	if(this.commandeValide){
+   	    	this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(this.livraisonSuivante, this.livraisonAjoutee.getAdresse());
+    		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
+	    	this.modele.changementEffectue();
+    	}
+    	else{
+     		
+    		List<Livraison> livEnOrdre = this.modele.getTournee().getLivraisonsEnOrdre();
+    		Livraison derniere = livEnOrdre.get(livEnOrdre.size()-2);
+    		
+    		this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(derniere,this.livraisonAjoutee.getAdresse());
+    		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
+    		this.modele.getTournee().modifierTournee(derniere, this.livraisonAjoutee);
+    		this.modele.changementEffectue();
+    	}
+    	this.modele.getDemandeDeLivraison().majHorairesDesLivraisons(this.modele.getTournee().getItineraires());
+    	this.modele.getDemandeDeLivraison().majCoutTournee();
     }
 
 }

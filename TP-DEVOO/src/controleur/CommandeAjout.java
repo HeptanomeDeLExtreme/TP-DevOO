@@ -15,6 +15,7 @@ public class CommandeAjout implements Commande {
 	protected Modele modele;
 	protected Livraison liv;
 	protected Intersection inter;
+	protected Livraison livraisonCree;
     /**
      * Default constructor
      * @param inter 
@@ -32,17 +33,22 @@ public class CommandeAjout implements Commande {
      * 
      */
     public void doCommande() {
-        this.modele.ajouteLivraison(this.liv, this.inter);
+//    	System.out.println("UBUT : "+this.livraisonCree);
+        this.livraisonCree = this.modele.getTournee().ajouteLivraison(this.liv, this.inter);
+        this.modele.changementEffectue();
+//        System.out.println("UBUT2 : "+this.livraisonCree);
     }
 
     /**
      * 
      */
     public void undoCommande() {
-    	List<Livraison> listeLivraison = modele.getTournee().getLivraisonsEnOrdre();
-    	int index = listeLivraison.indexOf(this.liv);
-    	Livraison aSupprime = listeLivraison.get(index-1);
-        this.modele.supprimeLivraison(aSupprime);
+//    	List<Livraison> listeLivraison = modele.getTournee().getLivraisonsEnOrdre();
+//    	int index = listeLivraison.indexOf(this.liv);
+//    	Livraison aSupprime = listeLivraison.get(index-1);
+//    	System.out.println("TUBU : "+this.livraisonCree);
+        this.modele.supprimeLivraison(this.livraisonCree);
+//        System.out.println("TUBU2 : "+this.livraisonCree);
     }
 
 }

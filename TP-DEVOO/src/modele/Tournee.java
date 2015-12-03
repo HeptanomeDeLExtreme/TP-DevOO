@@ -90,8 +90,33 @@ public class Tournee extends Observable {
     	this.itineraires = null;
     	this.livraisonsEnOrdre = null;
     }
+        
     
     public void modifierTournee(Livraison livraison1, Livraison livraison2) {
+    	
+
+    	
+    	if(livraison2.equals(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-2)))
+    	{
+    		Inversion(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-3), livraisonsEnOrdre.get(livraisonsEnOrdre.size()-2));
+    		Inversion(livraison1,livraisonsEnOrdre.get(livraisonsEnOrdre.size()-3));
+    		Inversion(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-3), livraisonsEnOrdre.get(livraisonsEnOrdre.size()-2));
+    	}
+    	
+    	else if(livraison1.equals(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-2)))
+    	{
+    		Inversion(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-3), livraisonsEnOrdre.get(livraisonsEnOrdre.size()-2));
+    		Inversion(livraison2,livraisonsEnOrdre.get(livraisonsEnOrdre.size()-3));
+    		Inversion(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-3), livraisonsEnOrdre.get(livraisonsEnOrdre.size()-2));
+    	}
+    	
+    	else{
+    		Inversion(livraison1,livraison2);
+    		}
+   	
+    }
+    
+    public void Inversion(Livraison livraison1, Livraison livraison2) {
     	
 //    	System.out.println("DEBUT DE MODIFIER");
 //    	System.out.println("Itineraires avant modif");
@@ -115,9 +140,11 @@ public class Tournee extends Observable {
     	Livraison livraisonSuivante1 = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison1)+1);
     	Livraison livraisonSuivante2 = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison2)+1);
     	
-    	FenetreTemporelle fenetre1 = livraison1.getFenetre();
-    	FenetreTemporelle fenetre2 = livraison2.getFenetre();
+    	FenetreTemporelle fenetre2 = livraison1.getFenetre();
+    	FenetreTemporelle fenetre1 = livraison2.getFenetre();
     	
+    	System.out.println("Fenetre Livraison 1" + fenetre1.getHeureDebut() + " - " + fenetre1.getHeureFin());
+    	System.out.println("Fenetre Livraison 2" + fenetre2.getHeureDebut() + " - " + fenetre2.getHeureFin());
     	for (Livraison liv : livraisonsEnOrdre)
 		{
 		System.out.println(liv.getAdresse().getId());
@@ -170,14 +197,14 @@ public class Tournee extends Observable {
     			System.out.println("Réajout liv2 ok");
     			}
     		}
-    
     	
     	else{
     		supprimeLivraison(livraison1);
         	System.out.println("Suppr liv1 ok");
-        	supprimeLivraison(livraison2);
+        	
         	System.out.println("Suppr liv2 ok");
     		ajouteLivraison(livraisonSuivante2, livraison1.getAdresse()).setFenetre(fenetre1);
+    		supprimeLivraison(livraison2);
     		System.out.println("Réajout liv2 ok");
     		ajouteLivraison(livraisonSuivante1, livraison2.getAdresse()).setFenetre(fenetre2);
     		System.out.println("Réajout liv1 ok");}
@@ -219,9 +246,9 @@ public class Tournee extends Observable {
     	 */
     	
     	for(Livraison liv : livraisonsEnOrdre){
-    		System.out.println(liv+" "+livraison);
+//    		System.out.println(liv+" "+livraison);
     		if (livraison.equals(liv)){
-    			System.out.println("eq");
+//    			System.out.println("eq");
     			livraison = liv;
     			break;
     		}
@@ -327,13 +354,21 @@ public class Tournee extends Observable {
      * @param livraison
      */
     public Livraison ajouteLivraison(Livraison livraisonSuivante, Intersection intersectionCible) {
-        // TODO implement here
-    	//Récupération d'un ID non attribue
-    	
-    	
-    	
-    	
-    	
+          
+    	System.out.println("AFFICHAGE LIVs");
+    	System.out.println("toadd : "+livraisonSuivante);
+    	for(Livraison liv : livraisonsEnOrdre){
+    		System.out.print(liv);
+    		if(liv.equals(livraisonSuivante)){
+    			livraisonSuivante = liv;
+    			System.out.println(" ok");
+    		}
+    		else{
+    			System.out.println();
+    		}
+    	}	
+    	System.out.println("toadd2 : "+livraisonSuivante);
+    	System.out.println("FIN AFFICHAGE LIVs");
     	
     	List<Integer> listeIDLivraisons = new ArrayList<Integer>();
     	
@@ -356,7 +391,7 @@ public class Tournee extends Observable {
     	Livraison livraison = new Livraison(id_max,philippe, intersectionCible,livraisonSuivante.getFenetre() );
     	livraison.calculerPlusCourtsChemins(graphePondere);
     	//livraison.setHeureLivraison(new Horaire(19*60*60));
-    	System.out.println("T : "+livraison);
+//    	System.out.println("T : "+livraison);
     	
     	if (livraisonSuivante.equals(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1)))
     	{
@@ -365,7 +400,9 @@ public class Tournee extends Observable {
     	}
     
     	else{
-    	livraisonsEnOrdre.add(livraisonsEnOrdre.indexOf (livraisonSuivante),livraison);}
+    		
+    		livraisonsEnOrdre.add(livraisonsEnOrdre.indexOf (livraisonSuivante),livraison);
+    	}
     	
     	Livraison livraisonPrecedente = new Livraison();
     	//Cas où on veut ajouter à la fin, soit avant le retour à l'entrepot.

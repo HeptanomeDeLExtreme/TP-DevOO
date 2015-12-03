@@ -1,0 +1,54 @@
+package controleur;
+
+import java.util.*;
+
+import modele.Intersection;
+import modele.Livraison;
+import modele.Modele;
+import modele.Tournee;
+
+/**
+ * 
+ */
+public class CommandeAjout implements Commande {
+
+	protected Modele modele;
+	protected Livraison liv;
+	protected Intersection inter;
+	protected Livraison livraisonCree;
+    /**
+     * Default constructor
+     * @param inter 
+     * @param liv 
+     * @param tournee2 
+     */
+    public CommandeAjout(Modele modele, Livraison liv, Intersection inter) {
+    	this.modele = modele;
+    	this.liv = liv;
+    	this.inter = inter;
+    }
+
+ 
+    /**
+     * 
+     */
+    public void doCommande() {
+    	System.out.println("UBUT : "+this.livraisonCree);
+        this.livraisonCree = this.modele.getTournee().ajouteLivraison(this.liv, this.inter);
+        this.modele.changementEffectue();
+        System.out.println("UBUT2 : "+this.livraisonCree);
+    }
+
+    /**
+     * 
+     */
+    public void undoCommande() {
+//    	List<Livraison> listeLivraison = modele.getTournee().getLivraisonsEnOrdre();
+//    	int index = listeLivraison.indexOf(this.liv);
+//    	Livraison aSupprime = listeLivraison.get(index-1);
+    	System.out.println("TUBU : "+this.livraisonCree);
+        this.modele.supprimeLivraison(this.livraisonCree);
+        System.out.println("TUBU2 : "+this.livraisonCree);
+    }
+
+}

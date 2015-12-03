@@ -36,7 +36,7 @@
 </editorArea>
 <editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandeSuprime.java" partName="CommandeSuprime.java" path="/home/nico/Documents/INSA/TP-DevOO/TP-DEVOO/src/controleur/CommandeSuprime.java" title="CommandeSuprime.java" tooltip="TP-DEVOO/src/controleur/CommandeSuprime.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP-DEVOO/src/controleur/CommandeSuprime.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1773" selectionTopPixel="625"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2742" selectionTopPixel="1024"/>
 </editor>
 </editors>
 <views>
@@ -164,7 +164,6 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DEVOO/src/modele/Livraison.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DEVOO/src/modele/Modele.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DEVOO/src/controleur/CommandeSuprime.java"/>
 <editor factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" org.eclipse.jdt.ui.ClassFileIdentifier="=TP-DEVOO/\/usr\/lib\/jvm\/java-7-openjdk-amd64\/jre\/lib\/rt.jar&lt;java.util(LinkedList.class"/>
@@ -177,155 +176,155 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DEVOO/src/Castor/Castor.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DEVOO/src/controleur/CommandeSuprime.java"/>
 </editors>
-<item historyLabel="Livraison.java" index="0">
-<position info="not_deleted" x="447" y="0"/>
-</item>
-<item historyLabel="CommandeSuprime.java" index="2">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="CommandeSuprime.java" index="2">
+<item historyLabel="CommandeSuprime.java" index="1">
 <position info="not_deleted" x="804" y="0"/>
 </item>
-<item historyLabel="LinkedList.class" index="3">
+<item historyLabel="LinkedList.class" index="2">
 <position/>
 </item>
-<item historyLabel="CommandeSuprime.java" index="2">
+<item historyLabel="CommandeSuprime.java" index="1">
 <position info="not_deleted" x="804" y="0"/>
 </item>
-<item historyLabel="LinkedList.class" index="3">
+<item historyLabel="LinkedList.class" index="2">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="CommandeSuprime.java" index="2">
+<item historyLabel="CommandeSuprime.java" index="1">
 <position info="not_deleted" x="804" y="0"/>
 </item>
-<item historyLabel="Tournee.java" index="4">
+<item historyLabel="Tournee.java" index="3">
 <position info="not_deleted" x="13989" y="92"/>
 </item>
-<item historyLabel="Tournee.java" index="4">
+<item historyLabel="Tournee.java" index="3">
 <position info="not_deleted" x="12827" y="0"/>
 </item>
-<item historyLabel="Tournee.java" index="4">
+<item historyLabel="Tournee.java" index="3">
 <position info="not_deleted" x="12666" y="0"/>
 </item>
-<item historyLabel="Tournee.java" index="4">
+<item historyLabel="Tournee.java" index="3">
 <position info="not_deleted" x="12818" y="0"/>
 </item>
-<item historyLabel="Tournee.java" index="4">
+<item historyLabel="Tournee.java" index="3">
 <position info="not_deleted" x="12753" y="0"/>
 </item>
-<item historyLabel="Tournee.java" index="4">
+<item historyLabel="Tournee.java" index="3">
 <position info="not_deleted" x="12349" y="0"/>
 </item>
-<item historyLabel="CommandeSuprime.java" index="2">
+<item historyLabel="CommandeSuprime.java" index="1">
 <position info="not_deleted" x="482" y="0"/>
 </item>
-<item historyLabel="Tournee.java" index="4">
+<item historyLabel="Tournee.java" index="3">
 <position info="not_deleted" x="12349" y="0"/>
 </item>
-<item historyLabel="CommandeSuprime.java" index="2">
+<item historyLabel="CommandeSuprime.java" index="1">
 <position info="not_deleted" x="633" y="0"/>
 </item>
-<item historyLabel="Tournee.java" index="4">
+<item historyLabel="Tournee.java" index="3">
 <position info="not_deleted" x="12683" y="0"/>
 </item>
-<item historyLabel="CommandeSuprime.java" index="2">
+<item historyLabel="CommandeSuprime.java" index="1">
 <position info="not_deleted" x="633" y="0"/>
 </item>
-<item historyLabel="CommandeSuprime.java" index="2">
+<item historyLabel="CommandeSuprime.java" index="1">
 <position info="not_deleted" x="911" y="0"/>
 </item>
-<item historyLabel="CommandeSuprime.java" index="2">
+<item historyLabel="CommandeSuprime.java" index="1">
 <position info="not_deleted" x="1259" y="0"/>
 </item>
-<item historyLabel="CommandeSuprime.java" index="2">
+<item historyLabel="CommandeSuprime.java" index="1">
 <position info="not_deleted" x="1243" y="0"/>
 </item>
-<item historyLabel="EtatInit.java" index="5">
+<item historyLabel="EtatInit.java" index="4">
 <position info="not_deleted" x="1572" y="0"/>
 </item>
-<item historyLabel="CommandeSuprime.java" index="2">
+<item historyLabel="CommandeSuprime.java" index="1">
 <position info="not_deleted" x="1243" y="0"/>
 </item>
-<item historyLabel="CommandeSuprime.java" index="2">
+<item historyLabel="CommandeSuprime.java" index="1">
 <position info="not_deleted" x="1768" y="0"/>
 </item>
-<item historyLabel="CommandeSuprime.java" index="2">
+<item historyLabel="CommandeSuprime.java" index="1">
 <position info="not_deleted" x="2358" y="0"/>
 </item>
-<item historyLabel="CommandeSuprime.java" index="2">
+<item historyLabel="CommandeSuprime.java" index="1">
 <position info="not_deleted" x="1603" y="0"/>
 </item>
-<item historyLabel="EtatTourneeCalculee.java" index="6">
+<item historyLabel="EtatTourneeCalculee.java" index="5">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Controleur.java" index="7">
+<item historyLabel="Controleur.java" index="6">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="EtatTourneeCalculee.java" index="6">
+<item historyLabel="EtatTourneeCalculee.java" index="5">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="EtatTourneeCalculee.java" index="6">
+<item historyLabel="EtatTourneeCalculee.java" index="5">
 <position info="not_deleted" x="5085" y="0"/>
 </item>
-<item historyLabel="FenetreIHM.java" index="8">
+<item historyLabel="FenetreIHM.java" index="7">
 <position info="not_deleted" x="5222" y="0"/>
 </item>
-<item historyLabel="EtatTourneeCalculee.java" index="6">
+<item historyLabel="EtatTourneeCalculee.java" index="5">
 <position info="not_deleted" x="3913" y="0"/>
 </item>
-<item historyLabel="CommandeSuprime.java" index="2">
+<item historyLabel="CommandeSuprime.java" index="1">
 <position info="not_deleted" x="1603" y="0"/>
 </item>
-<item historyLabel="EtatTourneeCalculee.java" index="6">
+<item historyLabel="EtatTourneeCalculee.java" index="5">
 <position info="not_deleted" x="3913" y="0"/>
 </item>
-<item historyLabel="FenetreIHM.java" index="8">
+<item historyLabel="FenetreIHM.java" index="7">
 <position info="not_deleted" x="5222" y="0"/>
 </item>
-<item historyLabel="Tournee.java" index="4">
+<item historyLabel="Tournee.java" index="3">
 <position info="not_deleted" x="12683" y="0"/>
 </item>
-<item historyLabel="Modele.java" index="1">
+<item historyLabel="Modele.java" index="0">
 <position info="not_deleted" x="910" y="0"/>
+</item>
+<item historyLabel="Castor.java" index="8">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Tournee.java" index="3">
+<position info="not_deleted" x="13944" y="0"/>
+</item>
+<item historyLabel="CommandeSuprime.java" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="CommandeSuprime.java" index="1">
+<position info="not_deleted" x="2486" y="0"/>
+</item>
+<item historyLabel="CommandeSuprime.java" index="1">
+<position info="not_deleted" x="1826" y="0"/>
+</item>
+<item historyLabel="Tournee.java" index="3">
+<position info="not_deleted" x="13968" y="85"/>
+</item>
+<item historyLabel="Tournee.java" index="3">
+<position info="not_deleted" x="14120" y="0"/>
+</item>
+<item historyLabel="Tournee.java" index="3">
+<position info="not_deleted" x="12861" y="0"/>
 </item>
 <item historyLabel="Castor.java" index="9">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Tournee.java" index="4">
-<position info="not_deleted" x="13944" y="0"/>
-</item>
-<item historyLabel="CommandeSuprime.java" index="2">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="CommandeSuprime.java" index="2">
-<position info="not_deleted" x="2486" y="0"/>
-</item>
-<item historyLabel="CommandeSuprime.java" index="2">
-<position info="not_deleted" x="1826" y="0"/>
-</item>
-<item historyLabel="Tournee.java" index="4">
-<position info="not_deleted" x="13968" y="85"/>
-</item>
-<item historyLabel="Tournee.java" index="4">
-<position info="not_deleted" x="14120" y="0"/>
-</item>
-<item historyLabel="Tournee.java" index="4">
-<position info="not_deleted" x="12861" y="0"/>
-</item>
-<item historyLabel="Castor.java" index="10">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="CommandeSuprime.java" index="11">
+<item historyLabel="CommandeSuprime.java" index="10">
 <position info="not_deleted" x="2312" y="0"/>
 </item>
-<item historyLabel="CommandeSuprime.java" index="11">
+<item historyLabel="CommandeSuprime.java" index="10">
 <position info="not_deleted" x="1458" y="0"/>
 </item>
-<item historyLabel="CommandeSuprime.java" index="11">
+<item historyLabel="CommandeSuprime.java" index="10">
 <position info="not_deleted" x="2040" y="0"/>
 </item>
-<item active="true" historyLabel="CommandeSuprime.java" index="11">
+<item historyLabel="CommandeSuprime.java" index="10">
 <position info="not_deleted" x="2383" y="0"/>
+</item>
+<item historyLabel="CommandeSuprime.java" index="10">
+<position info="not_deleted" x="3360" y="0"/>
+</item>
+<item active="true" historyLabel="CommandeSuprime.java" index="10">
+<position info="not_deleted" x="3501" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>

@@ -91,13 +91,13 @@ public class CommandeSuprime implements Commande {
 	    	}
 	    	// si l'entrepot a été selectionné en tant que livraison suivante
 	    	else{
-	    		List<FenetreTemporelle> listFenetre = this.modele.getDemandeDeLivraison().getFenetres();
+	     		
 	    		List<Livraison> livEnOrdre = this.modele.getTournee().getLivraisonsEnOrdre();
 	    		Livraison derniere = livEnOrdre.get(livEnOrdre.size()-2);
 	    		
 	    		this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(derniere,this.livraisonAjoutee.getAdresse());
-	    		this.livraisonAjoutee.setFenetre(listFenetre.get(listFenetre.size()-1));
 	    		this.modele.getTournee().modifierTournee(derniere, this.livraisonAjoutee);
+	    		List<FenetreTemporelle> listFenetre = this.modele.getDemandeDeLivraison().getFenetres();
 //	    		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
 	    		this.livraisonAjoutee.setFenetre(listFenetre.get(listFenetre.size()-1));
 	    		this.modele.changementEffectue();

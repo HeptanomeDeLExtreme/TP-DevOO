@@ -365,7 +365,7 @@ public class Tournee extends Observable {
 //    			System.out.println(" ok");
     		}
     		else{
-//    			System.out.println();
+    			System.out.println();
     		}
     	}	
 //    	System.out.println("toadd2 : "+livraisonSuivante);

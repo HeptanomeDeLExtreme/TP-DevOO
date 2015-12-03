@@ -174,8 +174,7 @@ public class Tournee extends Observable {
     			ajouteLivraison(livraisonSuivante2, livraison1.getAdresse()).setFenetre(fenetre1);
 //        		System.out.println("Réajout liv2 ok");
         		ajouteLivraison(livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraisonSuivante2)-1), livraison2.getAdresse()).setFenetre(fenetre2);}
-//    			System.out.println("Réajout liv1 ok");
-    		}
+//    			System.out.println("Réajout liv1 ok");}
     	
     	else if (livraisonSuivante2.equals(livraison1)){
     		
@@ -227,7 +226,7 @@ public class Tournee extends Observable {
 //   		System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
     	}
     	
-    	}
+    	
     	
     }
 
@@ -365,7 +364,7 @@ public class Tournee extends Observable {
 //    			System.out.println(" ok");
     		}
     		else{
-//    			System.out.println();
+    			System.out.println();
     		}
     	}	
 //    	System.out.println("toadd2 : "+livraisonSuivante);

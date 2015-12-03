@@ -124,7 +124,7 @@ public class EtatLivraisonChargee extends EtatDefaut {
     public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl){
         Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
         if(inter != null){
-	        fenetre.afficheMessage(inter.toString());
+	        fenetre.afficheMessage("Intersection sélectionnée : " + inter.getId());
         }
         else{
         	fenetre.afficheMessage("Pas d'intersection ici !");

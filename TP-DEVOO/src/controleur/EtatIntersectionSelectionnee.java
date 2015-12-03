@@ -43,13 +43,16 @@ public class EtatIntersectionSelectionnee extends EtatDefaut {
     	
     	if(liv == null){
     		Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
+        	fenetre.afficheMessage("Sélection vide");
     	}
     	else if(inter != null){
     		Controleur.setEtatCourant(Controleur.etatLivraisonPrecedenteSelectionnee);
     		Controleur.etatLivraisonPrecedenteSelectionnee.init(this.inter,liv);
+    		fenetre.afficheMessage("Intersection sélectionnée : " + this.inter.getId() + " - Livraison suivante sélectionnée : " + liv.getAdresse().getId());
     	}
     	else{
     		Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
+    		fenetre.afficheMessage("Sélection vide");
     	}
     }
 

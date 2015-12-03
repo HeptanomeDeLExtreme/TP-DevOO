@@ -19,10 +19,6 @@
 				<xs:element ref='Plage' minOccurs='1' maxOccurs='unbounded'/>
 			</xs:sequence>
 		</xs:complexType>
-		<xs:unique name="livraisonAdresse">
-			<xs:selector xpath="./Plage/Livraisons/Livraison"/>
-			<xs:field xpath="@adresse"/>
-		</xs:unique>
 	</xs:element>
 
 	<xs:element name='Plage'>
@@ -33,6 +29,10 @@
 			<xs:attribute name='heureDebut' type='heurePasTime' use='required'/>
 			<xs:attribute name='heureFin' type='heurePasTime' use='required'/>
 		</xs:complexType>
+		<xs:unique name="livraisonAdresse">
+			<xs:selector xpath="./Livraisons/Livraison"/>
+			<xs:field xpath="@adresse"/>
+		</xs:unique>
 	</xs:element>
 
 	<xs:element name='Livraisons'>

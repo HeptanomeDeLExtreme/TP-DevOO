@@ -54,6 +54,33 @@ public class HoraireTest {
 	}
 
 	/**
+	 * Test method for {@link modele.Horaire#soustraireHoraire(Horaire)}.
+	 */
+	@Test
+	public void testSoustraireHoraire() {
+		Horaire horaire = new Horaire (8,30,0);
+		Horaire resultat1 = horaire.soustraireHoraire(new Horaire(1, 20, 6));
+		Horaire resultat2 = horaire.soustraireHoraire(new Horaire(1, 42, 0));
+		Horaire resultat3 = horaire.soustraireHoraire(new Horaire(1, 32, 23));
+		
+		assertEquals(resultat1.getHeure(), 7);
+		assertEquals(resultat1.getMinute(), 9);
+		assertEquals(resultat1.getSeconde(), 54);
+		
+		assertEquals(resultat2.getHeure(), 6);
+		assertEquals(resultat2.getMinute(), 48);
+		assertEquals(resultat2.getSeconde(), 0);
+		
+		assertEquals(resultat3.getHeure(), 6);
+		assertEquals(resultat3.getMinute(), 57);
+		assertEquals(resultat3.getSeconde(), 37);
+		
+		
+		
+		
+	}
+	
+	/**
 	 * Test method for {@link modele.Horaire#horaireToDuree()}.
 	 */
 	@Test

@@ -4,7 +4,6 @@
 <fullyQualifiedTypeName name="controleur.EtatDeuxLivraisonSelectionnee"/>
 <fullyQualifiedTypeName name="controleur.EtatLivraisonPrecedenteSelectionnee"/>
 <fullyQualifiedTypeName name="java.awt.Point"/>
-<fullyQualifiedTypeName name="modele.FenetreTemporelle"/>
 <fullyQualifiedTypeName name="controleur.EtatLivraisonsSelectionnees"/>
 <fullyQualifiedTypeName name="controleur.EtatIntersectionSelectionnee"/>
 <fullyQualifiedTypeName name="javax.swing.JSpinner.ListEditor"/>
@@ -17,4 +16,5 @@
 <fullyQualifiedTypeName name="modele.Intersection"/>
 <fullyQualifiedTypeName name="modele.Modele"/>
 <fullyQualifiedTypeName name="controleur.CommandeModifie"/>
+<fullyQualifiedTypeName name="modele.FenetreTemporelle"/>
 </qualifiedTypeNameHistroy>

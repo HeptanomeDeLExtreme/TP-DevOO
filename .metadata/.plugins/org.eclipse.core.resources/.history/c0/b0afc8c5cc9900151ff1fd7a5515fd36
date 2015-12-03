@@ -82,7 +82,7 @@ public class CommandeSuprime implements Commande {
      * 
      */
     public void undoCommande() {
-    	if(!this.entrepotSelectionne){
+    	if(this.entrepotSelectionne){
 
     		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
    	    	this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(this.livraisonSuivante, this.livraisonAjoutee.getAdresse());

@@ -22,9 +22,9 @@ public class CommandeSuprime implements Commande {
     protected Modele modele;
     protected Livraison livraisonAjoutee;
     protected Livraison livraisonSuivante;
-    protected Boolean entrepotSelectionne = false; // si la livraison d'apres est l'entrepot
+    protected Boolean entrepotSelectionne = false;
     protected FenetreTemporelle fenetreTemp;
-    protected Boolean commandeValide = true; // si on a pas tenté de supprimer la derniere livraison presente
+    protected Boolean commandeValide = true;
 
     /**
      * @param tournee 
@@ -82,7 +82,7 @@ public class CommandeSuprime implements Commande {
      * 
      */
     public void undoCommande() {
-    	if(!this.entrepotSelectionne){
+    	if(this.commandeValide){
 
     		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
    	    	this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(this.livraisonSuivante, this.livraisonAjoutee.getAdresse());

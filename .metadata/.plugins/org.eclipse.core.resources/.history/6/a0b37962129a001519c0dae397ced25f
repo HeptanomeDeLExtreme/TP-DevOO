@@ -98,9 +98,7 @@ public class CommandeSuprime implements Commande {
 	    	if(!this.entrepotSelectionne){
 	    		
 	    		System.out.println("OPHELIE1 : "+this.livraisonAjoutee);
-	    		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
-	    		this.modele.getDemandeDeLivraison().majHorairesDesLivraisons(this.modele.getTournee().getItineraires());
-		    	this.modele.getDemandeDeLivraison().majCoutTournee();
+//	    		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
 	    		
 	    		System.out.println("OPHELIE2 : "+this.livraisonAjoutee);
 	   	    	this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(this.livraisonSuivante, this.livraisonAjoutee.getAdresse());

@@ -9,17 +9,30 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import modele.FenetreTemporelle;
+import modele.Horaire;
+
 /**
  * @author marion
  *
  */
 public class FenetreTemporelleTest {
 
+	FenetreTemporelle fenetre;
+	
+	Horaire debut;
+	
+	Horaire fin;
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
+		debut = new Horaire(8,30,0);
+		fin = new Horaire(9,50,0);
+		
+		fenetre = new FenetreTemporelle(debut, fin);
 	}
 
 	/**
@@ -30,91 +43,19 @@ public class FenetreTemporelleTest {
 	}
 
 	/**
-	 * Test method for {@link modele.FenetreTemporelle#FenetreTemporelle()}.
-	 */
-	@Test
-	public void testFenetreTemporelle() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
 	 * Test method for {@link modele.FenetreTemporelle#FenetreTemporelle(modele.Horaire, modele.Horaire)}.
 	 */
 	@Test
 	public void testFenetreTemporelleHoraireHoraire() {
-		fail("Not yet implemented"); // TODO
-	}
+		
+		assertEquals(fenetre.getHeureDebut().getHeure(), debut.getHeure());
+		assertEquals(fenetre.getHeureDebut().getMinute(), debut.getMinute());
+		assertEquals(fenetre.getHeureDebut().getSeconde(), debut.getSeconde());
+		
+		assertEquals(fenetre.getHeureFin().getHeure(), fin.getHeure());
+		assertEquals(fenetre.getHeureFin().getMinute(), fin.getMinute());
+		assertEquals(fenetre.getHeureFin().getSeconde(), fin.getSeconde());
 
-	/**
-	 * Test method for {@link modele.FenetreTemporelle#supprimeLivraison(modele.Livraison)}.
-	 */
-	@Test
-	public void testSupprimeLivraison() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link modele.FenetreTemporelle#ajouteLivraison(modele.Livraison)}.
-	 */
-	@Test
-	public void testAjouteLivraison() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link modele.FenetreTemporelle#toString()}.
-	 */
-	@Test
-	public void testToString() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link modele.FenetreTemporelle#getHeureDebut()}.
-	 */
-	@Test
-	public void testGetHeureDebut() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link modele.FenetreTemporelle#setHeureDebut(modele.Horaire)}.
-	 */
-	@Test
-	public void testSetHeureDebut() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link modele.FenetreTemporelle#getHeureFin()}.
-	 */
-	@Test
-	public void testGetHeureFin() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link modele.FenetreTemporelle#setHeureFin(modele.Horaire)}.
-	 */
-	@Test
-	public void testSetHeureFin() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link modele.FenetreTemporelle#getLivraisons()}.
-	 */
-	@Test
-	public void testGetLivraisons() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link modele.FenetreTemporelle#setLivraisons(java.util.Set)}.
-	 */
-	@Test
-	public void testSetLivraisons() {
-		fail("Not yet implemented"); // TODO
 	}
 
 	/**
@@ -122,7 +63,17 @@ public class FenetreTemporelleTest {
 	 */
 	@Test
 	public void testEqualsFenetreTemporelle() {
-		fail("Not yet implemented"); // TODO
+
+		FenetreTemporelle fenetre1 = new FenetreTemporelle(debut, fin);
+		FenetreTemporelle fenetre2 = new FenetreTemporelle(new Horaire (7,30,0), new Horaire(9,50,0));
+		FenetreTemporelle fenetre3 = new FenetreTemporelle(new Horaire (8,30,0), new Horaire(10,50,0));
+		FenetreTemporelle fenetre4 = new FenetreTemporelle(new Horaire (8,35,0), new Horaire(9,55,0));
+		
+		
+		assertTrue(fenetre.equals(fenetre1));
+		assertTrue(!fenetre.equals(fenetre2));
+		assertTrue(!fenetre.equals(fenetre3));
+		assertTrue(!fenetre.equals(fenetre4));
 	}
 
 }

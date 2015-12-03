@@ -59,7 +59,10 @@ public class GenerateurFeuilleDeRoute {
 		//TODO amelioration : décider du fichier à écrire avec JFileChooser
 		PrintWriter writer = new PrintWriter(nomFichier, "UTF-8");
 		
-		writer.println("FEUILLE DE ROUTE : Durée totale = " + dureeToHoraire(tournee.getDuree()));
+		writer.println("FEUILLE DE ROUTE : Durée totale = " + tournee.getDuree());
+		Horaire horaireCoutTotal = new Horaire(tournee.getCoutTotal());
+		writer.println("Durée totale sans les pauses = " + horaireCoutTotal);
+		
 		writer.println("");
 		
 		List<Itineraire> itineraires = tournee.getItineraires();

@@ -77,6 +77,7 @@ public class FenetreIHM extends JFrame{
 		addMouseListener(ecouteurSouris);
 		setTailleFenetre();
 		setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
 

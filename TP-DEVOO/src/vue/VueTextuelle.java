@@ -85,7 +85,7 @@ public class VueTextuelle extends JScrollPane implements Observer{
 		    		// Arrivee
 		    		Livraison arrivee = itineraire.getArrivee();
 		    		Intersection interArrivee = arrivee.getAdresse();
-		    		html +="Arriver à  x = "+interArrivee.getX()+" y = "+interArrivee.getY()+"<br>";
+		    		html +="Arriver à  x = "+interArrivee.getX()+" y = "+interArrivee.getY()+" id = "+interArrivee.getId()+"<br>";
 		    		if(arrivee.getHeureArrivee() != null){
 		    			html +="Heure d'arivée estimée : "+arrivee.getHeureArrivee()+"<br>";
 		    		}
@@ -104,6 +104,7 @@ public class VueTextuelle extends JScrollPane implements Observer{
 		    	}
 		    	html += "Temps de tournée : "+new Horaire(tournee.getCoutTotal()) + "<br>";
 		    	html += "Temps total : "+tournee.getDuree()+"<br><br>";
+//		    	System.out.println("Je suis qu'un thug "+tournee.getCoutTotal());
 		        
 		    	this.setText(html);
 	    	}

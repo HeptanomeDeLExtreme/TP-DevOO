@@ -1,10 +1,13 @@
 package controleur;
 
+import java.awt.Point;
 import java.util.*;
 
+import modele.DemandeDeLivraison;
 import modele.Intersection;
 import modele.Livraison;
 import modele.Modele;
+import modele.Plan;
 import modele.Tournee;
 
 import vue.FenetreIHM;
@@ -39,4 +42,9 @@ public class EtatLivraisonPrecedenteSelectionnee extends EtatDefaut {
 		this.liv = liv;
 	}
 
+    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl){
+        Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
+        fenetre.afficheMessage("Sélection vide");
+    }
+    
 }

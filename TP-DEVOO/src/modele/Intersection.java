@@ -7,31 +7,6 @@ import java.util.*;
  * 
  */
 public class Intersection {
-	
-	/**
-     * ID de l'intersection
-     */
-    protected Integer id;
-
-    /**
-     * Coordonnee X de l'intersection.
-     */
-    protected Integer x;
-
-    /**
-     * Coordonnee Y de l'intersection
-     */
-    protected Integer y;
-
-    /**
-     * Ensemble des troncons permettant d'acceder a l'intersection
-     */
-    protected Set<Troncon> tronconsSortant;
-
-    /**
-     * Ensemble de troncons permettant de quitter l'intersection.
-     */
-    protected Set<Troncon> tronconsEntrant;
 
 	/**
      * Default constructor
@@ -39,12 +14,6 @@ public class Intersection {
     public Intersection() {
     }
     
-    /**
-     * 
-     * @param id
-     * @param x
-     * @param y
-     */
 	public Intersection(Integer id, Integer x, Integer y) {
 		this.id = id;
 		this.x = x;
@@ -55,20 +24,11 @@ public class Intersection {
 	}
 	
 	
-	/**
-	 * Verifie que l'intersection est identique a une autre intersection
-	 * @param i2 Intersection a comparer
-	 * @return Resultat du test
-	 */
+	
 	public boolean equals(Intersection i2) {
 		return (this.id == i2.id);
 	}
 
-	/**
-	 * Recherche un troncon entre l'intersection et une autre intersection
-	 * @param arrivee Intersection d'arrivee
-	 * @return Troncon reliant les deux intersection, si existant
-	 */
 	public Troncon rechercherTroncon(Intersection arrivee){
 		Troncon toRet = null;
 		for(Troncon tronc : tronconsSortant){
@@ -123,14 +83,36 @@ public class Intersection {
 		return y;
 	}
 
-	//TODO JavaDoc
 	public boolean contient(Point p, float echelleX, float echelleY) {
 		int ecartX = (int) Math.abs(p.getX()*echelleX-this.x*echelleX);
 		int ecartY = (int) Math.abs(p.getY()*echelleY-this.y*echelleY);
 		return (ecartX < 10 && ecartY < 10);
 	}
 
+	/**
+     * 
+     */
+    protected Integer id;
 
+    /**
+     * 
+     */
+    protected Integer x;
+
+    /**
+     * 
+     */
+    protected Integer y;
+
+    /**
+     * 
+     */
+    protected Set<Troncon> tronconsSortant;
+
+    /**
+     * 
+     */
+    protected Set<Troncon> tronconsEntrant;
 
 
     /**
@@ -149,7 +131,7 @@ public class Intersection {
 	}
     
 	/**
-	 * Recherche toutes les intersections accessibles depuis l'intersection, par l'emprunt d'un seul troncon.
+	 * 
 	 * @return Map contenant toutes les intersections atteignables depuis cette intersection, et le cout associé du trajet.
 	 */
 		public Map<Intersection,Integer> getIntersectionsVoisines(){

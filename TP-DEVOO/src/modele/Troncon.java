@@ -3,37 +3,11 @@ package modele;
 import java.util.*;
 
 /**
- * Represente un chemin entre deux intersections
- *
+ * 
  */
 public class Troncon {
 
     /**
-	 * Longueur du troncon
-	 */
-	protected Float longueur;
-
-	/**
-	 * Vitesse moyenne de parcours du troncon
-	 */
-	protected Float vitesseMoyenne;
-
-	/**
-	 * Nom de la rue associee au troncon
-	 */
-	protected String nomDeRue;
-
-	/**
-	 * Intersection d'origine du troncon.
-	 */
-	protected Intersection origine;
-
-	/**
-	 * Intersection de destination du troncon
-	 */
-	protected Intersection destination;
-
-	/**
      * Default constructor
      */
     public Troncon() {
@@ -61,6 +35,8 @@ public class Troncon {
 		this.origine = origine;
 	}
 
+
+
 	public void setDestination(Intersection destination) {
 		this.destination = destination;
 	}
@@ -69,6 +45,8 @@ public class Troncon {
 		return nomDeRue;
 	}
 
+
+	
 	@Override
 	public String toString() {
 		return "Troncon [longueur=" + longueur + ", vitesseMoyenne="
@@ -76,9 +54,38 @@ public class Troncon {
 				+ origine + ", destination=" + destination + "]";
 	}
 
+
+
+
+
 	/**
-     * Renvoit le cout d'un troncon en temps.
-     * @return Cout du troncon en temps.
+     * 
+     */
+    protected Float longueur;
+
+    /**
+     * 
+     */
+    protected Float vitesseMoyenne;
+
+    /**
+     * 
+     */
+    protected String nomDeRue;
+
+    /**
+     * 
+     */
+    protected Intersection origine;
+
+    /**
+     * 
+     */
+    protected Intersection destination;
+
+    /**
+     * 
+     * @return
      */
     public int getCout(){
     	int l = (int) (longueur*10);
@@ -86,6 +93,9 @@ public class Troncon {
     	return (l/v);
     }
     
+/**
+ * @return the longueur
+ */
 public Float getLongueur() {
 	return longueur;
 }

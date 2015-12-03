@@ -11,15 +11,15 @@
 <coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="134" y="30"/>
 <coolItem id="additions" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.debug.ui.launch.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="56" y="30"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="144" y="30"/>
 <coolItem id="org.eclipse.debug.ui.main.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="56" y="30"/>
-<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="64" y="30"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="82" y="30"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="116" y="30"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="214" y="30"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
@@ -28,10 +28,16 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
 </folder>
 </info>
 </editorArea>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandeSuprime.java" partName="CommandeSuprime.java" path="/home/nico/Documents/INSA/TP-DevOO/TP-DEVOO/src/controleur/CommandeSuprime.java" title="CommandeSuprime.java" tooltip="TP-DEVOO/src/controleur/CommandeSuprime.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP-DEVOO/src/controleur/CommandeSuprime.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="704"/>
+</editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
@@ -110,7 +116,7 @@
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@4d1b8e7e" ratio="0.18597786" ratioLeft="252" ratioRight="1103" relationship="2" relative="topLeft">
-<folder appearance="2" expanded="0">
+<folder appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
@@ -161,14 +167,45 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DEVOO/src/Castor/Castor.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DEVOO/src/modele/DemandeDeLivraison.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DEVOO/src/modele/Tournee.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DEVOO/src/vue/FenetreIHM.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP-DEVOO/src/controleur/CommandeSuprime.java"/>
+</editors>
+<item historyLabel="Castor.java" index="0">
+<position info="not_deleted" x="139" y="0"/>
+</item>
+<item historyLabel="DemandeDeLivraison.java" index="1">
+<position/>
+</item>
+<item historyLabel="Tournee.java" index="2">
+<position/>
+</item>
+<item historyLabel="FenetreIHM.java" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Tournee.java" index="2">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="DemandeDeLivraison.java" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Tournee.java" index="2">
+<position info="not_deleted" x="205" y="0"/>
+</item>
+<item active="true" historyLabel="CommandeSuprime.java" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+</navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
 <trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="bottomLeft"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@4d1b8e7e"/>
 </trimArea>
 <trimArea IMemento.internal.id="128">
@@ -186,17 +223,23 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandeSuprime.java" tooltip="TP-DEVOO/src/controleur/CommandeSuprime.java">
 <persistable path="/TP-DEVOO/src/controleur/CommandeSuprime.java"/>
 </file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DemandeDeLivraison.java" tooltip="TP-DEVOO/src/modele/DemandeDeLivraison.java">
+<persistable path="/TP-DEVOO/src/modele/DemandeDeLivraison.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Tournee.java" tooltip="TP-DEVOO/src/modele/Tournee.java">
 <persistable path="/TP-DEVOO/src/modele/Tournee.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FenetreIHM.java" tooltip="TP-DEVOO/src/vue/FenetreIHM.java">
+<persistable path="/TP-DEVOO/src/vue/FenetreIHM.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Castor.java" tooltip="TP-DEVOO/src/Castor/Castor.java">
+<persistable path="/TP-DEVOO/src/Castor/Castor.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="VueGraphique.java" tooltip="TP-DEVOO/src/vue/VueGraphique.java">
 <persistable path="/TP-DEVOO/src/vue/VueGraphique.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Horaire.java" tooltip="TP-DEVOO/src/modele/Horaire.java">
 <persistable path="/TP-DEVOO/src/modele/Horaire.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FenetreIHM.java" tooltip="TP-DEVOO/src/vue/FenetreIHM.java">
-<persistable path="/TP-DEVOO/src/vue/FenetreIHM.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EcouteurClavier.java" tooltip="TP-DEVOO/src/vue/EcouteurClavier.java">
 <persistable path="/TP-DEVOO/src/vue/EcouteurClavier.java"/>
@@ -206,9 +249,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="VueTextuelle.java" tooltip="TP-DEVOO/src/vue/VueTextuelle.java">
 <persistable path="/TP-DEVOO/src/vue/VueTextuelle.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DemandeDeLivraison.java" tooltip="TP-DEVOO/src/modele/DemandeDeLivraison.java">
-<persistable path="/TP-DEVOO/src/modele/DemandeDeLivraison.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FenetreTemporelle.java" tooltip="TP-DEVOO/src/modele/FenetreTemporelle.java">
 <persistable path="/TP-DEVOO/src/modele/FenetreTemporelle.java"/>
@@ -224,9 +264,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EtatTourneeCalculee.java" tooltip="TP-DEVOO/src/controleur/EtatTourneeCalculee.java">
 <persistable path="/TP-DEVOO/src/controleur/EtatTourneeCalculee.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EtatPlanCharge.java" tooltip="TP-DEVOO/src/controleur/EtatPlanCharge.java">
-<persistable path="/TP-DEVOO/src/controleur/EtatPlanCharge.java"/>
 </file>
 </mruList>
 </workbench>

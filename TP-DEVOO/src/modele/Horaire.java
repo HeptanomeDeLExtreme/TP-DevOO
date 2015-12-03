@@ -10,21 +10,6 @@ public class Horaire {
     }
 
     /**
-     * Heure de l'horaire
-     */
-	protected int heure;
-	
-	/**
-     * Minutes de l'horaire
-     */
-	protected int minute;
-	
-	/**
-     * Secondes de l'horaire
-     */
-	protected int seconde;
-	
-    /**
      * Constructeur de base de Horaire
      * @param int heure
      * @param int minute
@@ -50,29 +35,32 @@ public class Horaire {
         this.seconde = sec;	
     }
     
-//    public Boolean equals(Horaire horaire2){
-//    	Boolean heure = (this.heure == horaire2.heure);
-//    	Boolean minutes = (this.minute == horaire2.minute);
-//    	Boolean seconde = (this.seconde == horaire2.seconde);
-//    	if(heure && minutes && seconde){
-//    		return true;
-//    	}
-//    	return false;
-//    }
-    
     public Horaire soustraireHoraire(Horaire hor) {
-
+        //System.out.println("Horaire à soustraire : " + hor);
         float duree1 = this.horaireToDuree();
-
+        //System.out.println("Durée du this : " + duree1);
         float duree2 = hor.horaireToDuree();
-
+        //System.out.println("Durée à soustraire : " + duree2);
         float duree = duree1 - duree2;
-
+        //System.out.println("Durée finale : " + duree);
         Horaire finalHor = new Horaire(duree);
-
+        //System.out.println("Horaire final : " + finalHor);
         return finalHor;
     }
+	/**
+     * 
+     */
+	protected int heure;
 	
+	/**
+     * 
+     */
+	protected int minute;
+	
+	/**
+     * 
+     */
+	protected int seconde;
 	
 	@Override
 	public String toString(){
@@ -104,10 +92,6 @@ public class Horaire {
 		this.seconde = seconde;
 	}
     
-	/**
-	 * Obtenir la duree d'un horaire
-	 * @return Duree Horaire
-	 */
     public float horaireToDuree(){
         
         // Duree en secondes
@@ -119,39 +103,45 @@ public class Horaire {
         
         return duree;
     }
-    /**
-     * Realiser l'addition de deux horaires
-     * @param hor Horaire a additionner
-     * @return Horaire correspondant a l'addition des deux horaires.
-     */
+    
     public Horaire additionnerHoraire(Horaire hor){
+//    	System.out.println("Horaire à additionner : " + hor);
         
         float duree1 = this.horaireToDuree();
-
+//        System.out.println("durée de du this : " + duree1);
         float duree2 = hor.horaireToDuree();
+//        System.out.println("durée de du hor : " + duree2);
         
         float duree = duree1 + duree2;
+//        System.out.println("Durée totale + " + duree);
         
         Horaire finalHor = new Horaire(duree);
+//        System.out.println("Horaire finale : " + finalHor);
         
         return finalHor;
     }
     
-    /**Verifie que l'horaire se trouve dans une fenetre temporelle definie.
-     * @param heureDebut Heure de debut de la fenetre
-     * @param heureFin Heure de debut de la fin
-     * @return Resultat du test.
+    /**
+     * @param heureDebut
+     * @param heureFin
+     * @return
      */
     public boolean isInFenetreTemporelle(Horaire heureDebut, Horaire heureFin) {
     	int duree = (int) this.horaireToDuree();
+    	//System.out.println("Durée en seconde de l'horaire de livraison :" + duree);
     	int dureeDepart = (int) heureDebut.horaireToDuree();
+    	//System.out.println("Durée eb seconde de l'horaire de début de fenetre : " + dureeDepart);
     	int dureeArrivee = (int) heureFin.horaireToDuree();
-
+    	//System.out.println("Durée en seconde de l'horaire de fin de fenêtre : " + dureeArrivee);
     	boolean resultat = false;
     	
     	boolean dureeInferieureADureeArrivee = (duree <= dureeArrivee);
     	boolean dureeSuperieureADureeDepart = (dureeDepart <= duree);
     	boolean dureeDansLafenetre = ((dureeDepart <= duree) && (duree <= dureeArrivee));
+    	
+    	//System.out.println("Durée inférieure à la durée d'arrivée ? " + dureeInferieureADureeArrivee);
+    	//System.out.println("Durée supérieure à la durée de départ ? : " + dureeSuperieureADureeDepart);
+    	//System.out.println("Durée comprise dans la fenêtre de temps ? " + dureeDansLafenetre);
     	
     	if( (dureeDepart <= duree) && (duree <= dureeArrivee) ) {
     		resultat = true;
@@ -159,17 +149,18 @@ public class Horaire {
     	return resultat;
     }
 
-	/**Verifie que l'horaire est plus tot qu'un autre horaire
-	 * @param heureDebut Horaire a comparer
-	 * @return Resultat du test
+	/**
+	 * @param heureDebut
+	 * @return
 	 */
 	public boolean isInferieurA(Horaire heureDebut) {
 		float duree1 = this.horaireToDuree();
-
+		//System.out.println("nombre de secondes de la livraison : " + duree1);
 		float duree2 = heureDebut.horaireToDuree();
-
+		//System.out.println("nombre de secondes de l'horaire de début de la fenetre de livraison : " + duree2);
 		boolean resultat = false;
 		if(duree1 <= duree2) {
+			//System.out.println("Héhé, on peut faire la livraison pile à l'heure du début de la fenêtre ;)");
 			resultat = true;
 		}
 		return resultat;

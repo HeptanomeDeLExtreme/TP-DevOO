@@ -8,17 +8,17 @@ import java.util.*;
 public class FenetreTemporelle {
 
 	/**
-	 * Heure de debut de la Fenetre
-	 */
+     * 
+     */
     protected Horaire heureDebut;
 
     /**
-     * Heure de fin de la fenetre.
+     * 
      */
     protected Horaire heureFin;
 
     /**
-     * Livraisons a effectuer dans la fenetre temporelle.
+     * 
      */
     protected Set<Livraison> livraisons;
 
@@ -43,16 +43,16 @@ public class FenetreTemporelle {
 	}
     
     
-    /**Supprime une livraison de la fenetre
-     * @param livraison Livraison a supprimer
+    /**
+     * @param livraison
      */
     public void supprimeLivraison(Livraison livraison) {
         // TODO implement here
     	this.livraisons.remove(livraison);
     }
 
-    /**Ajoute une livraison dans la fenetre
-     * @param livraison Livraison a ajouter
+    /**
+     * @param livraison
      */
     public void ajouteLivraison(Livraison livraison) {
         this.livraisons.add(livraison);
@@ -61,6 +61,9 @@ public class FenetreTemporelle {
     @Override
     public String toString(){
     	String s = " heureDeb = "+this.heureDebut.toString()+" heureFin = "+this.heureFin.toString();
+//    	for (Livraison l : livraisons){
+//    		s+=l.toString();
+//    	}
     	return s;
     }
 

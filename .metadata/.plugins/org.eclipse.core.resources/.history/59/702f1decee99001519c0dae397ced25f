@@ -86,30 +86,29 @@ public class CommandeSuprime implements Commande {
      * Annule la commande.
      */
     public void undoCommande() {
-    	if(this.commandeValide){
-	    	if(!this.entrepotSelectionne){
-	
-	    		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
-	   	    	this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(this.livraisonSuivante, this.livraisonAjoutee.getAdresse());
-	   	    	this.livraisonAjoutee.setFenetre(this.fenetreTemp);
-		    	this.modele.changementEffectue();
-	    	}
-	    	else{
-	     		
-	    		List<Livraison> livEnOrdre = this.modele.getTournee().getLivraisonsEnOrdre();
-	    		Livraison derniere = livEnOrdre.get(livEnOrdre.size()-2);
-	    		
-	    		this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(derniere,this.livraisonAjoutee.getAdresse());
-	    		FenetreTemporelle fenetreDerniere=derniere.getFenetre();
-	    		
-	    		this.modele.getTournee().modifierTournee(derniere, this.livraisonAjoutee);
-	    		
-	    		this.modele.getTournee().getLivraisonsEnOrdre().get(this.modele.getTournee().getLivraisonsEnOrdre().size()-2).setFenetre(fenetreTemp);
-	    		
-	    		
-	    		this.modele.changementEffectue();
+    	if(!this.entrepotSelectionne){
 
-	    	}
+    		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
+   	    	this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(this.livraisonSuivante, this.livraisonAjoutee.getAdresse());
+   	    	this.livraisonAjoutee.setFenetre(this.fenetreTemp);
+	    	this.modele.changementEffectue();
+    	}
+    	else{
+     		
+    		List<Livraison> livEnOrdre = this.modele.getTournee().getLivraisonsEnOrdre();
+    		Livraison derniere = livEnOrdre.get(livEnOrdre.size()-2);
+    		
+    		this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(derniere,this.livraisonAjoutee.getAdresse());
+    		FenetreTemporelle fenetreDerniere=derniere.getFenetre();
+    		
+    		this.modele.getTournee().modifierTournee(derniere, this.livraisonAjoutee);
+    		
+    		this.modele.getTournee().getLivraisonsEnOrdre().get(this.modele.getTournee().getLivraisonsEnOrdre().size()-2).setFenetre(fenetreTemp);
+    		
+    		
+    		this.modele.changementEffectue();
+    		
+
     	}
     }
 

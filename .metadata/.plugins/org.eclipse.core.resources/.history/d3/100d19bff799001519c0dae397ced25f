@@ -91,7 +91,6 @@ public class CommandeSuprime implements Commande {
     	System.out.println("GROS CON 0 : "+this.livraisonAjoutee);
     	if(this.commandeValide){
 	    	if(!this.entrepotSelectionne){
-	    		System.out.println("JE SUIS LA");
 	    		System.out.println("GROS CON 1 : "+this.fenetreTemp);
 	    		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
 	   	    	this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(this.livraisonSuivante, this.livraisonAjoutee.getAdresse());
@@ -100,7 +99,7 @@ public class CommandeSuprime implements Commande {
 		    	this.modele.changementEffectue();
 	    	}
 	    	else{
-	     		System.out.println("JE SUIS ICI ");
+	     		
 	    		List<Livraison> livEnOrdre = this.modele.getTournee().getLivraisonsEnOrdre();
 	    		Livraison derniere = livEnOrdre.get(livEnOrdre.size()-2);
 	    		

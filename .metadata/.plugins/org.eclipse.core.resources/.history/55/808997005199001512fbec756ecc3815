@@ -355,20 +355,17 @@ public class Tournee extends Observable {
      */
     public Livraison ajouteLivraison(Livraison livraisonSuivante, Intersection intersectionCible) {
           
-//    	System.out.println("AFFICHAGE LIVs");
-//    	System.out.println("toadd : "+livraisonSuivante);
-//    	for(Livraison liv : livraisonsEnOrdre){
-//    		System.out.print(liv);
-//    		if(liv.equals(livraisonSuivante)){
-//    			livraisonSuivante = liv;
-//    			System.out.println(" ok");
-//    		}
-//    		else{
-//    			System.out.println();
-//    		}
-//    	}	
-//    	System.out.println("toadd2 : "+livraisonSuivante);
-//    	System.out.println("FIN AFFICHAGE LIVs");
+    	System.out.println("AFFICHAGE LIVs");
+    	System.out.println("toadd : "+livraisonSuivante);
+    	for(Livraison liv : livraisonsEnOrdre){
+    		System.out.print(liv);
+    		if(liv.equals(livraisonSuivante)){
+    			livraisonSuivante = liv;
+    			System.out.println(" ok");
+    		}
+    	}	
+    	System.out.println("toadd2 : "+livraisonSuivante);
+    	System.out.println("FIN AFFICHAGE LIVs");
     	
     	List<Integer> listeIDLivraisons = new ArrayList<Integer>();
     	

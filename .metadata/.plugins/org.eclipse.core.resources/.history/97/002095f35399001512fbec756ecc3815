@@ -159,7 +159,6 @@ public class EtatTourneeCalculee extends EtatDefaut {
     		Controleur.setEtatCourant(Controleur.etatIntersectionSelectionnee);
     		Controleur.etatIntersectionSelectionnee.setIntersection(inter);
     	}
-    	fenetre.afficheMessage("coucou");
     }
     
     

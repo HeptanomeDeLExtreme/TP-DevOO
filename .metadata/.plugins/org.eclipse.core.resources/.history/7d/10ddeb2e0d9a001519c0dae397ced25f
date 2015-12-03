@@ -296,17 +296,16 @@ public class DemandeDeLivraison extends Observable{
     	List<Itineraire> itinerairesEnOrdre = new LinkedList<Itineraire>();
     	itinerairesEnOrdre = recupererItinerairesEnOrdre(graphePondere.getMapCorrespondance(),livraisonsEnOrdre, mapLivraisons,couts);
     	
-    	System.out.println("");
-    	System.out.println("CALCUL TOURNEE");
-    	for(Itineraire iti : itinerairesEnOrdre){
-    		System.out.println("Itineraire : "+iti);
-    		List<Troncon> listTronc = iti.getTroncons();
-    		for(Troncon tronc : listTronc){
-    			System.out.println(tronc);
-    		}
-    		System.out.println();
-    	}
-    	System.out.println("");
+//    	System.out.println("");
+//    	for(Itineraire iti : itinerairesEnOrdre){
+//    		System.out.println("Itineraire : "+iti);
+//    		List<Troncon> listTronc = iti.getTroncons();
+//    		for(Troncon tronc : listTronc){
+//    			System.out.println(tronc);
+//    		}
+//    		System.out.println();
+//    	}
+//    	System.out.println("");
     	
     	// Mise à jour des données concernant le moment où la livraison s'effectue
         majHorairesDesLivraisons(itinerairesEnOrdre);

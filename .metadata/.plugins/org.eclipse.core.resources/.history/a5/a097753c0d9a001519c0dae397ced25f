@@ -297,7 +297,6 @@ public class DemandeDeLivraison extends Observable{
     	itinerairesEnOrdre = recupererItinerairesEnOrdre(graphePondere.getMapCorrespondance(),livraisonsEnOrdre, mapLivraisons,couts);
     	
     	System.out.println("");
-    	System.out.println("CALCUL TOURNEE");
     	for(Itineraire iti : itinerairesEnOrdre){
     		System.out.println("Itineraire : "+iti);
     		List<Troncon> listTronc = iti.getTroncons();

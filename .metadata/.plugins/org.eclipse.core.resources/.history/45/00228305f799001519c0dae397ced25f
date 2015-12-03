@@ -88,19 +88,18 @@ public class CommandeSuprime implements Commande {
      * Annule la commande.
      */
     public void undoCommande() {
-    	System.out.println("GROS CON 0 : "+this.livraisonAjoutee);
+    	System.out.println("0 : "+this.livraisonAjoutee);
     	if(this.commandeValide){
 	    	if(!this.entrepotSelectionne){
-	    		System.out.println("JE SUIS LA");
-	    		System.out.println("GROS CON 1 : "+this.fenetreTemp);
+	    		System.out.println("1 : "+this.fenetreTemp);
 	    		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
 	   	    	this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(this.livraisonSuivante, this.livraisonAjoutee.getAdresse());
-	   	    	System.out.println("GROS CON 2 : "+this.fenetreTemp);
+	   	    	System.out.println("2 : "+this.fenetreTemp);
 	   	    	this.livraisonAjoutee.setFenetre(this.fenetreTemp);
 		    	this.modele.changementEffectue();
 	    	}
 	    	else{
-	     		System.out.println("JE SUIS ICI ");
+	     		
 	    		List<Livraison> livEnOrdre = this.modele.getTournee().getLivraisonsEnOrdre();
 	    		Livraison derniere = livEnOrdre.get(livEnOrdre.size()-2);
 	    		

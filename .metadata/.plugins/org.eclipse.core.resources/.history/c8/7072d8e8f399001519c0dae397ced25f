@@ -72,6 +72,7 @@ public class CommandeSuprime implements Commande {
      */
     public void doCommande() {
     	if(this.commandeValide){
+    		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
 	    	if(this.entrepotSelectionne){
 	    		this.modele.supprimeLivraison(this.livraisonAjoutee);
 	    	}
@@ -79,8 +80,6 @@ public class CommandeSuprime implements Commande {
 	    		this.modele.supprimeLivraison(this.livraisonAjoutee);
 	    	}
 	    	fenetreTemp = this.livraisonAjoutee.getFenetre();
-	    	this.modele.getDemandeDeLivraison().majCoutTournee();
-	    	this.modele.getDemandeDeLivraison().majHorairesDesLivraisons(this.modele.getTournee().getItineraires());
     	}
     }
 
@@ -88,19 +87,16 @@ public class CommandeSuprime implements Commande {
      * Annule la commande.
      */
     public void undoCommande() {
-    	System.out.println("GROS CON 0 : "+this.livraisonAjoutee);
     	if(this.commandeValide){
 	    	if(!this.entrepotSelectionne){
-	    		System.out.println("JE SUIS LA");
-	    		System.out.println("GROS CON 1 : "+this.fenetreTemp);
+	
 	    		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
 	   	    	this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(this.livraisonSuivante, this.livraisonAjoutee.getAdresse());
-	   	    	System.out.println("GROS CON 2 : "+this.fenetreTemp);
 	   	    	this.livraisonAjoutee.setFenetre(this.fenetreTemp);
 		    	this.modele.changementEffectue();
 	    	}
 	    	else{
-	     		System.out.println("JE SUIS ICI ");
+	     		
 	    		List<Livraison> livEnOrdre = this.modele.getTournee().getLivraisonsEnOrdre();
 	    		Livraison derniere = livEnOrdre.get(livEnOrdre.size()-2);
 	    		
@@ -112,12 +108,9 @@ public class CommandeSuprime implements Commande {
 	    		this.modele.getTournee().getLivraisonsEnOrdre().get(this.modele.getTournee().getLivraisonsEnOrdre().size()-2).setFenetre(fenetreTemp);
 	    		
 	    		
-	    		
 	    		this.modele.changementEffectue();
 
 	    	}
-	    	this.modele.getDemandeDeLivraison().majCoutTournee();
-	    	this.modele.getDemandeDeLivraison().majHorairesDesLivraisons(this.modele.getTournee().getItineraires());
     	}
     }
 

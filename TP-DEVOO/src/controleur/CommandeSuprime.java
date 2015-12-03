@@ -71,8 +71,9 @@ public class CommandeSuprime implements Commande {
      */
     public void undoCommande() {
     	if(this.commandeValide){
-   	    	this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(this.livraisonSuivante, this.livraisonAjoutee.getAdresse());
     		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
+   	    	this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(this.livraisonSuivante, this.livraisonAjoutee.getAdresse());
+   	    	this.livraisonAjoutee.setFenetre(this.fenetreTemp);
 	    	this.modele.changementEffectue();
     	}
     	else{
@@ -81,9 +82,16 @@ public class CommandeSuprime implements Commande {
     		Livraison derniere = livEnOrdre.get(livEnOrdre.size()-2);
     		
     		this.livraisonAjoutee = this.modele.getTournee().ajouteLivraison(derniere,this.livraisonAjoutee.getAdresse());
-    		this.livraisonAjoutee.setFenetre(this.fenetreTemp);
+    		FenetreTemporelle fenetreDerniere=derniere.getFenetre();
+    		
     		this.modele.getTournee().modifierTournee(derniere, this.livraisonAjoutee);
+    		
+    		this.modele.getTournee().getLivraisonsEnOrdre().get(this.modele.getTournee().getLivraisonsEnOrdre().size()-2).setFenetre(fenetreTemp);
+    		System.out.println("On force la fenetre " + this.fenetreTemp.getHeureDebut() + " à " + this.fenetreTemp.getHeureFin());
+    		
+    		
     		this.modele.changementEffectue();
+    		
     	}
     	this.modele.getDemandeDeLivraison().majHorairesDesLivraisons(this.modele.getTournee().getItineraires());
     	this.modele.getDemandeDeLivraison().majCoutTournee();

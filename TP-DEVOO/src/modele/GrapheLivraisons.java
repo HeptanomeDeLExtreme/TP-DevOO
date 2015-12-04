@@ -8,6 +8,16 @@ import java.util.*;
 public class GrapheLivraisons implements tsp.Graphe{
 
     /**
+	 * 
+	 */
+	protected int nbSommets;
+
+	/**
+	 * 
+	 */
+	protected int couts[][];
+
+	/**
      * Default constructor
      */
     public GrapheLivraisons() {
@@ -32,31 +42,21 @@ public class GrapheLivraisons implements tsp.Graphe{
 
 	/**
      * 
-     */
-    protected int nbSommets;
-    
-    /**
-     * 
-     */
-    protected int couts[][];
-    
-    /**
-     * 
      * @return
      */
     public int getNbSommets() {
 		return nbSommets;
 	}
 
-    /**
-     * 
-     * @param i
-     * @param j
-     * @return
-     */
-	
+ 
 
 	@Override
+	 /**
+     * Obtenir le cout d'un arcentre un noeud i et un noeud j
+     * @param i Noeud i
+     * @param j Noeud j
+     * @return Cout de l'arc
+     */
 	public int getCout(int i, int j) {
 		
 		 Integer int_i = new Integer(i);
@@ -66,6 +66,10 @@ public class GrapheLivraisons implements tsp.Graphe{
 	}
 
 	@Override
+	/*
+	 * 
+	 * @see tsp.Graphe#estArc(int, int)
+	 */
 	public boolean estArc(int i, int j) {
 		
 		Integer int_i = new Integer(i);

@@ -12,12 +12,19 @@ import xml.DeserialiseurPlanXML;
 import xml.ExceptionXML;
 
 /**
- * 
+ * Represente le plan de circulation sur lequel on travaille.
  */
-public class Plan extends Observable{
+public class Plan {
 
 
-    public Plan(Set<Intersection> listeInter) {
+    /**
+	 * Intersections du plan
+	 */
+	protected Set<Intersection> intersections;
+
+
+
+	public Plan(Set<Intersection> listeInter) {
 		this.intersections = listeInter;
 	}
     
@@ -25,23 +32,51 @@ public class Plan extends Observable{
     	intersections = new HashSet<Intersection>();
     }
     
-    public void nettoiePlan(){
+    public Set<Intersection> getIntersections(){
+		return this.intersections;
+	}
+
+	public int getLargeur(){
+		int max = 0;
+		for(Intersection inter : this.intersections){
+			if(inter.getX() > max){
+				max = inter.getX();
+			}
+		}
+		return max;
+	}
+
+	public int getHauteur(){
+		int max = 0;
+		for(Intersection inter : this.intersections){
+			if(inter.getY() > max){
+				max = inter.getY();
+			}
+		}
+		return max;
+	}
+
+	public void setIntersections(Set<Intersection> intersections) {
+		this.intersections = intersections;
+	}
+
+	public void nettoiePlan(){
     	intersections = new HashSet<Intersection>();
     }
     
-    /**
-     * @param fichier
-     */
+  /**
+   * Charge le plan a partir d'un fichier XML
+   */
     public void chargerPlan() {
     	try {
     		intersections = new HashSet<Intersection>();
     		DeserialiseurPlanXML.charger(this);
-		} catch (ParserConfigurationException | SAXException | IOException
+    		} 
+    	
+    	catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
-			// TODO Auto-generated catch block
-			System.out.println("Exception constructeur plan");			
-//			System.out.println(e.getMessage());
-//			e.printStackTrace();
+
+
 		}
     }
     
@@ -87,30 +122,6 @@ public class Plan extends Observable{
     		System.out.println("Erreur : intersection inexistante");
     }
     
-    public Set<Intersection> getIntersections(){
-    	return this.intersections;
-    }
-
-    public int getLargeur(){
-    	int max = 0;
-    	for(Intersection inter : this.intersections){
-    		if(inter.getX() > max){
-    			max = inter.getX();
-    		}
-    	}
-    	return max;
-    }
-    
-    public int getHauteur(){
-    	int max = 0;
-    	for(Intersection inter : this.intersections){
-    		if(inter.getY() > max){
-    			max = inter.getY();
-    		}
-    	}
-    	return max;
-    }
-    
     public Intersection cherche(Point p, float echelleX, float echelleY){
     	if(intersections != null){
     	Iterator<Intersection> it = intersections.iterator();
@@ -124,21 +135,8 @@ public class Plan extends Observable{
 		return null;
     }
     
-    public void changementEffectue(){
-        setChanged(); 
-        notifyObservers();
-    }
     
-    /**
-     * 
-     */
-    protected Set<Intersection> intersections;
-
-    
-
-    public void setIntersections(Set<Intersection> intersections) {
-		this.intersections = intersections;
-	}
+ 
 
 
 

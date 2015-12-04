@@ -1,6 +1,12 @@
 
 package modele;
 
+/**
+ * 
+ * Implemente l'Algorithme de Dijkstra afin de determiner
+ * les plus courts chemins d'une intersection a une autre
+ *
+ */
 public class Dijkstra {
 
 	/**
@@ -40,10 +46,17 @@ public class Dijkstra {
 			}
 		}
 
-		return new int[][] { dist, pred }; // (ignore pred[s]==0!)
+		return new int[][] { dist, pred };
 
 	}
 
+
+	/**
+	 * 
+	 * @param dist
+	 * @param v
+	 * @return
+	 */
 	private static int calculSuivant(int[] dist, boolean[] v) {
 
 		int x = Integer.MAX_VALUE;

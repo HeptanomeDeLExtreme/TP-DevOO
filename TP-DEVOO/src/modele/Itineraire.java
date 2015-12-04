@@ -3,11 +3,31 @@ package modele;
 import java.util.*;
 
 /**
- * 
+ * Rpresente une serie de troncons a emprunter pour aller d'une livraison a une autre
  */
 public class Itineraire {
 
     /**
+	 * Cout total de l'itineraire
+	 */
+	protected Integer cout;
+
+	/**
+	 * Liste des troncons constituant l'itineraire
+	 */
+	protected List<Troncon> troncons;
+
+	/**
+	 * Livraison de depart de l'itineraire
+	 */
+	protected Livraison depart;
+
+	/**
+	 * Livraison d'arrivee de l'itineraire
+	 */
+	protected Livraison arrivee;
+
+	/**
      * Default constructor
      */
     public Itineraire() {
@@ -30,19 +50,6 @@ public class Itineraire {
 
     
     
-    @Override
-	public String toString() {
-		return "Itineraire [cout=" + cout + ", troncons=" + troncons
-				+ ", depart=" + depart + ", arrivee=" + arrivee + "]";
-	}
-
-
-
-	/**
-     * 
-     */
-    protected Integer cout;
-
     public Integer getCout() {
 		return cout;
 	}
@@ -53,19 +60,7 @@ public class Itineraire {
 
 
 
-	/**
-     * 
-     */
-    protected List<Troncon> troncons;
-
-    /**
-     * 
-     */
-    protected Livraison depart;
-
-    
-    
-    public Livraison getDepart() {
+	public Livraison getDepart() {
 		return depart;
 	}
 
@@ -81,17 +76,18 @@ public class Itineraire {
 		this.arrivee = arrivee;
 	}
 
-	/**
-     * 
-     */
-    protected Livraison arrivee;
-
 	public List<Troncon> getTroncons() {
 		return troncons;
 	}
 
 	public void setTroncons(List<Troncon> troncons) {
 		this.troncons = troncons;
+	}
+
+	@Override
+	public String toString() {
+		return "Itineraire [cout=" + cout + ", troncons=" + troncons
+				+ ", depart=" + depart + ", arrivee=" + arrivee + "]";
 	}
     
     

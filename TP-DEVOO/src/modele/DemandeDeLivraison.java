@@ -16,7 +16,7 @@ import xml.DeserialiseurPlanXML;
 import xml.ExceptionXML;
 
 /**
- * 
+ * Represente l'ensemble des livraisons demandees
  */
 public class DemandeDeLivraison extends Observable{
 
@@ -36,7 +36,34 @@ public class DemandeDeLivraison extends Observable{
      */
     protected List<FenetreTemporelle> fenetres;
 
-    public TSP1 getTsp() {
+    /**
+	 * La livraison de depart et d'arrivee de la tournee.
+	 */
+	protected Livraison entrepot;
+
+
+	/**
+	 * Le nombre de livraisons totale du fichier XML de demande de livraisons +
+	 * la livraison representant l'entrepot
+	 */
+	protected int nbLivraisons;
+
+	/**
+	 * Default constructor
+	 */
+	public DemandeDeLivraison() {}
+
+	/**
+	 * @param tournee
+	 */
+	public DemandeDeLivraison(Tournee tournee) {
+		this.tournee = tournee;
+		fenetres = new ArrayList<FenetreTemporelle>();
+		int nbLivraisons = 0;
+		this.tsp = new TSP1();
+	}
+
+	public TSP1 getTsp() {
 		return tsp;
 	}
 
@@ -44,64 +71,7 @@ public class DemandeDeLivraison extends Observable{
 		this.tsp = tsp;
 	}
 
-	/**
-     * La livraison de depart et d'arrivee de la tournee.
-     */
-    protected Livraison entrepot;
-
-    /**
-     * Le nombre de livraisons totale du fichier XML de demande de livraisons +
-     * la livraison representant l'entrepot
-     */
-    protected int nbLivraisons;
-    
-    /**
-     * Default constructor
-     */
-    public DemandeDeLivraison() {}
-    
-    /**
-     * @param tournee
-     */
-    public DemandeDeLivraison(Tournee tournee) {
-    	this.tournee = tournee;
-    	fenetres = new ArrayList<FenetreTemporelle>();
-    	int nbLivraisons = 0;
-    	this.tsp = new TSP1();
-    }
-    
-    /**
-     * 
-     */
-    public void nettoieDemandeDeLivraison(){
-    	fenetres = new ArrayList<FenetreTemporelle>();
-    	this.entrepot = null;
-    	int nbLivraisons = 0;
-    	this.tsp = new TSP1();
-    }
-    
-    public Livraison cherche(Point p, float echelleX, float echelleY){
-   	
-    	Set<Livraison> touteLivraison = new HashSet<Livraison>();
-    	for(FenetreTemporelle fenetre : fenetres){
-    		for(Livraison liv : fenetre.getLivraisons()){
-    			touteLivraison.add(liv);
-    		}
-    	}
-    	
-    	Iterator<Livraison> it = touteLivraison.iterator();
-			while (it.hasNext()){
-				Livraison livrai = it.next();
-				Intersection inters = livrai.getAdresse();
-				if (inters.contient(p,echelleX,echelleY)){
-					return livrai;
-				}
-			}
-    	
-    	return null;
-    }
-    
-    public int getNbLivraisons() {
+	public int getNbLivraisons() {
 		return nbLivraisons;
 	}
 
@@ -109,7 +79,62 @@ public class DemandeDeLivraison extends Observable{
 		this.nbLivraisons = nbLivraisons;
 	}
 
-    public void changementEffectue(){
+    public Tournee getTournee() {
+		return tournee;
+	}
+
+	public void setTournee(Tournee tournee) {
+		this.tournee = tournee;
+	}
+
+	public List<FenetreTemporelle> getFenetres() {
+		return fenetres;
+	}
+
+	public void setFenetres(List<FenetreTemporelle> fenetres) {
+		this.fenetres = fenetres;
+	}
+
+	public Livraison getEntrepot() {
+		return entrepot;
+	}
+
+	public void setEntrepot(Livraison entrepot) {
+		this.entrepot = entrepot;
+	}
+
+	/**
+	 * 
+	 */
+	public void nettoieDemandeDeLivraison(){
+		fenetres = new ArrayList<FenetreTemporelle>();
+		this.entrepot = null;
+		int nbLivraisons = 0;
+		this.tsp = new TSP1();
+	}
+
+	public Livraison cherche(Point p, float echelleX, float echelleY){
+	
+		Set<Livraison> touteLivraison = new HashSet<Livraison>();
+		for(FenetreTemporelle fenetre : fenetres){
+			for(Livraison liv : fenetre.getLivraisons()){
+				touteLivraison.add(liv);
+			}
+		}
+		
+		Iterator<Livraison> it = touteLivraison.iterator();
+			while (it.hasNext()){
+				Livraison livrai = it.next();
+				Intersection inters = livrai.getAdresse();
+				if (inters.contient(p,echelleX,echelleY)){
+					return livrai;
+				}
+			}
+		
+		return null;
+	}
+
+	public void changementEffectue(){
         setChanged(); 
         notifyObservers();
     }
@@ -132,10 +157,6 @@ public class DemandeDeLivraison extends Observable{
     		DeserialiseurDemandeDeLivraisonXML.charger(this,plan);
 		} catch (ParserConfigurationException | SAXException | IOException
 				| ExceptionXML e) {
-			// TODO Auto-generated catch block
-			//System.out.println("Exception constructeur livraisons");			
-//			System.out.println(e.getMessage());
-//			e.printStackTrace();
 		}
     }
 
@@ -156,13 +177,7 @@ public class DemandeDeLivraison extends Observable{
         return key;
     }
     
-    /**
-     * @param livraison1 
-     * @param livraison2
-     */
-    protected void modifierTournee(Livraison livraison1, Livraison livraison2) {
-        // TODO implement here
-    }
+   
 
     /**
      * @param livraison
@@ -189,7 +204,6 @@ public class DemandeDeLivraison extends Observable{
      * @param livraison
      */
     public void ajouteLivraison(Livraison livraisonSuivante, Livraison livraison) {
-        // TODO implement here
     	{
             
         	for (FenetreTemporelle fenetre  : this.fenetres)
@@ -207,7 +221,7 @@ public class DemandeDeLivraison extends Observable{
     	}
     }
 
-    // A EFFACER
+
     public Intersection getKeyByValue(Map<Intersection, Integer> map, Integer value) {
     	Intersection resultat = null;
     	Set<Intersection> setIntersection = map.keySet();
@@ -218,7 +232,7 @@ public class DemandeDeLivraison extends Observable{
     	}
     	return resultat;
     }
-    // A EFFACER
+
     
     /**
      * @param plan
@@ -699,30 +713,6 @@ public class DemandeDeLivraison extends Observable{
 			s += f.toString() +"/n";	 // TODO FenetreTemporelle.toString()
 		}
 		return s;
-	}
-
-	public Tournee getTournee() {
-		return tournee;
-	}
-
-	public void setTournee(Tournee tournee) {
-		this.tournee = tournee;
-	}
-
-	public List<FenetreTemporelle> getFenetres() {
-		return fenetres;
-	}
-
-	public void setFenetres(List<FenetreTemporelle> fenetres) {
-		this.fenetres = fenetres;
-	}
-
-	public Livraison getEntrepot() {
-		return entrepot;
-	}
-
-	public void setEntrepot(Livraison entrepot) {
-		this.entrepot = entrepot;
 	}
 
 

@@ -5,40 +5,56 @@ import java.util.Map.Entry;
 
 
 /**
- * 
+ * Represente une livraison a desservir
  */
 public class Livraison {
 
-	public boolean equals(Livraison obj) {
-    	boolean resultat = false;
-//    	boolean id = (this.id == obj.id);
-//    	boolean client = (this.client == obj.client);
-    	boolean adresse = (this.adresse == obj.adresse);
-//    	boolean fenetre = (this.fenetre == obj.fenetre);
-		
-    	if( adresse  ) {
-			resultat = true;
-		}
-		return resultat;
-	}
-
-	public Livraison nouvelleCopie() {
-		
-		Livraison nouvelleLivraison = new Livraison();
-		
-		nouvelleLivraison.id = this.id;
-		nouvelleLivraison.heureArrivee = this.heureArrivee;
-		nouvelleLivraison.heureLivraison = this.heureLivraison;
-		nouvelleLivraison.estDansFenetre = this.estDansFenetre;
-		nouvelleLivraison.adresse = this.adresse;
-		nouvelleLivraison.fenetre = this.fenetre;
-		nouvelleLivraison.client = this.client;
-		nouvelleLivraison.tableauPi = this.tableauPi;
-		nouvelleLivraison.tableauD = this.tableauD;
-		
-		return nouvelleLivraison;
-	}
-
+	/**
+	 * ID de la livraison
+	 */
+	protected Integer id;
+	
+	/**
+	 * Heure d'arrivee au point de livraison
+	 */
+	protected Horaire heureArrivee;
+	
+	/**
+	 * Heure de livraison
+	 */
+	protected Horaire heureLivraison;
+	
+	/**
+	 * Definit si la livraison se trouve dans une fenetre
+	 */
+	protected Boolean estDansFenetre;
+	
+	/**
+	 * Adresse de la livraison
+	 */
+	protected Intersection adresse;
+	
+	/**
+	 * Fenetre temporelle dans laquelle la livraison doit etre effectuee
+	 */
+	protected FenetreTemporelle fenetre;
+	
+	/**
+	 * Client destinataire de la livraison
+	 */
+	protected Client client;
+	
+	/**
+	 * Tableau des predecesseurs de l'intersection de la livraison 
+	 */
+	protected int[] tableauPi;
+	
+	/**
+	 *  Tableau des couts associes aux predecesseurs de l'intersection de la livraison 
+	 */
+	protected int[] tableauD;
+	
+	
 	/**
      * Default constructor
      */
@@ -73,46 +89,7 @@ public class Livraison {
 	
 	
 
-	/**
-     * 
-     */
-    protected Integer id;
-
-    /**
-     * 
-     */
-    protected Horaire heureArrivee;
-
-    /**
-     * 
-     */
-    protected Horaire heureLivraison;
-
-	/**
-     * 
-     */
-    protected Boolean estDansFenetre;
-
-    /**
-     * 
-     */
-    protected Intersection adresse;
-    
-    protected FenetreTemporelle fenetre;
-
-    /**
-     * 
-     */
-    protected Client client;
-    
-    /**
-     * 
-     */
-    protected int[] tableauPi;
-    
-    
-    
-    public FenetreTemporelle getFenetre() {
+	public FenetreTemporelle getFenetre() {
 		return fenetre;
 	}
 
@@ -136,12 +113,7 @@ public class Livraison {
 		this.tableauD = tableauD;
 	}
 
-	/**
-     * 
-     */
-    protected int[] tableauD;
-    
-    public Horaire getHeureLivraison() {
+	public Horaire getHeureLivraison() {
 		return heureLivraison;
 	}
 
@@ -149,13 +121,7 @@ public class Livraison {
 		this.heureLivraison = heureLivraison;
 	}
     
-    @Override
-    public String toString(){
-    	String s = "id = " + this.id.toString() + " adresse = " + this.adresse.toString()+" fenetre : "+this.heureLivraison+" "+this.fenetre;
-    	return s;
-    }
-
-	public Integer getId() {
+    public Integer getId() {
 		return id;
 	}
 
@@ -196,11 +162,32 @@ public class Livraison {
 	}
 	
 	/**
-	 * 
-	 * @param correspondancePlan 
-	 * @param livraisonDest
-	 * @return
+	 * Verifie l'egalite entre deux objets Livraison
+	 * @param obj Livraison a comparer a la livraison appelant la methode
+	 * @return Resultat du test de l'egalite
 	 */
+	public boolean equals(Livraison obj) {
+	    	boolean resultat = false;
+	    	boolean adresse = (this.adresse == obj.adresse);
+	    	if( adresse  ) {
+				resultat = true;
+			}
+			return resultat;
+		}
+
+	@Override
+    public String toString(){
+    	String s = "id = " + this.id.toString() + " adresse = " + this.adresse.toString()+" fenetre : "+this.heureLivraison+" "+this.fenetre;
+    	return s;
+    }
+
+
+		/**
+		 * Calcule le cout entre cette livraison et une livraison de destination
+		 * @param correspondancePlan Map de correspondance entre les livraisons et les int associés
+		 * @param livraisonDest Livraison vers laquelle on souhaite obtenir le cout de l'itineraire
+		 * @return Tableau 
+		 */
 	public int rechercherCout(Map<Integer, Intersection> correspondancePlan, Livraison livraisonDest)
 	{
 		Intersection adresseDestination = livraisonDest.getAdresse();
@@ -208,11 +195,11 @@ public class Livraison {
 		return this.tableauD[idDest];
 	}
 	
-    /**
-     * 
-     * @param map
-     * @param value
-     * @return
+	/**
+     * Obtenir la cle d'un element d'un map en fonction de sa valeur.
+     * @param map Map dans lequel on recherche
+     * @param value Valeur dont on recherche la cle associee
+     * @return Cle associee a la valeur
      */
     public Integer getKeyByValue(Map<Integer, Intersection> map, Intersection value) {
     	Integer resultat = null;
@@ -224,7 +211,12 @@ public class Livraison {
     	return resultat;
     }
 
-    
+    /**
+     * Recherche de la liste des troncons permettant d'acceder a une autre livraison.
+     * @param map Map associant chaque Intersection a une valeur numerique
+     * @param livraisonDest Livraison de destination
+     * @return Liste des troncons a emprunter pour arriver a destination
+     */
 	public List<Troncon> rechercherTroncons(Map<Integer, Intersection> map, Livraison livraisonDest)
 	{
 		// Recuperer l'int de destination
@@ -252,9 +244,6 @@ public class Livraison {
 			listeIntersection.add(inter);
 		}
 
-		
-		
-	
 		// Recherche des troncons
 		List<Troncon> tronconsOrdonnes = new LinkedList<>();
 		for(int i = 0 ; i<listeIntersection.size()-1;i++){
@@ -265,7 +254,14 @@ public class Livraison {
 		}
 		return tronconsOrdonnes;
 	}
-
+	
+	/**
+	 * Implemente la recuperation recursive du plus court chemin entre une livraison et une autre livraison
+	 * @param intOrigine Identifiant de la livraison d'origine
+	 * @param intDestination Identifiant de la livraison de destination
+	 * @param Pi Tableau des predecesseurs de la livraison
+	 * @param listeEntierIntersection Liste contenant les intersections par lesquelles on passe
+	 */
 	private void calculPlusCourtCheminRecursif(Integer intOrigine, Integer intDestination, int[] Pi, List<Integer> listeEntierIntersection) {
 		
 		if(intOrigine == intDestination){
@@ -283,6 +279,10 @@ public class Livraison {
 		}
 	}
 
+	/**
+	 * Calcule les plus courts chemins d'une livraison aux intersections a partir du graphe pondere
+	 * @param graphe
+	 */
 	public void calculerPlusCourtsChemins(GraphePondere graphe) {
 		Map<Integer, Intersection> mapCorrespondancePlan = graphe.getMapCorrespondance();
 
@@ -293,7 +293,6 @@ public class Livraison {
 		
 		tableauD = piEtD[0];
 		tableauPi = piEtD[1];
-
-		
-	}
+		}
+	
 }

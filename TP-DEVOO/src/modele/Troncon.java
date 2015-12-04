@@ -3,11 +3,36 @@ package modele;
 import java.util.*;
 
 /**
- * 
+ * Represente un troncon reliant deux intersections (unidirectionnel).
  */
 public class Troncon {
 
-    /**
+	/**
+	 * Longueur du troncon
+	 */
+	protected Float longueur;
+
+	/**
+	 * Vitesse moyenne de parcours du troncon
+	 */
+	protected Float vitesseMoyenne;
+
+	/**
+	 * Nom de la rue associee au troncon
+	 */
+	protected String nomDeRue;
+
+	/**
+	 * Intersection d'origine du troncon.
+	 */
+	protected Intersection origine;
+
+	/**
+	 * Intersection de destination du troncon
+	 */
+	protected Intersection destination;
+
+	/**
      * Default constructor
      */
     public Troncon() {
@@ -31,6 +56,28 @@ public class Troncon {
 		return destination;
 	}
 
+	public String getNomDeRue() {
+		return nomDeRue;
+	}
+
+	/**
+	 * 
+	 * @return Cout en temps du parcours d'un troncon
+	 */
+	public int getCout(){
+		int l = (int) (longueur*10);
+		int v = (int) (vitesseMoyenne*10);
+		return (l/v);
+	}
+
+	/**
+     * Renvoit le cout d'un troncon en temps.
+     * @return Cout du troncon en temps.
+     */
+	public Float getLongueur() {
+		return longueur;
+	}
+
 	public void setOrigine(Intersection origine) {
 		this.origine = origine;
 	}
@@ -41,63 +88,11 @@ public class Troncon {
 		this.destination = destination;
 	}
 
-	public String getNomDeRue() {
-		return nomDeRue;
-	}
-
-
-	
 	@Override
 	public String toString() {
 		return "Troncon [longueur=" + longueur + ", vitesseMoyenne="
 				+ vitesseMoyenne + ", nomDeRue=" + nomDeRue + ", origine="
 				+ origine + ", destination=" + destination + "]";
 	}
-
-
-
-
-
-	/**
-     * 
-     */
-    protected Float longueur;
-
-    /**
-     * 
-     */
-    protected Float vitesseMoyenne;
-
-    /**
-     * 
-     */
-    protected String nomDeRue;
-
-    /**
-     * 
-     */
-    protected Intersection origine;
-
-    /**
-     * 
-     */
-    protected Intersection destination;
-
-    /**
-     * 
-     * @return
-     */
-    public int getCout(){
-    	int l = (int) (longueur*10);
-    	int v = (int) (vitesseMoyenne*10);
-    	return (l/v);
-    }
-    
-/**
- * @return the longueur
- */
-public Float getLongueur() {
-	return longueur;
-}
     
 }

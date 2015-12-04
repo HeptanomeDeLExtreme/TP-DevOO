@@ -133,10 +133,17 @@ public class Controleur {
     public void ouvrirPlan() {
 	this.etatCourant.ouvrirPlan(this.modele);
 	this.modele.changementEffectue();
+	this.nettoie();
+    }
+
+    /**
+     * Nettoie la vue textuelle et la liste de commande
+     */
+    public void nettoie(){
 	this.fenetre.nettoieVueTextuelle();
 	this.listeCommandes.reset();
     }
-
+    
     /**
      * Permet de charger la livraison.
      */
@@ -144,8 +151,7 @@ public class Controleur {
 	this.etatCourant.importerLivraison(fenetre, this.modele,
 		this.modele.getPlan());
 	this.modele.changementEffectue();
-	this.fenetre.nettoieVueTextuelle();
-	this.listeCommandes.reset();
+	this.nettoie();
     }
 
     /**

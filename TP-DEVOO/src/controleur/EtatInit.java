@@ -40,7 +40,7 @@ public class EtatInit extends EtatDefaut {
 		modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
 	    }
 	    if (modele.getTournee() != null) {
-		modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
+		modele.getTournee().nettoyer();
 	    }
 	    DeserialiseurPlanXML.charger(plan);
 	    Controleur.setEtatCourant(Controleur.etatPlanCharge);

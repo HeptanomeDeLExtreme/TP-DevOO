@@ -78,10 +78,10 @@ public class GenerateurFeuilleDeRoute {
 			writer.println("Livraison au " + iti.getArrivee().getAdresse() + " prévue à " + iti.getArrivee().getHeureArrivee());
 			writer.println("Itinéraire : ");
 			
-//			List<Troncon> troncons = iti.getTroncons();
-//			for(Troncon tr : troncons){
-//				writer.println("Prenez la rue " + tr.getNomDeRue() + " sur " + tr.getLongueur() + " mètres.");
-//			}
+			List<Troncon> troncons = iti.getTroncons();
+			for(Troncon tr : troncons){
+				writer.println("Prenez la rue " + tr.getNomDeRue() + " sur " + tr.getLongueur() + " mètres.");
+			}
 			
 			
 			List<Troncon> listeTroncon = iti.getTroncons();
@@ -94,15 +94,15 @@ public class GenerateurFeuilleDeRoute {
     				longueur += courant.getLongueur(); 
     			}
     			else{
-    				writer.println("Prendre "+precedent.getNomDeRue()+ " sur "+longueur+"m."); 
+    				html += "Prendre "+precedent.getNomDeRue()+ " sur "+longueur+"m.<br>"; 
     				longueur = courant.getLongueur();
     			}
     		}
     		if(courant != null ){
-    			writer.println("Prendre "+courant.getNomDeRue()+ " sur "+longueur+"m."); 
+    			html += "Prendre "+courant.getNomDeRue()+ " sur "+longueur+"m.<br>"; 
     		}
     		if(listeTroncon.size() == 1 ){
-    			writer.println("Prendre "+listeTroncon.get(0).getNomDeRue()+ " sur "+longueur+"m."); 
+    			html += "Prendre "+listeTroncon.get(0).getNomDeRue()+ " sur "+longueur+"m.<br>"; 
     		}
 			
 			

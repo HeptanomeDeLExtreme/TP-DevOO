@@ -87,26 +87,21 @@ public class VueTextuelle extends JScrollPane implements Observer{
 		    		
 		    		// Troncons
 		    		List<Troncon> listeTroncon = itineraire.getTroncons();
+		    		for(Troncon tronc : listeTroncon){
+		    			html += "Prendre "+tronc.getNomDeRue()+ " sur "+tronc.getLongueur()+"m.<br>";
+		    		}
 		    		float longueur = listeTroncon.get(0).getLongueur();
-		    		Troncon courant = null;
 		    		for(int i = 1;i<listeTroncon.size();i++){
-		    			courant = listeTroncon.get(i);
+		    			Troncon courant = listeTroncon.get(i);
 		    			Troncon precedent = listeTroncon.get(i-1);
-		    			if(courant.getNomDeRue().equals(precedent.getNomDeRue())){
+		    			if(courant.equals(precedent)){
 		    				longueur += courant.getLongueur(); 
 		    			}
 		    			else{
 		    				html += "Prendre "+precedent.getNomDeRue()+ " sur "+longueur+"m.<br>"; 
-		    				longueur = courant.getLongueur();
+		    				longueur = 0;
 		    			}
 		    		}
-		    		if(courant != null ){
-		    			html += "Prendre "+courant.getNomDeRue()+ " sur "+longueur+"m.<br>"; 
-		    		}
-		    		if(listeTroncon.size() == 1 ){
-		    			html += "Prendre "+listeTroncon.get(0).getNomDeRue()+ " sur "+longueur+"m.<br>"; 
-		    		}
-		    		
 		    		// Arrivee
 		    		Livraison arrivee = itineraire.getArrivee();
 		    		Intersection interArrivee = arrivee.getAdresse();

@@ -1,6 +1,13 @@
 package modele;
 import java.util.*;
 
+/**
+ * 
+ * Graphe:
+ * Noeuds : Intersections
+ * Arcs : Troncons entre les intersections
+ *
+ */
 public class GraphePondere {
 	
 	/**

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Reseau>
+<Noeud id="0" x="20" y="5">
+	<LeTronconSortant nomRue="cassis" vitesse="2,0" longueur="20,0" idNoeudDestination="1"/>
+	<LeTronconSortant nomRue="grenadine" vitesse="3,0" longueur="60,0" idNoeudDestination="2"/>
+	<LeTronconSortant nomRue="bonbon" vitesse="1,0" longueur="100,0" idNoeudDestination="5"/>
+</Noeud>
+<Noeud id="1" x="5" y="20">
+	<LeTronconSortant nomRue="caramel" vitesse="3,0" longueur="30,0" idNoeudDestination="0"/>
+	<LeTronconSortant nomRue="meringue" vitesse="3,0" longueur="60,0" idNoeudDestination="2"/>
+</Noeud>
+<Noeud id="2" x="5" y="45">
+	<LeTronconSortant nomRue="mangue" vitesse="2,0" longueur="60,0" idNoeudDestination="0"/>
+	<LeTronconSortant nomRue="vanille" vitesse="1,0" longueur="100,0" idNoeudDestination="1"/>
+	<LeTronconSortant nomRue="meringue" vitesse="6,0" longueur="60,0" idNoeudDestination="3"/>
+	<LeTronconSortant nomRue="groseille" vitesse="2,0" longueur="80,0" idNoeudDestination="4"/>
+	<LeTronconSortant nomRue="chocolat" vitesse="2,0" longueur="70,0" idNoeudDestination="5"/>
+</Noeud>
+<Noeud id="3" x="20" y="55">
+	<LeTronconSortant nomRue="soda" vitesse="6,0" longueur="30,0" idNoeudDestination="2"/>
+	<LeTronconSortant nomRue="framboise" vitesse="2,0" longueur="20,0" idNoeudDestination="4"/>
+</Noeud>
+<Noeud id="4" x="40" y="45">
+	<LeTronconSortant nomRue="fraise" vitesse="1,0" longueur="100,0" idNoeudDestination="3"/>
+	<LeTronconSortant nomRue="banane" vitesse="5,0" longueur="50,0" idNoeudDestination="5"/>
+</Noeud>
+<Noeud id="5" x="40" y="15">
+	<LeTronconSortant nomRue="nougat" vitesse="4,0" longueur="40,0" idNoeudDestination="0"/>
+	<LeTronconSortant nomRue="pomme" vitesse="3,0" longueur="30,0" idNoeudDestination="4"/>
+</Noeud>
+</Reseau>

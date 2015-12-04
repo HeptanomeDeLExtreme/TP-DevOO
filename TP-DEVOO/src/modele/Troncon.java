@@ -59,6 +59,11 @@ public class Troncon {
 		return nomDeRue;
 	}
 
+	
+	public Float getVitesseMoyenne() {
+		return vitesseMoyenne;
+	}
+
 	/**
 	 * 
 	 * @return Cout en temps du parcours d'un troncon

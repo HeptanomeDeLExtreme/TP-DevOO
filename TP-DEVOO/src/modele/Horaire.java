@@ -171,5 +171,17 @@ public class Horaire {
 		}
 		return resultat;
 	}
+	
+	/**
+	 * @param obj
+	 * @return
+	 */
+	public boolean equals(Horaire obj) {
+		boolean resultat = false;
+		if( (this.heure == obj.heure) && (this.minute == obj.minute) && (this.seconde == obj.seconde) ) {
+			resultat = true;
+		}
+		return resultat;
+	}
 
 }

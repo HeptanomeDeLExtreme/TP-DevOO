@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="GraphePondereTest" project="TP-DEVOO" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="tests.GraphePondereTest" time="0.008">
+    <testcase name="testGetKeyByValue" classname="tests.GraphePondereTest" time="0.0"/>
+    <testcase name="testGraphePonderePlan" classname="tests.GraphePondereTest" time="0.003"/>
+    <testcase name="testAddEdge" classname="tests.GraphePondereTest" time="0.001"/>
+    <testcase name="testRemoveEdge" classname="tests.GraphePondereTest" time="0.001"/>
+    <testcase name="testNeighbors" classname="tests.GraphePondereTest" time="0.001"/>
+    <testcase name="testIsEdge" classname="tests.GraphePondereTest" time="0.001"/>
+    <testcase name="testGetWeight" classname="tests.GraphePondereTest" time="0.001"/>
+  </testsuite>
+</testrun>

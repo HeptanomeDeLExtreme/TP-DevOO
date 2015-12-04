@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="IntersectionTest" project="TP-DEVOO" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="tests.IntersectionTest" time="0.006">
+    <testcase name="testContient" classname="tests.IntersectionTest" time="0.0"/>
+    <testcase name="testRechercherTroncon" classname="tests.IntersectionTest" time="0.002"/>
+    <testcase name="testAjouteTronconSortant" classname="tests.IntersectionTest" time="0.0"/>
+    <testcase name="testIntersectionIntegerIntegerInteger" classname="tests.IntersectionTest" time="0.001"/>
+    <testcase name="testAjouteTronconEntrant" classname="tests.IntersectionTest" time="0.001"/>
+    <testcase name="testEqualsIntersection" classname="tests.IntersectionTest" time="0.0"/>
+    <testcase name="testGetIntersectionsVoisines" classname="tests.IntersectionTest" time="0.002"/>
+  </testsuite>
+</testrun>

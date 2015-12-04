@@ -168,7 +168,7 @@ public class Livraison {
 	 */
 	public boolean equals(Livraison obj) {
 	    	boolean resultat = false;
-	    	boolean adresse = (this.adresse == obj.adresse);
+	    	boolean adresse = (this.adresse.equals(obj.adresse));
 	    	if( adresse  ) {
 				resultat = true;
 			}

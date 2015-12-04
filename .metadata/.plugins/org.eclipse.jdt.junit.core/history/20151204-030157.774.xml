@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="DeserialiseurPlanXMLTest" project="TP-DEVOO" tests="14" started="14" failures="0" errors="0" ignored="0">
+  <testsuite name="tests.DeserialiseurPlanXMLTest" time="0.616">
+    <testcase name="testErreurTronconManquant" classname="tests.DeserialiseurPlanXMLTest" time="0.195"/>
+    <testcase name="testErreurDeuxTroncons" classname="tests.DeserialiseurPlanXMLTest" time="0.024"/>
+    <testcase name="testDestinationAbsente" classname="tests.DeserialiseurPlanXMLTest" time="0.029"/>
+    <testcase name="testErreurAttibuts" classname="tests.DeserialiseurPlanXMLTest" time="0.028"/>
+    <testcase name="testLongueurPositive" classname="tests.DeserialiseurPlanXMLTest" time="0.028"/>
+    <testcase name="testCharger" classname="tests.DeserialiseurPlanXMLTest" time="0.055"/>
+    <testcase name="testUniqueId" classname="tests.DeserialiseurPlanXMLTest" time="0.028"/>
+    <testcase name="testErreurNoeudManquant" classname="tests.DeserialiseurPlanXMLTest" time="0.017"/>
+    <testcase name="testBoucle" classname="tests.DeserialiseurPlanXMLTest" time="0.034"/>
+    <testcase name="testCoordonneesUnique" classname="tests.DeserialiseurPlanXMLTest" time="0.03"/>
+    <testcase name="testErreurBalise" classname="tests.DeserialiseurPlanXMLTest" time="0.031"/>
+    <testcase name="testNomRue" classname="tests.DeserialiseurPlanXMLTest" time="0.045"/>
+    <testcase name="testVitessePositive" classname="tests.DeserialiseurPlanXMLTest" time="0.034"/>
+    <testcase name="testIntersectionPositive" classname="tests.DeserialiseurPlanXMLTest" time="0.038"/>
+  </testsuite>
+</testrun>

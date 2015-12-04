@@ -77,6 +77,12 @@ public class Tournee extends Observable {
 
 
 
+	public GraphePondere getGraphePondere() {
+		return graphePondere;
+	}
+
+
+
 	public Horaire getDuree() {
 		return duree;
 	}

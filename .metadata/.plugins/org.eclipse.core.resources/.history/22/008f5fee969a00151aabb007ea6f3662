@@ -44,7 +44,7 @@ public class DeserialiseurPlanXML {
 	DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance()
 		.newDocumentBuilder();
 	if (validateAgainstXSD(new FileInputStream(xml), new FileInputStream(
-		new File("XSDPlan.xsd")))) {
+		new File("../xml/XSDPlan.xsd")))) {
 	    Document document = docBuilder.parse(xml);
 	    document.getDocumentElement().normalize();
 	    Element racine = document.getDocumentElement();

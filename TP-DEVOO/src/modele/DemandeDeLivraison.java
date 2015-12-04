@@ -593,12 +593,13 @@ public class DemandeDeLivraison extends Observable{
     protected int[][] genererTableauArcs(Map<Integer, Intersection> map2, Map<Integer,Livraison> map){
 //    	System.out.println("NbLivraisons : "+nbLivraisons);
     	int tableauArcs[][]= new int[nbLivraisons][nbLivraisons];
-    	
     	for(int i = 0;i<nbLivraisons;i++){
     		for(int j = 0;j<nbLivraisons;j++){
     			tableauArcs[i][j] = 0;
     		}
     	}
+    	
+    	System.out.println("taille tableau pour 0 " + tableauArcs[0].length);
     	
     	// Creation d'un arc entre l'entrepot et les livraisons de 
     	// la premiere fenetre de livraisons

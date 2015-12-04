@@ -93,7 +93,7 @@ public class FenetreTemporelle {
 
 	public boolean equals(FenetreTemporelle obj) {
 		boolean resultat = false;
-		if( (this.getHeureDebut() == obj.getHeureDebut()) && (this.getHeureFin() == obj.getHeureFin()) ) {
+		if( (this.getHeureDebut().equals(obj.getHeureDebut())) && (this.getHeureFin().equals(obj.getHeureFin())) ) {
 			resultat = true;
 		}
 		return resultat;

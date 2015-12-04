@@ -2,6 +2,7 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,7 +43,6 @@ public class DemandeDeLivraisonTest {
 		Livraison entrepotAttendu = null;
 		int nbLivraisonsAttendues = 0;
 		
-		// Test du constructeur sans paramètres
 		DemandeDeLivraison ddl = new DemandeDeLivraison();
 		Tournee tourneeObtenue = ddl.getTournee();
 		TSP1 tspObtenu = ddl.getTsp();
@@ -55,8 +55,6 @@ public class DemandeDeLivraisonTest {
 		assertEquals(fenetresAttendues, fenetresObtenues);
 		assertEquals(entrepotAttendu, entrepotObtenu);
 		assertEquals(nbLivraisonsAttendues, nbLivraisonsObtenues);
-		
-		// Test du constructeur avec parametres
 	}
 	
 	@Test
@@ -67,7 +65,6 @@ public class DemandeDeLivraisonTest {
 		DemandeDeLivraison ddl = new DemandeDeLivraison(tournee);
 		DeserialiseurDemandeDeLivraisonXML.charger(ddl, plan, new File("src/tests/files/livraisonsTestOC1.xml"));
 		
-		// Solutions attendues
 		FenetreTemporelle fenetre1 = new FenetreTemporelle(new Horaire(8, 30, 0), new Horaire(10, 0, 0));
 		FenetreTemporelle fenetre2 = new FenetreTemporelle(new Horaire(10, 0, 0), new Horaire(11, 30, 0));
 		List<FenetreTemporelle> listeFenetresAttendues = new ArrayList<FenetreTemporelle>();
@@ -84,7 +81,6 @@ public class DemandeDeLivraisonTest {
 		fenetre1.setLivraisons(setLiv1);
 		fenetre2.setLivraisons(setLiv2);
 					
-		// Toutes les fenetres sont presentes
 		List<FenetreTemporelle> fenetres = ddl.getFenetres();
 		int tailleListeAttendue = listeFenetresAttendues.size();
 		int tailleListeObtenue = fenetres.size();
@@ -104,7 +100,6 @@ public class DemandeDeLivraisonTest {
 		assertEquals(true, resultatFenetre1);
 		assertEquals(true, resultatFenetre2);
 		
-		// Les livraisons dans les fenetres sont presentes
 		FenetreTemporelle fenetre1Obtenue = fenetres.get(0);
 		FenetreTemporelle fenetre2Obtenue = fenetres.get(1);
 		Set<Livraison> setLiv1Obtenu = fenetre1Obtenue.getLivraisons();
@@ -147,16 +142,78 @@ public class DemandeDeLivraisonTest {
 		}
 		assertEquals(true, resultat);
 		
-		// Solutions attendues
 		List<FenetreTemporelle> listeFenetresAttenduesVide = new ArrayList<FenetreTemporelle>();
 		
-		// Aucune fenetres
 		List<FenetreTemporelle> listeFenetreObtenue = ddl1.getFenetres();
 		assertEquals(listeFenetresAttenduesVide.size(), listeFenetreObtenue.size());
 	}
 	
 	@Test
 	public void calculerTourneeTest() throws ParserConfigurationException, SAXException, IOException, ExceptionXML {
+		Plan plan = new Plan();
+		DeserialiseurPlanXML.charger(plan, new File("src/tests/files/planTestOC.xml"));
+		Tournee tournee = new Tournee();
+		DemandeDeLivraison ddl = new DemandeDeLivraison(tournee);
+		DeserialiseurDemandeDeLivraisonXML.charger(ddl, plan, new File("src/tests/files/livraisonsTestOC1.xml"));
+		ddl.setNbLivraisons(4);
+		
+		FenetreTemporelle fenetre1 = new FenetreTemporelle(new Horaire(8, 30, 0), new Horaire(10, 0, 0));
+		FenetreTemporelle fenetre2 = new FenetreTemporelle(new Horaire(10, 0, 0), new Horaire(11, 30, 0));
+		List<FenetreTemporelle> listeFenetresAttendues = new ArrayList<FenetreTemporelle>();
+		listeFenetresAttendues.add(fenetre1);
+		listeFenetresAttendues.add(fenetre2);
+		Livraison livraison1 = new Livraison(1, new Client(631), plan.recupererIntersectionParId(1), fenetre1);
+		Livraison livraison2 = new Livraison(3, new Client(309), plan.recupererIntersectionParId(3), fenetre2);
+		Livraison livraison3 = new Livraison(5, new Client(396), plan.recupererIntersectionParId(5), fenetre2);
+		Set<Livraison> setLiv1 = new HashSet<Livraison>();
+		setLiv1.add(livraison1);
+		Set<Livraison> setLiv2 = new HashSet<Livraison>();
+		setLiv2.add(livraison2);
+		setLiv2.add(livraison3);
+		fenetre1.setLivraisons(setLiv1);
+		fenetre2.setLivraisons(setLiv2);
+		
+		ddl.calculerTournee(plan);
+
+		List<Livraison> listeLivraisonAttendues = ddl.getTournee().getLivraisonsEnOrdre();
+		
+		List<Livraison> listeLivraisonsObtenu = ddl.getTournee().getLivraisonsEnOrdre();
+		assertEquals(listeLivraisonAttendues, listeLivraisonsObtenu);
+		
+		List<Itineraire> listeItineraireObtenu = ddl.getTournee().getItineraires();
+		Integer tableauIdInter[] = {2, 0, 1, 2, 3, 4, 5, 4, 5, 0, 2};
+		boolean resultatBool = true;
+		int compteur = 0;
+		for(Itineraire iti : listeItineraireObtenu) {
+			Integer resultat = tableauIdInter[compteur];
+			if( (iti.getArrivee().getAdresse().getId()).equals(resultat) ) {} else {
+				resultatBool = false;
+			}
+			compteur++;
+		}
+		
+		assertEquals(1920, tournee.getCoutTotal());
+		
+		Horaire duree = new Horaire(1, 50, 50);
+		float dureeFloat = duree.horaireToDuree();
+		System.out.println("Duree : " + tournee.getDuree().horaireToDuree());
+		boolean resultat = false;
+		if(duree.equals(new Horaire(1, 50, 50))) {
+			resultat = true;
+		}
+		assertEquals(true, resultat);
+		
+		Livraison liv1 = new Livraison();
+		liv1.setHeureArrivee(new Horaire(8, 30, 40));
+		liv1.setHeureLivraison(new Horaire(8, 30, 40));
+		
+		Livraison liv1Obtenu = listeLivraisonsObtenu.get(1);
+		assertTrue(liv1Obtenu.getHeureArrivee().equals(liv1.getHeureArrivee()));
+		assertTrue(liv1Obtenu.getHeureLivraison().equals(liv1.getHeureLivraison()));
+	}
+	
+	@Test
+	public void nettoieDemandeDeLivraisonTest() throws ParserConfigurationException, SAXException, IOException, ExceptionXML {
 		Plan plan = new Plan();
 		DeserialiseurPlanXML.charger(plan, new File("src/tests/files/planTestOC.xml"));
 		Tournee tournee = new Tournee();
@@ -183,108 +240,39 @@ public class DemandeDeLivraisonTest {
 		
 		ddl.calculerTournee(plan);
 		
-		// Résultats attendue
-		List<Livraison> listeLivraisonAttendues = ddl.getTournee().getLivraisonsEnOrdre();
+		ddl.nettoieDemandeDeLivraison();
 		
-		// Vérifier les livraisons en ordre  (voir tournée)
-		List<Livraison> listeLivraisonsObtenu = ddl.getTournee().getLivraisonsEnOrdre();
-		assertEquals(listeLivraisonAttendues, listeLivraisonsObtenu);
-		
-		// Véirifier les itinéraires en ordre (voir tournée)
-		List<Itineraire> listeItineraireObtenu = ddl.getTournee().getItineraires();
-		Intersection i0 = new Intersection (0,20,5);
-		Intersection i1 = new Intersection (1,5,20);
-		Intersection i2 = new Intersection (2,5,45);
-		Intersection i3 = new Intersection (3,20,55);
-		Intersection i4 = new Intersection (4,40,45);
-		Intersection i5 = new Intersection (5,40,15);
-		List<Intersection> listeItineraireAttendus = new ArrayList<Intersection>();
-		listeItineraireAttendus.add(i0);
-		listeItineraireAttendus.add(i1);
-		listeItineraireAttendus.add(i2);
-		listeItineraireAttendus.add(i3);
-		listeItineraireAttendus.add(i4);
-		listeItineraireAttendus.add(i5);
-		
-		assertEquals(listeItineraireObtenu, listeItineraireAttendus);
-		
-		// Vérifier le cout total de la solution
-		
-		// Vérifier la durée totale
-		
-		// Vérfiier l'heure d'arrivée et de livraison de chaque livraison
-		
-		
-		fail("Not yet implemented");
-	}
+		assertEquals(0, ddl.getFenetres().size());
+		assertEquals(null, ddl.getEntrepot());
+	}	
 	
 	@Test
-	public void nettoieDemandeDeLivraisonTest() {
-		// Créer une demande de livraison
-		// Faire le calcul de la tournée (ie : avoir charger un
-		// plan et une livraison)
-		// Faire appel a nettoieDemandeDeLivraison
-		// Vérifier qu'on obtient bien les parametres attendus
-		// par le fait d'appeler la fonction
+	public void chercheTest() throws ParserConfigurationException, SAXException, IOException, ExceptionXML {
+		Plan plan = new Plan();
+		DeserialiseurPlanXML.charger(plan, new File("src/tests/files/planTestOC.xml"));
+		Tournee tournee = new Tournee();
+		DemandeDeLivraison ddl = new DemandeDeLivraison(tournee);
+		DeserialiseurDemandeDeLivraisonXML.charger(ddl, plan, new File("src/tests/files/livraisonsTestOC1.xml"));
+		ddl.setNbLivraisons(4);
 		
-		// Creer une demande de livraison
-		// Charger un plan
-		// Charger une demande de livraison
-		// Nettoyer
-		// Verifier le nettoyage
-		// Charger une autre demande de livraison
-		// Nettoyer
-		// Verifier le nettoyage
-		fail("Not yet implemented"); // TODO
-	}
-	
-	@Test 
-	public void getKeyByValueTest() {
-		// Charger un plan
-		// Charger des livraisons
-		// Créer une map<Integer, Livraison> en faisant appel à la fonction
-		// compétente
-		// Pour chaque livraison, faire getKeyByValue
-		// Vérifier que c'est bien ce qu'on attend
-		fail("Not yet implemented"); // TODO
-	}
-	
-	
-	@Test
-	public void chercheTest() {
-		fail("Not yet implemented"); // TODO
-	}
-	
-	@Test
-	public void changementEffectueTest() {
-		fail("Not yet implemented"); // TODO
-	}
-	
-	@Test
-	public void ajouteLivraisonTest() {
-		// Charger un plan
-		// Charger des livraisons
-		// Faire la tournée
-		// Ajouter une livraison avec cette méthode
-		// Vérifier que la livraison existe bien et ce
-		// dans la même fenetre que la livraisonSuivante (je crois)
-		fail("Not yet implemented"); // TODO
-	}
-	
-	@Test
-	public void supprimeLivraisonTest() {
-		// Charger un plan
-		// Charger des livraisons
-		// Faire la tournée
-		// Supprimer une livraison avec cette méthode
-		// Vérfifier que la livraison n'existe plus et ce
-		// dans toutes les fenetres de livraisons qui existent
-		// dans la ddl
-		fail("Not yet implemented"); //TODO
-	}
-	
-	@Test
-	public void modifierTourneeTest() {
-		fail("Not yet implemented"); //TODO
+		// Solutions attendues
+		FenetreTemporelle fenetre1 = new FenetreTemporelle(new Horaire(8, 30, 0), new Horaire(10, 0, 0));
+		FenetreTemporelle fenetre2 = new FenetreTemporelle(new Horaire(10, 0, 0), new Horaire(11, 30, 0));
+		List<FenetreTemporelle> listeFenetresAttendues = new ArrayList<FenetreTemporelle>();
+		listeFenetresAttendues.add(fenetre1);
+		listeFenetresAttendues.add(fenetre2);
+		Livraison livraison1 = new Livraison(1, new Client(631), plan.recupererIntersectionParId(1), fenetre1);
+		Livraison livraison2 = new Livraison(3, new Client(309), plan.recupererIntersectionParId(3), fenetre2);
+		Livraison livraison3 = new Livraison(5, new Client(396), plan.recupererIntersectionParId(5), fenetre2);
+		Set<Livraison> setLiv1 = new HashSet<Livraison>();
+		setLiv1.add(livraison1);
+		Set<Livraison> setLiv2 = new HashSet<Livraison>();
+		setLiv2.add(livraison2);
+		setLiv2.add(livraison3);
+		fenetre1.setLivraisons(setLiv1);
+		fenetre2.setLivraisons(setLiv2);
+		
+		Livraison resultat = ddl.cherche(new Point(plan.recupererIntersectionParId(1).getX(), plan.recupererIntersectionParId(1).getY()), 1, 1);
+		assertTrue(resultat.equals(livraison1));
 	}
 }

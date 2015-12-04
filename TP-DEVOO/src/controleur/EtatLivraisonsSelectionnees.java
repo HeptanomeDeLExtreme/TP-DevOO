@@ -17,45 +17,48 @@ import vue.FenetreIHM;
  */
 public class EtatLivraisonsSelectionnees extends EtatDefaut {
 
-	/*
-	 * La livraison que l'on a selectionnée.
-	 */
-	protected Livraison liv;
+    /*
+     * La livraison que l'on a selectionnée.
+     */
+    protected Livraison liv;
 
     public EtatLivraisonsSelectionnees() {
-    	this.liv = null;
+	this.liv = null;
     }
 
-    public String toString(){
-    	return "Etat livraison selectionnée";
+    public String toString() {
+	return "Etat livraison selectionnée";
     }
-    
-    public void setLivraison(Livraison liv){
-    	this.liv = liv;
+
+    public void setLivraison(Livraison liv) {
+	this.liv = liv;
     }
-    
+
     public void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
-        // TODO implement here
+	// TODO implement here
     }
 
     public void supprimeLivraison(Modele modele, ListeCommande list) {
-    	list.ajoute(new CommandeSuprime(modele, liv));
-        Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
+	list.ajoute(new CommandeSuprime(modele, liv));
+	Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
     }
-    
-    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl){
-    	Livraison liv2 = ddl.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
-    	
-    	if(liv2 != null){
-    		Controleur.etatDeuxLivraisonSelectionnee.setLiv1(liv);
-    		Controleur.etatDeuxLivraisonSelectionnee.setLiv2(liv2);
-    		Controleur.setEtatCourant(Controleur.etatDeuxLivraisonSelectionnee);
-    		fenetre.afficheMessage("Livraisons sélectionnées : " + liv.getAdresse().getId() + " et " + liv2.getAdresse().getId());
-    	}
-    	else{
-    		Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
-    		fenetre.afficheMessage("Sélection vide");
-    	}
+
+    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p,
+	    DemandeDeLivraison ddl) {
+	Livraison liv2 = ddl.cherche(p, fenetre.getEchelleX(),
+		fenetre.getEchelleY());
+
+	if (liv2 != null) {
+	    Controleur.etatDeuxLivraisonSelectionnee.setLiv1(liv);
+	    Controleur.etatDeuxLivraisonSelectionnee.setLiv2(liv2);
+	    Controleur.setEtatCourant(Controleur.etatDeuxLivraisonSelectionnee);
+	    fenetre.afficheMessage("Livraisons sélectionnées : "
+		    + liv.getAdresse().getId() + " et "
+		    + liv2.getAdresse().getId());
+	} else {
+	    Controleur.setEtatCourant(Controleur.etatTourneeCalculee);
+	    fenetre.afficheMessage("Sélection vide");
+	}
     }
 
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="DemandeDeLivraisonTest" project="TP-DEVOO" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="tests.DemandeDeLivraisonTest" time="0.503">
+    <testcase name="chercheTest" classname="tests.DemandeDeLivraisonTest" time="0.235"/>
+    <testcase name="chargerLivraisonTest" classname="tests.DemandeDeLivraisonTest" time="0.133"/>
+    <testcase name="ConstructeursTest" classname="tests.DemandeDeLivraisonTest" time="0.001"/>
+    <testcase name="calculerTourneeTest" classname="tests.DemandeDeLivraisonTest" time="0.068"/>
+    <testcase name="nettoieDemandeDeLivraisonTest" classname="tests.DemandeDeLivraisonTest" time="0.066"/>
+  </testsuite>
+</testrun>

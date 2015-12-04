@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TourneeTest" project="TP-DEVOO" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="tests.TourneeTest" time="0.38">
+    <testcase name="testSupprimeLivraison" classname="tests.TourneeTest" time="0.24"/>
+    <testcase name="testModifierTournee" classname="tests.TourneeTest" time="0.074"/>
+    <testcase name="testAjouteLivraison" classname="tests.TourneeTest" time="0.065"/>
+    <testcase name="testNettoyer" classname="tests.TourneeTest" time="0.001"/>
+  </testsuite>
+</testrun>

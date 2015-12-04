@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="DeserialiseurDemandeDeLivraisonXMLTest" project="TP-DEVOO" tests="17" started="17" failures="0" errors="0" ignored="0">
+  <testsuite name="tests.DeserialiseurDemandeDeLivraisonXMLTest" time="0.6">
+    <testcase name="testErreurPlagesTrop" classname="tests.DeserialiseurDemandeDeLivraisonXMLTest" time="0.206"/>
+    <testcase name="testErreurLivraisonsTrop" classname="tests.DeserialiseurDemandeDeLivraisonXMLTest" time="0.025"/>
+    <testcase name="testIntersectionEgales" classname="tests.DeserialiseurDemandeDeLivraisonXMLTest" time="0.023"/>
+    <testcase name="testIdPositif" classname="tests.DeserialiseurDemandeDeLivraisonXMLTest" time="0.025"/>
+    <testcase name="testErreurLivraisonsManquante" classname="tests.DeserialiseurDemandeDeLivraisonXMLTest" time="0.025"/>
+    <testcase name="testUniciteId" classname="tests.DeserialiseurDemandeDeLivraisonXMLTest" time="0.024"/>
+    <testcase name="testErreurPlageManquante" classname="tests.DeserialiseurDemandeDeLivraisonXMLTest" time="0.021"/>
+    <testcase name="testErreurAttibuts" classname="tests.DeserialiseurDemandeDeLivraisonXMLTest" time="0.021"/>
+    <testcase name="testErreurEntrepotManquant" classname="tests.DeserialiseurDemandeDeLivraisonXMLTest" time="0.019"/>
+    <testcase name="testErreurLivraisonManquante" classname="tests.DeserialiseurDemandeDeLivraisonXMLTest" time="0.019"/>
+    <testcase name="testChargerBase" classname="tests.DeserialiseurDemandeDeLivraisonXMLTest" time="0.046"/>
+    <testcase name="testIntersectionAbsente" classname="tests.DeserialiseurDemandeDeLivraisonXMLTest" time="0.031"/>
+    <testcase name="testErreurBalise" classname="tests.DeserialiseurDemandeDeLivraisonXMLTest" time="0.018"/>
+    <testcase name="testErreurPlagesManquante" classname="tests.DeserialiseurDemandeDeLivraisonXMLTest" time="0.018"/>
+    <testcase name="testCoherenceHeure" classname="tests.DeserialiseurDemandeDeLivraisonXMLTest" time="0.029"/>
+    <testcase name="testClientPositif" classname="tests.DeserialiseurDemandeDeLivraisonXMLTest" time="0.025"/>
+    <testcase name="testIntersectionEntrepotAbsente" classname="tests.DeserialiseurDemandeDeLivraisonXMLTest" time="0.024"/>
+  </testsuite>
+</testrun>

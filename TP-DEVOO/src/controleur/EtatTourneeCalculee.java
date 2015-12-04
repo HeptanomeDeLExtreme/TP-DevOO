@@ -32,112 +32,118 @@ public class EtatTourneeCalculee extends EtatDefaut {
 
     public EtatTourneeCalculee() {
     }
-    
-    public String toString(){
-    	return "Etat Tournée Calculée";
+
+    public String toString() {
+	return "Etat Tournée Calculée";
     }
-    
+
     public void undo(ListeCommande listeDeCommande) {
-        listeDeCommande.undo();
+	listeDeCommande.undo();
     }
 
     public void redo(ListeCommande listeDeCommande) {
-        listeDeCommande.redo();
+	listeDeCommande.redo();
     }
 
     public void clicDroit(FenetreIHM fenetre, ListeCommande listeDeCommande) {
-        // TODO implement here
+	// TODO implement here
     }
 
     public void ouvrirPlan(Modele modele) {
-    	Plan plan = new Plan();
-    	try {
-    		DeserialiseurPlanXML.charger(plan);
-    		JOptionPane.showMessageDialog(null, "Plan chargé correctement !", "Info",
-                    JOptionPane.INFORMATION_MESSAGE);
-    		modele.setPlan(plan);
-    		Controleur.setEtatCourant(Controleur.etatPlanCharge);
-    		if(modele.getDemandeDeLivraison() != null){
-    			modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
-    		}
-    		if(modele.getTournee() != null){
-    			modele.getTournee().nettoyer();
-    		}
-		} catch (ParserConfigurationException | SAXException | IOException
-				| ExceptionXML e) {
-			System.out.println("Exception constructeur plan");	
-			System.out.println(e.getMessage());
-			JOptionPane.showMessageDialog(null, e.toString(), "Error",
-                    JOptionPane.ERROR_MESSAGE);
-		}
+	Plan plan = new Plan();
+	try {
+	    DeserialiseurPlanXML.charger(plan);
+	    JOptionPane.showMessageDialog(null, "Plan chargé correctement !",
+		    "Info", JOptionPane.INFORMATION_MESSAGE);
+	    modele.setPlan(plan);
+	    Controleur.setEtatCourant(Controleur.etatPlanCharge);
+	    if (modele.getDemandeDeLivraison() != null) {
+		modele.getDemandeDeLivraison().nettoieDemandeDeLivraison();
+	    }
+	    if (modele.getTournee() != null) {
+		modele.getTournee().nettoyer();
+	    }
+	} catch (ParserConfigurationException | SAXException | IOException
+		| ExceptionXML e) {
+	    System.out.println("Exception constructeur plan");
+	    System.out.println(e.getMessage());
+	    JOptionPane.showMessageDialog(null, e.toString(), "Error",
+		    JOptionPane.ERROR_MESSAGE);
+	}
     }
 
-    public void importerLivraison(FenetreIHM fenetre,Modele modele, Plan plan){
-    	Tournee tournee = new Tournee();
-    	DemandeDeLivraison demandeDeLivraison = new DemandeDeLivraison(tournee);
-    	
-    	try {
-    		DeserialiseurDemandeDeLivraisonXML.charger(demandeDeLivraison,plan);
-    		
-    		int nbLivraisons = 0;
-        	List<FenetreTemporelle> fenetres = demandeDeLivraison.getFenetres();
-        	
-    		for (FenetreTemporelle petitFenetre : fenetres) {
-    			Set<Livraison> livraisonsFActuelle = petitFenetre.getLivraisons();
-    			nbLivraisons += livraisonsFActuelle.size();
-    		}
-    		// Ajout de l'entrepot
-    		nbLivraisons++;
-    		demandeDeLivraison.setNbLivraisons(nbLivraisons);
-            Controleur.setEtatCourant(Controleur.etatLivraisonChargee);
-            modele.setTournee(tournee);
-            modele.setDemandeDeLivraison(demandeDeLivraison);
-            JOptionPane.showMessageDialog(null, "Demande de livraison chargée correctement !", "Info",
-                    JOptionPane.INFORMATION_MESSAGE);
-		} catch (ParserConfigurationException | SAXException | IOException
-				| ExceptionXML e) {
-			System.out.println("Exception constructeur livraisons");
-			System.out.println(e.getMessage());
-			JOptionPane.showMessageDialog(null, e.toString(), "Error",
-                    JOptionPane.ERROR_MESSAGE);
-		}
+    public void importerLivraison(FenetreIHM fenetre, Modele modele, Plan plan) {
+	Tournee tournee = new Tournee();
+	DemandeDeLivraison demandeDeLivraison = new DemandeDeLivraison(tournee);
+
+	try {
+	    DeserialiseurDemandeDeLivraisonXML
+		    .charger(demandeDeLivraison, plan);
+
+	    int nbLivraisons = 0;
+	    List<FenetreTemporelle> fenetres = demandeDeLivraison.getFenetres();
+
+	    for (FenetreTemporelle petitFenetre : fenetres) {
+		Set<Livraison> livraisonsFActuelle = petitFenetre
+			.getLivraisons();
+		nbLivraisons += livraisonsFActuelle.size();
+	    }
+	    // Ajout de l'entrepot
+	    nbLivraisons++;
+	    demandeDeLivraison.setNbLivraisons(nbLivraisons);
+	    Controleur.setEtatCourant(Controleur.etatLivraisonChargee);
+	    modele.setTournee(tournee);
+	    modele.setDemandeDeLivraison(demandeDeLivraison);
+	    JOptionPane.showMessageDialog(null,
+		    "Demande de livraison chargée correctement !", "Info",
+		    JOptionPane.INFORMATION_MESSAGE);
+	} catch (ParserConfigurationException | SAXException | IOException
+		| ExceptionXML e) {
+	    System.out.println("Exception constructeur livraisons");
+	    System.out.println(e.getMessage());
+	    JOptionPane.showMessageDialog(null, e.toString(), "Error",
+		    JOptionPane.ERROR_MESSAGE);
+	}
     }
 
     public void calculerTournee(Modele modele, FenetreIHM fenetre) {
-    	JOptionPane.showMessageDialog(null, "Tournee déja calculée  !", "Info",
-                JOptionPane.INFORMATION_MESSAGE);
-    }
-    
-    public void genererFeuilleRoute(FenetreIHM fenetre, Tournee tournee) {
-        try {
-			GenerateurFeuilleDeRoute.genererFeuilleDeRoute(tournee);
-			JOptionPane.showMessageDialog(null, "Feuille de route générée !", "Info",
-                    JOptionPane.INFORMATION_MESSAGE);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			JOptionPane.showMessageDialog(null, "Erreur lors de la génération !", "Error",
-                    JOptionPane.ERROR_MESSAGE);
-		}
+	JOptionPane.showMessageDialog(null, "Tournee déja calculée  !", "Info",
+		JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl){
-    	Livraison liv = ddl.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
-    	Intersection inter = plan.cherche(p,fenetre.getEchelleX(),fenetre.getEchelleY());
-    	
-    	fenetre.afficheMessage("Sélection vide");
-    	
-    	if(liv != null){
-    		Controleur.setEtatCourant(Controleur.etatLivraisonsSelectionnees);
-    		Controleur.etatLivraisonsSelectionnees.setLivraison(liv);
-        	fenetre.afficheMessage("Livraison sélectionnée : " + liv.getAdresse().getId());
-    	}
-    	else if(inter != null){
-    		Controleur.setEtatCourant(Controleur.etatIntersectionSelectionnee);
-    		Controleur.etatIntersectionSelectionnee.setIntersection(inter);
-        	fenetre.afficheMessage("Intersection sélectionnée : " + inter.getId());
-    	}
+    public void genererFeuilleRoute(FenetreIHM fenetre, Tournee tournee) {
+	try {
+	    GenerateurFeuilleDeRoute.genererFeuilleDeRoute(tournee);
+	    JOptionPane.showMessageDialog(null, "Feuille de route générée !",
+		    "Info", JOptionPane.INFORMATION_MESSAGE);
+	} catch (Exception e) {
+	    // TODO Auto-generated catch block
+	    JOptionPane.showMessageDialog(null,
+		    "Erreur lors de la génération !", "Error",
+		    JOptionPane.ERROR_MESSAGE);
+	}
     }
-    
-    
-  	
+
+    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p,
+	    DemandeDeLivraison ddl) {
+	Livraison liv = ddl.cherche(p, fenetre.getEchelleX(),
+		fenetre.getEchelleY());
+	Intersection inter = plan.cherche(p, fenetre.getEchelleX(),
+		fenetre.getEchelleY());
+
+	fenetre.afficheMessage("Sélection vide");
+
+	if (liv != null) {
+	    Controleur.setEtatCourant(Controleur.etatLivraisonsSelectionnees);
+	    Controleur.etatLivraisonsSelectionnees.setLivraison(liv);
+	    fenetre.afficheMessage("Livraison sélectionnée : "
+		    + liv.getAdresse().getId());
+	} else if (inter != null) {
+	    Controleur.setEtatCourant(Controleur.etatIntersectionSelectionnee);
+	    Controleur.etatIntersectionSelectionnee.setIntersection(inter);
+	    fenetre.afficheMessage("Intersection sélectionnée : "
+		    + inter.getId());
+	}
+    }
+
 }

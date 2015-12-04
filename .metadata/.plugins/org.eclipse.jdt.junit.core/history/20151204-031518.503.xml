@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="HoraireTest" project="TP-DEVOO" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="tests.HoraireTest" time="0.001">
+    <testcase name="testHoraireIntIntInt" classname="tests.HoraireTest" time="0.0"/>
+    <testcase name="testIsInferieurA" classname="tests.HoraireTest" time="0.0"/>
+    <testcase name="testHoraireFloat" classname="tests.HoraireTest" time="0.001"/>
+    <testcase name="testSoustraireHoraire" classname="tests.HoraireTest" time="0.0"/>
+    <testcase name="testHoraireToDuree" classname="tests.HoraireTest" time="0.0"/>
+    <testcase name="testIsInFenetreTemporelle" classname="tests.HoraireTest" time="0.0"/>
+    <testcase name="testAdditionnerHoraire" classname="tests.HoraireTest" time="0.0"/>
+  </testsuite>
+</testrun>

@@ -26,53 +26,52 @@ public class EtatDefaut implements Etat {
     }
 
     public void ouvrirPlan(Modele modele) {
-        // TODO implement here
+	// TODO implement here
     }
 
-    public void importerLivraison(FenetreIHM fenetre,Modele modele, Plan plan) {
-        // TODO implement here
+    public void importerLivraison(FenetreIHM fenetre, Modele modele, Plan plan) {
+	// TODO implement here
     }
 
     public void calculerTournee(Modele modele, FenetreIHM fenetre) {
-        // TODO implement here
+	// TODO implement here
     }
 
     public void undo(ListeCommande listeCommande) {
-        // TODO implement here
+	// TODO implement here
     }
 
     public void redo(ListeCommande listeCommande) {
-        // TODO implement here
+	// TODO implement here
     }
 
-    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p, DemandeDeLivraison ddl) {
+    public void clicGauche(FenetreIHM fenetre, Plan plan, Point p,
+	    DemandeDeLivraison ddl) {
 
     }
 
-	public void clicDroit(FenetreIHM fenetre, Point p) {
-		fenetre.afficheMessage("Clic droit, c'est bien mais ça ne sert à rien :) ");
-	}
+    public void clicDroit(FenetreIHM fenetre, Point p) {
+	fenetre.afficheMessage("Clic droit, c'est bien mais ça ne sert à rien :) ");
+    }
 
-	public void genererFeuilleRoute(FenetreIHM fenetre, Tournee tournee) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void genererFeuilleRoute(FenetreIHM fenetre, Tournee tournee) {
+	// TODO Auto-generated method stub
 
-	public void supprimeLivraison(Modele modele, ListeCommande listeCommandes) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	public void ajouterLivraison(Modele modele, ListeCommande ldc) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void supprimeLivraison(Modele modele, ListeCommande listeCommandes) {
+	// TODO Auto-generated method stub
 
-	public void modifierLivraison(Modele modele, ListeCommande listeCommandes) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	
+    public void ajouterLivraison(Modele modele, ListeCommande ldc) {
+	// TODO Auto-generated method stub
+
+    }
+
+    public void modifierLivraison(Modele modele, ListeCommande listeCommandes) {
+	// TODO Auto-generated method stub
+
+    }
 
 }

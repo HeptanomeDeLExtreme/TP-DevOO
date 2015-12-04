@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="PlanTest" project="TP-DEVOO" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="tests.PlanTest" time="0.009">
+    <testcase name="testRecupererIntersectionParId" classname="tests.PlanTest" time="0.003"/>
+    <testcase name="testGetLargeur" classname="tests.PlanTest" time="0.001"/>
+    <testcase name="testCherche" classname="tests.PlanTest" time="0.001"/>
+    <testcase name="testNettoiePlan" classname="tests.PlanTest" time="0.001"/>
+    <testcase name="testGetHauteur" classname="tests.PlanTest" time="0.001"/>
+    <testcase name="testAjoute" classname="tests.PlanTest" time="0.0"/>
+    <testcase name="testPlanSetOfIntersection" classname="tests.PlanTest" time="0.002"/>
+  </testsuite>
+</testrun>

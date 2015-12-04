@@ -5,75 +5,81 @@ import java.util.Observable;
 /**
  * 
  * Implemente l'ensemble du modele
- *
+ * 
  */
-public class Modele extends Observable{
+public class Modele extends Observable {
 
-	protected Tournee tournee;
-	protected DemandeDeLivraison demandeDeLivraison;
-	protected Plan plan;
-	
-	public Tournee getTournee() {
-		return tournee;
-	}
+    protected Tournee tournee;
+    protected DemandeDeLivraison demandeDeLivraison;
+    protected Plan plan;
 
-	public DemandeDeLivraison getDemandeDeLivraison() {
-		return demandeDeLivraison;
-	}
+    public Tournee getTournee() {
+	return tournee;
+    }
 
-	public Plan getPlan() {
-		return plan;
-	}
+    public DemandeDeLivraison getDemandeDeLivraison() {
+	return demandeDeLivraison;
+    }
 
-	public void setPlan(Plan copie) {
-		this.plan = copie;		
-	}
+    public Plan getPlan() {
+	return plan;
+    }
 
-	public void setTournee(Tournee tournee2) {
-		this.tournee = tournee2;
-	}
+    public void setPlan(Plan copie) {
+	this.plan = copie;
+    }
 
-	public void setDemandeDeLivraison(DemandeDeLivraison demandeDeLivraison2) {
-		this.demandeDeLivraison = demandeDeLivraison2;
-	}
+    public void setTournee(Tournee tournee2) {
+	this.tournee = tournee2;
+    }
 
-	/**
-	 * Ajoute une livraison dans le modele
-	 * @param liv Livraison avant laquelle on ajoute la livraison
-	 * @param inter Intersection sur laquelle on ajoute la livraison
-	 */
-	public void ajouteLivraison(Livraison liv, Intersection inter) {
-		this.tournee.ajouteLivraison(liv, inter);	
-		this.changementEffectue();
-	}
+    public void setDemandeDeLivraison(DemandeDeLivraison demandeDeLivraison2) {
+	this.demandeDeLivraison = demandeDeLivraison2;
+    }
 
-	/**
-	 * Supprime une livraison dans le modele
-	 * @param liv Livraison a supprimer
-	 */
-	public void supprimeLivraison(Livraison liv) {
-		this.tournee.supprimeLivraison(liv);
-		this.changementEffectue();
-	}
-	
-	/**
-	 * Intervertit deux livraisons dans le modele
-	 * @param liv1
-	 * @param liv2
-	 */
-	public void modifier(Livraison liv1, Livraison liv2) {
-		this.tournee.modifierTournee(liv1, liv2);
-		this.changementEffectue();
-	}
+    /**
+     * Ajoute une livraison dans le modele
+     * 
+     * @param liv
+     *            Livraison avant laquelle on ajoute la livraison
+     * @param inter
+     *            Intersection sur laquelle on ajoute la livraison
+     */
+    public void ajouteLivraison(Livraison liv, Intersection inter) {
+	this.tournee.ajouteLivraison(liv, inter);
+	this.changementEffectue();
+    }
 
-	public Modele(){
-		this.plan = new Plan();
-		this.tournee = new Tournee();
-		this.demandeDeLivraison = new DemandeDeLivraison(this.tournee);
-	}
+    /**
+     * Supprime une livraison dans le modele
+     * 
+     * @param liv
+     *            Livraison a supprimer
+     */
+    public void supprimeLivraison(Livraison liv) {
+	this.tournee.supprimeLivraison(liv);
+	this.changementEffectue();
+    }
 
-	public void changementEffectue(){
-		setChanged();
-		notifyObservers();
-	}
+    /**
+     * Intervertit deux livraisons dans le modele
+     * 
+     * @param liv1
+     * @param liv2
+     */
+    public void modifier(Livraison liv1, Livraison liv2) {
+	this.tournee.modifierTournee(liv1, liv2);
+	this.changementEffectue();
+    }
+
+    public Modele() {
+	this.plan = new Plan();
+	this.tournee = new Tournee();
+	this.demandeDeLivraison = new DemandeDeLivraison(this.tournee);
+    }
+
+    public void changementEffectue() {
+	setChanged();
+	notifyObservers();
+    }
 }

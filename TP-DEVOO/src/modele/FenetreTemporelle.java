@@ -7,9 +7,9 @@ import java.util.*;
  */
 public class FenetreTemporelle {
 
-	/**
-	 * Heure de debut de la Fenetre
-	 */
+    /**
+     * Heure de debut de la Fenetre
+     */
     protected Horaire heureDebut;
 
     /**
@@ -17,85 +17,89 @@ public class FenetreTemporelle {
      */
     protected Horaire heureFin;
 
-    
     /**
      * Livraisons a effectuer dans la fenetre temporelle.
      */
     protected Set<Livraison> livraisons;
 
-    
     /**
      * Default constructor
      */
     public FenetreTemporelle() {
-    	this.heureDebut = new Horaire();
-    	this.heureFin = new Horaire();
-    	this.livraisons = new HashSet<Livraison>();
+	this.heureDebut = new Horaire();
+	this.heureFin = new Horaire();
+	this.livraisons = new HashSet<Livraison>();
     }
 
     /**
      * Constructeur de base de fenêtre temporelle
      */
-    public FenetreTemporelle(Horaire dateDeb,
-			Horaire dateFin) {
-    	this.livraisons = new HashSet<Livraison>();
-		this.heureDebut = dateDeb;
-		this.heureFin = dateFin;
-	}
-    
-    
-    @Override
-    public String toString(){
-    	String s = " heureDeb = "+this.heureDebut.toString()+" heureFin = "+this.heureFin.toString();
-
-    	return s;
+    public FenetreTemporelle(Horaire dateDeb, Horaire dateFin) {
+	this.livraisons = new HashSet<Livraison>();
+	this.heureDebut = dateDeb;
+	this.heureFin = dateFin;
     }
 
-	public Horaire getHeureDebut() {
-		return heureDebut;
-	}
+    @Override
+    public String toString() {
+	String s = " heureDeb = " + this.heureDebut.toString() + " heureFin = "
+		+ this.heureFin.toString();
 
-	public void setHeureDebut(Horaire heureDebut) {
-		this.heureDebut = heureDebut;
-	}
+	return s;
+    }
 
-	public Horaire getHeureFin() {
-		return heureFin;
-	}
+    public Horaire getHeureDebut() {
+	return heureDebut;
+    }
 
-	public void setHeureFin(Horaire heureFin) {
-		this.heureFin = heureFin;
-	}
+    public void setHeureDebut(Horaire heureDebut) {
+	this.heureDebut = heureDebut;
+    }
 
-	public Set<Livraison> getLivraisons() {
-		return livraisons;
-	}
+    public Horaire getHeureFin() {
+	return heureFin;
+    }
 
-	public void setLivraisons(Set<Livraison> livraisons) {
-		this.livraisons = livraisons;
-	}
+    public void setHeureFin(Horaire heureFin) {
+	this.heureFin = heureFin;
+    }
 
-	public boolean equals(FenetreTemporelle obj) {
-		boolean resultat = false;
-		if( (this.getHeureDebut().equals(obj.getHeureDebut())) && (this.getHeureFin().equals(obj.getHeureFin())) ) {
-			resultat = true;
-		}
-		return resultat;
-	}
+    public Set<Livraison> getLivraisons() {
+	return livraisons;
+    }
 
-	/**Ajoute une livraison dans la fenetre
-     * @param livraison Livraison a ajouter
+    public void setLivraisons(Set<Livraison> livraisons) {
+	this.livraisons = livraisons;
+    }
+
+    public boolean equals(FenetreTemporelle obj) {
+	boolean resultat = false;
+	if ((this.getHeureDebut().equals(obj.getHeureDebut()))
+		&& (this.getHeureFin().equals(obj.getHeureFin()))) {
+	    resultat = true;
+	}
+	return resultat;
+    }
+
+    /**
+     * Ajoute une livraison dans la fenetre
+     * 
+     * @param livraison
+     *            Livraison a ajouter
      */
-	public void ajouteLivraison(Livraison livraison) {
-	    this.livraisons.add(livraison);
-	}
+    public void ajouteLivraison(Livraison livraison) {
+	this.livraisons.add(livraison);
+    }
 
-	/**Supprime une livraison de la fenetre
-     * @param livraison Livraison a supprimer
+    /**
+     * Supprime une livraison de la fenetre
+     * 
+     * @param livraison
+     *            Livraison a supprimer
      */
-	public void supprimeLivraison(Livraison livraison) {
-	    // TODO implement here
-		this.livraisons.remove(livraison);
-	}
+    public void supprimeLivraison(Livraison livraison) {
+	// TODO implement here
+	this.livraisons.remove(livraison);
+    }
 
 }

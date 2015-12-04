@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="LivraisonTest" project="TP-DEVOO" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="tests.LivraisonTest" time="0.001">
+    <testcase name="testRechercherCout" classname="tests.LivraisonTest" time="0.0"/>
+    <testcase name="testCalculerPlusCourtsChemins" classname="tests.LivraisonTest" time="0.0"/>
+    <testcase name="testLivraisonIntClientIntersectionFenetreTemporelle" classname="tests.LivraisonTest" time="0.0"/>
+    <testcase name="testRechercherTroncons" classname="tests.LivraisonTest" time="0.0"/>
+    <testcase name="testEqualsLivraison" classname="tests.LivraisonTest" time="0.001"/>
+    <testcase name="testLivraisonIntIntersection" classname="tests.LivraisonTest" time="0.0"/>
+  </testsuite>
+</testrun>

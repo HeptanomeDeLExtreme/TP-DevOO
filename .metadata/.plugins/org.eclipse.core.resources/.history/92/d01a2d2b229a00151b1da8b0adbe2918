@@ -22,6 +22,7 @@ public class Troncon {
 	}
 
     
+    
     public Intersection getOrigine() {
 		return origine;
 	}
@@ -92,11 +93,11 @@ public class Troncon {
     	return (l/v);
     }
     
-	/**
-	 * @return the longueur
-	 */
-	public Float getLongueur() {
-		return longueur;
-	}
-	    
-	}
+/**
+ * @return the longueur
+ */
+public Float getLongueur() {
+	return longueur;
+}
+    
+}

@@ -106,7 +106,6 @@ public class VueTextuelle extends JScrollPane implements Observer{
 		    		if(listeTroncon.size() == 1 ){
 		    			html += "Prendre "+listeTroncon.get(0).getNomDeRue()+ " sur "+longueur+"m.<br>"; 
 		    		}
-		    		
 		    		// Arrivee
 		    		Livraison arrivee = itineraire.getArrivee();
 		    		Intersection interArrivee = arrivee.getAdresse();

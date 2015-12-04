@@ -39,8 +39,7 @@ public class GenerateurFeuilleDeRoute {
      * @throws ExceptionXML
      */
     public static int genererFeuilleDeRoute(Tournee tournee)
-	    throws FileNotFoundException, UnsupportedEncodingException,
-	    ExceptionXML {
+	    throws FileNotFoundException, UnsupportedEncodingException, ExceptionXML {
 	String nomFichier = "";
 
 	String sb = "TEST CONTENT";
@@ -64,8 +63,7 @@ public class GenerateurFeuilleDeRoute {
 	// TODO amelioration : décider du fichier à écrire avec JFileChooser
 	PrintWriter writer = new PrintWriter(nomFichier, "UTF-8");
 
-	writer.println("FEUILLE DE ROUTE : Durée totale = "
-		+ tournee.getDuree());
+	writer.println("FEUILLE DE ROUTE : Durée totale = " + tournee.getDuree());
 	Horaire horaireCoutTotal = new Horaire(tournee.getCoutTotal());
 	writer.println("Durée totale sans les pauses = " + horaireCoutTotal);
 
@@ -76,15 +74,9 @@ public class GenerateurFeuilleDeRoute {
 
 	for (Itineraire iti : itineraires) {
 	    writer.println("");
-	    writer.println("Livraison au " + iti.getArrivee().getAdresse()
-		    + " prévue à " + iti.getArrivee().getHeureArrivee());
+	    writer.println("Livraison au " + iti.getArrivee().getAdresse() + " prévue à "
+		    + iti.getArrivee().getHeureArrivee());
 	    writer.println("Itinéraire : ");
-
-	    // List<Troncon> troncons = iti.getTroncons();
-	    // for(Troncon tr : troncons){
-	    // writer.println("Prenez la rue " + tr.getNomDeRue() + " sur " +
-	    // tr.getLongueur() + " mètres.");
-	    // }
 
 	    List<Troncon> listeTroncon = iti.getTroncons();
 	    float longueur = listeTroncon.get(0).getLongueur();
@@ -95,25 +87,20 @@ public class GenerateurFeuilleDeRoute {
 		if (courant.getNomDeRue().equals(precedent.getNomDeRue())) {
 		    longueur += courant.getLongueur();
 		} else {
-		    writer.println("Prendre " + precedent.getNomDeRue()
-			    + " sur " + longueur + "m.");
+		    writer.println("Prendre " + precedent.getNomDeRue() + " sur " + longueur + "m.");
 		    longueur = courant.getLongueur();
 		}
 	    }
 	    if (courant != null) {
-		writer.println("Prendre " + courant.getNomDeRue() + " sur "
-			+ longueur + "m.");
+		writer.println("Prendre " + courant.getNomDeRue() + " sur " + longueur + "m.");
 	    }
 	    if (listeTroncon.size() == 1) {
-		writer.println("Prendre " + listeTroncon.get(0).getNomDeRue()
-			+ " sur " + longueur + "m.");
+		writer.println("Prendre " + listeTroncon.get(0).getNomDeRue() + " sur " + longueur + "m.");
 	    }
 
 	    Livraison arrivee = iti.getArrivee();
-	    writer.println("Heure d'arivée estimée : "
-		    + arrivee.getHeureArrivee());
-	    writer.println("Heure de livraison estimée : "
-		    + arrivee.getHeureLivraison());
+	    writer.println("Heure d'arivée estimée : " + arrivee.getHeureArrivee());
+	    writer.println("Heure de livraison estimée : " + arrivee.getHeureLivraison());
 	    writer.println("Fenetre : " + arrivee.getFenetre());
 
 	    if (arrivee != entrepot) {
@@ -130,7 +117,6 @@ public class GenerateurFeuilleDeRoute {
 	return SUCCES;
     }
 
-    // TODO transformer en constructeur de Horaire ?
     public static Horaire dureeToHoraire(float duree) {
 
 	int dureeEntiere = (int) duree;

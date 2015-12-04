@@ -70,8 +70,7 @@ public class Plan {
 	    DeserialiseurPlanXML.charger(this);
 	}
 
-	catch (ParserConfigurationException | SAXException | IOException
-		| ExceptionXML e) {
+	catch (ParserConfigurationException | SAXException | IOException | ExceptionXML e) {
 
 	}
     }
@@ -84,7 +83,8 @@ public class Plan {
     /**
      * Permet de récuperer une intersection avec son id
      * 
-     * @param int id
+     * @param int
+     *            id
      * @return Intersection noeud
      */
     public Intersection recupererIntersectionParId(int id) {
@@ -114,8 +114,6 @@ public class Plan {
     public void ajoute(Intersection intersection) {
 	if (intersection != null)
 	    intersections.add(intersection);
-	else
-	    System.out.println("Erreur : intersection inexistante");
     }
 
     public Intersection cherche(Point p, float echelleX, float echelleY) {

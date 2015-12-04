@@ -30,11 +30,11 @@ public class VueTextuelle extends JScrollPane implements Observer {
      * Le modele represente.
      */
     private Modele modele;
-    /*
+    /**
      * La fenetre de contenance.
      */
     private FenetreIHM fenetre;
-    /*
+    /**
      * Le label d'ecriture.
      */
     private JLabel label;
@@ -62,7 +62,7 @@ public class VueTextuelle extends JScrollPane implements Observer {
 	this.label.setText(s);
     }
 
-    /*
+    /**
      * Change le texte
      * 
      * @param s le texte a mettre

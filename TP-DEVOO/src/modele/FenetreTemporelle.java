@@ -98,7 +98,7 @@ public class FenetreTemporelle {
      *            Livraison a supprimer
      */
     public void supprimeLivraison(Livraison livraison) {
-	// TODO implement here
+	
 	this.livraisons.remove(livraison);
     }
 

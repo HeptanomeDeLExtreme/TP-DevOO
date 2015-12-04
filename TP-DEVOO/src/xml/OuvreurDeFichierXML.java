@@ -48,7 +48,7 @@ public class OuvreurDeFichierXML extends FileFilter {// Singleton
 	return new File(jFileChooserXML.getSelectedFile().getAbsolutePath());
     }
 
-    /*
+    /**
      * (non-Javadoc)
      * 
      * @see javax.swing.filechooser.FileFilter#accept(java.io.File)
@@ -65,7 +65,7 @@ public class OuvreurDeFichierXML extends FileFilter {// Singleton
 	return extension.contentEquals("xml");
     }
 
-    /*
+    /**
      * (non-Javadoc)
      * 
      * @see javax.swing.filechooser.FileFilter#getDescription()

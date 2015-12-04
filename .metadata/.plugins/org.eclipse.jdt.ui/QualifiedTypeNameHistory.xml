@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="modele.Livraison"/>
 <fullyQualifiedTypeName name="controleur.EtatDeuxLivraisonSelectionnee"/>
 <fullyQualifiedTypeName name="controleur.EtatLivraisonPrecedenteSelectionnee"/>
 <fullyQualifiedTypeName name="java.awt.Point"/>
@@ -20,4 +19,5 @@
 <fullyQualifiedTypeName name="vue.FenetreIHM"/>
 <fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="xml.ExceptionXML"/>
+<fullyQualifiedTypeName name="modele.Livraison"/>
 </qualifiedTypeNameHistroy>

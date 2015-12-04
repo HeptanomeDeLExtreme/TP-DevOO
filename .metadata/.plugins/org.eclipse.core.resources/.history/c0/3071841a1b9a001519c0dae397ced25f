@@ -131,7 +131,6 @@ public class Controleur {
 		this.etatCourant.ouvrirPlan(this.modele);	
 		this.modele.changementEffectue();
 		this.fenetre.nettoieVueTextuelle();
-		this.listeCommandes.reset();
 	}
 	
     /**
@@ -141,7 +140,6 @@ public class Controleur {
         this.etatCourant.importerLivraison(fenetre,this.modele, this.modele.getPlan());
         this.modele.changementEffectue();
         this.fenetre.nettoieVueTextuelle();
-        this.listeCommandes.reset();
     }
 
     /**

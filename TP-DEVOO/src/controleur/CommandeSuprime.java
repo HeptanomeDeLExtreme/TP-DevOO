@@ -145,17 +145,7 @@ public class CommandeSuprime implements Commande {
 	this.modele.getDemandeDeLivraison().majHorairesDesLivraisons(this.modele.getTournee().getItineraires());
 	this.modele.getDemandeDeLivraison().majCoutTournee();
 
-	System.out.println("");
-	System.out.println("POUIT");
-	for (Itineraire iti : this.modele.getTournee().getItineraires()) {
-	    System.out.println("Itineraire : " + iti);
-	    List<Troncon> listTronc = iti.getTroncons();
-	    for (Troncon tronc : listTronc) {
-		System.out.println(tronc);
-	    }
-	    System.out.println();
-	}
-	System.out.println("");
+
     }
 
 }

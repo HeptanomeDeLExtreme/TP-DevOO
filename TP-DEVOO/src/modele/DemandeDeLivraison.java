@@ -100,36 +100,6 @@ public class DemandeDeLivraison extends Observable{
     	
     	return null;
     }
-    /**
-     * Cree un objet DemandeDeLivraison a partir d'un fichier XML.
-     * 
-     * @param fenetres
-     * 	Fenetres temporelles decrites dans le XML.
-     * 
-     * @param entrepot
-     * 	Entrepot defini dans le XML.
-     */
-    /*public DemandeDeLivraison(List<FenetreTemporelle> fenetres, Livraison entrepot) {
-		super();
-		this.tsp = new TSP1();
-		this.tournee = new Tournee();
-		this.fenetres = fenetres;
-		this.entrepot = entrepot;
-		
-		// Compte le nombre de livraisons du fichier XML
-		int nbLivraisons = 0;
-		
-		for (FenetreTemporelle fenetre : fenetres) {
-			Set<Livraison> livraisonsFActuelle = fenetre.getLivraisons();
-			nbLivraisons += livraisonsFActuelle.size();
-		}
-		
-		// Ajout de l'entrepot
-		nbLivraisons++;
-		
-		this.nbLivraisons = nbLivraisons;
-	}*/
-    
     
     public int getNbLivraisons() {
 		return nbLivraisons;
@@ -152,9 +122,8 @@ public class DemandeDeLivraison extends Observable{
     		nbLivraisons = 0;
     	
     		for (FenetreTemporelle fenetre : fenetres) {
-    			//System.out.println("Fenetre : "+fenetre);
+    			
     			Set<Livraison> livraisonsFActuelle = fenetre.getLivraisons();
-    			//System.out.println("Nombre de livraisons : "+livraisonsFActuelle.size());
     			nbLivraisons += livraisonsFActuelle.size();
     		}
     		
@@ -262,19 +231,15 @@ public class DemandeDeLivraison extends Observable{
     	
     	// Calcul des plus courts chemins a partir d'un livraison sur tout le plan
     	calculDesPlusCourtsChemins(plan, graphePondere);
-    	
-//    	System.out.println("Map de correspondance entre sommets graphe plan et intersection :");
-//    	System.out.println(graphePondere.mapCorrespondance);
+
     	
     	// Creation des correspondances entre un sommet (Integer) et une livraison
     	Map<Integer,Livraison> mapLivraisons = correspondanceLivraisons();
-//    	System.out.println("Map de correspondance entre sommets graphe livraison et livraisons : ");
-//    	System.out.println(mapLivraisons);
+
 		
     	// Generation des arcs du graphe de livraisons
     	int couts[][] = genererTableauArcs(graphePondere.getMapCorrespondance(), mapLivraisons);
     	    	
-//    	System.out.println("Tableau de cout : " + couts);
     	// Generation du graphe de livraisons
     	GrapheLivraisons graphe = new GrapheLivraisons(nbLivraisons, couts);
     	
@@ -285,28 +250,9 @@ public class DemandeDeLivraison extends Observable{
     	LinkedList<Livraison> livraisonsEnOrdre = new LinkedList<Livraison>();
     	livraisonsEnOrdre = recupererLivraisonsEnOrdre(graphe, mapLivraisons);
     	
-//    	System.out.println("");
-//    	for(Livraison uneLiv : livraisonsEnOrdre) {
-//    		System.out.println("Livraison : "+uneLiv);
-//    		System.out.println(uneLiv.getFenetre());
-//    	}
-//    	System.out.println("");
-    	
     	// Récupérer l'ordre des itinéraires entre les livraisons.
     	List<Itineraire> itinerairesEnOrdre = new LinkedList<Itineraire>();
     	itinerairesEnOrdre = recupererItinerairesEnOrdre(graphePondere.getMapCorrespondance(),livraisonsEnOrdre, mapLivraisons,couts);
-    	
-    	System.out.println("");
-    	System.out.println("CALCUL TOURNEE");
-    	for(Itineraire iti : itinerairesEnOrdre){
-    		System.out.println("Itineraire : "+iti);
-    		List<Troncon> listTronc = iti.getTroncons();
-    		for(Troncon tronc : listTronc){
-    			System.out.println(tronc);
-    		}
-    		System.out.println();
-    	}
-    	System.out.println("");
     	
     	// Mise à jour des données concernant le moment où la livraison s'effectue
         majHorairesDesLivraisons(itinerairesEnOrdre);
@@ -319,10 +265,8 @@ public class DemandeDeLivraison extends Observable{
         
         Horaire heureDepartEntrepotDebutTournee = livraisonsEnOrdre.get(1).getFenetre().getHeureDebut();
         Horaire heureArriveeEntrepotFinTournee = livraisonsEnOrdre.getLast().getHeureArrivee();
-//        System.out.println("heure de départ tournée : " + heureDepartEntrepotDebutTournee);
-//        System.out.println("heure fin tournée : " + heureArriveeEntrepotFinTournee);
         Horaire tempsTournee = heureArriveeEntrepotFinTournee.soustraireHoraire(heureDepartEntrepotDebutTournee);
-//        System.out.println("Temps de la tournée : " + tempsTournee);
+
         
         // Créer la tournée
         this.tournee.charge(graphePondere.getMapCorrespondance(),this, entrepot, coutTotalSolution, livraisonsEnOrdre, itinerairesEnOrdre);
@@ -333,7 +277,7 @@ public class DemandeDeLivraison extends Observable{
      * 
      */
     public void majCoutTournee(){
-//    	System.out.println("Appel à MAJ cout tournée !");
+
     	// Recalcul du cout de la tournée + durée de la tournée
     	int coutTotalSolution = 0;
     	List<Itineraire> itinerairesMAJ = tournee.getItineraires();
@@ -345,34 +289,17 @@ public class DemandeDeLivraison extends Observable{
     	}
     	
     	coutTotalSolution += (10 * 60) * nbLivraisonsSansEntrepots;
-//    	System.out.println("Nombre de livraisons sas entrepot de début et de fin : " + nbLivraisonsSansEntrepots);
-//    	System.out.println("Cout total de la solution : " + coutTotalSolution);
+
     	
     	Horaire heureDepartEntrepotDebutTournee = livraisonsEnOrdre.get(1).getFenetre().getHeureDebut();
     	Horaire heureArriveeEntrepotFinTournee = livraisonsEnOrdre.get(livraisonsEnOrdre.size() - 1).getHeureArrivee();
-//		System.out.println("heure de départ tournée : " + heureDepartEntrepotDebutTournee);
-//		System.out.println("heure fin tournée : " + heureArriveeEntrepotFinTournee);
+
 		Horaire tempsTournee = heureArriveeEntrepotFinTournee.soustraireHoraire(heureDepartEntrepotDebutTournee);
-//		System.out.println("Temps de la tournée : " + tempsTournee);
+
 		
 		tournee.setCoutTotal(coutTotalSolution);
 		tournee.setDuree(tempsTournee);
-//        int coutTotalSolution = tsp.getCoutSolution();
-//        int nbLivSansEntrepot = getNbLivraisons() - 1;
-//        coutTotalSolution += (10 * 60) * nbLivSansEntrepot;
-//        
-//        Horaire heureDepartEntrepotDebutTournee = new Horaire(8, 0, 0);
-//        List<Livraison> livEnOrdre = this.tournee.getLivraisonsEnOrdre();
-//        Horaire heureArriveeEntrepotFinTournee = livEnOrdre.get(livEnOrdre.size()-1).getHeureArrivee();
-//        System.out.println("heure de départ tournée : " + heureDepartEntrepotDebutTournee);
-//        System.out.println("heure fin tournée : " + heureArriveeEntrepotFinTournee);
-//        Horaire tempsTournee = heureArriveeEntrepotFinTournee.soustraireHoraire(heureDepartEntrepotDebutTournee);
-//        System.out.println("Temps de la tournée : " + tempsTournee);
-//        
-//        // Créer la tournée
-//        this.tournee.setCoutTotal(coutTotalSolution);
-//        this.tournee.setDuree(tempsTournee);
-//        System.out.println(this.tournee.getDuree());
+
     }
 
     /**
@@ -389,50 +316,44 @@ public class DemandeDeLivraison extends Observable{
     	Horaire heureLivraison = null;
     	boolean estDansFenetre = false;
     	for(Itineraire unItineraire : itinerairesEnOrdre) {
-    		//System.out.println("Compteur : " + compteur);
+    		
     		
     		Livraison livraisonDepart = unItineraire.getDepart();
-    		//System.out.println("Livraison de départ : " + livraisonDepart);
     		Livraison livraisonArrivee = unItineraire.getArrivee();
-    		//System.out.println("Livraison d'arrivée : " + livraisonArrivee);
     		int coutItineraire = unItineraire.getCout();
-    		//System.out.println("Coût de l'itinéraire : " + coutItineraire);
     		
     		if(compteur == 0) {
     			// 1er itinéraire : contient comme livraison de départ l'entrepôt.
-    			//System.out.println("1er itinéraire !");
     			fenetre = livraisonArrivee.getFenetre();
     			coutTotal = coutItineraire;
     			livraisonDepart.setHeureArrivee(fenetre.getHeureDebut());
-    			//System.out.println("Cout total pour cet itinéraire : " + coutTotal);
+    			
     		} else if(compteur == (itinerairesEnOrdre.size() - 1)) {
-    			//System.out.println("Dernier itinéraire !");
+    			
     			// Dernier itinéraire : contient comme livraison d'arrivée l'entrepôt
     			coutTotal = coutItineraire + TEN_MINUTES;
-    			//System.out.println("Cout total pour cet itinéraire : " + coutTotal);
+    			
     		} else { 
-    			//System.out.println("Itinéraire normal !");
+    			
     			// Le reste des itinéraires
     			fenetre = livraisonArrivee.getFenetre();
     			coutTotal = coutItineraire + TEN_MINUTES;
-    			//System.out.println("Cout total pour cet itinéraire : " + coutTotal);
+    			
     		}
     		
     		Horaire horaireCoutTotal = new Horaire(coutTotal);
-    		//System.out.println("Horaire du coup total : " + horaireCoutTotal);
-//    		System.out.println("ZOB : "+livraisonDepart);
+    		
     		if(compteur == 0) {
     			heureArrivee = livraisonDepart.getHeureArrivee().additionnerHoraire(horaireCoutTotal);
     		} else {
     			heureArrivee = livraisonDepart.getHeureLivraison().additionnerHoraire(horaireCoutTotal);
     		}
     		
-    		//System.out.println("Heure d'arrivée pour la prochaine livraison : ");
-    		//System.out.println(heureArrivee);
+
     		
     		// Calcul de l'heure de livraison
     		if(fenetrePrecedente != fenetre) {
-    			//System.out.println("Ma fenêtre est différente de la fenêtre précédente !");
+    			
     			// Le reste des itinéraires
     			if(heureArrivee.isInferieurA(fenetre.getHeureDebut())) {
     				heureLivraison = fenetre.getHeureDebut();
@@ -440,23 +361,23 @@ public class DemandeDeLivraison extends Observable{
     				heureLivraison = heureArrivee;
     			}
     		} else {
-    			//System.out.println("Ma fenetre est la même que la précédente !");
+    		
     			heureLivraison = heureArrivee;
     		}
     		
     		if(compteur == 0) {
-    			//System.out.println("Attention, je modifie l'heure de livraison parce que j'en suis au premier itinéraire !");
+    			
     			heureLivraison = heureArrivee;
     		} else if(compteur == (itinerairesEnOrdre.size() - 1)) {
-    			//System.out.println("Attention, je modifie l'heure de livraison parce que j'en suis au dernier itinéraire !");
+    			
     			heureLivraison = null;
     		}
     		
     		// Savoir si l'heure de livraison est dans la fenêtre
     		if(compteur == (itinerairesEnOrdre.size() - 1)) {
-    			//System.out.println("On s'en fiche de l'heure de livraison de l'entrepot");
+    			
     		} else {
-    			//System.out.println("L'heure de livraison de la prochaine livraison est-elle dans la fenêtre ? :");
+    			
     			estDansFenetre = heureLivraison.isInFenetreTemporelle(fenetre.getHeureDebut(), fenetre.getHeureFin());
     			livraisonArrivee.setEstDansFenetre(estDansFenetre);
     			if(estDansFenetre == false){
@@ -466,14 +387,7 @@ public class DemandeDeLivraison extends Observable{
     		
     		livraisonArrivee.setHeureArrivee(heureArrivee);
     		livraisonArrivee.setHeureLivraison(heureLivraison);
-//    		System.out.println("");
-//    		System.out.println("----------");
-//    		System.out.println("Pour la livraison : " + livraisonArrivee);
-//    		System.out.println("Fenêtre de la livraison : " + fenetre);
-//    		System.out.println("Heure d'arrivée sur le point de livraison : " + heureArrivee);
-//    		System.out.println("Heure de livraison sur le point de livraison : " + heureLivraison);
-//    		System.out.println("----------");
-    		
+
     		fenetrePrecedente = fenetre;
     		compteur++;
     	}
@@ -564,14 +478,6 @@ public class DemandeDeLivraison extends Observable{
     		}	
     	}
     	
-    	// TEST
-    	
-    	for(int compteur = 0; compteur < mapLivraisons.size(); compteur++){
-    		Livraison result = mapLivraisons.get(compteur);
-//    		System.out.println("compteur : "+compteur+"livraison : "+result);
-    	}
-    	// TEST
-    	
     	return mapLivraisons;
     	
     }
@@ -592,7 +498,7 @@ public class DemandeDeLivraison extends Observable{
      * @see correspondanceLivraisons
      */
     protected int[][] genererTableauArcs(Map<Integer, Intersection> map2, Map<Integer,Livraison> map){
-//    	System.out.println("NbLivraisons : "+nbLivraisons);
+
     	int tableauArcs[][]= new int[nbLivraisons][nbLivraisons];
     	
     	for(int i = 0;i<nbLivraisons;i++){
@@ -609,7 +515,7 @@ public class DemandeDeLivraison extends Observable{
     	
     	for(Livraison livraisonArrivee : livraisonsFenetre) {
     		Integer numSommetArrive = getKeyByValue(map, livraisonArrivee);
-//    		System.out.println(numSommetArrive+" "+numSommetEntrepot);
+
     		tableauArcs[numSommetEntrepot][numSommetArrive] = 
     				entrepot.rechercherCout(map2, livraisonArrivee);
     	}
@@ -677,14 +583,6 @@ public class DemandeDeLivraison extends Observable{
     		}
     	}
     	
-    	
-    	//TEST
-    	for(int i =0; i < nbLivraisons; i++){
-    		for(int j = 0; j < nbLivraisons; j++){
-//    			System.out.println("tableauArc "+i+" "+j+" :"+tableauArcs[i][j]);
-    		}
-    	}
-    	//TEST
     	return tableauArcs;
     }
     
@@ -711,9 +609,9 @@ public class DemandeDeLivraison extends Observable{
     	
     	for (int i = 0; i < nombreSommet; i++) {
     		Integer numeroSommet = tsp.getSolution(i);
-//    		System.out.println("Sol : "+numeroSommet);
+
     		Livraison livraison = mapLivraisons.get(numeroSommet);
-//    		System.out.println(livraison);
+
         	livraisonsEnOrdre.add(livraison);
     	}    	
     	livraisonsEnOrdre.addLast(entrepot);
@@ -757,8 +655,7 @@ public class DemandeDeLivraison extends Observable{
     	
     	// Traitement de la tournee, depuis l'entrepot jusqu'a la derniere
     	// livraisons
-//    	System.out.println("Liste des livraisons en ordre donné par TSP :");
-//    	System.out.println(listeLivraisons);
+
     	for(int i = 0; i < listeLivraisons.size()-1; i++) {
     		Livraison livraisonActuelle = listeLivraisons.get(i);
     		Livraison livraisonSuivante = listeLivraisons.get(i+1);
@@ -766,44 +663,18 @@ public class DemandeDeLivraison extends Observable{
     		int depart = getKeyByValue(mapLivraisons, livraisonActuelle);
     		int arrivee = getKeyByValue(mapLivraisons, livraisonSuivante);
     		int coutItineraire = couts[depart][arrivee];
-//        	System.out.println("Depart : "+livraisonActuelle);
+
     		List <Troncon> troncons = livraisonActuelle.rechercherTroncons(map,livraisonSuivante);
-    		for(Troncon tronc : troncons)
-    		{
-//    			System.out.println(tronc);
-    		}
-//    		System.out.println("Arrivee : "+livraisonSuivante);
-//        	System.out.println();
+    	
+
     		Itineraire itineraire = new Itineraire(coutItineraire, troncons, livraisonActuelle, livraisonSuivante);
     		       	
     		itinerairesEnOrdre.add(itineraire);
     	}
     	
-    	/*// Traitement de la fin de la tournee, depuis la derniere livraison
-    	// jusqu'a l'entrepot de depart
-    	Livraison derniereLivraison = listeLivraisons.getLast();
-    	Livraison premiereLivraison = listeLivraisons.getFirst();
-    	
-    	int depart = getKeyByValue(mapLivraisons, derniereLivraison);
-    	int arrivee = getKeyByValue(mapLivraisons, premiereLivraison);
-    	int coutItineraire = couts[depart][arrivee];
-//    	System.out.println("Depart : "+premiereLivraison);
-//    	System.out.println("Arrivee : "+derniereLivraison);
-//    	System.out.println();
-    	List<Troncon> troncons = derniereLivraison.rechercherTroncons(map,premiereLivraison);
-    	Itineraire itineraire = new Itineraire(coutItineraire, troncons, derniereLivraison, premiereLivraison);
-    	itinerairesEnOrdre.add(itineraire);*/
-    	
     	return itinerairesEnOrdre;
     }
 
-
-    /**
-     * 
-     */
-    protected void genereFeuilleDeRoute() {
-        // TODO implement here
-    }
     
     /**
      * Permet d'ajouter une livraison. Ne doit servir que lors de la création de la demande de livraison lors de l'ajout de l'entrepot

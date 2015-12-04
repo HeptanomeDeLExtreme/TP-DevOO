@@ -28,8 +28,6 @@ public class Dijkstra {
 			final int suivant = calculSuivant(dist, visite);
 			visite[suivant] = true;
 
-			// The shortest path to next is dist[next] and via pred[next].
-
 			final int[] n = G.neighbors(suivant);
 
 			for (int j = 0; j < n.length; j++) {

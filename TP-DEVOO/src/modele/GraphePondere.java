@@ -9,7 +9,7 @@ public class GraphePondere {
 	 public GraphePondere(){
 	 }
 	 
-	    // A EFFACER
+
 	    public Integer getKeyByValue(Map<Integer, Intersection> map, Intersection value) {
 	    	Integer resultat = null;
 	    	for(Integer compteur = 0; compteur < map.size(); compteur++) {
@@ -19,7 +19,7 @@ public class GraphePondere {
 	    	}
 	    	return resultat;
 	    }
-	    // A EFFACER
+
 	 
 	 /**
 	  * Genere un Graphe a partir d'un plan passe en parametre.
@@ -30,7 +30,7 @@ public class GraphePondere {
 	
 		 Set<Intersection> setIntersections =plan.getIntersections();
 		 this.nbNoeuds = setIntersections.size();
-//		 System.out.println("Nombre de noeuds dans le graphe : " + nbNoeuds);
+
 		 
 		 int[][]couts= new int[nbNoeuds][nbNoeuds];
 		 for(int i = 0;i<nbNoeuds;i++){
@@ -43,33 +43,14 @@ public class GraphePondere {
 		 // Attribution d'un numéro à toutes les intersections
 		 Map<Integer, Intersection> mapIntersections = new HashMap<Integer, Intersection>();
 		 for(Intersection intersection : setIntersections){
-//			 System.out.println("Intersection qui va être mise : " + intersection);
+
 			 mapIntersections.put(numeroIntersection, intersection);
-//			 System.out.println("Numéro intersection : " + numeroIntersection);
+
 			 numeroIntersection++;
 		 }
 		 
-//		System.out.println("[REGARDER MAPINTERSECTION AVANT ASSIGNA ATTRIBUT] Tableau de correspondancePlan : ");
-		Integer compteur = 0;
-		for(Intersection intersection : setIntersections) {
-//			System.out.println("sommet/compteur : " + compteur);
-			Integer resultat = getKeyByValue(mapIntersections, intersection);
-//			System.out.println("Intersection : " + resultat);
-//			System.out.println("La map contient elle la clé ? : " + mapIntersections.containsKey(compteur));
-			compteur++;
-		}
 
 		 this.mapCorrespondance = mapIntersections;
-		 
-//		 int compteur = 0;
-//		 for(Intersection inter : setIntersections) {
-//			 System.out.println("Intersection : " + inter);
-//			 System.out.println("Sommet : " + compteur);
-//			 compteur++;
-//		 }
-		 
-//		 System.out.println(setIntersections.size());
-//		 System.out.println("MAP : "+mapCorrespondance.size());
 		 
 		 //Récupération des intersections voisines de chaque intersection et du cout associé
 		 for (Intersection intersection : setIntersections){

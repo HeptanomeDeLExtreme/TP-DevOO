@@ -81,7 +81,7 @@ public class Tournee extends Observable {
 	private boolean retard;
 
     public void nettoyer(){
-//    	this.duree = (float) -1;
+
     	this.coutTotal = -1;
     	if(demandeDeLivraison != null){
     		this.demandeDeLivraison.nettoieDemandeDeLivraison();
@@ -117,10 +117,7 @@ public class Tournee extends Observable {
     }
     
     public void Inversion(Livraison livraison1, Livraison livraison2) {
-    	
-//    	System.out.println("DEBUT DE MODIFIER");
-//    	System.out.println("Itineraires avant modif");
-    	
+
     	for(Livraison liv : livraisonsEnOrdre){
     		if(liv.equals(livraison1)){
     			livraison1 = liv;
@@ -129,103 +126,64 @@ public class Tournee extends Observable {
     			livraison2 = liv;
     		}
     	}
-    	
-    	for (Itineraire it : itineraires)
-    	{
-//    		System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
-    	}
-    	
-    	
-    	
+      	
     	Livraison livraisonSuivante1 = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison1)+1);
     	Livraison livraisonSuivante2 = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison2)+1);
     	
     	FenetreTemporelle fenetre2 = livraison1.getFenetre();
     	FenetreTemporelle fenetre1 = livraison2.getFenetre();
     	
-//    	System.out.println("Fenetre Livraison 1" + fenetre1.getHeureDebut() + " - " + fenetre1.getHeureFin());
-//    	System.out.println("Fenetre Livraison 2" + fenetre2.getHeureDebut() + " - " + fenetre2.getHeureFin());
-    	for (Livraison liv : livraisonsEnOrdre)
-		{
-//		System.out.println(liv.getAdresse().getId());
-		}
-    	
     	// Gestion des cas où on veut intervertir deux intersections à la suite
-    	if (livraisonSuivante1.equals(livraison2)){
+    	if (livraisonSuivante1.equals(livraison2))
+    	{
     		
     		if (livraisonSuivante2.equals(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1)))
     		{
-    		// Cas à gérer
+    		// On veut intervertir les deux dernieres
     			supprimeLivraison(livraison1);
     			ajouteLivraison(livraison2,livraison1.getAdresse()).setFenetre(fenetre1);
-    			supprimeLivraison(livraison2);
-//    			System.out.println("ID à modifier = " + livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1).getId());
-
-    			
+    			supprimeLivraison(livraison2);    			
     			ajouteLivraison(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-2), livraison2.getAdresse()).setFenetre(fenetre2);
     			
     		}
     		
     		else{
     			supprimeLivraison(livraison1);
-//    	    	System.out.println("Suppr liv1 ok");
     	    	supprimeLivraison(livraison2);
-//    	    	System.out.println("Suppr liv2 ok");
     			ajouteLivraison(livraisonSuivante2, livraison1.getAdresse()).setFenetre(fenetre1);
-//        		System.out.println("Réajout liv2 ok");
         		ajouteLivraison(livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraisonSuivante2)-1), livraison2.getAdresse()).setFenetre(fenetre2);}
-//    			System.out.println("Réajout liv1 ok");
     		}
     	
-    	else if (livraisonSuivante2.equals(livraison1)){
-    		
+    	else if (livraisonSuivante2.equals(livraison1))
+    	{
+    		// On veut intervertir les deux dernieres
     		if(livraisonSuivante1.equals(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1)))
     		{
     			supprimeLivraison(livraison2);
     			ajouteLivraison(livraison1,livraison2.getAdresse()).setFenetre(fenetre2);
     			supprimeLivraison(livraison1);
-//    			System.out.println("ID à modifier = " + livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1).getId());
     			ajouteLivraison(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-2), livraison1.getAdresse()).setFenetre(fenetre1);	
     		}
     		else{
     			supprimeLivraison(livraison1);
-//    			System.out.println("Suppr liv1 ok");
     			supprimeLivraison(livraison2);
-//    			System.out.println("Suppr liv2 ok");
     			ajouteLivraison(livraisonSuivante1, livraison2.getAdresse()).setFenetre(fenetre2);
-//    			System.out.println("Réajout liv1 ok");
     			ajouteLivraison(livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraisonSuivante1)-1), livraison1.getAdresse()).setFenetre(fenetre1);
-//    			System.out.println("Réajout liv2 ok");
     			}
     		}
     	
     	else{
     		supprimeLivraison(livraison1);
-//        	System.out.println("Suppr liv1 ok");
         	
-//        	System.out.println("Suppr liv2 ok");
     		ajouteLivraison(livraisonSuivante2, livraison1.getAdresse()).setFenetre(fenetre1);
     		supprimeLivraison(livraison2);
-//    		System.out.println("Réajout liv2 ok");
     		ajouteLivraison(livraisonSuivante1, livraison2.getAdresse()).setFenetre(fenetre2);
-//    		System.out.println("Réajout liv1 ok");}
     	
     	
     	
     	
     	charge(graphePondere.getMapCorrespondance(), demandeDeLivraison,entrepot, coutTotal,livraisonsEnOrdre, itineraires );
-    	
-//    	System.out.println("Livraisons après modifs");
-    	for (Livraison liv : livraisonsEnOrdre)
-    		{
-//    		System.out.println(liv.getAdresse().getId());
-    		}
-    	
-//    	System.out.println("Itineraires après modif");
-    	for (Itineraire it : itineraires)
-    	{
-//   		System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
-    	}
+    
     	
     	}
     	
@@ -261,37 +219,23 @@ public class Tournee extends Observable {
     	 */
 
     	Livraison livraisonPrecedente = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison) - 1 );
-//    	System.out.println(" Livraison Précedente = " + livraisonPrecedente.getAdresse().getId());
     	Livraison livraisonSuivante = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison) +1 );
-//    	System.out.println(" Livraison Suivante = " + livraisonSuivante.getAdresse().getId());
     	livraisonsEnOrdre.remove(livraison);
     	
     	int coutPrecedentToLivraison = 0;
     	int coutLivraisonToSuivant = 0;
     	int coutPrecedentToSuivant = 0;
     	
-//    	System.out.println("Affichage des anciens itineraires");
-//		for (Itineraire it : itineraires)
-//		{
-//		
-//			System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
-//		}
+
     	
     	Itineraire itiPrecedentToLivraison = new Itineraire();
     	Itineraire itiLivraisonToSuivant = new Itineraire();
-    	//livraisonsEnOrdre.remove(livraison);
     	
-//    	System.out.println("Mise à jour des livraisons");
-//    	for (Livraison liv :livraisonsEnOrdre)
-//    	{
-//    		System.out.println("Id =" + liv.getAdresse().getId() );
-//    	}
-    	
+
     	for (Itineraire it : itineraires)
     	{
     		if (it.getArrivee().equals(livraison))
     		{
-//    			System.out.println("HEUI on supprime precedentToLivraison");
     			coutPrecedentToLivraison = it.getCout();
     			itiPrecedentToLivraison = it;
     		}	
@@ -305,15 +249,11 @@ public class Tournee extends Observable {
 			List <Troncon> tronconsPrecedentToSuivant = livraisonPrecedente.rechercherTroncons(graphePondere.getMapCorrespondance(), livraisonSuivante);
 			Itineraire itiPrecedentToSuivant = new Itineraire(coutPrecedentToSuivant, tronconsPrecedentToSuivant, livraisonPrecedente, livraisonSuivante);
 			
-//			System.out.println("Génération de l'itinéraire " + itiPrecedentToSuivant.getDepart().getAdresse().getId() + " à " + itiPrecedentToSuivant.getArrivee().getAdresse().getId());
 			
 			itineraires.add(itineraires.indexOf(itiPrecedentToLivraison), itiPrecedentToSuivant);
 			
-//			System.out.println("Suppression de l'itinéraire " + itiLivraisonToSuivant.getDepart().getAdresse().getId() + " à " + itiLivraisonToSuivant.getArrivee().getAdresse().getId());
 			itineraires.remove(itineraires.get(itineraires.indexOf(itiPrecedentToLivraison)+1));
 			itineraires.remove(itiPrecedentToLivraison);
-//			System.out.println("Suppression de l'itinéraire " + itiPrecedentToLivraison.getDepart().getAdresse().getId() + " à " + itiPrecedentToLivraison.getArrivee().getAdresse().getId());
-//			System.out.println("Changement effectué");
 			
     		coutTotal = coutTotal - coutLivraisonToSuivant - coutPrecedentToLivraison + coutPrecedentToSuivant ;
     		this.demandeDeLivraison.supprimeLivraison(livraison);
@@ -321,25 +261,7 @@ public class Tournee extends Observable {
     		
     		this.demandeDeLivraison.majHorairesDesLivraisons(itineraires);
     		this.demandeDeLivraison.majCoutTournee();
-    		
-//    		System.out.println("Affichage des nouveaux itineraires");
-//			for (Itineraire it : itineraires)
-//			{			
-//				System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
-//			}
-			
-			
-//			System.out.println("Itineraires après suppression");
-//			for (Itineraire its : itineraires)
-//	    	{
-//	   		System.out.println("Itineraire de " + its.getDepart().getAdresse().getId() + " à " + its.getArrivee().getAdresse().getId());
-//	    	}
-//			System.out.println("livraisons ");
-//			for (Livraison liv : livraisonsEnOrdre)
-//    		{
-//    		System.out.println(liv.getAdresse().getId());
-//    		}
-
+    	
     	}
     	
    
@@ -356,26 +278,20 @@ public class Tournee extends Observable {
      */
     public Livraison ajouteLivraison(Livraison livraisonSuivante, Intersection intersectionCible) {
           
-//    	System.out.println("AFFICHAGE LIVs");
-//    	System.out.println("toadd : "+livraisonSuivante);
+
     	for(Livraison liv : livraisonsEnOrdre){
-//    		System.out.print(liv);
+
     		if(liv.equals(livraisonSuivante)){
     			livraisonSuivante = liv;
-//    			System.out.println(" ok");
-    		}
-    		else{
-//    			System.out.println();
     		}
     	}	
-//    	System.out.println("toadd2 : "+livraisonSuivante);
-//    	System.out.println("FIN AFFICHAGE LIVs");
+
     	
     	List<Integer> listeIDLivraisons = new ArrayList<Integer>();
     	
     	ListIterator<Livraison> itr = livraisonsEnOrdre.listIterator();
     	
-    	//this.demandeDeLivraison.majHorairesDesLivraisons(itineraires);
+    	;
     	
     	while (itr.hasNext()){
     		Livraison livraisontoID = itr.next();
@@ -391,8 +307,7 @@ public class Tournee extends Observable {
     	
     	Livraison livraison = new Livraison(id_max,philippe, intersectionCible,livraisonSuivante.getFenetre() );
     	livraison.calculerPlusCourtsChemins(graphePondere);
-    	//livraison.setHeureLivraison(new Horaire(19*60*60));
-//    	System.out.println("T : "+livraison);
+
     	
     	if (livraisonSuivante.equals(livraisonsEnOrdre.get(livraisonsEnOrdre.size()-1)))
     	{
@@ -414,17 +329,9 @@ public class Tournee extends Observable {
     	{
     		livraisonPrecedente = livraisonsEnOrdre.get(livraisonsEnOrdre.indexOf(livraison)-1);
     	}
-//    	System.out.println("Affichage des nouvelles livraisons");
-    	for(Livraison liv: livraisonsEnOrdre)
-    	{
-//    		System.out.println(liv.getAdresse().getId());
-    	}
+
     	
-//    	System.out.println("Anciens Itineraires");
-    	for (Itineraire it : itineraires)
-    	{
-//    		System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
-    	}
+
     	
     	int coutLivraisonToSuivant = livraison.rechercherCout(graphePondere.getMapCorrespondance(), livraisonSuivante);
     	int coutPrecedentToLivraison = livraisonPrecedente.rechercherCout(graphePondere.getMapCorrespondance(), livraison);
@@ -433,37 +340,23 @@ public class Tournee extends Observable {
     	List <Troncon> tronconsPrecedentToLivraison = livraisonPrecedente.rechercherTroncons(graphePondere.getMapCorrespondance(), livraison);
     	
     	Itineraire itLivraisonToSuivant = new Itineraire (coutLivraisonToSuivant, tronconsLivraisonToSuivant, livraison, livraisonSuivante);
-    	
-//    	System.out.println("ItLivraisonToSuivant");
-//    	System.out.println("Itineraire de " + itLivraisonToSuivant.getDepart().getAdresse().getId() + " à " + itLivraisonToSuivant.getArrivee().getAdresse().getId());
-    	
+    	    	
     	Itineraire itPrecedentToLivraison = new Itineraire (coutPrecedentToLivraison, tronconsPrecedentToLivraison, livraisonPrecedente, livraison);
-//    	
-//    	System.out.println("ItPrecedentToLivraison");
-//    	System.out.println("Itineraire de " + itPrecedentToLivraison.getDepart().getAdresse().getId() + " à " + itPrecedentToLivraison.getArrivee().getAdresse().getId());
     	
     	int coutASoustraire = 0;
     	for(Itineraire it : this.itineraires){
     		if (it.getArrivee() == livraisonSuivante){
     			
-//    			System.out.println("Hééééuiiiiiii j'ai trouvé");
-//    			System.out.println("On remplace l'Itineraire de " + livraisonPrecedente.getAdresse().getId() + " à " + livraisonSuivante.getAdresse().getId());
-//    			System.out.println("Par");
-//    			System.out.println("L'itinéraire de " + itPrecedentToLivraison.getDepart().getAdresse().getId() + " à " + itPrecedentToLivraison.getArrivee().getAdresse().getId());
     			
     			coutASoustraire=it.getCout();
-    			//it = itPrecedentToLivraison;
+    			
     			itineraires.add(itineraires.indexOf(it), itPrecedentToLivraison);
     			itineraires.add(itineraires.indexOf(it)+1, itLivraisonToSuivant);
     			itineraires.remove(it);
     			break;
     		}
     	}
-//    	System.out.println("Nouveaux Itineraires");
-    	for (Itineraire it : itineraires)
-    	{
-//    		System.out.println("Itineraire de " + it.getDepart().getAdresse().getId() + " à " + it.getArrivee().getAdresse().getId());
-    	}
+
     	
     	coutTotal = coutTotal - coutASoustraire + coutLivraisonToSuivant + coutPrecedentToLivraison;
     	this.demandeDeLivraison.ajouteLivraison(livraisonSuivante, livraison);

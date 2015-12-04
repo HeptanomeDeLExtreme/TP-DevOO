@@ -36,10 +36,6 @@ public class Modele extends Observable{
 		this.changementEffectue();
 	}
 	
-//	public void ajouteLivraisonSpecifique(Livraison liv, Livraison livSuiv) {
-//		this.tournee.ajouteLivraisonSpecifique(liv,livSuiv);
-//		this.changementEffectue();
-//	}
 
 	public void supprimeLivraison(Livraison liv) {
 		this.tournee.supprimeLivraison(liv);
